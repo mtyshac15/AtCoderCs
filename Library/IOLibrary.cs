@@ -22,7 +22,7 @@ public static class IOLibrary
 
     public static string[] ReadStringArray()
     {
-        return IOLibrary.ReadLine().Split(' ');
+        return IOLibrary.ReadLine().Trim().Split(' ');
     }
 
     public static string[] ReadStringArray(int row)
@@ -33,6 +33,33 @@ public static class IOLibrary
             array[i] = IOLibrary.ReadLine();
         }
         return array;
+    }
+
+    public static string[,] ReadStringArray(int row, int col)
+    {
+        var array = new string[row, col];
+        for (var i = 0; i < row; i++)
+        {
+            var line = IOLibrary.ReadLine();
+            for (var j = 0; j < col; j++)
+            {
+                array[i, j] = line[j].ToString();
+            }
+        }
+        return array;
+    }
+
+    public static Matrix GetMatrix(int rowCount, int colCount)
+    {
+        var matrix = new Matrix(rowCount, colCount);
+
+        for(var row = 0;row<rowCount; row++)
+        {
+            var rows = IOLibrary.ReadLongArray();
+            matrix.Init(row, rows);
+        }
+
+        return matrix;
     }
 
     #endregion
@@ -59,7 +86,7 @@ public static class IOLibrary
     public static (int, int, int, int) ReadInt4()
     {
         var inputs = IOLibrary.ReadIntArray();
-        return (inputs[0], inputs[1], inputs[1], inputs[3]);
+        return (inputs[0], inputs[1], inputs[2], inputs[3]);
     }
 
     public static int[] ReadIntArray()
@@ -185,8 +212,6 @@ public static class IOLibrary
 
     #region "Output"
 
-
-
     public static void OutputList<T>(IEnumerable<T> line)
     {
         foreach (var item in line)
@@ -195,7 +220,12 @@ public static class IOLibrary
         }
     }
 
-    public static string YesOrNo(bool value)
+    public static void WriteYesOrNo(bool value)
+    {
+        Console.WriteLine(IOLibrary.ToYesOrNo(value));
+    }
+
+    public static string ToYesOrNo(bool value)
     {
         return value ? $"Yes" : $"No";
     }

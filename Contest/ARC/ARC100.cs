@@ -33,27 +33,10 @@ class ARC100
         var n = IOLibrary.ReadLong();
         var cost = n;
 
-        //n+1の分割
-        var ng = n + 1;
-        var ok = 0L;
-
         //1+・・・+k<=n+1を満たす最大のkを求める
-        while (Math.Abs(ok - ng) > 1)
-        {
-            var middle = ok + (ng - ok) / 2;
-            //1からkまでの和
-            var sum = middle * (middle + 1) / 2;
-            if (sum <= n + 1)
-            {
-                ok = middle;
-            }
-            else
-            {
-                ng = middle;
-            }
-        }
-
-        var dividedNum = ok;
+        var dividedNum = MathLibrary.BinarySearch(0L,
+                                                  n + 1,
+                                                  (x) => x * (x + 1) / 2 <= n + 1);
         cost = cost - dividedNum + 1;
         Console.WriteLine(cost);
     }
@@ -131,12 +114,12 @@ class ARC100
             var M = P - N;
             if (N * M == S)
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     public static void AbbreviateFox()

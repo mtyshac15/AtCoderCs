@@ -8,28 +8,21 @@ class Program
 {
     static void Main(string[] args)
     {
-        Program.OneSAT();
+        Program.CountBalls();
     }
 
-    public static void OneSAT()
+    public static void CountBalls()
     {
-        var N = IOLibrary.ReadInt();
-        var S = IOLibrary.ReadStringArray(N);
-
-        var hashSet = new HashSet<string>(S, StringComparer.OrdinalIgnoreCase);
-
-        foreach (var s in S)
-        {
-            if (hashSet.Contains('!' + s))
-            {
-                Console.WriteLine($"{s}");
-                return;
-            }
-        }
-
-        Console.WriteLine($"satisfiable");
+        var (N, A, B) = IOLibrary.ReadLong3();
+        var ballsSet = N / (A + B);
+        var buleBallsNum = ballsSet * A;
+        var remainder = N % (A + B);
+        buleBallsNum += Math.Min(remainder, A);
+        Console.WriteLine(buleBallsNum);
     }
 }
+
+#region "Library"
 
 public static class MathLibrary
 {
@@ -303,8 +296,6 @@ public static class MathLibrary
         return array;
     }
 
-
-
     /// <summary>
     /// 桁数
     /// </summary>
@@ -328,7 +319,13 @@ public static class MathLibrary
         return (int)(num / MathLibrary.Pow(basis, n - 1)) % basis;
     }
 
-    public static long Pow(int a, int n)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static long Pow(long a, int n)
     {
         var ans = 1L;
 
@@ -337,7 +334,7 @@ public static class MathLibrary
 
         while (tmpN > 0)
         {
-            if (MathLibrary.TestBit(tmpN, 1))
+            if (MathLibrary.TestBit(tmpN, 0))
             {
                 ans *= tmpA;
             }
@@ -347,6 +344,26 @@ public static class MathLibrary
         }
 
         return ans;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="a">底</param>
+    /// <returns></returns>
+    public static int Log(long n, int a)
+    {
+        var count = 0;
+
+        var value = n;
+        while (value > 1)
+        {
+            value /= a;
+            count++;
+        }
+
+        return count;
     }
 
     /// <summary>
@@ -432,6 +449,16 @@ public static class MathLibrary
         i = i + (i >> 8);
         i = i + (i >> 16);
         return i & 0x3f;
+    }
+
+    public static long Ceiling(long value, long basis = 1)
+    {
+        return (long)Math.Ceiling((double)value / basis) * basis;
+    }
+
+    public static long Floor(long value, long basis = 1)
+    {
+        return (long)Math.Floor((double)value / basis) * basis;
     }
 
     #endregion
@@ -675,16 +702,16 @@ public static class MathLibrary
         return -1;
     }
 
-    public static int LowerBound(this IList<int> sortedList, int key)
+    public static int BinarySearch(int initOk, int initNg, Func<int, bool> isOk)
     {
-        var ng = -1;
-        var ok = sortedList.Count;
+        var ok = initOk;
+        var ng = initNg;
 
         while (Math.Abs(ok - ng) > 1)
         {
             //区間の中央
             var middle = ok + (ng - ok) / 2;
-            if (sortedList[middle] >= key)
+            if (isOk(middle))
             {
                 ok = middle;
             }
@@ -693,8 +720,41 @@ public static class MathLibrary
                 ng = middle;
             }
         }
-
         return ok;
+    }
+
+    public static long BinarySearch(long initOk, long initNg, Func<long, bool> isOk)
+    {
+        var ok = initOk;
+        var ng = initNg;
+
+        while (Math.Abs(ok - ng) > 1)
+        {
+            //区間の中央
+            var middle = ok + (ng - ok) / 2;
+            if (isOk(middle))
+            {
+                ok = middle;
+            }
+            else
+            {
+                ng = middle;
+            }
+        }
+        return ok;
+    }
+
+    public static int LowerBound(this IList<int> sortedList, int key)
+    {
+        var ng = -1;
+        var ok = sortedList.Count;
+
+        Func<int, bool> isOk = (target) =>
+        {
+            return sortedList[target] >= key;
+        };
+
+        return MathLibrary.BinarySearch(ok, ng, isOk);
     }
 
     public static int UpperBound(this IList<int> sortedList, int key)
@@ -702,21 +762,12 @@ public static class MathLibrary
         var ng = -1;
         var ok = sortedList.Count;
 
-        while (Math.Abs(ok - ng) > 1)
+        Func<int, bool> isOk = (target) =>
         {
-            //区間の中央
-            var middle = ok + (ng - ok) / 2;
-            if (sortedList[middle] > key)
-            {
-                ok = middle;
-            }
-            else
-            {
-                ng = middle;
-            }
-        }
+            return sortedList[target] > key;
+        };
 
-        return ok;
+        return MathLibrary.BinarySearch(ok, ng, isOk);
     }
 
     #endregion
@@ -874,6 +925,20 @@ public static class IOLibrary
         return array;
     }
 
+    public static string[,] ReadStringArray(int row, int col)
+    {
+        var array = new string[row, col];
+        for (var i = 0; i < row; i++)
+        {
+            var line = IOLibrary.ReadLine();
+            for (var j = 0; j < col; j++)
+            {
+                array[i, j] = line[j].ToString();
+            }
+        }
+        return array;
+    }
+
     #endregion
 
     #region "int"
@@ -898,7 +963,7 @@ public static class IOLibrary
     public static (int, int, int, int) ReadInt4()
     {
         var inputs = IOLibrary.ReadIntArray();
-        return (inputs[0], inputs[1], inputs[1], inputs[3]);
+        return (inputs[0], inputs[1], inputs[2], inputs[3]);
     }
 
     public static int[] ReadIntArray()
@@ -1032,7 +1097,12 @@ public static class IOLibrary
         }
     }
 
-    public static string YesOrNo(bool value)
+    public static void WriteYesOrNo(bool value)
+    {
+        Console.WriteLine(IOLibrary.ToYesOrNo(value));
+    }
+
+    public static string ToYesOrNo(bool value)
     {
         return value ? $"Yes" : $"No";
     }
@@ -1172,15 +1242,6 @@ public struct ModInt : IEquatable<ModInt>
         }
     }
 
-
-    public int Value
-    {
-        get
-        {
-            return this.value;
-        }
-    }
-
     #region 
 
     public static void Init(int m)
@@ -1285,7 +1346,6 @@ public struct ModInt : IEquatable<ModInt>
         return this.value == other.value;
     }
 
-
     public override bool Equals(object obj)
     {
         if (!(obj is ModInt))
@@ -1303,8 +1363,10 @@ public struct ModInt : IEquatable<ModInt>
 
     public override string ToString()
     {
-        return this.value.ToString();
+        return $"{this.value}";
     }
 
     #endregion
 }
+
+#endregion

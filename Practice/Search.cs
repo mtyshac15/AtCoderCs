@@ -87,13 +87,13 @@ public static class Search
                 var total = cakeCost * cakeNum + doughnutCost * doughnutNum;
                 if (total == N)
                 {
-                    Console.WriteLine(IOLibrary.YesOrNo(true));
+                    Console.WriteLine(IOLibrary.ToYesOrNo(true));
                     return;
                 }
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(true));
+        Console.WriteLine(IOLibrary.ToYesOrNo(true));
     }
 
     public static void GuessTheNumber()

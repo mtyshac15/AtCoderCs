@@ -38,6 +38,93 @@ public static class ABC190
 
     #region "191"
 
+    public static void CircleLatticePoints()
+    {
+        var multiple = 10000;
+        var input = IOLibrary.ReadStringArray()
+                             .Select(item => (long)(decimal.Parse(item) * multiple))
+                             .ToArray();
+
+        var X = input[0];
+        var Y = input[1];
+        var R = input[2];
+
+        var count = 0L;
+
+        var maxR = 100000L;
+
+        for (var y = -2 * maxR; y <= 2 * maxR; y++)
+        {
+            var tmpY = y * multiple;
+
+            var dy = Math.Abs(Y - tmpY);
+
+            if (dy <= R)
+            {
+                var x2 = R * R - dy * dy;
+
+                Func<long, bool> isOk = (x) =>
+                {
+                    var dx2 = (X - x) * (X - x);
+                    return dx2 <= x2;
+                };
+
+                var minRange = -2 * maxR * multiple;
+                var maxRange = 2 * maxR * multiple;
+
+                var left = MathLibrary.BinarySearch(X, minRange - 1, isOk);
+                var right = MathLibrary.BinarySearch(X, maxRange + 1, isOk);
+
+                //10^4の倍数の個数
+                var countL = MathLibrary.Ceiling(left, multiple) / multiple;
+                var countR = MathLibrary.Floor(right, multiple) / multiple;
+
+                if (countL <= countR)
+                {
+                    count += countR - countL + 1;
+                }
+            }
+        }
+
+        Console.WriteLine(count);
+    }
+
+    public static void DigitalGraffiti()
+    {
+        var (H, W) = IOLibrary.ReadInt2();
+        var S = IOLibrary.ReadStringArray(H, W);
+    }
+
+    public static void RemoveIt()
+    {
+        var (N, X) = IOLibrary.ReadLong2();
+        var A = IOLibrary.ReadLongArray();
+
+        foreach (var a in A)
+        {
+            if (a != X)
+            {
+                Console.Write(a + " ");
+            }
+        }
+    }
+
+    public static void VanishingPitch()
+    {
+        var (V, T, S, D) = IOLibrary.ReadInt4();
+
+        var start = V * T;
+        var end = V * S;
+        if (D < start || end < D)
+        {
+            IOLibrary.WriteYesOrNo(true);
+        }
+        else
+        {
+            IOLibrary.WriteYesOrNo(false);
+        }
+    }
+
     #endregion
 
     #region "190"
@@ -66,12 +153,12 @@ public static class ABC190
             var (x, y) = IOLibrary.ReadLong2();
             if (x < S && y > D)
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     public static void BowlsAndDishes()

@@ -4,18 +4,24 @@ using System.Linq;
 
 public struct Matrix
 {
-    private long[] array;
-    private long row;
-    private long column;
+    private GenericMatrix<long> matrix;
 
     public Matrix(long row, long col)
     {
-        this.row = row;
-        this.column = col;
-        this.array = new long[row * col];
+        this.matrix = new GenericMatrix<long>(row, col);
     }
 
     #region 
+
+    public long RowCount
+    {
+        get { return this.matrix.RowCount; }
+    }
+
+    public long ColumnCount
+    {
+        get { return this.matrix.ColumnCount; }
+    }
 
     public static Matrix operator +(Matrix a)
     {
@@ -29,15 +35,19 @@ public struct Matrix
 
     public static Matrix operator +(Matrix a, Matrix b)
     {
-        if (a.row != b.row || a.column != b.column)
+        if (a.RowCount != b.RowCount || a.ColumnCount != b.ColumnCount)
         {
             throw new InvalidOperationException();
         }
 
-        var result = new Matrix(a.row, a.column);
-        var newArray = a.array.Zip(b.array, (elementA, elementB) => elementA + elementB)
-                        .ToArray();
-        result.array = newArray;
+        var result = new Matrix(a.RowCount, a.ColumnCount);
+
+        for (var rowIndex = 0; rowIndex < a.RowCount; rowIndex++)
+        {
+            var rowItem = a.GetRow(rowIndex).Zip(b.GetRow(rowIndex), (elementA, elementB) => elementA + elementB)
+                                            .ToArray();
+            result.Init(rowIndex, rowItem);
+        }
         return result;
     }
 
@@ -48,38 +58,40 @@ public struct Matrix
 
     public static Matrix operator *(Matrix a, Matrix b)
     {
-        if (a.column != b.row)
+        if (a.ColumnCount != b.RowCount)
         {
             throw new InvalidOperationException();
         }
 
-        var result = new Matrix(a.row, b.column);
-        var newArray = new long[result.array.Length];
-        for (var i = 0; i < a.row; i++)
+        var result = new Matrix(a.RowCount, b.ColumnCount);
+        for (var rowIndex = 0; rowIndex < a.RowCount; rowIndex++)
         {
-            var vectorA = a.GetRow(i);
+            var rowItem = new long[result.ColumnCount];
+            var vectorA = a.GetRow(rowIndex);
 
-            for (var j = 0; j < b.column; j++)
+            for (var columnIndex = 0; columnIndex < b.ColumnCount; columnIndex++)
             {
-                var vectorB = b.GetColumn(j);
+                var vectorB = b.GetColumn(columnIndex);
 
-                var index = a.column * i + j;
+                var index = a.ColumnCount * rowIndex + columnIndex;
                 var value = vectorA.Zip(vectorB, (elementA, elementB) => elementA * elementB)
                                    .Sum();
-                newArray[index] = value;
+                rowItem[index] = value;
             }
+            result.Init(rowIndex, rowItem);
         }
 
-        result.array = newArray;
         return result;
     }
 
     public static Matrix operator *(long c, Matrix a)
     {
-        var result = new Matrix(a.row, a.column);
-        var newArray = a.array.Select(element => element * c)
-                        .ToArray();
-        result.array = newArray;
+        var result = new Matrix(a.RowCount, a.ColumnCount);
+        for (var rowIndex = 0; rowIndex < a.RowCount; rowIndex++)
+        {
+            var rowItem = a.GetRow(rowIndex);
+            result.Init(rowIndex, rowItem.Select(element => element * c).ToArray());
+        }
         return result;
     }
 
@@ -92,20 +104,12 @@ public struct Matrix
 
     public long this[long row, long column]
     {
-        get
-        {
-            var index = this.column * row + column;
-            return this.array[index];
-        }
+        get { return this.matrix[row, column]; }
     }
 
     public void Init(long rowIndex, long[] rowItem)
     {
-        for (var i = 0; i < this.row; i++)
-        {
-            var index = this.column * rowIndex + i;
-            this.array[index] = rowItem[i];
-        }
+        this.matrix.Init(rowIndex, rowItem);
     }
 
     /// <summary>
@@ -119,22 +123,11 @@ public struct Matrix
 
     public long[] GetRow(long rowIndex)
     {
-        var vector = new long[this.column];
-        for (var i = 0; i < vector.Length; i++)
-        {
-            vector[i] = this[rowIndex, i];
-        }
-        return vector;
+        return this.matrix.GetRow(rowIndex);
     }
 
     public long[] GetColumn(long colIndex)
     {
-        var vector = new long[this.row];
-        for (var i = 0; i < vector.Length; i++)
-        {
-            var rowIndex = this.column * i + colIndex;
-            vector[i] = this[rowIndex, colIndex];
-        }
-        return vector;
+        return this.matrix.GetColumn(colIndex);
     }
 }

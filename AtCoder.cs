@@ -10,14 +10,16 @@ public static class AtCoder
     {
         Action method = null;
 
-        //method = ABC190.StaircaseSequences;
-        method = ABC180.SumOfDifference;
+        //method = ABC190.CircleLatticePoints;
+        //method = ABC180.SumOfDifference;
         //method = ABC170.Alphabet;
+
+        //method = ABCLike.SqrtInequality;
 
         //method = ARC110.MexBoxes;
         //method = ARC100.SumAndProduct;
 
-        //method = Easy050.ATCoder;
+        method = Easy050.CountBalls;
 
         //method = Practice.Daydream;
         //method = Search.GoodDistance;
@@ -42,7 +44,7 @@ public static class AtCoder
     public static void ExecuteByFileIO(Action method)
     {
         var textFile = @$"Text\Sample.txt";
-        
+
         string input;
         do
         {
@@ -63,7 +65,7 @@ public static class AtCoder
     {
         var sw = System.Diagnostics.Stopwatch.StartNew();
 
-        method.Invoke();
+        method?.Invoke();
 
         sw.Stop();
         var secondTime = (int)(sw.Elapsed.TotalMilliseconds);

@@ -118,15 +118,6 @@ public struct ModInt : IEquatable<ModInt>
         }
     }
 
-
-    public int Value
-    {
-        get
-        {
-            return this.value;
-        }
-    }
-
     #region 
 
     public static void Init(int m)
@@ -230,7 +221,6 @@ public struct ModInt : IEquatable<ModInt>
     {
         return this.value == other.value;
     }
-
 
     public override bool Equals(object obj)
     {

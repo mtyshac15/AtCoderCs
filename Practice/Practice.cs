@@ -238,12 +238,12 @@ public static class Practice
                 var d = x.BinarySearch(xd);
                 if (d >= 0)
                 {
-                    Console.WriteLine(IOLibrary.YesOrNo(true));
+                    Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 }
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     #endregion

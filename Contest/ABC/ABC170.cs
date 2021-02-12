@@ -27,12 +27,12 @@ public static class ABC170
                 && D1[0] == D1[1]
                 && D2[0] == D2[1])
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     public static void ATimesBPlusC()
@@ -99,7 +99,7 @@ public static class ABC170
     {
         var (D, T, S) = IOLibrary.ReadInt3();
         var ans = S * T >= D;
-        Console.WriteLine(IOLibrary.YesOrNo(ans));
+        Console.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static void SubString()
@@ -177,7 +177,7 @@ public static class ABC170
         }
 
         var ans = sum == 0;
-        Console.WriteLine(IOLibrary.YesOrNo(ans));
+        Console.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static void Step()
@@ -298,7 +298,7 @@ public static class ABC170
     {
         var X = IOLibrary.ReadInt();
         var ans = X >= 30;
-        Console.WriteLine(IOLibrary.YesOrNo(ans));
+        Console.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static void Distance()

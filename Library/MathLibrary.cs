@@ -274,8 +274,6 @@ public static class MathLibrary
         return array;
     }
 
-
-
     /// <summary>
     /// 桁数
     /// </summary>
@@ -299,25 +297,51 @@ public static class MathLibrary
         return (int)(num / MathLibrary.Pow(basis, n - 1)) % basis;
     }
 
-    public static long Pow(int a, int n)
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="a"></param>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static long Pow(long a, int n)
     {
         var ans = 1L;
 
-        var tmpA = a;
+        var basis = a;
         var tmpN = n;
 
         while (tmpN > 0)
         {
-            if (MathLibrary.TestBit(tmpN, 1))
+            if (MathLibrary.TestBit(tmpN, 0))
             {
-                ans *= tmpA;
+                ans *= basis;
             }
 
-            tmpA *= tmpA;
+            basis *= basis;
             tmpN >>= 1;
         }
 
         return ans;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="n"></param>
+    /// <param name="a">底</param>
+    /// <returns></returns>
+    public static int Log(long n, int a)
+    {
+        var count = 0;
+
+        var value = n;
+        while (value > 1)
+        {
+            value /= a;
+            count++;
+        }
+
+        return count;
     }
 
     /// <summary>
@@ -403,6 +427,16 @@ public static class MathLibrary
         i = i + (i >> 8);
         i = i + (i >> 16);
         return i & 0x3f;
+    }
+
+    public static long Ceiling(long value, long basis = 1)
+    {
+        return (long)Math.Ceiling((double)value / basis) * basis;
+    }
+
+    public static long Floor(long value, long basis = 1)
+    {
+        return (long)Math.Floor((double)value / basis) * basis;
     }
 
     #endregion
@@ -646,16 +680,16 @@ public static class MathLibrary
         return -1;
     }
 
-    public static int LowerBound(this IList<int> sortedList, int key)
+    public static int BinarySearch(int initOk, int initNg, Func<int, bool> isOk)
     {
-        var ng = -1;
-        var ok = sortedList.Count;
+        var ok = initOk;
+        var ng = initNg;
 
         while (Math.Abs(ok - ng) > 1)
         {
             //区間の中央
             var middle = ok + (ng - ok) / 2;
-            if (sortedList[middle] >= key)
+            if (isOk(middle))
             {
                 ok = middle;
             }
@@ -664,8 +698,41 @@ public static class MathLibrary
                 ng = middle;
             }
         }
-
         return ok;
+    }
+
+    public static long BinarySearch(long initOk, long initNg, Func<long, bool> isOk)
+    {
+        var ok = initOk;
+        var ng = initNg;
+
+        while (Math.Abs(ok - ng) > 1)
+        {
+            //区間の中央
+            var middle = ok + (ng - ok) / 2;
+            if (isOk(middle))
+            {
+                ok = middle;
+            }
+            else
+            {
+                ng = middle;
+            }
+        }
+        return ok;
+    }
+
+    public static int LowerBound(this IList<int> sortedList, int key)
+    {
+        var ng = -1;
+        var ok = sortedList.Count;
+
+        Func<int, bool> isOk = (target) =>
+        {
+            return sortedList[target] >= key;
+        };
+
+        return MathLibrary.BinarySearch(ok, ng, isOk);
     }
 
     public static int UpperBound(this IList<int> sortedList, int key)
@@ -673,21 +740,12 @@ public static class MathLibrary
         var ng = -1;
         var ok = sortedList.Count;
 
-        while (Math.Abs(ok - ng) > 1)
+        Func<int, bool> isOk = (target) =>
         {
-            //区間の中央
-            var middle = ok + (ng - ok) / 2;
-            if (sortedList[middle] > key)
-            {
-                ok = middle;
-            }
-            else
-            {
-                ng = middle;
-            }
-        }
+            return sortedList[target] > key;
+        };
 
-        return ok;
+        return MathLibrary.BinarySearch(ok, ng, isOk);
     }
 
     #endregion

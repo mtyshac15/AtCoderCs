@@ -81,7 +81,7 @@ public static class Easy050
 
         foreach (var result in passList)
         {
-            Console.WriteLine(IOLibrary.YesOrNo(result));
+            Console.WriteLine(IOLibrary.ToYesOrNo(result));
         }
     }
 
@@ -184,7 +184,7 @@ public static class Easy050
         {
             if (judgeList[i, 0] & judgeList[i, 1] & judgeList[i, 2])
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
@@ -194,7 +194,7 @@ public static class Easy050
         {
             if (judgeList[0, i] & judgeList[1, i] & judgeList[2, i])
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
@@ -203,11 +203,11 @@ public static class Easy050
         if (judgeList[0, 0] & judgeList[1, 1] & judgeList[2, 2]
             || judgeList[0, 2] & judgeList[1, 1] & judgeList[2, 0])
         {
-            Console.WriteLine(IOLibrary.YesOrNo(true));
+            Console.WriteLine(IOLibrary.ToYesOrNo(true));
             return;
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     /// <summary>
@@ -224,12 +224,12 @@ public static class Easy050
         {
             if (i * i == num)
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     /// <summary>
@@ -420,7 +420,7 @@ public static class Easy050
     {
         var N = IOLibrary.ReadInt();
         var v = IOLibrary.ReadIntArray();
-        
+
         var ans = v.Sort().Skip(1).Aggregate((double)v[0], (x, y) => (x + y) / 2.0);
         Console.WriteLine(ans);
     }
@@ -469,11 +469,164 @@ public static class Easy050
     public static void CollatzProblem()
     {
         var s = IOLibrary.ReadInt();
+        var hashSet = new HashSet<int>();
+
+        var an = s;
+        var index = 1;
+
+        while (!hashSet.Contains(an))
+        {
+            hashSet.Add(an);
+
+            if (an % 2 == 0)
+            {
+                an = an / 2;
+            }
+            else
+            {
+                an = 3 * an + 1;
+            }
+
+            index++;
+        }
+
+        Console.WriteLine(index);
     }
 
     #endregion
 
     #region "21-30"
+
+    public static void NextPrime()
+    {
+        var X = IOLibrary.ReadInt();
+
+        var num = X;
+        while (!MathLibrary.IsPrime(num))
+        {
+            num++;
+        }
+
+        Console.WriteLine(num);
+    }
+
+    public static void CandyDistributionAgain()
+    {
+        var (N, x) = IOLibrary.ReadInt2();
+        var a = IOLibrary.ReadIntArray();
+
+        var sum = (long)x;
+        var count = a.Sort().Select(num => sum -= num).Count(num => num >= 0);
+
+        if (sum > 0)
+        {
+            count--;
+        }
+
+        Console.WriteLine(count);
+    }
+
+    public static void Chocolate()
+    {
+        var N = IOLibrary.ReadInt();
+        var (D, X) = IOLibrary.ReadInt2();
+        var A = IOLibrary.ReadIntArray(N);
+
+        var count = A.Length;
+
+        var num = 0;
+        var sum = X;
+
+        while (count > 0)
+        {
+            count = A.Select(a => num * a + 1).Count(a => a <= D);
+            sum += count;
+            num++;
+        }
+
+        Console.WriteLine(sum);
+    }
+
+    public static void NiceShopping()
+    {
+        var (A, B, M) = IOLibrary.ReadInt3();
+        var a = IOLibrary.ReadIntArray();
+        var b = IOLibrary.ReadIntArray();
+        var xyc = IOLibrary.ReadInt2DArray(M);
+
+        var minA = a.Min();
+        var minB = b.Min();
+
+        var minTotal = minA + minB;
+
+        for (var i = 0; i < M; i++)
+        {
+            var set = xyc[i];
+            var total = a[set[0] - 1] + b[set[1] - 1] - set[2];
+            minTotal = Math.Min(total, minTotal);
+        }
+
+        Console.WriteLine(minTotal);
+    }
+
+    public static void CountOrder()
+    {
+        var N = IOLibrary.ReadInt();
+        var P = IOLibrary.ReadIntArray();
+        var Q = IOLibrary.ReadIntArray();
+
+        var a = 0;
+        var list = Enumerable.Range(1, N).ToList();
+        for (var i = 0; i < N; i++)
+        {
+            var num = i + 1;
+            var index = list.IndexOf(P[i]);
+            var factorial = 1;
+            for (var k = N - num; k >= 1; k--)
+            {
+                factorial *= k;
+            }
+            a += index * factorial;
+
+            list.Remove(P[i]);
+        }
+
+        var b = 0;
+        list = Enumerable.Range(1, N).ToList();
+        for (var i = 0; i < N; i++)
+        {
+            var num = i + 1;
+            var index = list.IndexOf(Q[i]);
+            var factorial = 1;
+            for (var k = N - num; k >= 1; k--)
+            {
+                factorial *= k;
+            }
+            b += index * factorial;
+
+            list.Remove(Q[i]);
+        }
+
+        Console.WriteLine(Math.Abs(a - b));
+    }
+
+    public static void CaracalVsMonster()
+    {
+        var H = IOLibrary.ReadLong();
+        var count = MathLibrary.Log(H, 2);
+        var ans = MathLibrary.Pow(2, count + 1) - 1;
+        Console.WriteLine(ans);
+    }
+
+    public static void CountBalls()
+    {
+        var (N, A, B) = IOLibrary.ReadLong3();
+        var ballsSet = N / (A + B);
+        var buleBallsNum = ballsSet * A;
+        var remainder = N % (A + B);
+        buleBallsNum += Math.Min(remainder, A);
+        Console.WriteLine(buleBallsNum);
+    }
 
     #endregion
 

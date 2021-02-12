@@ -97,7 +97,7 @@ public static class ABC180
     {
         var (X, Y) = IOLibrary.ReadInt2();
         var sub = Math.Abs(X - Y);
-        Console.WriteLine(IOLibrary.YesOrNo(sub < 3));
+        Console.WriteLine(IOLibrary.ToYesOrNo(sub < 3));
     }
 
     public static void Orthogonality()
@@ -107,7 +107,7 @@ public static class ABC180
         var B = IOLibrary.ReadIntArray();
 
         var sum = A.Zip(B, (a, b) => a * b).Sum();
-        Console.WriteLine(IOLibrary.YesOrNo(sum == 0));
+        Console.WriteLine(IOLibrary.ToYesOrNo(sum == 0));
     }
 
     public static void ABCTournament()
@@ -401,7 +401,7 @@ public static class ABC180
 
             if (battery <= 0)
             {
-                Console.WriteLine(IOLibrary.YesOrNo(false));
+                Console.WriteLine(IOLibrary.ToYesOrNo(false));
                 return;
             }
 
@@ -418,7 +418,7 @@ public static class ABC180
             battery -= consumption;
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(battery > 0));
+        Console.WriteLine(IOLibrary.ToYesOrNo(battery > 0));
     }
 
     public static void DuodecimFerra()
@@ -590,12 +590,12 @@ public static class ABC180
             table[i + 1] += table[i];
             if (table[i] > W)
             {
-                Console.WriteLine(IOLibrary.YesOrNo(false));
+                Console.WriteLine(IOLibrary.ToYesOrNo(false));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(true));
+        Console.WriteLine(IOLibrary.ToYesOrNo(true));
     }
 
     public static void QueenOnGrid()
@@ -773,12 +773,12 @@ public static class ABC180
             var area = Point.CalcTriangleArea(p0 - p1, p0 - p2);
             if (area == 0)
             {
-                Console.WriteLine(IOLibrary.YesOrNo(true));
+                Console.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.YesOrNo(false));
+        Console.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     #endregion
