@@ -42,7 +42,7 @@ public static class Practice
         var A = IOLibrary.ReadIntArray();
 
         var count = 0;
-        var list = A.DeepClone();
+        var list = IOLibrary.DeepClone(A);
         while (!list.Any(x => x % 2 == 1))
         {
             for (var i = 0; i < list.Length; i++)

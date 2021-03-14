@@ -280,7 +280,7 @@ public static class MathLibrary
     /// <param name="num"></param>
     /// <param name="basis"></param>
     /// <returns></returns>
-    public static int Digits(this long num, int basis = 10)
+    public static int Digits(this long num, long basis = 10)
     {
         var testNum = num;
         var digit = 0;
@@ -292,7 +292,7 @@ public static class MathLibrary
         return digit;
     }
 
-    public static int Digits(long num, int n, int basis = 10)
+    public static int Digits(this long num, int n, int basis = 10)
     {
         return (int)(num / MathLibrary.Pow(basis, n - 1)) % basis;
     }
@@ -365,16 +365,6 @@ public static class MathLibrary
     /// </summary>
     /// <param name="num"></param>
     /// <returns></returns>
-    public static string ToOct(this int num)
-    {
-        return MathLibrary.ToOct((long)num);
-    }
-
-    /// <summary>
-    /// 8進数
-    /// </summary>
-    /// <param name="num"></param>
-    /// <returns></returns>
     public static string ToOct(this long num)
     {
         var ans = "";
@@ -386,16 +376,6 @@ public static class MathLibrary
         } while (testNum > 0);
 
         return ans;
-    }
-
-    /// <summary>
-    /// 16進数
-    /// </summary>
-    /// <param name="num"></param>
-    /// <returns></returns>
-    public static string ToHex(this int num)
-    {
-        return num.ToString("x");
     }
 
     /// <summary>

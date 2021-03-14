@@ -205,7 +205,7 @@ static class Test
 
     private static int[][] PartialCrossOver(int[][] parents)
     {
-        var children = parents.DeepClone();
+        var children = IOLibrary.DeepClone(parents);
 
         var children0 = children[0];
         var children1 = children[1];

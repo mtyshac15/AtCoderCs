@@ -70,7 +70,7 @@ public struct ModInt : IEquatable<ModInt>
 
     public static ModInt operator *(ModInt a, ModInt b)
     {
-        return a.value * b.value;
+        return (long)a.value * b.value;
     }
 
     public static ModInt operator /(ModInt a, ModInt b)
@@ -135,17 +135,17 @@ public struct ModInt : IEquatable<ModInt>
     {
         ModInt ans = 1;
 
-        var tmpA = a;
+        var basis = a;
         var tmpN = n;
 
         while (tmpN > 0)
         {
-            if ((tmpN & 1) == 1)
+            if ((tmpN & 1) > 0)
             {
-                ans *= tmpA;
+                ans *= basis;
             }
 
-            tmpA *= tmpA;
+            basis *= basis;
             tmpN >>= 1;
         }
 
@@ -233,6 +233,11 @@ public struct ModInt : IEquatable<ModInt>
     }
 
     public override int GetHashCode()
+    {
+        return this.value;
+    }
+
+    public int ToInt()
     {
         return this.value;
     }

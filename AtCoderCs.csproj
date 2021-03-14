@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Program.cs" />
+    <Compile Remove="Problem.cs" />
     <Compile Remove="Template.cs" />
   </ItemGroup>
 
@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Program.cs" />
+    <None Include="Problem.cs" />
     <None Include="Template.cs" />
   </ItemGroup>
 </Project>

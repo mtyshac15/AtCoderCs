@@ -628,9 +628,85 @@ public static class Easy050
         Console.WriteLine(buleBallsNum);
     }
 
+    public static void SevenFiveFour()
+    {
+        var S = IOLibrary.ReadLine();
+        var stdNum = 753;
+        var length = 3;
+
+        var minDiff = int.MaxValue;
+        for (var i = 0; i < S.Length - length + 1; i++)
+        {
+            var numStr = S.Substring(i, length);
+            var num = int.Parse(numStr);
+            minDiff = Math.Min(Math.Abs(num - stdNum), minDiff);
+        }
+        Console.WriteLine(minDiff);
+    }
+
+    public static void RuinedSquare()
+    {
+        var (x1, y1, x2, y2) = IOLibrary.ReadInt4();
+        var dx = x2 - x1;
+        var dy = y2 - y1;
+
+        //正の方向に90度回転
+        var directionX = -dy;
+        var directionY = dx;
+
+        var x3 = x2 + directionX;
+        var y3 = y2 + directionY;
+
+        var x4 = x1 + directionX;
+        var y4 = y1 + directionY;
+
+        var p = new int[] { x3, y3, x4, y4 };
+        Console.WriteLine(string.Join(" ", p));
+    }
+
     #endregion
 
     #region "31-40"
+
+    public static void Varied()
+    {
+        var S = IOLibrary.ReadLine();
+        var result = (S.Length == S.Distinct().Count()) ? $"yes" : "no";
+        Console.WriteLine(result);
+    }
+
+    public static void IncrementDecrement()
+    {
+        var N = IOLibrary.ReadInt();
+        var S = IOLibrary.ReadLine();
+
+        var x = 0;
+        var max = x;
+        foreach (var str in S)
+        {
+            if (str == 'I')
+            {
+                x++;
+            }
+            else if (str == 'D')
+            {
+                x--;
+            }
+            max = Math.Max(x, max);
+        }
+
+        Console.WriteLine(max);
+    }
+
+    public static void PostalCode()
+    {
+
+    }
+
+    public static void Coins()
+    {
+
+    }
 
     #endregion
 

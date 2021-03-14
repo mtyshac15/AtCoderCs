@@ -5,81 +5,198 @@ using System.Text;
 
 class ARC110
 {
-    #region 
+    #region "113"
 
-    public static void TwoSequences2()
+    public static void ABCA()
     {
-        var N = IOLibrary.ReadInt();
-        var a = IOLibrary.ReadLongArray();
-        var b = IOLibrary.ReadLongArray();
+        var K = IOLibrary.ReadInt();
 
-        var maxA = a[0];
-        var maxC = a[0] * b[0];
+        var counts = new long[3];
 
-        for (var j = 0; j < N; j++)
+        //a=b=c
+        for (var a = 1; a * a * a <= K; a++)
         {
-            for (var i = Math.Max(0, j - 1); i <= j; i++)
+            counts[0]++;
+        }
+
+        //a=b
+        for (var a = 1; a * a <= K; a++)
+        {
+            var minC = 1;
+            var maxC = K / (a * a);
+
+            var count = maxC - minC + 1;
+            if (minC <= a && maxC >= a)
             {
-                if (a[i] > maxA)
+                count--;
+            }
+
+            counts[1] += count * 3;
+        }
+
+        //a<b<c
+        for (var a = 1; a * a <= K; a++)
+        {
+            for (var b = a + 1; a * b <= K; b++)
+            {
+                var minC = b + 1;
+                var maxC = K / (a * b);
+                if (maxC > b)
                 {
-                    maxA = a[j];
+                    counts[2] += (maxC - minC + 1) * 6;
                 }
             }
+        }
 
-            var c = maxA * b[j];
-            if (c > maxC)
+        Console.WriteLine(counts.Sum());
+    }
+
+    public static void ABCB()
+    {
+        var (A, B, C) = IOLibrary.ReadLong3();
+
+        var list = new List<int>();
+
+        ModInt.Init(10);
+        ModInt a = A;
+
+        ModInt num = 1;
+        for (var i = 0; i < 10; i++)
+        {
+            num *= a;
+
+            if (list.Contains(num.ToInt()))
             {
-                maxC = c;
+                break;
             }
 
-            Console.WriteLine(maxC);
+            list.Add(num.ToInt());
+        }
+
+        ModInt.Init(list.Count);
+       var exp = ModInt.Pow(B, C);
+
+        var index = (exp - 1).ToInt();
+        var ans = list[index];
+        Console.WriteLine(ans);
+    }
+
+    #endregion
+
+    #region "112"
+
+    public static void AMinusBEqualsC()
+    {
+        var T = IOLibrary.ReadInt();
+
+        for (var i = 0; i < T; i++)
+        {
+            var (L, R) = IOLibrary.ReadInt2();
+
+            var ans = 0L;
+
+            if (2 * L <= R)
+            {
+                var maxCount = 0L;
+                {
+                    var a = R;
+                    var minB = L;
+                    var maxB = a - minB;
+                    maxCount += maxB - minB + 1;
+                }
+
+                ans += maxCount * (maxCount + 1) / 2;
+            }
+
+            Console.WriteLine(ans);
         }
     }
 
-    public static void MexBoxes()
+    public static void MinusB()
     {
-        var (N, K) = IOLibrary.ReadLong2();
-        var a = IOLibrary.ReadLongArray();
-        var sortedA = a.Sort().GroupBy(item => item);
+        var (B, C) = IOLibrary.ReadLong2();
 
-        var sum = 0L;
+        var correctedB = B;
+        var correctedC = C;
 
-        var num = -1L;
-        var boxNum = K;
-        foreach (var ball in sortedA)
+        if (correctedB < 0)
         {
-            if (ball.Key == num + 1)
-            {
-                //iに書き換える箱の個数
-                var x = Math.Min(ball.Count(), boxNum);
-                sum += x;
+            correctedC--;
+            correctedB *= -1;
+        }
 
-                boxNum = x;
-                num = ball.Key;
+        var exchange = correctedC;
+
+        //Bより大きい数の個数
+        //最初と最後に-1倍
+        exchange -= 2;
+
+        //-1を行う回数
+        var maxNum = exchange / 2;
+
+        //Bより小さい数の個数
+        var rangeArray = new long[3][]
+        {
+            new long[2],
+            new long[2],
+            new long[2],
+        };
+
+        var minNum = 0L;
+        {
+            var quotient = correctedC / 2;
+            //-1のみ行う場合
+            rangeArray[0][1] = correctedB - 1;
+            rangeArray[0][0] = Math.Min(correctedB - quotient, correctedB - 1);
+        }
+
+        if (correctedC >= 1)
+        {
+            exchange = correctedC;
+            exchange--;
+            var quotient = exchange / 2;
+
+            //最初に-1倍する場合
+            {
+                rangeArray[1][1] = Math.Min(-correctedB, correctedB - 1);
+                rangeArray[1][0] = Math.Min(-correctedB - quotient, correctedB - 1);
+            }
+
+            //最後に-1倍する場合
+            {
+                var num = -(correctedB - 1);
+                rangeArray[2][1] = Math.Min(num, correctedB - 1);
+
+                num = -(correctedB - quotient);
+                rangeArray[2][0] = Math.Min(num, correctedB - 1);
             }
         }
 
-        Console.WriteLine(sum);
-    }
-
-    public static void RobotOnGrid()
-    {
-        var mod = 998244353;
-        ModInt.Init(mod);
-
-        var (H, W, K) = IOLibrary.ReadInt3();
-
-        var list = MathLibrary.CreateList(new { H = 0, W = 0, C = "" });
-
-        for (var i = 0; i < K; i++)
+        minNum += rangeArray[0][1] - rangeArray[0][0] + 1;
+        if (rangeArray[1][1] == rangeArray[0][0])
         {
-            var inputs = IOLibrary.ReadStringArray();
-            var h = int.Parse(inputs[0]);
-            var w = int.Parse(inputs[1]);
-            var c = inputs[2];
-            var item = new { H = h, W = w, C = c };
-            list.Add(item);
+            minNum += rangeArray[0][1] - rangeArray[1][0] + 1;
         }
+        else if (rangeArray[1][1] < rangeArray[0][0])
+        {
+            minNum += rangeArray[1][1] - rangeArray[1][0] + 1;
+        }
+        else
+        {
+            var duplicate = rangeArray[1][1] - rangeArray[0][0];
+            var num = rangeArray[1][1] - rangeArray[1][0] + 1 - duplicate;
+            minNum += num;
+        }
+
+        if (rangeArray[2][0] < rangeArray[1][0]
+            || rangeArray[2][0] > rangeArray[1][1]
+            && rangeArray[2][0] < rangeArray[0][0])
+        {
+            minNum++;
+        }
+
+        var count = maxNum + minNum + 1;
+        Console.WriteLine(count);
     }
 
     #endregion
@@ -89,50 +206,9 @@ class ARC110
     public static void SimpleMath2()
     {
         var (N, M) = IOLibrary.ReadLong2();
-        var m = (int)M;
-
-        //循環節の長さ
-        var rlist = new List<int>();
-        var remainder = 1;
-        var s = 0;
-        var t = 0;
-
-        while (true)
-        {
-            var hasFound = false;
-            for (s = 0; s < rlist.Count; s++)
-            {
-                if (rlist[s] == remainder)
-                {
-                    hasFound = true;
-                    break;
-                }
-            }
-
-            if (hasFound)
-            {
-                break;
-            }
-
-            rlist.Add(remainder);
-            remainder = (remainder * 10) % m;
-            if (remainder == 0)
-            {
-                break;
-            }
-            t++;
-        }
-
-        //循環節の長さ
-        var digit = MathLibrary.Digits(N);
-
-        var length = t - s + 1;
-
-
-
-
-        var index = (N - 1) % length;
-        var ans = 0;
+        ModInt.Init((int)(M * M));
+        var product = ModInt.Pow(10, N);
+        var ans = product.ToInt() / M;
         Console.WriteLine(ans);
     }
 
@@ -259,4 +335,9 @@ class ARC110
     }
 
     #endregion
+
+    public static void Method()
+    {
+
+    }
 }

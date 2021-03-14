@@ -4,21 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-class Program
+public class Problem : ProblemBase
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        Program.CountBalls();
+        var problem = new Problem();
+        problem.SolveC();
     }
 
-    public static void CountBalls()
+    public override void SolveC()
     {
-        var (N, A, B) = IOLibrary.ReadLong3();
-        var ballsSet = N / (A + B);
-        var buleBallsNum = ballsSet * A;
-        var remainder = N % (A + B);
-        buleBallsNum += Math.Min(remainder, A);
-        Console.WriteLine(buleBallsNum);
+        var N = IOLibrary.ReadLong();
+
+        var ans = 0L;
+
+        var digits = N.Digits();
+        var maxCommaCount = (digits - 1) / 3;
+        for (var i = 1; i <= maxCommaCount; i++)
+        {
+            var min = MathLibrary.Pow(1000, i);
+            var max = MathLibrary.Pow(1000, i + 1) - 1;
+            max = Math.Min(max, N);
+            ans += i * (max - min + 1);
+        }
+
+        Console.WriteLine(ans);
     }
 }
 
@@ -302,7 +312,7 @@ public static class MathLibrary
     /// <param name="num"></param>
     /// <param name="basis"></param>
     /// <returns></returns>
-    public static int Digits(this long num, int basis = 10)
+    public static int Digits(this long num, long basis = 10)
     {
         var testNum = num;
         var digit = 0;
@@ -314,7 +324,7 @@ public static class MathLibrary
         return digit;
     }
 
-    public static int Digits(long num, int n, int basis = 10)
+    public static int Digits(this long num, int n, int basis = 10)
     {
         return (int)(num / MathLibrary.Pow(basis, n - 1)) % basis;
     }
@@ -329,17 +339,17 @@ public static class MathLibrary
     {
         var ans = 1L;
 
-        var tmpA = a;
+        var basis = a;
         var tmpN = n;
 
         while (tmpN > 0)
         {
             if (MathLibrary.TestBit(tmpN, 0))
             {
-                ans *= tmpA;
+                ans *= basis;
             }
 
-            tmpA *= tmpA;
+            basis *= basis;
             tmpN >>= 1;
         }
 
@@ -1194,7 +1204,7 @@ public struct ModInt : IEquatable<ModInt>
 
     public static ModInt operator *(ModInt a, ModInt b)
     {
-        return a.value * b.value;
+        return (long)a.value * b.value;
     }
 
     public static ModInt operator /(ModInt a, ModInt b)
@@ -1259,17 +1269,17 @@ public struct ModInt : IEquatable<ModInt>
     {
         ModInt ans = 1;
 
-        var tmpA = a;
+        var basis = a;
         var tmpN = n;
 
         while (tmpN > 0)
         {
-            if ((tmpN & 1) == 1)
+            if ((tmpN & 1) > 0)
             {
-                ans *= tmpA;
+                ans *= basis;
             }
 
-            tmpA *= tmpA;
+            basis *= basis;
             tmpN >>= 1;
         }
 
@@ -1361,12 +1371,96 @@ public struct ModInt : IEquatable<ModInt>
         return this.value;
     }
 
+    public int ToInt()
+    {
+        return this.value;
+    }
+
     public override string ToString()
     {
         return $"{this.value}";
     }
 
     #endregion
+}
+
+public struct Cell : IEquatable<Cell>
+{
+    public Cell(long row, long column)
+    {
+        this.Row = row;
+        this.Column = column;
+    }
+
+    public long Row { get; }
+
+    public long Column { get; }
+
+    #region 
+
+    public static bool operator ==(Cell cell1, Cell cell12)
+    {
+        return cell1.Equals(cell12);
+    }
+
+    public static bool operator !=(Cell cell1, Cell cell12)
+    {
+        return !(cell1 == cell12);
+    }
+
+    #endregion
+
+    public bool Equals(Cell other)
+    {
+        return this.Row == other.Row && this.Column == other.Column;
+    }
+
+    public override bool Equals(object obj)
+    {
+        if (!(obj is Cell))
+        {
+            return false;
+        }
+
+        return this.Equals((Cell)obj);
+    }
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(this.Row, this.Column);
+    }
+
+    public override string ToString()
+    {
+        return $"({this.Row}, {this.Column})";
+    }
+}
+
+public abstract class ProblemBase
+{
+    public virtual void SolveA()
+    {
+    }
+
+    public virtual void SolveB()
+    {
+    }
+
+    public virtual void SolveC()
+    {
+    }
+
+    public virtual void SolveD()
+    {
+    }
+
+    public virtual void SolveE()
+    {
+    }
+
+    public virtual void SolveF()
+    {
+    }
 }
 
 #endregion

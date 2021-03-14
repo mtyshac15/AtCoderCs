@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 
-public static class IOLibrary
+public class IOLibrary
 {
+    public IOLibrary()
+    {
+    }
+
     #region "Input"
 
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
@@ -53,7 +57,7 @@ public static class IOLibrary
     {
         var matrix = new Matrix(rowCount, colCount);
 
-        for(var row = 0;row<rowCount; row++)
+        for (var row = 0; row < rowCount; row++)
         {
             var rows = IOLibrary.ReadLongArray();
             matrix.Init(row, rows);
@@ -230,7 +234,7 @@ public static class IOLibrary
         return value ? $"Yes" : $"No";
     }
 
-    public static T DeepClone<T>(this T source)
+    public static T DeepClone<T>(T source)
     {
         using (var memoryStream = new System.IO.MemoryStream())
         {
@@ -247,4 +251,10 @@ public static class IOLibrary
     }
 
     #endregion
+}
+
+public class Scanner
+{
+    private string current;
+    private int currentIndex;
 }

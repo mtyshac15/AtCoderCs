@@ -4,25 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-public static class AtCoder
+public class AtCoder
 {
     static void Main(string[] args)
     {
         Action method = null;
+        ProblemBase problem;
 
-        //method = ABC190.CircleLatticePoints;
-        //method = ABC180.SumOfDifference;
-        //method = ABC170.Alphabet;
+        problem = new ABC195.Problem();
 
-        //method = ABCLike.SqrtInequality;
-
-        //method = ARC110.MexBoxes;
-        //method = ARC100.SumAndProduct;
-
-        method = Easy050.CountBalls;
-
-        //method = Practice.Daydream;
-        //method = Search.GoodDistance;
+        //method = problem.SolveA;
+        method = problem.SolveB;
+        //method = problem.SolveC;
+        //method = problem.SolveD;
+        //method = problem.SolveE;
+        //method = problem.SolveF;
 
         //AtCoder.ExecuteByStandardIO(method);
         AtCoder.ExecuteByFileIO(method);

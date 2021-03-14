@@ -5,11 +5,6 @@ using System.Linq;
 
 public static class ABC180
 {
-    public static void Method()
-    {
-
-    }
-
     #region "189"
 
     public static void Slot()
@@ -351,7 +346,7 @@ public static class ABC180
             else
             {
                 //8進数
-                if (num.ToOct().Contains("7"))
+                if (MathLibrary.ToOct(num).Contains("7"))
                 {
                     count++;
                 }
@@ -815,4 +810,9 @@ public static class ABC180
     }
 
     #endregion
+
+    public static void Method()
+    {
+
+    }
 }
