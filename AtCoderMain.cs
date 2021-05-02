@@ -4,24 +4,24 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-public class AtCoder
+public class AtCoderMain
 {
     static void Main(string[] args)
     {
         Action method = null;
-        ProblemBase problem;
+        AtCoder.Common.ProblemBase problem;
 
-        problem = new ABC195.Problem();
+        problem = new ABCLike1.Problem();
 
         //method = problem.SolveA;
-        method = problem.SolveB;
-        //method = problem.SolveC;
+        //method = problem.SolveB;
+        method = problem.SolveC;
         //method = problem.SolveD;
         //method = problem.SolveE;
         //method = problem.SolveF;
 
         //AtCoder.ExecuteByStandardIO(method);
-        AtCoder.ExecuteByFileIO(method);
+        AtCoderMain.ExecuteByFileIO(method);
     }
 
     public static void ExecuteByStandardIO(Action method)
@@ -29,7 +29,7 @@ public class AtCoder
         string input;
         do
         {
-            AtCoder.Timer("", method);
+            AtCoderMain.Timer("", method);
 
             Console.WriteLine();
             Console.WriteLine("Continue? 1:Yes, others:No");
@@ -48,11 +48,11 @@ public class AtCoder
             {
                 IOLibrary.SetReadLineMethod(reader.ReadLine);
 
-                AtCoder.Timer("", method);
+                AtCoderMain.Timer("", method);
             }
 
-            Console.WriteLine();
-            Console.WriteLine("Continue? 1:Yes, others:No");
+            IOLibrary.WriteLine();
+            IOLibrary.WriteLine("Continue? 1:Yes, others:No");
             input = Console.ReadLine();
         } while (input == "1");
     }

@@ -81,7 +81,7 @@ public static class Easy050
 
         foreach (var result in passList)
         {
-            Console.WriteLine(IOLibrary.ToYesOrNo(result));
+            IOLibrary.WriteLine(IOLibrary.ToYesOrNo(result));
         }
     }
 

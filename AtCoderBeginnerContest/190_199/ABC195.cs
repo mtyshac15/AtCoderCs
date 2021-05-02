@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtCoder.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,18 +22,17 @@ namespace ABC195
         public override void SolveB()
         {
             var (A, B, W) = IOLibrary.ReadInt3();
-            var tmpW = W * 1000;
 
             var min = (W * 1000 + B - 1) / B;
             var max = W * 1000 / A;
 
             if (min <= max)
             {
-                Console.WriteLine($"{min} {max}");
+                IOLibrary.WriteLine($"{min} {max}");
             }
             else
             {
-                Console.WriteLine($"UNSATISFIABLE");
+                IOLibrary.WriteLine($"UNSATISFIABLE");
             }
         }
 
@@ -55,7 +55,7 @@ namespace ABC195
                 ans += i * (max - min + 1);
             }
 
-            Console.WriteLine(ans);
+            IOLibrary.WriteLine(ans);
         }
 
         /// <summary>

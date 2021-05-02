@@ -16,11 +16,11 @@ public static class ABC180
 
         if (C1 == C2 && C2 == C3)
         {
-            Console.WriteLine($"Won");
+            IOLibrary.WriteLine($"Won");
         }
         else
         {
-            Console.WriteLine($"Lost");
+            IOLibrary.WriteLine($"Lost");
         }
     }
 
@@ -92,7 +92,7 @@ public static class ABC180
     {
         var (X, Y) = IOLibrary.ReadInt2();
         var sub = Math.Abs(X - Y);
-        Console.WriteLine(IOLibrary.ToYesOrNo(sub < 3));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(sub < 3));
     }
 
     public static void Orthogonality()
@@ -102,7 +102,7 @@ public static class ABC180
         var B = IOLibrary.ReadIntArray();
 
         var sum = A.Zip(B, (a, b) => a * b).Sum();
-        Console.WriteLine(IOLibrary.ToYesOrNo(sum == 0));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(sum == 0));
     }
 
     public static void ABCTournament()
@@ -252,12 +252,12 @@ public static class ABC180
         {
             if (hashSet.Contains('!' + s))
             {
-                Console.WriteLine($"{s}");
+                IOLibrary.WriteLine($"{s}");
                 return;
             }
         }
 
-        Console.WriteLine($"satisfiable");
+        IOLibrary.WriteLine($"satisfiable");
     }
 
     public static void ChooseMe()
@@ -285,7 +285,7 @@ public static class ABC180
             ans++;
         }
 
-        Console.WriteLine($"{ans}");
+        IOLibrary.WriteLine($"{ans}");
     }
 
     #endregion
@@ -396,7 +396,7 @@ public static class ABC180
 
             if (battery <= 0)
             {
-                Console.WriteLine(IOLibrary.ToYesOrNo(false));
+                IOLibrary.WriteLine(IOLibrary.ToYesOrNo(false));
                 return;
             }
 
@@ -413,7 +413,7 @@ public static class ABC180
             battery -= consumption;
         }
 
-        Console.WriteLine(IOLibrary.ToYesOrNo(battery > 0));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(battery > 0));
     }
 
     public static void DuodecimFerra()
@@ -585,12 +585,12 @@ public static class ABC180
             table[i + 1] += table[i];
             if (table[i] > W)
             {
-                Console.WriteLine(IOLibrary.ToYesOrNo(false));
+                IOLibrary.WriteLine(IOLibrary.ToYesOrNo(false));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.ToYesOrNo(true));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(true));
     }
 
     public static void QueenOnGrid()
@@ -651,7 +651,7 @@ public static class ABC180
             }
         }
 
-        Console.WriteLine(ans[H - 1, W - 1]);
+        IOLibrary.WriteLine(ans[H - 1, W - 1]);
     }
 
     #endregion
@@ -734,7 +734,7 @@ public static class ABC180
     {
         var N = IOLibrary.ReadInt();
         var color = (N % 2 == 0) ? "White" : "Black";
-        Console.WriteLine(color);
+        IOLibrary.WriteLine(color);
     }
 
     public static void TrapezoidSum()
@@ -746,7 +746,7 @@ public static class ABC180
             var (A, B) = IOLibrary.ReadLong2();
             sum += (A + B) * (B - A + 1) / 2;
         }
-        Console.WriteLine(sum);
+        IOLibrary.WriteLine(sum);
     }
 
     public static void Collinearity()
@@ -768,12 +768,12 @@ public static class ABC180
             var area = Point.CalcTriangleArea(p0 - p1, p0 - p2);
             if (area == 0)
             {
-                Console.WriteLine(IOLibrary.ToYesOrNo(true));
+                IOLibrary.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.ToYesOrNo(false));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     #endregion

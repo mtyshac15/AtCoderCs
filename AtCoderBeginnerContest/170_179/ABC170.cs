@@ -10,7 +10,7 @@ public static class ABC170
     {
         var s = IOLibrary.ReadLine();
         var text = (s[s.Length - 1] != 's') ? "s" : "es";
-        Console.WriteLine(s + text);
+        IOLibrary.WriteLine(s + text);
     }
 
     public static void GotoJail()
@@ -27,12 +27,12 @@ public static class ABC170
                 && D1[0] == D1[1]
                 && D2[0] == D2[1])
             {
-                Console.WriteLine(IOLibrary.ToYesOrNo(true));
+                IOLibrary.WriteLine(IOLibrary.ToYesOrNo(true));
                 return;
             }
         }
 
-        Console.WriteLine(IOLibrary.ToYesOrNo(false));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(false));
     }
 
     public static void ATimesBPlusC()
@@ -45,7 +45,7 @@ public static class ABC170
             var BCCount = (N - 1) / A;
             count += BCCount;
         }
-        Console.WriteLine(count);
+        IOLibrary.WriteLine(count);
     }
 
     #endregion
@@ -55,7 +55,7 @@ public static class ABC170
     public static void Not()
     {
         var x = IOLibrary.ReadInt();
-        Console.WriteLine(1 - x);
+        IOLibrary.WriteLine(1 - x);
     }
 
     public static void ProductMax()
@@ -99,7 +99,7 @@ public static class ABC170
     {
         var (D, T, S) = IOLibrary.ReadInt3();
         var ans = S * T >= D;
-        Console.WriteLine(IOLibrary.ToYesOrNo(ans));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static void SubString()
@@ -123,7 +123,7 @@ public static class ABC170
             ans = Math.Min(ans, count);
         }
 
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     public static void SumOfProductOfPairs()
@@ -161,7 +161,7 @@ public static class ABC170
         var (N, X, T) = IOLibrary.ReadInt3();
         var times = (N + X - 1) / X;
         var t = times * T;
-        Console.WriteLine(t);
+        IOLibrary.WriteLine(t);
     }
 
     public static void MultipleOf9()
@@ -177,7 +177,7 @@ public static class ABC170
         }
 
         var ans = sum == 0;
-        Console.WriteLine(IOLibrary.ToYesOrNo(ans));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static void Step()
@@ -212,7 +212,7 @@ public static class ABC170
             //Rがi+1回連続した文字列を含むか
             if (!S.Contains(strR))
             {
-                Console.WriteLine(count);
+                IOLibrary.WriteLine(count);
                 return;
             }
             else
@@ -222,7 +222,7 @@ public static class ABC170
             }
         }
 
-        Console.WriteLine(count);
+        IOLibrary.WriteLine(count);
     }
 
     public static void MakingTriangle()
@@ -298,7 +298,7 @@ public static class ABC170
     {
         var X = IOLibrary.ReadInt();
         var ans = X >= 30;
-        Console.WriteLine(IOLibrary.ToYesOrNo(ans));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static void Distance()
@@ -317,7 +317,7 @@ public static class ABC170
             }
         }
 
-        Console.WriteLine(count);
+        IOLibrary.WriteLine(count);
     }
 
     public static void Repsept()
@@ -330,14 +330,14 @@ public static class ABC170
         {
             if (a == 0)
             {
-                Console.WriteLine(i);
+                IOLibrary.WriteLine(i);
                 return;
             }
 
             a = 10 * a + 7;
         }
 
-        Console.WriteLine(-1);
+        IOLibrary.WriteLine(-1);
     }
 
     #endregion
@@ -377,7 +377,7 @@ public static class ABC170
 
         foreach (var item in table)
         {
-            Console.WriteLine($"{item.Reult} x {item.Count.GetValueOrDefault()}");
+            IOLibrary.WriteLine($"{item.Reult} x {item.Count.GetValueOrDefault()}");
         }
     }
 
@@ -462,7 +462,7 @@ public static class ABC170
     {
         var a = IOLibrary.ReadInt();
         var ans = a + a * a + a * a * a;
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     public static void MinorChange()
@@ -471,7 +471,7 @@ public static class ABC170
         var T = IOLibrary.ReadLine();
 
         var ans = S.Zip(T, (s, t) => (s != t) ? 1 : 0).Sum();
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     #endregion
@@ -482,7 +482,7 @@ public static class ABC170
     {
         var a = IOLibrary.ReadLine();
         var ans = char.IsUpper(a[0]) ? "A" : "a";
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     public static void MixJuice()
@@ -490,7 +490,7 @@ public static class ABC170
         var (N, K) = IOLibrary.ReadInt2();
         var p = IOLibrary.ReadIntArray();
         var total = p.Sort().Take(K).Sum();
-        Console.WriteLine(total);
+        IOLibrary.WriteLine(total);
     }
 
     #endregion

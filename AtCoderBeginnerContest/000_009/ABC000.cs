@@ -60,7 +60,7 @@ namespace ABC035
             }
 
             var minStep = countField[goal.Row, goal.Column];
-            Console.WriteLine(minStep);
+            IOLibrary.WriteLine(minStep);
         }
 
         #endregion

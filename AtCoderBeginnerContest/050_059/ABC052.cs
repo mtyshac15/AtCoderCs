@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtCoder.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -37,7 +38,7 @@ namespace ABC052
                 max = Math.Max(x, max);
             }
 
-            Console.WriteLine(max);
+            IOLibrary.WriteLine(max);
         }
 
         /// <summary>

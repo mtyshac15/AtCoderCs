@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 public class IOLibrary
@@ -216,17 +217,32 @@ public class IOLibrary
 
     #region "Output"
 
-    public static void OutputList<T>(IEnumerable<T> line)
+    public static void WriteLine(object? value = null)
     {
-        foreach (var item in line)
+        var sw = new StreamWriter(Console.OpenStandardOutput())
         {
-            Console.WriteLine(item);
+            AutoFlush = false
+        };
+
+        Console.SetOut(sw);
+        Console.WriteLine(value);
+        Console.Out.Flush();
+    }
+
+    public static void OutputList<T>(IEnumerable<T> list)
+    {
+        var sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
+        Console.SetOut(sw);
+        foreach (var value in list)
+        {
+            Console.WriteLine(value);
         }
+        Console.Out.Flush();
     }
 
     public static void WriteYesOrNo(bool value)
     {
-        Console.WriteLine(IOLibrary.ToYesOrNo(value));
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(value));
     }
 
     public static string ToYesOrNo(bool value)
@@ -236,18 +252,9 @@ public class IOLibrary
 
     public static T DeepClone<T>(T source)
     {
-        using (var memoryStream = new System.IO.MemoryStream())
-        {
-            var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            //シリアライズ
-            binaryFormatter.Serialize(memoryStream, source);
-            memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-
-            //デシリアライズ
-            var deserializedBinary = (T)binaryFormatter.Deserialize(memoryStream);
-            return deserializedBinary;
-        }
+        var jsonString = System.Text.Json.JsonSerializer.Serialize(source);
+        var clone = System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
+        return clone;
     }
 
     #endregion

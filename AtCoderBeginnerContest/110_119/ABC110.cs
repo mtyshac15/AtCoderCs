@@ -30,7 +30,7 @@ public static class ABC110
                    .Where(e => e > 0)
                    .Sum();
 
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     #endregion

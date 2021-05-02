@@ -732,6 +732,11 @@ public static class MathLibrary
 
     #region "文字列"
 
+    public static int Count(this string source, string searchStr)
+    {
+        return (source.Length - source.Replace(searchStr, "").Length) / searchStr.Length;
+    }
+
     public static string SubStringEx(this string str, int startIndex, int length)
     {
         var minLength = Math.Min(str.Length - startIndex, length);

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -14,25 +15,332 @@ public class Problem : ProblemBase
 
     public override void SolveC()
     {
-        var N = IOLibrary.ReadLong();
+        var N = IOLibrary.ReadInt();
+        var ABCDE = IOLibrary.ReadInt2DArray(N);
+        var m = 5;
 
-        var ans = 0L;
-
-        var digits = N.Digits();
-        var maxCommaCount = (digits - 1) / 3;
-        for (var i = 1; i <= maxCommaCount; i++)
+        Func<long, bool> isOk = (x) =>
         {
-            var min = MathLibrary.Pow(1000, i);
-            var max = MathLibrary.Pow(1000, i + 1) - 1;
-            max = Math.Min(max, N);
-            ans += i * (max - min + 1);
-        }
+            var list = new List<bool[]>();
 
+            if (x < 4)
+            {
+                var a = 0;
+            }
+
+            foreach (var element in ABCDE)
+            {
+                var flagArray = element.Select(i => i >= x).ToArray();
+                if (!list.Any(item => item.SequenceEqual(flagArray)))
+                {
+                    list.Add(flagArray);
+                }
+            }
+
+            Func<IEnumerable<bool>, IEnumerable<bool>, IEnumerable<bool>>
+                or = (sequence1, sequence2) =>
+                {
+                    return sequence1.Zip(sequence2, (e1, e2) => e1 | e2);
+                };
+
+            if (list.Count < 3)
+            {
+                var flagArray = list.Aggregate((result, next) => or(result, next)
+                                    .ToArray());
+                return flagArray.All(i => i == true);
+            }
+
+            var combination = MathLibrary.GetCombinationIndexCollection(list.Count, 3);
+            foreach (var indexList in combination)
+            {
+                var flagArray = new bool[m];
+                var people = indexList.Select(i => list[i]);
+                foreach (var person in people)
+                {
+                    flagArray = or(flagArray, person).ToArray();
+                }
+
+                if (flagArray.All(i => i == true))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        };
+
+        var ng = 1000000001;
+        var ok = 0;
+        var ans = MathLibrary.BinarySearch(ok, ng, isOk);
         Console.WriteLine(ans);
     }
 }
 
 #region "Library"
+
+public class IOLibrary
+{
+    public IOLibrary()
+    {
+    }
+
+    #region "Input"
+
+    private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
+
+    public static void SetReadLineMethod(Func<string> readLine)
+    {
+        IOLibrary.ReadMethod = readLine;
+    }
+
+    #region "string"
+
+    public static string ReadLine()
+    {
+        return IOLibrary.ReadMethod();
+    }
+
+    public static string[] ReadStringArray()
+    {
+        return IOLibrary.ReadLine().Trim().Split(' ');
+    }
+
+    public static string[] ReadStringArray(int row)
+    {
+        var array = new string[row];
+        for (var i = 0; i < row; i++)
+        {
+            array[i] = IOLibrary.ReadLine();
+        }
+        return array;
+    }
+
+    public static string[,] ReadStringArray(int row, int col)
+    {
+        var array = new string[row, col];
+        for (var i = 0; i < row; i++)
+        {
+            var line = IOLibrary.ReadLine();
+            for (var j = 0; j < col; j++)
+            {
+                array[i, j] = line[j].ToString();
+            }
+        }
+        return array;
+    }
+
+    public static Matrix GetMatrix(int rowCount, int colCount)
+    {
+        var matrix = new Matrix(rowCount, colCount);
+
+        for (var row = 0; row < rowCount; row++)
+        {
+            var rows = IOLibrary.ReadLongArray();
+            matrix.Init(row, rows);
+        }
+
+        return matrix;
+    }
+
+    #endregion
+
+    #region "int"
+
+    public static int ReadInt()
+    {
+        return int.Parse(IOLibrary.ReadLine());
+    }
+
+    public static (int, int) ReadInt2()
+    {
+        var inputs = IOLibrary.ReadIntArray();
+        return (inputs[0], inputs[1]);
+    }
+
+    public static (int, int, int) ReadInt3()
+    {
+        var inputs = IOLibrary.ReadIntArray();
+        return (inputs[0], inputs[1], inputs[2]);
+    }
+
+    public static (int, int, int, int) ReadInt4()
+    {
+        var inputs = IOLibrary.ReadIntArray();
+        return (inputs[0], inputs[1], inputs[2], inputs[3]);
+    }
+
+    public static int[] ReadIntArray()
+    {
+        return IOLibrary.ReadStringArray()
+                        .Select(item => int.Parse(item))
+                        .ToArray();
+    }
+
+    public static int[] ReadIntArray(int row)
+    {
+        var array = new int[row];
+        for (var i = 0; i < row; i++)
+        {
+            array[i] = IOLibrary.ReadInt();
+        }
+        return array;
+    }
+
+    public static int[][] ReadInt2DArray(int size)
+    {
+        var array = new int[size][];
+        for (var i = 0; i < size; i++)
+        {
+            array[i] = IOLibrary.ReadIntArray();
+        }
+        return array;
+    }
+
+    public static int[,] ReadInt2DArray(int row, int col)
+    {
+        var array = new int[row, col];
+        for (var i = 0; i < row; i++)
+        {
+            var line = IOLibrary.ReadIntArray();
+            for (var j = 0; j < col; j++)
+            {
+                array[i, j] = line[j];
+            }
+        }
+        return array;
+    }
+
+    #endregion
+
+    #region "long"
+
+    public static long ReadLong()
+    {
+        return long.Parse(IOLibrary.ReadLine());
+    }
+
+    public static (long, long) ReadLong2()
+    {
+        var inputs = IOLibrary.ReadLongArray();
+        return (inputs[0], inputs[1]);
+    }
+
+    public static (long, long, long) ReadLong3()
+    {
+        var inputs = IOLibrary.ReadLongArray();
+        return (inputs[0], inputs[1], inputs[2]);
+    }
+
+    public static (long, long, long, long) ReadLong4()
+    {
+        var inputs = IOLibrary.ReadLongArray();
+        return (inputs[0], inputs[1], inputs[1], inputs[3]);
+    }
+
+    public static long[] ReadLongArray()
+    {
+        return IOLibrary.ReadStringArray()
+                        .Select(item => long.Parse(item))
+                        .ToArray();
+    }
+
+    public static long[] ReadLongArray(long row)
+    {
+        var array = new long[row];
+        for (var i = 0; i < row; i++)
+        {
+            array[i] = IOLibrary.ReadLong();
+        }
+        return array;
+    }
+
+    public static long[][] ReadLong2DArray(long size)
+    {
+        var array = new long[size][];
+        for (var i = 0; i < size; i++)
+        {
+            array[i] = IOLibrary.ReadLongArray();
+        }
+        return array;
+    }
+
+    public static long[,] ReadLong2DArray(long row, long col)
+    {
+        var array = new long[row, col];
+        for (var i = 0; i < row; i++)
+        {
+            var line = IOLibrary.ReadLongArray();
+            for (var j = 0; j < col; j++)
+            {
+                array[i, j] = line[j];
+            }
+        }
+        return array;
+    }
+
+    #endregion
+
+    public static ModInt[] ReadModIntArray(int mod)
+    {
+        ModInt.Init(mod);
+        return IOLibrary.ReadStringArray()
+                        .Select(item => (ModInt)int.Parse(item))
+                        .ToArray();
+    }
+
+    #endregion
+
+    #region "Output"
+
+    public static void WriteLine(object? value = null)
+    {
+        var sw = new StreamWriter(Console.OpenStandardOutput())
+        {
+            AutoFlush = false
+        };
+
+        Console.SetOut(sw);
+        Console.WriteLine(value);
+        Console.Out.Flush();
+    }
+
+    public static void OutputList<T>(IEnumerable<T> list)
+    {
+        var sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
+        Console.SetOut(sw);
+        foreach (var value in list)
+        {
+            Console.WriteLine(value);
+        }
+        Console.Out.Flush();
+    }
+
+    public static void WriteYesOrNo(bool value)
+    {
+        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(value));
+    }
+
+    public static string ToYesOrNo(bool value)
+    {
+        return value ? $"Yes" : $"No";
+    }
+
+    public static T DeepClone<T>(T source)
+    {
+        var jsonString = System.Text.Json.JsonSerializer.Serialize(source);
+        var clone = System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
+        return clone;
+    }
+
+    public static T DeepClone<T>(T source)
+    {
+        var jsonString = System.Text.Json.JsonSerializer.Serialize(source);
+        var clone = System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
+        return clone;
+    }
+
+    #endregion
+}
 
 public static class MathLibrary
 {
@@ -784,6 +1092,11 @@ public static class MathLibrary
 
     #region "文字列"
 
+    public static int Count(this string source, string searchStr)
+    {
+        return (source.Length - source.Replace(searchStr, "").Length) / searchStr.Length;
+    }
+
     public static string SubStringEx(this string str, int startIndex, int length)
     {
         var minLength = Math.Min(str.Length - startIndex, length);
@@ -902,239 +1215,7 @@ public static class MathLibrary
     #endregion
 }
 
-public static class IOLibrary
-{
-    #region "Input"
-
-    private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
-
-    public static void SetReadLineMethod(Func<string> readLine)
-    {
-        IOLibrary.ReadMethod = readLine;
-    }
-
-    #region "string"
-
-    public static string ReadLine()
-    {
-        return IOLibrary.ReadMethod();
-    }
-
-    public static string[] ReadStringArray()
-    {
-        return IOLibrary.ReadLine().Split(' ');
-    }
-
-    public static string[] ReadStringArray(int row)
-    {
-        var array = new string[row];
-        for (var i = 0; i < row; i++)
-        {
-            array[i] = IOLibrary.ReadLine();
-        }
-        return array;
-    }
-
-    public static string[,] ReadStringArray(int row, int col)
-    {
-        var array = new string[row, col];
-        for (var i = 0; i < row; i++)
-        {
-            var line = IOLibrary.ReadLine();
-            for (var j = 0; j < col; j++)
-            {
-                array[i, j] = line[j].ToString();
-            }
-        }
-        return array;
-    }
-
-    #endregion
-
-    #region "int"
-
-    public static int ReadInt()
-    {
-        return int.Parse(IOLibrary.ReadLine());
-    }
-
-    public static (int, int) ReadInt2()
-    {
-        var inputs = IOLibrary.ReadIntArray();
-        return (inputs[0], inputs[1]);
-    }
-
-    public static (int, int, int) ReadInt3()
-    {
-        var inputs = IOLibrary.ReadIntArray();
-        return (inputs[0], inputs[1], inputs[2]);
-    }
-
-    public static (int, int, int, int) ReadInt4()
-    {
-        var inputs = IOLibrary.ReadIntArray();
-        return (inputs[0], inputs[1], inputs[2], inputs[3]);
-    }
-
-    public static int[] ReadIntArray()
-    {
-        return IOLibrary.ReadStringArray()
-                        .Select(item => int.Parse(item))
-                        .ToArray();
-    }
-
-    public static int[] ReadIntArray(int row)
-    {
-        var array = new int[row];
-        for (var i = 0; i < row; i++)
-        {
-            array[i] = IOLibrary.ReadInt();
-        }
-        return array;
-    }
-
-    public static int[][] ReadInt2DArray(int size)
-    {
-        var array = new int[size][];
-        for (var i = 0; i < size; i++)
-        {
-            array[i] = IOLibrary.ReadIntArray();
-        }
-        return array;
-    }
-
-    public static int[,] ReadInt2DArray(int row, int col)
-    {
-        var array = new int[row, col];
-        for (var i = 0; i < row; i++)
-        {
-            var line = IOLibrary.ReadIntArray();
-            for (var j = 0; j < col; j++)
-            {
-                array[i, j] = line[j];
-            }
-        }
-        return array;
-    }
-
-    #endregion
-
-    #region "long"
-
-    public static long ReadLong()
-    {
-        return long.Parse(IOLibrary.ReadLine());
-    }
-
-    public static (long, long) ReadLong2()
-    {
-        var inputs = IOLibrary.ReadLongArray();
-        return (inputs[0], inputs[1]);
-    }
-
-    public static (long, long, long) ReadLong3()
-    {
-        var inputs = IOLibrary.ReadLongArray();
-        return (inputs[0], inputs[1], inputs[2]);
-    }
-
-    public static (long, long, long, long) ReadLong4()
-    {
-        var inputs = IOLibrary.ReadLongArray();
-        return (inputs[0], inputs[1], inputs[1], inputs[3]);
-    }
-
-    public static long[] ReadLongArray()
-    {
-        return IOLibrary.ReadStringArray()
-                        .Select(item => long.Parse(item))
-                        .ToArray();
-    }
-
-    public static long[] ReadLongArray(long row)
-    {
-        var array = new long[row];
-        for (var i = 0; i < row; i++)
-        {
-            array[i] = IOLibrary.ReadLong();
-        }
-        return array;
-    }
-
-    public static long[][] ReadLong2DArray(long size)
-    {
-        var array = new long[size][];
-        for (var i = 0; i < size; i++)
-        {
-            array[i] = IOLibrary.ReadLongArray();
-        }
-        return array;
-    }
-
-    public static long[,] ReadLong2DArray(long row, long col)
-    {
-        var array = new long[row, col];
-        for (var i = 0; i < row; i++)
-        {
-            var line = IOLibrary.ReadLongArray();
-            for (var j = 0; j < col; j++)
-            {
-                array[i, j] = line[j];
-            }
-        }
-        return array;
-    }
-
-    #endregion
-
-    public static ModInt[] ReadModIntArray(int mod)
-    {
-        ModInt.Init(mod);
-        return IOLibrary.ReadStringArray()
-                        .Select(item => (ModInt)int.Parse(item))
-                        .ToArray();
-    }
-
-    #endregion
-
-    #region "Output"
-
-    public static void OutputList<T>(IEnumerable<T> line)
-    {
-        foreach (var item in line)
-        {
-            Console.WriteLine(item);
-        }
-    }
-
-    public static void WriteYesOrNo(bool value)
-    {
-        Console.WriteLine(IOLibrary.ToYesOrNo(value));
-    }
-
-    public static string ToYesOrNo(bool value)
-    {
-        return value ? $"Yes" : $"No";
-    }
-
-    public static T DeepClone<T>(this T source)
-    {
-        using (var memoryStream = new System.IO.MemoryStream())
-        {
-            var binaryFormatter = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-
-            //シリアライズ
-            binaryFormatter.Serialize(memoryStream, source);
-            memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-
-            //デシリアライズ
-            var deserializedBinary = (T)binaryFormatter.Deserialize(memoryStream);
-            return deserializedBinary;
-        }
-    }
-
-    #endregion
-}
+#region
 
 public struct ModInt : IEquatable<ModInt>
 {
@@ -1384,6 +1465,200 @@ public struct ModInt : IEquatable<ModInt>
     #endregion
 }
 
+public struct GenericMatrix<T>
+{
+    private T[] array;
+
+    public GenericMatrix(long row, long col)
+    {
+        this.RowCount = row;
+        this.ColumnCount = col;
+        this.array = new T[row * col];
+    }
+
+    #region 
+
+    #endregion
+
+    public long RowCount { get; }
+
+    public long ColumnCount { get; }
+
+    public T this[long row, long column]
+    {
+        get
+        {
+            var index = this.ColumnCount * row + column;
+            return this.array[index];
+        }
+    }
+
+    public void Init(long rowIndex, T[] rowItem)
+    {
+        if (rowItem.Length != this.ColumnCount)
+        {
+            throw new InvalidOperationException();
+        }
+
+        for (var i = 0; i < rowItem.Length; i++)
+        {
+            var index = rowItem.Length * rowIndex + i;
+            this.array[index] = rowItem[i];
+        }
+    }
+
+    public T[] GetRow(long rowIndex)
+    {
+        var vector = new T[this.ColumnCount];
+        for (var i = 0; i < vector.Length; i++)
+        {
+            vector[i] = this[rowIndex, i];
+        }
+        return vector;
+    }
+
+    public T[] GetColumn(long colIndex)
+    {
+        var vector = new T[this.RowCount];
+        for (var i = 0; i < vector.Length; i++)
+        {
+            var rowIndex = this.ColumnCount * i + colIndex;
+            vector[i] = this[rowIndex, colIndex];
+        }
+        return vector;
+    }
+}
+
+public struct Matrix
+{
+    private GenericMatrix<long> matrix;
+
+    public Matrix(long row, long col)
+    {
+        this.matrix = new GenericMatrix<long>(row, col);
+    }
+
+    #region 
+
+    public long RowCount
+    {
+        get { return this.matrix.RowCount; }
+    }
+
+    public long ColumnCount
+    {
+        get { return this.matrix.ColumnCount; }
+    }
+
+    public static Matrix operator +(Matrix a)
+    {
+        return a;
+    }
+
+    public static Matrix operator -(Matrix a)
+    {
+        return -1 * a;
+    }
+
+    public static Matrix operator +(Matrix a, Matrix b)
+    {
+        if (a.RowCount != b.RowCount || a.ColumnCount != b.ColumnCount)
+        {
+            throw new InvalidOperationException();
+        }
+
+        var result = new Matrix(a.RowCount, a.ColumnCount);
+
+        for (var rowIndex = 0; rowIndex < a.RowCount; rowIndex++)
+        {
+            var rowItem = a.GetRow(rowIndex).Zip(b.GetRow(rowIndex), (elementA, elementB) => elementA + elementB)
+                                            .ToArray();
+            result.Init(rowIndex, rowItem);
+        }
+        return result;
+    }
+
+    public static Matrix operator -(Matrix a, Matrix b)
+    {
+        return a + (-b);
+    }
+
+    public static Matrix operator *(Matrix a, Matrix b)
+    {
+        if (a.ColumnCount != b.RowCount)
+        {
+            throw new InvalidOperationException();
+        }
+
+        var result = new Matrix(a.RowCount, b.ColumnCount);
+        for (var rowIndex = 0; rowIndex < a.RowCount; rowIndex++)
+        {
+            var rowItem = new long[result.ColumnCount];
+            var vectorA = a.GetRow(rowIndex);
+
+            for (var columnIndex = 0; columnIndex < b.ColumnCount; columnIndex++)
+            {
+                var vectorB = b.GetColumn(columnIndex);
+
+                var index = a.ColumnCount * rowIndex + columnIndex;
+                var value = vectorA.Zip(vectorB, (elementA, elementB) => elementA * elementB)
+                                   .Sum();
+                rowItem[index] = value;
+            }
+            result.Init(rowIndex, rowItem);
+        }
+
+        return result;
+    }
+
+    public static Matrix operator *(long c, Matrix a)
+    {
+        var result = new Matrix(a.RowCount, a.ColumnCount);
+        for (var rowIndex = 0; rowIndex < a.RowCount; rowIndex++)
+        {
+            var rowItem = a.GetRow(rowIndex);
+            result.Init(rowIndex, rowItem.Select(element => element * c).ToArray());
+        }
+        return result;
+    }
+
+    public static Matrix operator *(Matrix a, long c)
+    {
+        return c * a;
+    }
+
+    #endregion
+
+    public long this[long row, long column]
+    {
+        get { return this.matrix[row, column]; }
+    }
+
+    public void Init(long rowIndex, long[] rowItem)
+    {
+        this.matrix.Init(rowIndex, rowItem);
+    }
+
+    /// <summary>
+    /// 行列式
+    /// </summary>
+    /// <returns></returns>
+    public long Determinant()
+    {
+        return 0;
+    }
+
+    public long[] GetRow(long rowIndex)
+    {
+        return this.matrix.GetRow(rowIndex);
+    }
+
+    public long[] GetColumn(long colIndex)
+    {
+        return this.matrix.GetColumn(colIndex);
+    }
+}
+
 public struct Cell : IEquatable<Cell>
 {
     public Cell(long row, long column)
@@ -1462,5 +1737,7 @@ public abstract class ProblemBase
     {
     }
 }
+
+#endregion
 
 #endregion

@@ -2,8 +2,20 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AtCoder.Common\**" />
+    <Compile Remove="AtCoderBeginnerContest\**" />
+    <Compile Remove="Contest\ABC\**" />
+    <EmbeddedResource Remove="AtCoder.Common\**" />
+    <EmbeddedResource Remove="AtCoderBeginnerContest\**" />
+    <EmbeddedResource Remove="Contest\ABC\**" />
+    <None Remove="AtCoder.Common\**" />
+    <None Remove="AtCoderBeginnerContest\**" />
+    <None Remove="Contest\ABC\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Problem.cs" />
@@ -23,5 +35,10 @@
   <ItemGroup>
     <None Include="Problem.cs" />
     <None Include="Template.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="AtCoder.Common\AtCoder.Common.csproj" />
+    <ProjectReference Include="AtCoderBeginnerContest\AtCoderBeginnerContest.csproj" />
   </ItemGroup>
 </Project>
