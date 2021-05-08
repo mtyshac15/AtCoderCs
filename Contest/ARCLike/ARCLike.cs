@@ -31,7 +31,7 @@ public static class ARCLike
                 maxC = c;
             }
 
-            Console.WriteLine(maxC);
+            IOLibrary.WriteLine(maxC);
         }
     }
 
@@ -58,7 +58,7 @@ public static class ARCLike
             }
         }
 
-        Console.WriteLine(sum);
+        IOLibrary.WriteLine(sum);
     }
 
     public static void RobotOnGrid()

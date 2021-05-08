@@ -11,15 +11,7 @@ public static class Easy050
     /// </summary>
     public static void PowerSocket()
     {
-        var (A, B) = IOLibrary.ReadInt2();
-        if (B == 1)
-        {
-            Console.WriteLine(0);
-            return;
-        }
-
-        var ans = (B - 2) / (A - 1) + 1;
-        Console.WriteLine(ans);
+     
     }
 
     /// <summary>
@@ -27,19 +19,7 @@ public static class Easy050
     /// </summary>
     public static void Rally()
     {
-        var N = IOLibrary.ReadInt();
-        var X = IOLibrary.ReadIntArray();
-
-        //Xの平均に近い整数
-        var P = (int)(X.Average() + 0.5);
-
-        var sumSquare = 0L;
-        for (var i = 0; i < N; i++)
-        {
-            sumSquare += (X[i] - P) * (X[i] - P);
-        }
-
-        Console.WriteLine(sumSquare);
+      
     }
 
     /// <summary>
@@ -111,26 +91,7 @@ public static class Easy050
     /// </summary>
     public static void CanYouSolveThis()
     {
-        var (N, M, C) = IOLibrary.ReadInt3();
-        var B = IOLibrary.ReadIntArray();
-        var A = IOLibrary.ReadInt2DArray(N);
-
-        var count = 0;
-        for (var i = 0; i < N; i++)
-        {
-            var sum = C;
-            for (var j = 0; j < M; j++)
-            {
-                sum += A[i][j] * B[j];
-            }
-
-            if (sum > 0)
-            {
-                count++;
-            }
-        }
-
-        Console.WriteLine(count);
+      
     }
 
     /// <summary>
@@ -146,7 +107,7 @@ public static class Easy050
         }
 
         var count = (H * W + 1) / 2;
-        Console.WriteLine(count);
+        IOLibrary.WriteLine(count);
     }
 
     /// <summary>
@@ -154,60 +115,7 @@ public static class Easy050
     /// </summary>
     public static void Bingo()
     {
-        var gridNum = 3;
-        var A = IOLibrary.ReadInt2DArray(gridNum, gridNum);
-        var N = IOLibrary.ReadInt();
-        var b = new int[N];
-        for (var i = 0; i < N; i++)
-        {
-            b[i] = IOLibrary.ReadInt();
-        }
-
-        var judgeList = new bool[gridNum, gridNum];
-
-        for (var i = 0; i < gridNum; i++)
-        {
-            for (var j = 0; j < gridNum; j++)
-            {
-                //数字をマーク
-                var num = A[i, j];
-                if (b.Contains(num))
-                {
-                    judgeList[i, j] = true;
-                }
-            }
-        }
-
-        //ビンゴかどうかチェック
-        //横
-        for (var i = 0; i < gridNum; i++)
-        {
-            if (judgeList[i, 0] & judgeList[i, 1] & judgeList[i, 2])
-            {
-                Console.WriteLine(IOLibrary.ToYesOrNo(true));
-                return;
-            }
-        }
-
-        //縦
-        for (var i = 0; i < gridNum; i++)
-        {
-            if (judgeList[0, i] & judgeList[1, i] & judgeList[2, i])
-            {
-                Console.WriteLine(IOLibrary.ToYesOrNo(true));
-                return;
-            }
-        }
-
-        //ななめ
-        if (judgeList[0, 0] & judgeList[1, 1] & judgeList[2, 2]
-            || judgeList[0, 2] & judgeList[1, 1] & judgeList[2, 0])
-        {
-            Console.WriteLine(IOLibrary.ToYesOrNo(true));
-            return;
-        }
-
-        Console.WriteLine(IOLibrary.ToYesOrNo(false));
+       
     }
 
     /// <summary>
@@ -317,7 +225,7 @@ public static class Easy050
             startIndex %= N;
         } while (startIndex != 0);
 
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     /// <summary>
@@ -369,7 +277,7 @@ public static class Easy050
     {
         var (N, K) = IOLibrary.ReadLong2();
         var remainder = N % K;
-        Console.WriteLine(Math.Min(remainder, K - remainder));
+        IOLibrary.WriteLine(Math.Min(remainder, K - remainder));
     }
 
     public static void DivideTheProblems()
@@ -607,7 +515,7 @@ public static class Easy050
             list.Remove(Q[i]);
         }
 
-        Console.WriteLine(Math.Abs(a - b));
+        IOLibrary.WriteLine(Math.Abs(a - b));
     }
 
     public static void CaracalVsMonster()
@@ -615,7 +523,7 @@ public static class Easy050
         var H = IOLibrary.ReadLong();
         var count = MathLibrary.Log(H, 2);
         var ans = MathLibrary.Pow(2, count + 1) - 1;
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 
     public static void CountBalls()
@@ -625,7 +533,7 @@ public static class Easy050
         var buleBallsNum = ballsSet * A;
         var remainder = N % (A + B);
         buleBallsNum += Math.Min(remainder, A);
-        Console.WriteLine(buleBallsNum);
+        IOLibrary.WriteLine(buleBallsNum);
     }
 
     public static void SevenFiveFour()
@@ -641,7 +549,7 @@ public static class Easy050
             var num = int.Parse(numStr);
             minDiff = Math.Min(Math.Abs(num - stdNum), minDiff);
         }
-        Console.WriteLine(minDiff);
+        IOLibrary.WriteLine(minDiff);
     }
 
     public static void RuinedSquare()

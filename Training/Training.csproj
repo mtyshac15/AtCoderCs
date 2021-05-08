@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Boot camp for Beginners\Medium\" />
+    <Folder Include="Boot camp for Beginners\Hard\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtCoder.Beginner.Contest\ABC.csproj" />
+    <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
+    <ProjectReference Include="..\AtCoder.Regular.Contest\ARC.csproj" />
+  </ItemGroup>
+
+</Project>

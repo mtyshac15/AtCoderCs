@@ -62,7 +62,7 @@ public static class Search
             }
         }
 
-        Console.WriteLine(count);
+        IOLibrary.WriteLine(count);
     }
 
     #endregion

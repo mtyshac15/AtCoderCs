@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace XXX
+namespace ABC170
 {
     public class Problem : ProblemBase
     {

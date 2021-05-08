@@ -11,12 +11,12 @@ public class AtCoderMain
         Action method = null;
         AtCoder.Common.ProblemBase problem;
 
-        problem = new ABCLike1.Problem();
+        problem = new ABC173.Problem();
 
         //method = problem.SolveA;
         //method = problem.SolveB;
-        method = problem.SolveC;
-        //method = problem.SolveD;
+        //method = problem.SolveC;
+        method = problem.SolveD;
         //method = problem.SolveE;
         //method = problem.SolveF;
 

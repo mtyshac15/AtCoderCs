@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace XXX
+namespace ABC139
 {
     public class Problem : ProblemBase
     {
@@ -14,7 +14,15 @@ namespace XXX
 
         public override void SolveB()
         {
+            var (A, B) = IOLibrary.ReadInt2();
+            if (B == 1)
+            {
+                Console.WriteLine(0);
+                return;
+            }
 
+            var ans = (B - 2) / (A - 1) + 1;
+            Console.WriteLine(ans);
         }
 
         public override void SolveC()

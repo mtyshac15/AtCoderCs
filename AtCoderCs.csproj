@@ -6,15 +6,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="AtCoder.Beginner.Contest\**" />
     <Compile Remove="AtCoder.Common\**" />
+    <Compile Remove="AtCoder.Heuristic.Contest\**" />
+    <Compile Remove="AtCoder.Regular.Contest\**" />
     <Compile Remove="AtCoderBeginnerContest\**" />
     <Compile Remove="Contest\ABC\**" />
+    <Compile Remove="Training\**" />
+    <EmbeddedResource Remove="AtCoder.Beginner.Contest\**" />
     <EmbeddedResource Remove="AtCoder.Common\**" />
+    <EmbeddedResource Remove="AtCoder.Heuristic.Contest\**" />
+    <EmbeddedResource Remove="AtCoder.Regular.Contest\**" />
     <EmbeddedResource Remove="AtCoderBeginnerContest\**" />
     <EmbeddedResource Remove="Contest\ABC\**" />
+    <EmbeddedResource Remove="Training\**" />
+    <None Remove="AtCoder.Beginner.Contest\**" />
     <None Remove="AtCoder.Common\**" />
+    <None Remove="AtCoder.Heuristic.Contest\**" />
+    <None Remove="AtCoder.Regular.Contest\**" />
     <None Remove="AtCoderBeginnerContest\**" />
     <None Remove="Contest\ABC\**" />
+    <None Remove="Training\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +50,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="AtCoder.Beginner.Contest\ABC.csproj" />
     <ProjectReference Include="AtCoder.Common\AtCoder.Common.csproj" />
-    <ProjectReference Include="AtCoderBeginnerContest\AtCoderBeginnerContest.csproj" />
   </ItemGroup>
 </Project>

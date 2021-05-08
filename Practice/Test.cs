@@ -245,7 +245,7 @@ static class Test
     {
         foreach (var item in collection)
         {
-            Console.WriteLine(item);
+            IOLibrary.WriteLine(item);
         }
     }
 

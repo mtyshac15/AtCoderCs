@@ -10,69 +10,24 @@ public class Problem : ProblemBase
     public static void Main(string[] args)
     {
         var problem = new Problem();
-        problem.SolveC();
+        problem.SolveD();
     }
 
-    public override void SolveC()
+    public override void SolveD()
     {
         var N = IOLibrary.ReadInt();
-        var ABCDE = IOLibrary.ReadInt2DArray(N);
-        var m = 5;
+        var A = IOLibrary.ReadLongArray();
 
-        Func<long, bool> isOk = (x) =>
+        var sortedA = A.Sort().Reverse().ToArray();
+
+        var ans = 0m;
+
+        for (int i = 1; i < N; i++)
         {
-            var list = new List<bool[]>();
+            ans += sortedA[i / 2];
+        }
 
-            if (x < 4)
-            {
-                var a = 0;
-            }
-
-            foreach (var element in ABCDE)
-            {
-                var flagArray = element.Select(i => i >= x).ToArray();
-                if (!list.Any(item => item.SequenceEqual(flagArray)))
-                {
-                    list.Add(flagArray);
-                }
-            }
-
-            Func<IEnumerable<bool>, IEnumerable<bool>, IEnumerable<bool>>
-                or = (sequence1, sequence2) =>
-                {
-                    return sequence1.Zip(sequence2, (e1, e2) => e1 | e2);
-                };
-
-            if (list.Count < 3)
-            {
-                var flagArray = list.Aggregate((result, next) => or(result, next)
-                                    .ToArray());
-                return flagArray.All(i => i == true);
-            }
-
-            var combination = MathLibrary.GetCombinationIndexCollection(list.Count, 3);
-            foreach (var indexList in combination)
-            {
-                var flagArray = new bool[m];
-                var people = indexList.Select(i => list[i]);
-                foreach (var person in people)
-                {
-                    flagArray = or(flagArray, person).ToArray();
-                }
-
-                if (flagArray.All(i => i == true))
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        };
-
-        var ng = 1000000001;
-        var ok = 0;
-        var ans = MathLibrary.BinarySearch(ok, ng, isOk);
-        Console.WriteLine(ans);
+        IOLibrary.WriteLine(ans);
     }
 }
 
@@ -323,13 +278,6 @@ public class IOLibrary
     public static string ToYesOrNo(bool value)
     {
         return value ? $"Yes" : $"No";
-    }
-
-    public static T DeepClone<T>(T source)
-    {
-        var jsonString = System.Text.Json.JsonSerializer.Serialize(source);
-        var clone = System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
-        return clone;
     }
 
     public static T DeepClone<T>(T source)
