@@ -389,6 +389,27 @@ public static class MathLibrary
     }
 
     /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="num"></param>
+    /// <param name="basis"></param>
+    /// <returns></returns>
+    public static IList<long> ConvertBasis(long num, long basis)
+    {
+        var list = new List<long>();
+
+        var testNum = num;
+        do
+        {
+            var d = testNum % basis;
+            list.Add(d);
+            testNum /= basis;
+        } while (testNum > 0);
+
+        return list;
+    }
+
+    /// <summary>
     /// 指定したビットが1かどうか
     /// </summary>
     /// <param name="source"></param>

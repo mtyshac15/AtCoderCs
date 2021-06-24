@@ -16,15 +16,50 @@ public class Problem : ProblemBase
     public override void SolveD()
     {
         var N = IOLibrary.ReadInt();
-        var A = IOLibrary.ReadLongArray();
+        var A = IOLibrary.ReadIntArray();
 
-        var sortedA = A.Sort().Reverse().ToArray();
-
-        var ans = 0m;
-
-        for (int i = 1; i < N; i++)
+        if (N == 1)
         {
-            ans += sortedA[i / 2];
+            IOLibrary.WriteLine(0);
+            return;
+        }
+
+        var max = 200001;
+        var dic = new int[max];
+
+        var ans = 0;
+        for (int i = 0; i < N / 2; i++)
+        {
+            var j = N - 1 - i;
+
+            var numI = dic[A[i]];
+            if (numI == 0)
+            {
+                numI = A[i];
+            }
+
+            var numJ = dic[A[j]];
+            if (numJ == 0)
+            {
+                numJ = A[j];
+            }
+
+            if (numI != numJ)
+            {
+                dic[numI] = numJ;
+
+                while (true)
+                {
+                    var nextNum = dic[numJ];
+                    if (nextNum == 0)
+                    {
+                        break;
+                    }
+                    dic[nextNum] = numJ;
+                }
+
+                ans++;
+            }
         }
 
         IOLibrary.WriteLine(ans);
@@ -694,6 +729,27 @@ public static class MathLibrary
     public static string ToHex(this long num)
     {
         return num.ToString("x");
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="num"></param>
+    /// <param name="basis"></param>
+    /// <returns></returns>
+    public static IList<long> ConvertBasis(long num, long basis)
+    {
+        var list = new List<long>();
+
+        var testNum = num;
+        do
+        {
+            var d = testNum % basis;
+            list.Add(d);
+            testNum /= basis;
+        } while (testNum > 0);
+
+        return list;
     }
 
     /// <summary>

@@ -217,7 +217,7 @@ public class IOLibrary
 
     #region "Output"
 
-    public static void WriteLine(object? value = null)
+    public static void WriteLine(object value = null)
     {
         var sw = new StreamWriter(Console.OpenStandardOutput())
         {

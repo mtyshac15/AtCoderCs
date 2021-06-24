@@ -11,7 +11,7 @@ public class AtCoderMain
         Action method = null;
         AtCoder.Common.ProblemBase problem;
 
-        problem = new ABC173.Problem();
+        problem = new ABC206.Problem();
 
         //method = problem.SolveA;
         //method = problem.SolveB;
@@ -31,8 +31,8 @@ public class AtCoderMain
         {
             AtCoderMain.Timer("", method);
 
-            Console.WriteLine();
-            Console.WriteLine("Continue? 1:Yes, others:No");
+            IOLibrary.WriteLine();
+            IOLibrary.WriteLine("Continue? 1:Yes, others:No");
             input = Console.ReadLine();
         } while (input == "1");
     }
@@ -66,7 +66,7 @@ public class AtCoderMain
         sw.Stop();
         var secondTime = (int)(sw.Elapsed.TotalMilliseconds);
 
-        Console.WriteLine();
-        Console.WriteLine($"{text}: {secondTime} ms");
+        IOLibrary.WriteLine();
+        IOLibrary.WriteLine($"{text}: {secondTime} ms");
     }
 }
