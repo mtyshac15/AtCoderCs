@@ -10,59 +10,62 @@ public class Problem : ProblemBase
     public static void Main(string[] args)
     {
         var problem = new Problem();
-        problem.SolveD();
+        problem.Solve();
     }
 
-    public override void SolveD()
+    public override void Solve()
     {
         var N = IOLibrary.ReadInt();
-        var A = IOLibrary.ReadIntArray();
-
-        if (N == 1)
+        if (N % 2 == 1)
         {
-            IOLibrary.WriteLine(0);
+            IOLibrary.WriteLine();
             return;
         }
 
-        var max = 200001;
-        var dic = new int[max];
-
-        var ans = 0;
-        for (int i = 0; i < N / 2; i++)
+        for (int bit = 0; bit < (1 << N); bit++)
         {
-            var j = N - 1 - i;
-
-            var numI = dic[A[i]];
-            if (numI == 0)
+            var str = "";
+            for (int i = N - 1; i >= 0; i--)
             {
-                numI = A[i];
-            }
-
-            var numJ = dic[A[j]];
-            if (numJ == 0)
-            {
-                numJ = A[j];
-            }
-
-            if (numI != numJ)
-            {
-                dic[numI] = numJ;
-
-                while (true)
+                if (MathLibrary.TestBit(bit, i))
                 {
-                    var nextNum = dic[numJ];
-                    if (nextNum == 0)
-                    {
-                        break;
-                    }
-                    dic[nextNum] = numJ;
+                    str += ')';
                 }
+                else
+                {
+                    str += '(';
+                }
+            }
 
-                ans++;
+            if (this.Check(str))
+            {
+                IOLibrary.WriteLine(str);
+            }
+        }
+    }
+
+    private bool Check(string str)
+    {
+        //カッコの判定
+        var count = 0;
+        for (int i = 0; i < str.Length; i++)
+        {
+            if (str[i] == '(')
+            {
+                count++;
+            }
+            else if (str[i] == ')')
+            {
+                count--;
+            }
+
+            if (count < 0)
+            {
+                return false;
             }
         }
 
-        IOLibrary.WriteLine(ans);
+        return count == 0;
     }
 }
 
@@ -1655,27 +1658,7 @@ public struct Cell : IEquatable<Cell>
 
 public abstract class ProblemBase
 {
-    public virtual void SolveA()
-    {
-    }
-
-    public virtual void SolveB()
-    {
-    }
-
-    public virtual void SolveC()
-    {
-    }
-
-    public virtual void SolveD()
-    {
-    }
-
-    public virtual void SolveE()
-    {
-    }
-
-    public virtual void SolveF()
+    public virtual void Solve()
     {
     }
 }

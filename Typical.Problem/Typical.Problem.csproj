@@ -4,4 +4,16 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="TypicalProblem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TypicalProblem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
+  </ItemGroup>
+
 </Project>

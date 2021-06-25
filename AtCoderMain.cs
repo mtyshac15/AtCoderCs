@@ -8,6 +8,15 @@ public class AtCoderMain
 {
     static void Main(string[] args)
     {
+#if false
+        AtCoderMain.SolveProblem();
+#else
+        AtCoderMain.SolveTypicalProblem();
+#endif
+    }
+
+    private static void SolveProblem()
+    {
         Action method = null;
         AtCoder.Common.ProblemBase problem;
 
@@ -16,11 +25,23 @@ public class AtCoderMain
         //method = problem.SolveA;
         //method = problem.SolveB;
         //method = problem.SolveC;
-        method = problem.SolveD;
+        //method = problem.SolveD;
         //method = problem.SolveE;
         //method = problem.SolveF;
 
         //AtCoder.ExecuteByStandardIO(method);
+        AtCoderMain.ExecuteByFileIO(method);
+    }
+
+    private static void SolveTypicalProblem()
+    {
+        Action method = null;
+        Typical.Problem.TypicalProblemBase problem;
+
+        problem = new Typical.Problem02.Problem();
+
+        method = problem.Solve;
+
         AtCoderMain.ExecuteByFileIO(method);
     }
 

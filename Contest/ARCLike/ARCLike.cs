@@ -68,7 +68,7 @@ public static class ARCLike
 
         var (H, W, K) = IOLibrary.ReadInt3();
 
-        var list = MathLibrary.CreateList(new { H = 0, W = 0, C = "" });
+        var list = LinqEx.CreateList(new { H = 0, W = 0, C = "" });
 
         for (var i = 0; i < K; i++)
         {

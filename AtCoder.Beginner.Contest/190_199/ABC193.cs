@@ -185,7 +185,7 @@ namespace ABC193
                 usedCardNums[card]++;
             }
 
-            var winList = MathLibrary.CreateList(new { S = 0, T = 0 });
+            var winList = LinqEx.CreateList(new { S = 0, T = 0 });
 
             for (var i = 0; i < 9; i++)
             {

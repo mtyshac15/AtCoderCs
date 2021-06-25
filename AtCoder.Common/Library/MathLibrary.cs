@@ -4,50 +4,6 @@ using System.Linq;
 
 public static class MathLibrary
 {
-    #region "ソート"
-
-    public static IEnumerable<string> Sort(this IEnumerable<string> collection)
-    {
-        return collection.ToArray().Sort();
-    }
-
-    public static string[] Sort(this string[] array)
-    {
-        Array.Sort(array, StringComparer.OrdinalIgnoreCase);
-        return array;
-    }
-
-    public static IEnumerable<int> Sort(this IEnumerable<int> collection)
-    {
-        var array = collection.ToArray();
-        return array.Sort();
-    }
-
-    public static int[] Sort(this int[] array)
-    {
-        Array.Sort(array);
-        return array;
-    }
-
-    public static IEnumerable<long> Sort(this IEnumerable<long> collection)
-    {
-        var array = collection.ToArray();
-        return array.Sort();
-    }
-
-    public static long[] Sort(this long[] array)
-    {
-        Array.Sort(array);
-        return array;
-    }
-
-    public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection)
-    {
-        return collection.OrderBy(item => Guid.NewGuid());
-    }
-
-    #endregion
-
     #region "約数、素数"
 
     /// <summary>
@@ -253,26 +209,6 @@ public static class MathLibrary
     #endregion
 
     #region ""
-
-    public static IEnumerable<long> Range(long start, long count)
-    {
-        var array = new long[count];
-        for (var i = 0; i < count; i++)
-        {
-            array[i] = start + i;
-        }
-        return array;
-    }
-
-    public static IEnumerable<T> Repeat<T>(T element, long count)
-    {
-        var array = new T[count];
-        for (var i = 0; i < count; i++)
-        {
-            array[i] = element;
-        }
-        return array;
-    }
 
     /// <summary>
     /// 桁数
@@ -763,80 +699,6 @@ public static class MathLibrary
         var minLength = Math.Min(str.Length - startIndex, length);
         var subStr = str.Substring(startIndex, minLength);
         return subStr;
-    }
-
-    #endregion
-
-    #region "コレクション"
-
-    public static IList<T> CreateList<T>(T item)
-    {
-        return new List<T>();
-    }
-
-    /// <summary>
-    /// 累積和
-    /// </summary>
-    /// <param name="sequence"></param>
-    /// <returns></returns>
-    public static IEnumerable<int> CumulativeSum(this IEnumerable<int> sequence)
-    {
-        var sum = 0;
-        foreach (var item in sequence)
-        {
-            sum += item;
-            yield return sum;
-        }
-    }
-
-    /// <summary>
-    /// 累積和
-    /// </summary>
-    /// <param name="sequence"></param>
-    /// <returns></returns>
-    public static IEnumerable<ModInt> CumulativeSum(this IEnumerable<ModInt> sequence)
-    {
-        ModInt sum = 0;
-        foreach (var item in sequence)
-        {
-            sum += item;
-            yield return sum;
-        }
-    }
-
-    /// <summary>
-    /// 累積和
-    /// </summary>
-    /// <param name="sequence"></param>
-    /// <returns></returns>
-    public static IEnumerable<long> CumulativeSum(this IEnumerable<long> sequence)
-    {
-        var sum = 0L;
-        foreach (var item in sequence)
-        {
-            sum += item;
-            yield return sum;
-        }
-    }
-
-    public static int InnerProduct(IList<int> a, IList<int> b)
-    {
-        var sum = 0;
-        for (var i = 0; i < a.Count; i++)
-        {
-            sum += a[i] * b[i];
-        }
-        return sum;
-    }
-
-    public static int InnerSum(IList<int> a, IList<int> b)
-    {
-        var sum = 0;
-        for (var i = 0; i < a.Count; i++)
-        {
-            sum += a[i] + b[i];
-        }
-        return sum;
     }
 
     #endregion
