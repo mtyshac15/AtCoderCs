@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Typical.Problem;
 
-namespace Typical.Problem02
+namespace Typical.Problem002
 {
     public class Problem : TypicalProblemBase
     {

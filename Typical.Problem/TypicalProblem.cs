@@ -15,57 +15,34 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var N = IOLibrary.ReadInt();
-        if (N % 2 == 1)
+        var (H, W) = IOLibrary.ReadInt2();
+        var A = IOLibrary.ReadInt2DArray(H, W);
+
+        var rowArray = new int[H];
+        var colArray = new int[W];
+
+        //合計
+        for (int h = 0; h < H; h++)
         {
-            IOLibrary.WriteLine();
-            return;
-        }
-
-        for (int bit = 0; bit < (1 << N); bit++)
-        {
-            var str = "";
-            for (int i = N - 1; i >= 0; i--)
+            for (int w = 0; w < W; w++)
             {
-                if (MathLibrary.TestBit(bit, i))
-                {
-                    str += ')';
-                }
-                else
-                {
-                    str += '(';
-                }
-            }
-
-            if (this.Check(str))
-            {
-                IOLibrary.WriteLine(str);
-            }
-        }
-    }
-
-    private bool Check(string str)
-    {
-        //カッコの判定
-        var count = 0;
-        for (int i = 0; i < str.Length; i++)
-        {
-            if (str[i] == '(')
-            {
-                count++;
-            }
-            else if (str[i] == ')')
-            {
-                count--;
-            }
-
-            if (count < 0)
-            {
-                return false;
+                rowArray[h] += A[h, w];
+                colArray[w] += A[h, w];
             }
         }
 
-        return count == 0;
+        //出力
+        for (int h = 0; h < H; h++)
+        {
+            var ansArray = new int[W];
+            for (int w = 0; w < W; w++)
+            {
+                ansArray[w] = rowArray[h] + colArray[w] - A[h, w];
+            }
+
+            var ans = string.Join(" ", ansArray);
+            IOLibrary.WriteLine(ans);
+        }
     }
 }
 
@@ -1148,6 +1125,18 @@ public static class LinqEx
             list.Add(array[i]);
         }
         return list;
+    }
+
+    /// <summary>
+    /// 階差数列
+    /// </summary>
+    /// <param name="collection"></param>
+    /// <returns></returns>
+    public static IEnumerable<long> FloorDiff(this IEnumerable<long> collection)
+    {
+        var diff = collection.Skip(1);
+        var result = diff.Zip(collection, (e1, e2) => e1 - e2);
+        return result;
     }
 
     #region "コレクション"

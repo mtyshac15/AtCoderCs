@@ -1147,6 +1147,18 @@ public static class LinqEx
         return list;
     }
 
+    /// <summary>
+    /// 階差数列
+    /// </summary>
+    /// <param name="collection"></param>
+    /// <returns></returns>
+    public static IEnumerable<long> FloorDiff(this IEnumerable<long> collection)
+    {
+        var diff = collection.Skip(1);
+        var result = diff.Zip(collection, (e1, e2) => e1 - e2);
+        return result;
+    }
+
     #region "コレクション"
 
     public static IList<T> CreateList<T>(T item)
