@@ -15,26 +15,14 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var N = IOLibrary.ReadLong();
-        var (A, B, C) = IOLibrary.ReadLong3();
+        var N = IOLibrary.ReadInt();
+        var A = IOLibrary.ReadLongArray();
+        var B = IOLibrary.ReadLongArray();
 
-        var count = 10000;
-        var min = 10000;
-        for (int a = 0; a < count; a++)
-        {
-            for (int b = 0; b < count; b++)
-            {
-                var reminder = N - A * a - B * b;
-                if (reminder >= 0
-                    && reminder % C == 0)
-                {
-                    var c = (int)(reminder / C);
-                    min = Math.Min(a + b + c, min);
-                }
-            }
-        }
-
-        IOLibrary.WriteLine(min);
+        var sortedA = A.Sort();
+        var sortedB = B.Sort();
+        var ans = sortedA.Zip(sortedB, (a, b) => Math.Abs(a - b)).Sum();
+        IOLibrary.WriteLine(ans);
     }
 }
 
