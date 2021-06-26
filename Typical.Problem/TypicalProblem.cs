@@ -15,14 +15,25 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var N = IOLibrary.ReadInt();
-        var A = IOLibrary.ReadLongArray();
-        var B = IOLibrary.ReadLongArray();
+        var T = IOLibrary.ReadLong();
+        var (L, X, Y) = IOLibrary.ReadLong3();
+        var Q = IOLibrary.ReadInt();
+        var E = IOLibrary.ReadIntArray(Q);
 
-        var sortedA = A.Sort();
-        var sortedB = B.Sort();
-        var ans = sortedA.Zip(sortedB, (a, b) => Math.Abs(a - b)).Sum();
-        IOLibrary.WriteLine(ans);
+        foreach (var e in E)
+        {
+            //e分後の高さ
+            var rad = 2 * Math.PI * e / T;
+            var z = L / 2.0 * (1 - Math.Cos(rad));
+            var y = (-1) * L / 2.0 * Math.Sin(rad);
+
+            //像との距離
+            var distance = Math.Sqrt(X * X + (Y - y) * (Y - y));
+
+            var andRad = Math.Atan2(z, distance);
+            var ans = andRad * 180 / Math.PI;
+            IOLibrary.WriteLine(ans);
+        }
     }
 }
 

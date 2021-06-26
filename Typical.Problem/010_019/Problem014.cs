@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using Typical.Problem;
 
-namespace Typical.Problem013
+namespace Typical.Problem014
 {
     public class Problem : TypicalProblemBase
     {
