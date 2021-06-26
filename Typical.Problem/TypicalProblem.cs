@@ -15,34 +15,26 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var (H, W) = IOLibrary.ReadInt2();
-        var A = IOLibrary.ReadInt2DArray(H, W);
+        var N = IOLibrary.ReadLong();
+        var (A, B, C) = IOLibrary.ReadLong3();
 
-        var rowArray = new int[H];
-        var colArray = new int[W];
-
-        //合計
-        for (int h = 0; h < H; h++)
+        var count = 10000;
+        var min = 10000;
+        for (int a = 0; a < count; a++)
         {
-            for (int w = 0; w < W; w++)
+            for (int b = 0; b < count; b++)
             {
-                rowArray[h] += A[h, w];
-                colArray[w] += A[h, w];
+                var reminder = N - A * a - B * b;
+                if (reminder >= 0
+                    && reminder % C == 0)
+                {
+                    var c = (int)(reminder / C);
+                    min = Math.Min(a + b + c, min);
+                }
             }
         }
 
-        //出力
-        for (int h = 0; h < H; h++)
-        {
-            var ansArray = new int[W];
-            for (int w = 0; w < W; w++)
-            {
-                ansArray[w] = rowArray[h] + colArray[w] - A[h, w];
-            }
-
-            var ans = string.Join(" ", ansArray);
-            IOLibrary.WriteLine(ans);
-        }
+        IOLibrary.WriteLine(min);
     }
 }
 
@@ -975,7 +967,33 @@ public static class MathLibrary
         return MathLibrary.BinarySearch(ok, ng, isOk);
     }
 
+    public static long LowerBound(this IList<long> sortedList, long key)
+    {
+        var ng = -1;
+        var ok = sortedList.Count;
+
+        Func<int, bool> isOk = (target) =>
+        {
+            return sortedList[target] >= key;
+        };
+
+        return MathLibrary.BinarySearch(ok, ng, isOk);
+    }
+
     public static int UpperBound(this IList<int> sortedList, int key)
+    {
+        var ng = -1;
+        var ok = sortedList.Count;
+
+        Func<int, bool> isOk = (target) =>
+        {
+            return sortedList[target] > key;
+        };
+
+        return MathLibrary.BinarySearch(ok, ng, isOk);
+    }
+
+    public static int UpperBound(this IList<long> sortedList, long key)
     {
         var ng = -1;
         var ok = sortedList.Count;

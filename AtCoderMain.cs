@@ -38,7 +38,7 @@ public class AtCoderMain
         Action method = null;
         Typical.Problem.TypicalProblemBase problem;
 
-        problem = new Typical.Problem004.Problem();
+        problem = new Typical.Problem016.Problem();
 
         method = problem.Solve;
 

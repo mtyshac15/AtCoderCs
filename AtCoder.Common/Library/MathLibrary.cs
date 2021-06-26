@@ -672,7 +672,33 @@ public static class MathLibrary
         return MathLibrary.BinarySearch(ok, ng, isOk);
     }
 
+    public static long LowerBound(this IList<long> sortedList, long key)
+    {
+        var ng = -1;
+        var ok = sortedList.Count;
+
+        Func<int, bool> isOk = (target) =>
+        {
+            return sortedList[target] >= key;
+        };
+
+        return MathLibrary.BinarySearch(ok, ng, isOk);
+    }
+
     public static int UpperBound(this IList<int> sortedList, int key)
+    {
+        var ng = -1;
+        var ok = sortedList.Count;
+
+        Func<int, bool> isOk = (target) =>
+        {
+            return sortedList[target] > key;
+        };
+
+        return MathLibrary.BinarySearch(ok, ng, isOk);
+    }
+
+    public static int UpperBound(this IList<long> sortedList, long key)
     {
         var ng = -1;
         var ok = sortedList.Count;

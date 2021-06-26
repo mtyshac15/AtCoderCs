@@ -16,4 +16,11 @@
     <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="020_029\" />
+    <Folder Include="030_039\" />
+    <Folder Include="040_049\" />
+    <Folder Include="050_059\" />
+  </ItemGroup>
+
 </Project>
