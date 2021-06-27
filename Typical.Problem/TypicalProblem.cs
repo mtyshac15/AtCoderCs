@@ -15,21 +15,35 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var (A, B) = IOLibrary.ReadLong2();
+        var (N, P, Q) = IOLibrary.ReadInt3();
+        var A = IOLibrary.ReadIntArray();
 
-        var max = 1000000000000000000;
-        var gcd = MathLibrary.GCD(A, B);
+        ModInt.Init(P);
+        var modIntA = A.Select(a => (ModInt)a).ToArray();
 
-        var r = B / gcd;
-        if (r > max / A)
+        var count = 0L;
+        for (int i = 0; i < N; i++)
         {
-            IOLibrary.WriteLine("Large");
+            for (int j = 0; j < i; j++)
+            {
+                for (int k = 0; k < j; k++)
+                {
+                    for (int l = 0; l < k; l++)
+                    {
+                        for (int m = 0; m < l; m++)
+                        {
+                            var product = modIntA[i] * modIntA[j] * modIntA[k] * modIntA[l] * modIntA[m];
+                            if (product == Q)
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
         }
-        else
-        {
-            var ans = A * r;
-            IOLibrary.WriteLine(ans);
-        }
+
+        IOLibrary.WriteLine(count);
     }
 }
 
