@@ -370,7 +370,7 @@ public static class MathLibrary
     /// <returns></returns>
     public static IEnumerable<long> GetDivisorHarfList(long n)
     {
-        for (var i = 1L; i * i <= n; i++)
+        for (long i = 1; i * i <= n; i++)
         {
             if (n % i == 0)
             {
@@ -386,7 +386,7 @@ public static class MathLibrary
     /// <returns></returns>
     public static bool IsPrime(long n)
     {
-        for (var i = 2; i * i <= n; i++)
+        for (long i = 2; i * i <= n; i++)
         {
             if (n % i == 0)
             {
@@ -399,8 +399,63 @@ public static class MathLibrary
     /// <summary>
     /// 素因数分解
     /// </summary>
-    public static void PrimeFactorization()
+    public static IList<IList<long>> PrimeFactorizationSet(long n)
     {
+        var testN = n;
+        var array = new List<IList<long>>();
+        for (long i = 2; ; i++)
+        {
+            if (MathLibrary.IsPrime(i))
+            {
+                var count = 0;
+                var elements = new List<long>();
+
+                while (testN % i == 0)
+                {
+                    testN /= i;
+                    count++;
+                }
+
+                if (count > 0)
+                {
+                    //素因数と指数部の組
+                    elements.Add(i);
+                    elements.Add(count);
+                    array.Add(elements);
+                }
+
+                if (testN == 1)
+                {
+                    break;
+                }
+            }
+        }
+
+        return array;
+    }
+
+    public static IList<long> PrimeFactorization(long n)
+    {
+        var testN = n;
+        var array = new List<long>();
+        for (long i = 2; ; i++)
+        {
+            if (MathLibrary.IsPrime(i))
+            {
+                while (testN % i == 0)
+                {
+                    array.Add(i);
+                    testN /= i;
+                }
+
+                if (testN == 1)
+                {
+                    break;
+                }
+            }
+        }
+
+        return array;
     }
 
     #region "最大公約数"
