@@ -20,12 +20,12 @@ public class AtCoderMain
         Action method = null;
         AtCoder.Common.ProblemBase problem;
 
-        problem = new ABC206.Problem();
+        problem = new ABC035.Problem();
 
         //method = problem.SolveA;
         //method = problem.SolveB;
         //method = problem.SolveC;
-        //method = problem.SolveD;
+        method = problem.SolveD;
         //method = problem.SolveE;
         //method = problem.SolveF;
 
@@ -38,7 +38,7 @@ public class AtCoderMain
         Action method = null;
         Typical.Problem.TypicalProblemBase problem;
 
-        problem = new Typical.Problem003.Problem();
+        problem = new Typical.Problem008.Problem();
 
         method = problem.Solve;
 
@@ -63,6 +63,7 @@ public class AtCoderMain
         var textFile = @$"Text\Sample.txt";
 
         string input;
+
         do
         {
             using (var reader = new StreamReader(textFile))

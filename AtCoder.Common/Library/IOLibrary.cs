@@ -9,13 +9,21 @@ public class IOLibrary
     {
     }
 
-    #region "Input"
+    #region "Method"
 
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
+
+    private static Action<object?> WriteMethod { get; set; } = Console.WriteLine;
+
 
     public static void SetReadLineMethod(Func<string> readLine)
     {
         IOLibrary.ReadMethod = readLine;
+    }
+
+    public static void SetWriteLineMethod(Action<object> writeLine)
+    {
+        IOLibrary.WriteMethod = writeLine;
     }
 
     #region "string"
@@ -225,7 +233,7 @@ public class IOLibrary
         };
 
         Console.SetOut(sw);
-        Console.WriteLine(value);
+        IOLibrary.WriteMethod(value);
         Console.Out.Flush();
     }
 
@@ -235,7 +243,7 @@ public class IOLibrary
         Console.SetOut(sw);
         foreach (var value in list)
         {
-            Console.WriteLine(value);
+            IOLibrary.WriteMethod(value);
         }
         Console.Out.Flush();
     }
