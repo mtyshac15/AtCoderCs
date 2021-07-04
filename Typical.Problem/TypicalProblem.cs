@@ -15,33 +15,36 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var Q = IOLibrary.ReadInt();
-        var tx = IOLibrary.ReadInt2DArray(Q);
+        var str = IOLibrary.ReadStringArray();
+        var N = str[0].ToCharArray();
+        var K = int.Parse(str[1]);
 
-        var array = new int[2 * Q];
-
-        var topIndex = Q;
-        var tailIndex = topIndex;
-
-        for (int i = 0; i < Q; i++)
+        var eighth = N.Select(x => long.Parse(x.ToString())).Reverse().ToArray();
+        for (int i = 0; i < K; i++)
         {
-            var t = tx[i][0];
-            var x = tx[i][1];
-            if (t == 1)
+            var dec = 0L;
+
+            //10進数に変換
+            for (int j = 0; j < eighth.Length; j++)
             {
-                topIndex--;
-                array[topIndex] = x;
+                dec += eighth[j] * MathLibrary.Pow(8, j);
             }
-            else if (t == 2)
+
+            //9進数に変換
+            var ninth = MathLibrary.ConvertBasis(dec, 9);
+            for (int j = 0; j < ninth.Count; j++)
             {
-                array[tailIndex] = x;
-                tailIndex++;
+                if (ninth[j] == 8)
+                {
+                    ninth[j] = 5;
+                }
             }
-            else if (t == 3)
-            {
-                IOLibrary.WriteLine(array[topIndex + x - 1]);
-            }
+
+            eighth = ninth.ToArray();
         }
+
+        var ans = string.Join("", eighth.Reverse());
+        IOLibrary.WriteLine(ans);
     }
 }
 
