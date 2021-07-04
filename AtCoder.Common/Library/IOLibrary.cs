@@ -13,7 +13,7 @@ public class IOLibrary
 
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
 
-    private static Action<object?> WriteMethod { get; set; } = Console.WriteLine;
+    private static Action<object> WriteMethod { get; set; } = Console.WriteLine;
 
 
     public static void SetReadLineMethod(Func<string> readLine)

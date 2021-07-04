@@ -50,7 +50,7 @@ public static class LinqEx
 
     #region "生成"
 
-    public static IEnumerable<long> Range(long start, long count)
+    public static IEnumerable<long> LongRange(long start, long count)
     {
         var array = new long[count];
         for (var i = 0; i < count; i++)
@@ -60,7 +60,7 @@ public static class LinqEx
         return array;
     }
 
-    public static IEnumerable<T> Repeat<T>(T element, long count)
+    public static IEnumerable<T> LongRepeat<T>(T element, long count)
     {
         var array = new T[count];
         for (var i = 0; i < count; i++)
@@ -72,7 +72,7 @@ public static class LinqEx
 
     #endregion
 
-    public static IEnumerable<T> Skip<T>(this IEnumerable<T> collection, long count)
+    public static IEnumerable<T> LongSkip<T>(this IEnumerable<T> collection, long count)
     {
         var array = collection.ToArray();
         if (array.LongLength <= count)

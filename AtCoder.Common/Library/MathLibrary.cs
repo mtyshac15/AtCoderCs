@@ -431,6 +431,17 @@ public static class MathLibrary
         return (long)Math.Floor((double)value / basis) * basis;
     }
 
+    public static IList<IList<int>> GetGraph(long N)
+    {
+        //隣接リストを作成
+        var graph = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            graph.Add(new List<int>());
+        }
+        return graph;
+    }
+
     #endregion
 
     #region "順列 組合せ"
@@ -501,20 +512,12 @@ public static class MathLibrary
     }
 
     /// <summary>
-    /// 順列を列挙
+    /// 順列
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <param name="collection"></param>
     /// <returns></returns>
-    public static IEnumerable<int[]> GetPermutationIndexList(int n)
-    {
-        return MathLibrary.GetPermutationIndex(Enumerable.Range(0, n));
-    }
-
     public static IEnumerable<int[]> GetPermutationIndex(IEnumerable<int> collection)
     {
-        var indexList = new List<int[]>();
-
         if (collection.Count() == 1)
         {
             yield return new int[] { collection.First() };
@@ -524,14 +527,25 @@ public static class MathLibrary
         foreach (var item in collection)
         {
             var searchedArray = new int[] { item };
-            var unsearchedList = collection.Except(searchedArray).ToArray();
+            var unsearchedArray = collection.Except(searchedArray).ToArray();
 
-            var list = MathLibrary.GetPermutationIndex(unsearchedList);
-            foreach (var searchedItem in list)
+            var array = MathLibrary.GetPermutationIndex(unsearchedArray);
+            foreach (var searchedItem in array)
             {
                 yield return searchedArray.Concat(searchedItem).ToArray();
             }
         }
+    }
+
+    /// <summary>
+    /// 順列
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static IEnumerable<IList<int>> AllPermutation(int n)
+    {
+        var array = Enumerable.Range(0, n).ToArray();
+        return MathLibrary.AllPermutation(array);
     }
 
     /// <summary>
@@ -540,23 +554,63 @@ public static class MathLibrary
     /// <typeparam name="T"></typeparam>
     /// <param name="collection"></param>
     /// <returns></returns>
-    public static IEnumerable<T[]> GetPermutation<T>(IEnumerable<T> collection)
+    public static IEnumerable<IList<T>> AllPermutation<T>(T[] array)
+           where T : IComparable<T>
     {
-        if (collection.Count() == 1)
-        {
-            yield return new T[] { collection.First() };
-            yield break;
-        }
+        var list = new List<IList<T>>();
 
-        foreach (var item in collection)
+        do
         {
-            var searchedList = new T[] { item };
-            var unsearchedList = collection.Except(searchedList);
-            foreach (var searchedItem in MathLibrary.GetPermutation(unsearchedList))
+            T[] copy = new T[array.Length];
+            array.CopyTo(copy, 0);
+            list.Add(copy);
+        }
+        while (MathLibrary.NextPermutation(array));
+
+        return list;
+    }
+
+    public static bool NextPermutation<T>(T[] array)
+        where T : IComparable<T>
+    {
+        var isOk = false;
+
+        //array[i]<array[i+1]を満たす最大のiを求める
+        var i = array.Length - 2;
+        for (; i >= 0; i--)
+        {
+            if (array[i].CompareTo(array[i + 1]) < 0)
             {
-                yield return searchedList.Concat(searchedItem).ToArray();
+                isOk = true;
+                break;
             }
         }
+
+        //全ての要素が降順の場合終了
+        if (!isOk)
+        {
+            return false;
+        }
+
+        //array[i]<array[j]を満たす最大のjを求める
+        int j = array.Length - 1;
+        for (; ; j--)
+        {
+            if (array[i].CompareTo(array[j]) < 0)
+            {
+                break;
+            }
+        }
+
+        //iの要素とjの要素を交換
+        var tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+
+        //i以降の要素を反転させる
+        Array.Reverse(array, i + 1, array.Length - (i + 1));
+
+        return true;
     }
 
     /// <summary>

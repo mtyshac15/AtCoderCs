@@ -363,7 +363,7 @@ public static class ABC180
         var A = IOLibrary.ReadLongArray();
         var sortedA = A.Sort();
 
-        var dp = LinqEx.Range(0, N).Select(index => 2 * index - N + 1);
+        var dp = LinqEx.LongRange(0, N).Select(index => 2 * index - N + 1);
         var ans = sortedA.Zip(dp, (a, p) => a * p).Sum();
 
         IOLibrary.WriteLine(ans);

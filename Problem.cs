@@ -123,13 +123,21 @@ public class IOLibrary
     {
     }
 
-    #region "Input"
+    #region "Method"
 
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
+
+    private static Action<object> WriteMethod { get; set; } = Console.WriteLine;
+
 
     public static void SetReadLineMethod(Func<string> readLine)
     {
         IOLibrary.ReadMethod = readLine;
+    }
+
+    public static void SetWriteLineMethod(Action<object> writeLine)
+    {
+        IOLibrary.WriteMethod = writeLine;
     }
 
     #region "string"
@@ -339,7 +347,7 @@ public class IOLibrary
         };
 
         Console.SetOut(sw);
-        Console.WriteLine(value);
+        IOLibrary.WriteMethod(value);
         Console.Out.Flush();
     }
 
@@ -349,7 +357,7 @@ public class IOLibrary
         Console.SetOut(sw);
         foreach (var value in list)
         {
-            Console.WriteLine(value);
+            IOLibrary.WriteMethod(value);
         }
         Console.Out.Flush();
     }
@@ -803,6 +811,17 @@ public static class MathLibrary
         return (long)Math.Floor((double)value / basis) * basis;
     }
 
+    public static IList<IList<int>> GetGraph(long N)
+    {
+        //隣接リストを作成
+        var graph = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            graph.Add(new List<int>());
+        }
+        return graph;
+    }
+
     #endregion
 
     #region "順列 組合せ"
@@ -885,8 +904,6 @@ public static class MathLibrary
 
     public static IEnumerable<int[]> GetPermutationIndex(IEnumerable<int> collection)
     {
-        var indexList = new List<int[]>();
-
         if (collection.Count() == 1)
         {
             yield return new int[] { collection.First() };

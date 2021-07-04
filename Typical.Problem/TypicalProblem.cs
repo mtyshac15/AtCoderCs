@@ -16,33 +16,49 @@ public class Problem : ProblemBase
     public override void Solve()
     {
         var N = IOLibrary.ReadInt();
-        var S = IOLibrary.ReadLine();
+        var A = IOLibrary.ReadInt2DArray(N, N);
+        var M = IOLibrary.ReadInt();
+        var XY = IOLibrary.ReadInt2DArray(M, 2);
 
-        int mod = 1000000007;
-        string sourceArray = "atcoder";
-
-        var dp = new long[sourceArray.Length + 1][];
-        for (int i = 0; i < sourceArray.Length + 1; i++)
+        var isHate = new bool[N, N];
+        for (int i = 0; i < M; i++)
         {
-            dp[i] = new long[S.Length + 1];
+            isHate[XY[i, 0] - 1, XY[i, 1] - 1] = true;
+            isHate[XY[i, 1] - 1, XY[i, 0] - 1] = true;
         }
 
-        dp[0][0] = 1;
-        for (int i = 0; i < sourceArray.Length + 1; i++)
+        var min = long.MaxValue;
+
+        foreach (var indexArray in MathLibrary.AllPermutation(N))
         {
-            for (int j = 0; j < S.Length; j++)
+            var total = 0L;
+            var hasPath = true;
+            var zone = 0;
+            for (int i = 0; i < indexArray.Count; i++)
             {
-                dp[i][j + 1] += dp[i][j];
-                if (i < sourceArray.Length && sourceArray[i] == S[j])
+                var current = indexArray[i];
+                total += A[current, zone];
+                zone++;
+
+                if (i < indexArray.Count - 1)
                 {
-                    //j文字目を取る場合
-                    dp[i + 1][j + 1] += dp[i][j];
+                    var next = indexArray[i + 1];
+                    if (isHate[current, next])
+                    {
+                        hasPath = false;
+                        break;
+                    }
                 }
-                dp[i][j + 1] %= mod;
+            }
+
+            if (hasPath)
+            {
+                min = Math.Min(total, min);
             }
         }
 
-        IOLibrary.WriteLine(dp[sourceArray.Length][S.Length]);
+        var ans = (min == long.MaxValue) ? -1 : min;
+        IOLibrary.WriteLine(ans);
     }
 }
 
@@ -54,13 +70,21 @@ public class IOLibrary
     {
     }
 
-    #region "Input"
+    #region "Method"
 
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
+
+    private static Action<object> WriteMethod { get; set; } = Console.WriteLine;
+
 
     public static void SetReadLineMethod(Func<string> readLine)
     {
         IOLibrary.ReadMethod = readLine;
+    }
+
+    public static void SetWriteLineMethod(Action<object> writeLine)
+    {
+        IOLibrary.WriteMethod = writeLine;
     }
 
     #region "string"
@@ -270,7 +294,7 @@ public class IOLibrary
         };
 
         Console.SetOut(sw);
-        Console.WriteLine(value);
+        IOLibrary.WriteMethod(value);
         Console.Out.Flush();
     }
 
@@ -280,7 +304,7 @@ public class IOLibrary
         Console.SetOut(sw);
         foreach (var value in list)
         {
-            Console.WriteLine(value);
+            IOLibrary.WriteMethod(value);
         }
         Console.Out.Flush();
     }
@@ -734,6 +758,17 @@ public static class MathLibrary
         return (long)Math.Floor((double)value / basis) * basis;
     }
 
+    public static IList<IList<int>> GetGraph(long N)
+    {
+        //隣接リストを作成
+        var graph = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            graph.Add(new List<int>());
+        }
+        return graph;
+    }
+
     #endregion
 
     #region "順列 組合せ"
@@ -804,20 +839,12 @@ public static class MathLibrary
     }
 
     /// <summary>
-    /// 順列を列挙
+    /// 順列
     /// </summary>
-    /// <typeparam name="T"></typeparam>
     /// <param name="collection"></param>
     /// <returns></returns>
-    public static IEnumerable<int[]> GetPermutationIndexList(int n)
-    {
-        return MathLibrary.GetPermutationIndex(Enumerable.Range(0, n));
-    }
-
     public static IEnumerable<int[]> GetPermutationIndex(IEnumerable<int> collection)
     {
-        var indexList = new List<int[]>();
-
         if (collection.Count() == 1)
         {
             yield return new int[] { collection.First() };
@@ -827,14 +854,25 @@ public static class MathLibrary
         foreach (var item in collection)
         {
             var searchedArray = new int[] { item };
-            var unsearchedList = collection.Except(searchedArray).ToArray();
+            var unsearchedArray = collection.Except(searchedArray).ToArray();
 
-            var list = MathLibrary.GetPermutationIndex(unsearchedList);
-            foreach (var searchedItem in list)
+            var array = MathLibrary.GetPermutationIndex(unsearchedArray);
+            foreach (var searchedItem in array)
             {
                 yield return searchedArray.Concat(searchedItem).ToArray();
             }
         }
+    }
+
+    /// <summary>
+    /// 順列
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public static IEnumerable<IList<int>> AllPermutation(int n)
+    {
+        var array = Enumerable.Range(0, n).ToArray();
+        return MathLibrary.AllPermutation(array);
     }
 
     /// <summary>
@@ -843,23 +881,63 @@ public static class MathLibrary
     /// <typeparam name="T"></typeparam>
     /// <param name="collection"></param>
     /// <returns></returns>
-    public static IEnumerable<T[]> GetPermutation<T>(IEnumerable<T> collection)
+    public static IEnumerable<IList<T>> AllPermutation<T>(T[] array)
+           where T : IComparable<T>
     {
-        if (collection.Count() == 1)
-        {
-            yield return new T[] { collection.First() };
-            yield break;
-        }
+        var list = new List<IList<T>>();
 
-        foreach (var item in collection)
+        do
         {
-            var searchedList = new T[] { item };
-            var unsearchedList = collection.Except(searchedList);
-            foreach (var searchedItem in MathLibrary.GetPermutation(unsearchedList))
+            T[] copy = new T[array.Length];
+            array.CopyTo(copy, 0);
+            list.Add(copy);
+        }
+        while (MathLibrary.NextPermutation(array));
+
+        return list;
+    }
+
+    public static bool NextPermutation<T>(T[] array)
+        where T : IComparable<T>
+    {
+        var isOk = false;
+
+        //array[i]<array[i+1]を満たす最大のiを求める
+        var i = array.Length - 2;
+        for (; i >= 0; i--)
+        {
+            if (array[i].CompareTo(array[i + 1]) < 0)
             {
-                yield return searchedList.Concat(searchedItem).ToArray();
+                isOk = true;
+                break;
             }
         }
+
+        //全ての要素が降順の場合終了
+        if (!isOk)
+        {
+            return false;
+        }
+
+        //array[i]<array[j]を満たす最大のjを求める
+        int j = array.Length - 1;
+        for (; ; j--)
+        {
+            if (array[i].CompareTo(array[j]) < 0)
+            {
+                break;
+            }
+        }
+
+        //iの要素とjの要素を交換
+        var tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+
+        //i以降の要素を反転させる
+        Array.Reverse(array, i + 1, array.Length - (i + 1));
+
+        return true;
     }
 
     /// <summary>

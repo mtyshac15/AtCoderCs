@@ -67,6 +67,15 @@ public static class Template
             var N = 1;
             var long2DArray = IOLibrary.ReadLong2DArray(N);
         }
+
+        {
+            //隣接リストを作成
+            var graph = new List<int>[N];
+            for (int i = 0; i < N; i++)
+            {
+                graph[i] = new List<int>();
+            }
+        }
     }
 
     #endregion
