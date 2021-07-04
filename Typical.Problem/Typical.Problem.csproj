@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="060_069\" />
     <Folder Include="070_079\" />
   </ItemGroup>
 

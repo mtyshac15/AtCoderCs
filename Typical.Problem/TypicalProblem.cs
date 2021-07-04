@@ -15,29 +15,33 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var (N, K) = IOLibrary.ReadInt2();
+        var Q = IOLibrary.ReadInt();
+        var tx = IOLibrary.ReadInt2DArray(Q);
 
-        var A = new int[N];
-        var B = new int[N];
-        for (int i = 0; i < N; i++)
+        var array = new int[2 * Q];
+
+        var topIndex = Q;
+        var tailIndex = topIndex;
+
+        for (int i = 0; i < Q; i++)
         {
-            var (a, b) = IOLibrary.ReadInt2();
-            A[i] = a;
-            B[i] = b;
+            var t = tx[i][0];
+            var x = tx[i][1];
+            if (t == 1)
+            {
+                topIndex--;
+                array[topIndex] = x;
+            }
+            else if (t == 2)
+            {
+                array[tailIndex] = x;
+                tailIndex++;
+            }
+            else if (t == 3)
+            {
+                IOLibrary.WriteLine(array[topIndex + x - 1]);
+            }
         }
-
-        var sub = A.Zip(B, (a, b) => a - b);
-
-        var array = B.Concat(sub);
-        var sortedArray = array.Sort().Reverse().ToArray();
-
-        var ans = 0L;
-        for (int i = 0; i < K; i++)
-        {
-            ans += sortedArray[i];
-        }
-
-        IOLibrary.WriteLine(ans);
     }
 }
 
