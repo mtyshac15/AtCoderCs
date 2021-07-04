@@ -15,45 +15,26 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var N = IOLibrary.ReadInt();
+        var (N, K) = IOLibrary.ReadInt2();
 
-        var mod = 46;
-        var A = IOLibrary.ReadIntArray();
-        var B = IOLibrary.ReadIntArray();
-        var C = IOLibrary.ReadIntArray();
+        var A = new int[N];
+        var B = new int[N];
+        for (int i = 0; i < N; i++)
+        {
+            var (a, b) = IOLibrary.ReadInt2();
+            A[i] = a;
+            B[i] = b;
+        }
 
-        var sortedA = A.Select(x => x % mod).ToList();
-        sortedA.Sort();
+        var sub = A.Zip(B, (a, b) => a - b);
 
-        var sortedB = B.Select(x => x % mod).ToList();
-        sortedB.Sort();
-
-        var sortedC = C.Select(x => x % mod).ToList();
-        sortedC.Sort();
+        var array = B.Concat(sub);
+        var sortedArray = array.Sort().Reverse().ToArray();
 
         var ans = 0L;
-
-        for (int a = 0; a < mod; a++)
+        for (int i = 0; i < K; i++)
         {
-            for (int b = 0; b < mod; b++)
-            {
-                for (int c = 0; c < mod; c++)
-                {
-                    var sum = a + b + c;
-                    if (sum % mod == 0)
-                    {
-                        var countA = sortedA.LowerBound(a + 1) - sortedA.LowerBound(a);
-                        var countB = sortedB.LowerBound(b + 1) - sortedB.LowerBound(b);
-                        var countC = sortedC.LowerBound(c + 1) - sortedC.LowerBound(c);
-
-                        var count = 1L;
-                        count *= countA;
-                        count *= countB;
-                        count *= countC;
-                        ans += count;
-                    }
-                }
-            }
+            ans += sortedArray[i];
         }
 
         IOLibrary.WriteLine(ans);
