@@ -16,48 +16,46 @@ public class Problem : ProblemBase
     public override void Solve()
     {
         var N = IOLibrary.ReadInt();
-        var A = IOLibrary.ReadInt2DArray(N, N);
-        var M = IOLibrary.ReadInt();
-        var XY = IOLibrary.ReadInt2DArray(M, 2);
 
-        var isHate = new bool[N, N];
-        for (int i = 0; i < M; i++)
+        var mod = 46;
+        var A = IOLibrary.ReadIntArray();
+        var B = IOLibrary.ReadIntArray();
+        var C = IOLibrary.ReadIntArray();
+
+        var sortedA = A.Select(x => x % mod).ToList();
+        sortedA.Sort();
+
+        var sortedB = B.Select(x => x % mod).ToList();
+        sortedB.Sort();
+
+        var sortedC = C.Select(x => x % mod).ToList();
+        sortedC.Sort();
+
+        var ans = 0L;
+
+        for (int a = 0; a < mod; a++)
         {
-            isHate[XY[i, 0] - 1, XY[i, 1] - 1] = true;
-            isHate[XY[i, 1] - 1, XY[i, 0] - 1] = true;
-        }
-
-        var min = long.MaxValue;
-
-        foreach (var indexArray in MathLibrary.AllPermutation(N))
-        {
-            var total = 0L;
-            var hasPath = true;
-            var zone = 0;
-            for (int i = 0; i < indexArray.Count; i++)
+            for (int b = 0; b < mod; b++)
             {
-                var current = indexArray[i];
-                total += A[current, zone];
-                zone++;
-
-                if (i < indexArray.Count - 1)
+                for (int c = 0; c < mod; c++)
                 {
-                    var next = indexArray[i + 1];
-                    if (isHate[current, next])
+                    var sum = a + b + c;
+                    if (sum % mod == 0)
                     {
-                        hasPath = false;
-                        break;
+                        var countA = sortedA.LowerBound(a + 1) - sortedA.LowerBound(a);
+                        var countB = sortedB.LowerBound(b + 1) - sortedB.LowerBound(b);
+                        var countC = sortedC.LowerBound(c + 1) - sortedC.LowerBound(c);
+
+                        var count = 1L;
+                        count *= countA;
+                        count *= countB;
+                        count *= countC;
+                        ans += count;
                     }
                 }
             }
-
-            if (hasPath)
-            {
-                min = Math.Min(total, min);
-            }
         }
 
-        var ans = (min == long.MaxValue) ? -1 : min;
         IOLibrary.WriteLine(ans);
     }
 }
@@ -277,6 +275,11 @@ public class IOLibrary
     public static ModInt[] ReadModIntArray(int mod)
     {
         ModInt.Init(mod);
+        return IOLibrary.ReadModIntArray();
+    }
+
+    public static ModInt[] ReadModIntArray()
+    {
         return IOLibrary.ReadStringArray()
                         .Select(item => (ModInt)int.Parse(item))
                         .ToArray();

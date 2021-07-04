@@ -216,6 +216,11 @@ public class IOLibrary
     public static ModInt[] ReadModIntArray(int mod)
     {
         ModInt.Init(mod);
+        return IOLibrary.ReadModIntArray();
+    }
+
+    public static ModInt[] ReadModIntArray()
+    {
         return IOLibrary.ReadStringArray()
                         .Select(item => (ModInt)int.Parse(item))
                         .ToArray();
