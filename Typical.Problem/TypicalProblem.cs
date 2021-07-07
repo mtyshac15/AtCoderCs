@@ -15,35 +15,34 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var str = IOLibrary.ReadStringArray();
-        var N = str[0].ToCharArray();
-        var K = int.Parse(str[1]);
+        var (N, M) = IOLibrary.ReadInt2();
 
-        var eighth = N.Select(x => long.Parse(x.ToString())).Reverse().ToArray();
-        for (int i = 0; i < K; i++)
+        //隣接リストを作成
+        var graph = new List<int>[N];
+        for (int i = 0; i < N; i++)
         {
-            var dec = 0L;
-
-            //10進数に変換
-            for (int j = 0; j < eighth.Length; j++)
-            {
-                dec += eighth[j] * MathLibrary.Pow(8, j);
-            }
-
-            //9進数に変換
-            var ninth = MathLibrary.ConvertBasis(dec, 9);
-            for (int j = 0; j < ninth.Count; j++)
-            {
-                if (ninth[j] == 8)
-                {
-                    ninth[j] = 5;
-                }
-            }
-
-            eighth = ninth.ToArray();
+            graph[i] = new List<int>();
         }
 
-        var ans = string.Join("", eighth.Reverse());
+        for (int i = 0; i < M; i++)
+        {
+            var (a, b) = IOLibrary.ReadInt2();
+            graph[a - 1].Add(b - 1);
+            graph[b - 1].Add(a - 1);
+        }
+
+        var ans = 0;
+        for (int i = 0; i < N; i++)
+        {
+            var v = graph[i];
+            v.Sort();
+            var count = v.UpperBound(i);
+            if (count == 1)
+            {
+                ans++;
+            }
+        }
+
         IOLibrary.WriteLine(ans);
     }
 }
