@@ -15,32 +15,20 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var (N, M) = IOLibrary.ReadInt2();
+        var (N, L) = IOLibrary.ReadInt2();
 
-        //隣接リストを作成
-        var graph = new List<int>[N];
-        for (int i = 0; i < N; i++)
-        {
-            graph[i] = new List<int>();
-        }
+        ModInt.Init();
 
-        for (int i = 0; i < M; i++)
-        {
-            var (a, b) = IOLibrary.ReadInt2();
-            graph[a - 1].Add(b - 1);
-            graph[b - 1].Add(a - 1);
-        }
+        ModInt ans = 0L;
 
-        var ans = 0;
-        for (int i = 0; i < N; i++)
+        //L段上る回数
+        var step = N / L;
+        for (int lStep = 0; lStep < step + 1; lStep++)
         {
-            var v = graph[i];
-            v.Sort();
-            var count = v.UpperBound(i);
-            if (count == 1)
-            {
-                ans++;
-            }
+            //1段上る回数
+            var oneStep = N - L * lStep;
+            var comb = ModInt.Combination(lStep + oneStep, lStep);
+            ans += comb;
         }
 
         IOLibrary.WriteLine(ans);
@@ -1307,6 +1295,10 @@ public struct ModInt : IEquatable<ModInt>
 
     private int value;
 
+    private static IList<long> facList;
+    private static IList<long> facInvList;
+    private static IList<long> invList;
+
     public ModInt(int value)
         : this((long)value)
     {
@@ -1418,9 +1410,10 @@ public struct ModInt : IEquatable<ModInt>
 
     #region 
 
-    public static void Init(int m)
+    public static void Init(int m = ModInt.MOD)
     {
         ModInt.m = m;
+        ModInt.CombinationInit();
     }
 
     /// <summary>
@@ -1470,9 +1463,36 @@ public struct ModInt : IEquatable<ModInt>
         return ans;
     }
 
+    public static void CombinationInit()
+    {
+        var max = 510000;
+        ModInt.facList = new long[max];
+        ModInt.facList[0] = 1;
+        ModInt.facList[1] = 1;
+
+        ModInt.facInvList = new long[max];
+        ModInt.facInvList[0] = 1;
+        ModInt.facInvList[1] = 1;
+
+        ModInt.invList = new long[max];
+        ModInt.invList[1] = 1;
+
+        for (int i = 2; i < max; i++)
+        {
+            ModInt.facList[i] = ModInt.facList[i - 1] * i % ModInt.m;
+            ModInt.invList[i] = ModInt.m - ModInt.invList[ModInt.m % i] * (ModInt.m / i) % ModInt.m;
+            ModInt.facInvList[i] = ModInt.facInvList[i - 1] * ModInt.invList[i] % ModInt.m;
+        }
+    }
+
     public static ModInt Combination(ModInt n, ModInt k)
     {
-        return ModInt.Permutation(n, k) / ModInt.Factorial(k);
+        if (n < k)
+        {
+            return 0;
+        }
+
+        return ModInt.facList[n.ToInt()] * (ModInt.facInvList[k.ToInt()] * ModInt.facInvList[(n - k).ToInt()] % ModInt.m);
     }
 
     /// <summary>

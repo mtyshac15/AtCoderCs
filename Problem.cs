@@ -1375,6 +1375,10 @@ public struct ModInt : IEquatable<ModInt>
 
     private int value;
 
+    private static IList<long> facList;
+    private static IList<long> facInvList;
+    private static IList<long> invList;
+
     public ModInt(int value)
         : this((long)value)
     {
@@ -1486,9 +1490,10 @@ public struct ModInt : IEquatable<ModInt>
 
     #region 
 
-    public static void Init(int m)
+    public static void Init(int m = ModInt.MOD)
     {
         ModInt.m = m;
+        ModInt.CombinationInit();
     }
 
     /// <summary>
@@ -1538,9 +1543,36 @@ public struct ModInt : IEquatable<ModInt>
         return ans;
     }
 
+    public static void CombinationInit()
+    {
+        var max = 510000;
+        ModInt.facList = new long[max];
+        ModInt.facList[0] = 1;
+        ModInt.facList[1] = 1;
+
+        ModInt.facInvList = new long[max];
+        ModInt.facInvList[0] = 1;
+        ModInt.facInvList[1] = 1;
+
+        ModInt.invList = new long[max];
+        ModInt.invList[1] = 1;
+
+        for (int i = 2; i < max; i++)
+        {
+            ModInt.facList[i] = ModInt.facList[i - 1] * i % ModInt.m;
+            ModInt.invList[i] = ModInt.m - ModInt.invList[ModInt.m % i] * (ModInt.m / i) % ModInt.m;
+            ModInt.facInvList[i] = ModInt.facInvList[i - 1] * ModInt.invList[i] % ModInt.m;
+        }
+    }
+
     public static ModInt Combination(ModInt n, ModInt k)
     {
-        return ModInt.Permutation(n, k) / ModInt.Factorial(k);
+        if (n < k)
+        {
+            return 0;
+        }
+
+        return ModInt.facList[n.ToInt()] * (ModInt.facInvList[k.ToInt()] * ModInt.facInvList[(n - k).ToInt()] % ModInt.m);
     }
 
     /// <summary>

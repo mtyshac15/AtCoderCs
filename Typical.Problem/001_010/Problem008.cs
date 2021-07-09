@@ -13,7 +13,6 @@ namespace Typical.Problem008
             var N = IOLibrary.ReadInt();
             var S = IOLibrary.ReadLine();
 
-            int mod = 1000000007;
             string sourceArray = "atcoder";
 
             var dp = new long[sourceArray.Length + 1][];
@@ -33,7 +32,7 @@ namespace Typical.Problem008
                         //j文字目を取る場合
                         dp[i + 1][j + 1] += dp[i][j];
                     }
-                    dp[i][j + 1] %= mod;
+                    dp[i][j + 1] %= ModInt.MOD;
                 }
             }
 
