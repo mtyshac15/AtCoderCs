@@ -14,7 +14,7 @@ namespace Typical.Problem050
             var (N, L) = IOLibrary.ReadInt2();
 
             ModInt.Init();
-            
+
             ModInt ans = 0L;
 
             //L段上る回数

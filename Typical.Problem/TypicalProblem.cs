@@ -15,20 +15,14 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var (N, L) = IOLibrary.ReadInt2();
+        var N = IOLibrary.ReadInt();
 
-        ModInt.Init();
-
-        ModInt ans = 0L;
-
-        //L段上る回数
-        var step = N / L;
-        for (int lStep = 0; lStep < step + 1; lStep++)
+        var ans = 1L;
+        for (int i = 0; i < N; i++)
         {
-            //1段上る回数
-            var oneStep = N - L * lStep;
-            var comb = ModInt.Combination(lStep + oneStep, lStep);
-            ans += comb;
+            var A = IOLibrary.ReadIntArray();
+            ans *= A.Sum();
+            ans %= ModInt.MOD;
         }
 
         IOLibrary.WriteLine(ans);
