@@ -15,17 +15,40 @@ public class Problem : ProblemBase
 
     public override void Solve()
     {
-        var N = IOLibrary.ReadInt();
+        var (N, Q) = IOLibrary.ReadInt2();
+        var A = IOLibrary.ReadIntArray();
 
-        var ans = 1L;
-        for (int i = 0; i < N; i++)
+        //不便さを集計
+        var inconvenience = new long[N + 1];
+        for (int i = 0; i < N - 1; i++)
         {
-            var A = IOLibrary.ReadIntArray();
-            ans *= A.Sum();
-            ans %= ModInt.MOD;
+            var sub = A[i + 1] - A[i];
+            inconvenience[i + 1] = sub;
         }
 
-        IOLibrary.WriteLine(ans);
+        var sum = inconvenience.Sum(x => Math.Abs(x));
+
+        for (int i = 0; i < Q; i++)
+        {
+            var (L, R, V) = IOLibrary.ReadInt3();
+
+            var before = Math.Abs(inconvenience[L - 1]) + Math.Abs(inconvenience[R]);
+            if (L > 1)
+            {
+                inconvenience[L - 1] += V;
+            }
+
+            if (R < N)
+            {
+                inconvenience[R] -= V;
+            }
+
+            var after = Math.Abs(inconvenience[L - 1]) + Math.Abs(inconvenience[R]);
+
+            sum += (after - before);
+
+            IOLibrary.WriteLine(sum);
+        }
     }
 }
 
