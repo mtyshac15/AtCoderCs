@@ -10,108 +10,39 @@ public class Problem : ProblemBase
     public static void Main(string[] args)
     {
         var problem = new Problem();
-        problem.SolveD();
+        problem.SolveC();
     }
 
-    private struct Edge
+    public override void SolveC()
     {
-        public Edge(int to, long cost)
+        var (N, M) = IOLibrary.ReadInt2();
+        var A = IOLibrary.ReadLongArray();
+        var B = IOLibrary.ReadLongArray();
+
+        var sortedA = A.Distinct().ToArray().Sort();
+        var sortedB = B.Distinct().ToArray().Sort();
+
+        var ans = long.MaxValue;
+
+        for (int i = 0; i < sortedA.Length; i++)
         {
-            this.To = to;
-            this.Cost = cost;
-        }
+            var a = sortedA[i];
+            var index = MathLibrary.LowerBound(sortedB, a);
 
-        public int To { get; }
-
-        public long Cost { get; }
-    }
-
-    public override void SolveD()
-    {
-        var (N, M, T) = IOLibrary.ReadInt3();
-        var A = IOLibrary.ReadIntArray();
-
-        //隣接リストを作成
-        var graph = new List<Edge>[N];
-        var reverseGraph = new List<Edge>[N];
-        for (int i = 0; i < N; i++)
-        {
-            graph[i] = new List<Edge>();
-            reverseGraph[i] = new List<Edge>();
-        }
-
-        for (int i = 0; i < M; i++)
-        {
-            var (a, b, c) = IOLibrary.ReadInt3();
-            graph[a - 1].Add(new Edge(b - 1, c));
-
-            //逆向きのグラフ
-            reverseGraph[b - 1].Add(new Edge(a - 1, c));
-        }
-
-        //1からkへの最短時間
-        var toArray = this.Dijkstra(graph, 0);
-
-        //iから1への最短時間
-        var fromArray = this.Dijkstra(reverseGraph, 0);
-
-        var ans = 0L;
-        for (int i = 0; i < N; i++)
-        {
-            var time = T - toArray[i] - fromArray[i];
-            if (time >= 0)
             {
-                var gold = A[i] * time;
-                ans = Math.Max(gold, ans);
+                var prevIndex = Math.Max(index - 1, 0);
+                var sub = Math.Abs(a - sortedB[prevIndex]);
+                ans = Math.Min(sub, ans);
+            }
+
+            {
+                var nextIndex = Math.Min(index, sortedB.Length - 1);
+                var sub = Math.Abs(a - sortedB[nextIndex]);
+                ans = Math.Min(sub, ans);
             }
         }
 
         IOLibrary.WriteLine(ans);
-    }
-
-    private IList<long> Dijkstra(IList<IList<Edge>> graph, int startIndex)
-    {
-        var n = graph.Count;
-        var toArray = Enumerable.Repeat(long.MaxValue, n).ToArray();
-
-        //最短時間が確定したノード
-        var used = new bool[n];
-
-        var currentIndex = startIndex;
-        used[currentIndex] = true;
-        toArray[currentIndex] = 0;
-
-        while (used.Any(flag => !flag))
-        {
-            foreach (var edge in graph[currentIndex])
-            {
-                var cost = toArray[currentIndex] + edge.Cost;
-                toArray[edge.To] = Math.Min(cost, toArray[edge.To]);
-            }
-
-            //最小のノードを探索
-            var minNode = -1;
-            var minCost = long.MaxValue;
-            for (int i = 0; i < n; i++)
-            {
-                if (!used[i] && toArray[i] < minCost)
-                {
-                    minNode = i;
-                    minCost = toArray[i];
-                }
-            }
-
-            //探索済みに追加
-            if (minNode == -1)
-            {
-                break;
-            }
-
-            used[minNode] = true;
-            currentIndex = minNode;
-        }
-
-        return toArray;
     }
 }
 
@@ -1917,6 +1848,14 @@ public abstract class ProblemBase
     }
 
     public virtual void SolveF()
+    {
+    }
+
+    public virtual void SolveG()
+    {
+    }
+
+    public virtual void SolveH()
     {
     }
 }

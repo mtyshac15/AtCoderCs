@@ -35,6 +35,16 @@ namespace AtCoder.Common
         {
 
         }
+
+        public virtual void SolveG()
+        {
+
+        }
+
+        public virtual void SolveH()
+        {
+
+        }
     }
 }
 

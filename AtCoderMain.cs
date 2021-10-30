@@ -8,7 +8,7 @@ public class AtCoderMain
 {
     static void Main(string[] args)
     {
-#if false
+#if true
         AtCoderMain.SolveProblem();
 #else
         AtCoderMain.SolveTypicalProblem();
@@ -20,12 +20,12 @@ public class AtCoderMain
         Action method = null;
         AtCoder.Common.ProblemBase problem;
 
-        problem = new ABC035.Problem();
+        problem = new ABC212.Problem();
 
         //method = problem.SolveA;
         //method = problem.SolveB;
-        //method = problem.SolveC;
-        method = problem.SolveD;
+        method = problem.SolveC;
+        //method = problem.SolveD;
         //method = problem.SolveE;
         //method = problem.SolveF;
 
