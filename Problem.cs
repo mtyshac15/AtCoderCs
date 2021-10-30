@@ -10,39 +10,57 @@ public class Problem : ProblemBase
     public static void Main(string[] args)
     {
         var problem = new Problem();
-        problem.SolveC();
+        problem.SolveD();
     }
 
-    public override void SolveC()
+    public override void SolveD()
     {
-        var (N, M) = IOLibrary.ReadInt2();
-        var A = IOLibrary.ReadLongArray();
-        var B = IOLibrary.ReadLongArray();
-
-        var sortedA = A.Distinct().ToArray().Sort();
-        var sortedB = B.Distinct().ToArray().Sort();
-
-        var ans = long.MaxValue;
-
-        for (int i = 0; i < sortedA.Length; i++)
+        var (N, Q) = IOLibrary.ReadInt2();
+        var graph = MathLibrary.GetGraph(N);
+        var reverseGraph = MathLibrary.GetGraph(N);
+        for (int i = 0; i < Q; i++)
         {
-            var a = sortedA[i];
-            var index = MathLibrary.LowerBound(sortedB, a);
-
+            var query = IOLibrary.ReadStringArray();
+            var c = int.Parse(query[0]);
+            if (c == 1)
             {
-                var prevIndex = Math.Max(index - 1, 0);
-                var sub = Math.Abs(a - sortedB[prevIndex]);
-                ans = Math.Min(sub, ans);
+                var x = int.Parse(query[1]);
+                var y = int.Parse(query[2]);
+
+                graph[x - 1].Add(y - 1);
+                reverseGraph[y - 1].Add(x - 1);
             }
-
+            else if (c == 2)
             {
-                var nextIndex = Math.Min(index, sortedB.Length - 1);
-                var sub = Math.Abs(a - sortedB[nextIndex]);
-                ans = Math.Min(sub, ans);
+                var x = int.Parse(query[1]);
+                var y = int.Parse(query[2]);
+
+                graph[x - 1].Remove(y - 1);
+                reverseGraph[y - 1].Remove(x - 1);
+            }
+            else if (c == 3)
+            {
+                var x = int.Parse(query[1]);
+
+                var start = x - 1;
+                while (reverseGraph[start].Count > 0)
+                {
+                    start = reverseGraph[start].FirstOrDefault();
+                }
+
+                var list = new List<int>();
+                list.Add(start + 1);
+
+                var node = start;
+                while (graph[node].Count > 0)
+                {
+                    node = graph[node].FirstOrDefault();
+                    list.Add(node + 1);
+                }
+
+                IOLibrary.WriteLine($"{list.Count} {string.Join(" ", list)}");
             }
         }
-
-        IOLibrary.WriteLine(ans);
     }
 }
 
