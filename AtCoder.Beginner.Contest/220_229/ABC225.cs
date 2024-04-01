@@ -12,45 +12,12 @@ namespace ABC225
     {
         public override void SolveA()
         {
-            var S = IOLibrary.ReadLine();
-            var group = S.GroupBy(s => s);
-            var count = group.Count();
 
-            var ans = 6;
-            if (count == 1)
-            {
-                ans = 1;
-            }
-            else if (count == 2)
-            {
-                ans = 3;
-            }
-
-            IOLibrary.WriteLine(ans);
         }
 
         public override void SolveB()
         {
-            var N = IOLibrary.ReadInt();
-            var graph = MathLibrary.GetGraph(N);
 
-            for (int i = 0; i < N - 1; i++)
-            {
-                var (a, b) = IOLibrary.ReadInt2();
-                graph[a - 1].Add(b - 1);
-                graph[b - 1].Add(a - 1);
-            }
-
-            foreach (var list in graph)
-            {
-                if (list.Count == N - 1)
-                {
-                    IOLibrary.WriteYesOrNo(true);
-                    return;
-                }
-            }
-
-            IOLibrary.WriteYesOrNo(false);
         }
 
         public override void SolveC()
