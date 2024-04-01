@@ -1,83 +1,81 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 
-public class Problem : ProblemBase
+public class OldProblem
 {
     public static void Main(string[] args)
     {
-        var problem = new Problem();
-        problem.SolveD();
+        var problem = new OldProblem();
+        problem.Solve();
     }
 
-    public override void SolveD()
+    public void Solve()
     {
-        var (N, Q) = IOLibrary.ReadInt2();
-        var graph = MathLibrary.GetGraph(N);
-        var reverseGraph = MathLibrary.GetGraph(N);
-        for (int i = 0; i < Q; i++)
+        var (H, W, N) = IOLibrary.ReadInt3();
+
+        var grid = new char[H, W];
+        for (int i = 0; i < H; i++)
         {
-            var query = IOLibrary.ReadStringArray();
-            var c = int.Parse(query[0]);
-            if (c == 1)
+            for (int j = 0; j < W; j++)
             {
-                var x = int.Parse(query[1]);
-                var y = int.Parse(query[2]);
-
-                graph[x - 1].Add(y - 1);
-                reverseGraph[y - 1].Add(x - 1);
-            }
-            else if (c == 2)
-            {
-                var x = int.Parse(query[1]);
-                var y = int.Parse(query[2]);
-
-                graph[x - 1].Remove(y - 1);
-                reverseGraph[y - 1].Remove(x - 1);
-            }
-            else if (c == 3)
-            {
-                var x = int.Parse(query[1]);
-
-                var start = x - 1;
-                while (reverseGraph[start].Count > 0)
-                {
-                    start = reverseGraph[start].FirstOrDefault();
-                }
-
-                var list = new List<int>();
-                list.Add(start + 1);
-
-                var node = start;
-                while (graph[node].Count > 0)
-                {
-                    node = graph[node].FirstOrDefault();
-                    list.Add(node + 1);
-                }
-
-                IOLibrary.WriteLine($"{list.Count} {string.Join(" ", list)}");
+                grid[i, j] = '.';
             }
         }
+
+        var currentI = 0;
+        var currentJ = 0;
+
+        var directionI = -1;
+        var directionJ = 0;
+
+        for (var i = 0; i < N; i++)
+        {
+            var tempI = directionI;
+            var tempJ = directionJ;
+
+            if (grid[currentI, currentJ] == '.')
+            {
+                grid[currentI, currentJ] = '#';
+                //[0. 1]
+                //[-1 0]
+
+                directionI = tempJ;
+                directionJ = -tempI;
+            }
+            else
+            {
+                grid[currentI, currentJ] = '.';
+
+                //[0. -1]
+                //[1 0]
+
+                directionI = -tempJ;
+                directionJ = tempI;
+            }
+
+            currentI += directionI;
+            currentI %= N;
+            currentJ += directionJ;
+            currentJ %= N;
+        }
+
+        IOLibrary.OutputGrid(grid);
     }
 }
 
 #region "Library"
-
-public class IOLibrary
+public static class IOLibrary
 {
-    public IOLibrary()
-    {
-    }
+    private static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
 
     #region "Method"
-
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
 
-    private static Action<object> WriteMethod { get; set; } = Console.WriteLine;
+    private static Action<object> WriteMethod { get; set; } = Console.Write;
 
+    private static Action<object> WriteMethodLine { get; set; } = Console.WriteLine;
 
     public static void SetReadLineMethod(Func<string> readLine)
     {
@@ -86,11 +84,10 @@ public class IOLibrary
 
     public static void SetWriteLineMethod(Action<object> writeLine)
     {
-        IOLibrary.WriteMethod = writeLine;
+        IOLibrary.WriteMethodLine = writeLine;
     }
 
     #region "string"
-
     public static string ReadLine()
     {
         return IOLibrary.ReadMethod();
@@ -137,11 +134,9 @@ public class IOLibrary
 
         return matrix;
     }
-
     #endregion
 
     #region "int"
-
     public static int ReadInt()
     {
         return int.Parse(IOLibrary.ReadLine());
@@ -209,7 +204,6 @@ public class IOLibrary
     #endregion
 
     #region "long"
-
     public static long ReadLong()
     {
         return long.Parse(IOLibrary.ReadLine());
@@ -273,7 +267,6 @@ public class IOLibrary
         }
         return array;
     }
-
     #endregion
 
     public static ModInt[] ReadModIntArray(int mod)
@@ -288,30 +281,41 @@ public class IOLibrary
                         .Select(item => (ModInt)int.Parse(item))
                         .ToArray();
     }
-
     #endregion
 
     #region "Output"
-
     public static void WriteLine(object value = null)
     {
-        var sw = new StreamWriter(Console.OpenStandardOutput())
-        {
-            AutoFlush = false
-        };
-
         Console.SetOut(sw);
-        IOLibrary.WriteMethod(value);
+        IOLibrary.WriteMethodLine(value);
+        Console.Out.Flush();
+    }
+
+    public static void OutputGrid<T>(T[,] grid)
+    {
+        Console.SetOut(sw);
+
+        //行、列
+        var row = grid.GetLength(0);
+        var col = grid.GetLength(0);
+
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++)
+            {
+                IOLibrary.WriteMethod(grid[i, j]);
+            }
+            IOLibrary.WriteMethodLine(Environment.NewLine);
+        }
         Console.Out.Flush();
     }
 
     public static void OutputList<T>(IEnumerable<T> list)
     {
-        var sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
         Console.SetOut(sw);
         foreach (var value in list)
         {
-            IOLibrary.WriteMethod(value);
+            IOLibrary.WriteMethodLine(value);
         }
         Console.Out.Flush();
     }
@@ -332,7 +336,6 @@ public class IOLibrary
         var clone = System.Text.Json.JsonSerializer.Deserialize<T>(jsonString);
         return clone;
     }
-
     #endregion
 }
 
@@ -1153,11 +1156,9 @@ public static class MathLibrary
 
         return MathLibrary.BinarySearch(ok, ng, isOk);
     }
-
     #endregion
 
     #region "文字列"
-
     public static int Count(this string source, string searchStr)
     {
         return (source.Length - source.Replace(searchStr, "").Length) / searchStr.Length;
@@ -1210,7 +1211,6 @@ public static class MathLibrary
 public static class LinqEx
 {
     #region "ソート"
-
     public static IEnumerable<string> Sort(this IEnumerable<string> collection)
     {
         return collection.ToArray().Sort();
@@ -1250,11 +1250,9 @@ public static class LinqEx
     {
         return collection.OrderBy(item => Guid.NewGuid());
     }
-
     #endregion
 
     #region "生成"
-
     public static IEnumerable<long> Range(long start, long count)
     {
         var array = new long[count];
@@ -1274,7 +1272,6 @@ public static class LinqEx
         }
         return array;
     }
-
     #endregion
 
     public static IEnumerable<T> Skip<T>(this IEnumerable<T> collection, long count)
@@ -1306,17 +1303,14 @@ public static class LinqEx
     }
 
     #region "コレクション"
-
     public static IList<T> CreateList<T>(T item)
     {
         return new List<T>();
     }
-
     #endregion
 }
 
 #region
-
 public struct ModInt : IEquatable<ModInt>
 {
     public const int MOD = 1000000007;
@@ -1346,7 +1340,6 @@ public struct ModInt : IEquatable<ModInt>
     }
 
     #region
-
     public static implicit operator ModInt(int value)
     {
         return new ModInt(value);
@@ -1426,7 +1419,6 @@ public struct ModInt : IEquatable<ModInt>
     {
         return !(a == b);
     }
-
     #endregion
 
     public static ModInt Max
@@ -1438,7 +1430,6 @@ public struct ModInt : IEquatable<ModInt>
     }
 
     #region 
-
     public static void Init(int m = ModInt.MOD)
     {
         ModInt.m = m;
@@ -1671,7 +1662,6 @@ public struct Matrix
     }
 
     #region 
-
     public long RowCount
     {
         get { return this.matrix.RowCount; }
@@ -1758,7 +1748,6 @@ public struct Matrix
     {
         return c * a;
     }
-
     #endregion
 
     public long this[long row, long column]
@@ -1804,7 +1793,6 @@ public struct Cell : IEquatable<Cell>
     public long Column { get; }
 
     #region 
-
     public static bool operator ==(Cell cell1, Cell cell12)
     {
         return cell1.Equals(cell12);
@@ -1814,7 +1802,6 @@ public struct Cell : IEquatable<Cell>
     {
         return !(cell1 == cell12);
     }
-
     #endregion
 
     public bool Equals(Cell other)
@@ -1842,42 +1829,5 @@ public struct Cell : IEquatable<Cell>
         return $"({this.Row}, {this.Column})";
     }
 }
-
-public abstract class ProblemBase
-{
-    public virtual void SolveA()
-    {
-    }
-
-    public virtual void SolveB()
-    {
-    }
-
-    public virtual void SolveC()
-    {
-    }
-
-    public virtual void SolveD()
-    {
-    }
-
-    public virtual void SolveE()
-    {
-    }
-
-    public virtual void SolveF()
-    {
-    }
-
-    public virtual void SolveG()
-    {
-    }
-
-    public virtual void SolveH()
-    {
-    }
-}
-
 #endregion
-
 #endregion

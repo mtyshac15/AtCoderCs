@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 public static class IOLibrary
 {
-    private static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
-
     #region "Method"
+
     private static Func<string> ReadMethod { get; set; } = Console.ReadLine;
 
-    private static Action<object> WriteMethod { get; set; } = Console.Write;
-
-    private static Action<object> WriteMethodLine { get; set; } = Console.WriteLine;
+    private static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };
+    private static Action<object> WriteMethod { get; set; } = Console.WriteLine;
 
     public static void SetReadLineMethod(Func<string> readLine)
     {
@@ -21,7 +20,7 @@ public static class IOLibrary
 
     public static void SetWriteLineMethod(Action<object> writeLine)
     {
-        IOLibrary.WriteMethodLine = writeLine;
+        IOLibrary.WriteMethod = writeLine;
     }
 
     #region "string"
@@ -57,19 +56,6 @@ public static class IOLibrary
             }
         }
         return array;
-    }
-
-    public static Matrix GetMatrix(int rowCount, int colCount)
-    {
-        var matrix = new Matrix(rowCount, colCount);
-
-        for (var row = 0; row < rowCount; row++)
-        {
-            var rows = IOLibrary.ReadLongArray();
-            matrix.Init(row, rows);
-        }
-
-        return matrix;
     }
     #endregion
 
@@ -137,7 +123,6 @@ public static class IOLibrary
         }
         return array;
     }
-
     #endregion
 
     #region "long"
@@ -206,45 +191,34 @@ public static class IOLibrary
     }
     #endregion
 
-    public static ModInt[] ReadModIntArray(int mod)
-    {
-        ModInt.Init(mod);
-        return IOLibrary.ReadModIntArray();
-    }
-
-    public static ModInt[] ReadModIntArray()
-    {
-        return IOLibrary.ReadStringArray()
-                        .Select(item => (ModInt)int.Parse(item))
-                        .ToArray();
-    }
     #endregion
 
     #region "Output"
     public static void WriteLine(object value = null)
     {
         Console.SetOut(sw);
-        IOLibrary.WriteMethodLine(value);
+        IOLibrary.WriteMethod(value);
         Console.Out.Flush();
     }
 
     public static void OutputGrid<T>(T[,] grid)
     {
-        Console.SetOut(sw);
-
         //行、列
         var row = grid.GetLength(0);
         var col = grid.GetLength(0);
+
+        var strtBuilder = new StringBuilder();
 
         for (int i = 0; i < row; i++)
         {
             for (int j = 0; j < col; j++)
             {
-                IOLibrary.WriteMethod(grid[i, j]);
+                strtBuilder.Append($"{grid[i, j]}");
             }
-            IOLibrary.WriteMethodLine(string.Empty);
+            strtBuilder.AppendLine();
         }
-        Console.Out.Flush();
+
+        IOLibrary.WriteLine(strtBuilder.ToString());
     }
 
     public static void OutputList<T>(IEnumerable<T> list)
@@ -252,7 +226,7 @@ public static class IOLibrary
         Console.SetOut(sw);
         foreach (var value in list)
         {
-            IOLibrary.WriteMethodLine(value);
+            IOLibrary.WriteMethod(value);
         }
         Console.Out.Flush();
     }
@@ -274,10 +248,4 @@ public static class IOLibrary
         return clone;
     }
     #endregion
-}
-
-public class Scanner
-{
-    private string current;
-    private int currentIndex;
 }

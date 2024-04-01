@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <StartupObject>AtCoderCs.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,7 +12,6 @@
     <Compile Remove="AtCoder.Heuristic.Contest\**" />
     <Compile Remove="AtCoder.Regular.Contest\**" />
     <Compile Remove="AtCoderBeginnerContest\**" />
-    <Compile Remove="Contest\ABC\**" />
     <Compile Remove="Training\**" />
     <Compile Remove="Typical.Problem\**" />
     <EmbeddedResource Remove="AtCoder.Beginner.Contest\**" />
@@ -19,7 +19,6 @@
     <EmbeddedResource Remove="AtCoder.Heuristic.Contest\**" />
     <EmbeddedResource Remove="AtCoder.Regular.Contest\**" />
     <EmbeddedResource Remove="AtCoderBeginnerContest\**" />
-    <EmbeddedResource Remove="Contest\ABC\**" />
     <EmbeddedResource Remove="Training\**" />
     <EmbeddedResource Remove="Typical.Problem\**" />
     <None Remove="AtCoder.Beginner.Contest\**" />
@@ -27,13 +26,13 @@
     <None Remove="AtCoder.Heuristic.Contest\**" />
     <None Remove="AtCoder.Regular.Contest\**" />
     <None Remove="AtCoderBeginnerContest\**" />
-    <None Remove="Contest\ABC\**" />
     <None Remove="Training\**" />
     <None Remove="Typical.Problem\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Problem.cs" />
+    <Compile Remove="AtCoderMain.cs" />
+    <Compile Remove="OldProblem.cs" />
     <Compile Remove="Template.cs" />
   </ItemGroup>
 
@@ -48,13 +47,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Problem.cs" />
+    <None Include="AtCoderMain.cs" />
+    <None Include="OldProblem.cs" />
     <None Include="Template.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="AtCoder.Beginner.Contest\ABC.csproj" />
-    <ProjectReference Include="AtCoder.Common\AtCoder.Common.csproj" />
-    <ProjectReference Include="Typical.Problem\Typical.Problem.csproj" />
+    <ProjectReference Include="..\AtCoder.Beginner.Contest\ABC.csproj" />
+    <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
+    <ProjectReference Include="..\AtCoder.Heuristic.Contest\AHC.csproj" />
+    <ProjectReference Include="..\AtCoder.Regular.Contest\ARC.csproj" />
+    <ProjectReference Include="..\Contest\Contest.csproj" />
+    <ProjectReference Include="..\Training\Training.csproj" />
+    <ProjectReference Include="..\Typical.Problem\Typical.Problem.csproj" />
   </ItemGroup>
 </Project>

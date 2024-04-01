@@ -17,6 +17,7 @@ namespace Typical.Problem002
                 return;
             }
 
+            //カッコの組み合わせを全パターン探索
             for (int bit = 0; bit < (1 << N); bit++)
             {
                 var str = "";
@@ -79,20 +80,24 @@ namespace Typical.Problem002
             {
                 var numArray = new int[N];
 
+                //"("の位置を -1 で初期化
                 foreach (var index in indexList)
                 {
                     numArray[index] = -1;
                 }
 
+                //")"の位置を 1 で初期化 
                 foreach (var index in sourceSequence.Except(indexList))
                 {
                     numArray[index] = 1;
                 }
 
+                //正しいカッコかどうかをチェック
                 var ans = 0;
                 var isValid = true;
                 foreach (var num in numArray)
                 {
+                    //先頭から加算していき、合計が正の数になった場合は正しいカッコでない
                     ans += num;
                     if (ans > 0)
                     {
@@ -112,6 +117,13 @@ namespace Typical.Problem002
                     if (hashSet.Add(record))
                     {
                         IOLibrary.WriteLine(record);
+                    }
+                    else
+                    {
+                        IOLibrary.WriteLine();
+                        IOLibrary.WriteLine("#");
+                        IOLibrary.WriteLine(record);
+                        IOLibrary.WriteLine();
                     }
                 }
             }

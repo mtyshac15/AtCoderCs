@@ -164,21 +164,7 @@ public static class Easy050
     /// </summary>
     public static void CardGameForTwo()
     {
-        var N = IOLibrary.ReadInt();
-        var a = IOLibrary.ReadIntArray();
-        var sortedA = a.Sort()
-                       .Reverse()
-                       .Select((a, index) => new
-                       {
-                           Value = a,
-                           Index = index,
-                       });
-
-        var AliceSum = sortedA.Where(a => a.Index % 2 == 0).Sum(a => a.Value);
-        var BobSum = sortedA.Where(a => a.Index % 2 != 0).Sum(a => a.Value);
-
-        var ans = AliceSum - BobSum;
-        Console.WriteLine(ans);
+       
     }
 
     #endregion
