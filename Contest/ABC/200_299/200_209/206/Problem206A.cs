@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace AtCoderCs.Contest.ABC336
+namespace AtCoderCs.Contest.ABC206
 {
     public class ProblemA
     {
@@ -15,25 +14,27 @@ namespace AtCoderCs.Contest.ABC336
         }
 
         /// <summary>
-        /// Long Loong
+        /// Maxi-Buying
         /// </summary>
         public void Solve()
         {
             var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-            var strBuilder = new StringBuilder();
-            strBuilder.Append("L");
+            var price = (int)(N * 1.08);
 
-            for (int i = 0; i < N; i++)
+            var originalPrice = 206;
+            if (price < originalPrice)
             {
-                strBuilder.Append("o");
+                Console.WriteLine("Yay!");
             }
-
-            strBuilder.Append("n");
-            strBuilder.Append("g");
-
-            var ans = strBuilder.ToString();
-            Console.WriteLine(ans);
+            else if (price > originalPrice)
+            {
+                Console.WriteLine(":(");
+            }
+            else
+            {
+                Console.WriteLine("so-so");
+            }
         }
     }
 }

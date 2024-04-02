@@ -12,44 +12,10 @@ namespace ABC212
     {
         public override void SolveA()
         {
-            var (A, B) = IOLibrary.ReadInt2();
-            if (A > 0 && B == 0)
-            {
-                IOLibrary.WriteLine("Gold");
-            }
-            else if (A == 0 && B > 0)
-            {
-                IOLibrary.WriteLine("Silver");
-            }
-            else if (A > 0 && B > 0)
-            {
-                IOLibrary.WriteLine("Alloy");
-            }
         }
 
         public override void SolveB()
         {
-            var XStr = IOLibrary.ReadLine();
-            var X = XStr.Select(x => int.Parse(x.ToString())).ToArray();
-
-            if (X[0] == X[1]
-                && X[1] == X[2]
-                && X[2] == X[3])
-            {
-                IOLibrary.WriteLine("Weak");
-                return;
-            }
-
-            for (int i = 0; i < 3; i++)
-            {
-                if (X[i + 1] != (X[i] + 1) % 10)
-                {
-                    IOLibrary.WriteLine("Strong");
-                    return;
-                }
-            }
-
-            IOLibrary.WriteLine("Weak");
         }
 
         public override void SolveC()
@@ -97,18 +63,18 @@ namespace ABC212
             {
                 var query = IOLibrary.ReadLine();
                 var p = int.Parse(query[0].ToString());
-                if(p == 1)
+                if (p == 1)
                 {
                     var X = int.Parse(query[1].ToString());
                     array[i] = X;
                 }
-                else if(p == 2)
+                else if (p == 2)
                 {
                     var X = int.Parse(query[1].ToString());
                     array[i] = -X;
                     p2InsdexList.Add(i);
                 }
-                else if(p == 3)
+                else if (p == 3)
                 {
                     //集計
                 }

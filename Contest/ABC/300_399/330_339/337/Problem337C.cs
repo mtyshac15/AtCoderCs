@@ -29,7 +29,7 @@ namespace AtCoderCs.Contest.ABC337
             {
                 if (!set.Contains(i))
                 {
-                    //1からNのうち、Aに存在しな人が最後尾
+                    //1からNのうち、Aに存在しない人が最後尾
                     tail = i;
                 }
             }

@@ -1,16 +1,16 @@
-using AtCoderCs.Contest.ABC336;
+using AtCoderCs.Contest.ABC206;
 using Contest.Tests;
 using System.Reflection;
 
-namespace AtCoderCs.Contest.Tests.ABC336
+namespace AtCoderCs.Contest.Tests.ABC206
 {
     [TestClass]
     public class Problem
     {
 #if Practice
         private static readonly string _contestSection = $"ABC";
-        private static readonly string _problemFolder = Path.Combine($"300_399", "330_339");
-        private static readonly string _problemNumber = $"336";
+        private static readonly string _problemFolder = Path.Combine($"200_299", "200_209");
+        private static readonly string _problemNumber = $"206";
 
         private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
