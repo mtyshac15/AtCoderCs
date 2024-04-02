@@ -7,6 +7,15 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <Configurations>Debug;Release;Practice;Contest</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Practice|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Practice</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Contest|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Contest</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,6 +37,18 @@
     <None Remove="ABC\200_299\220_229\225\Sample\225B_Output.txt" />
     <None Remove="ABC\200_299\220_229\225\Sample\225C_Input.txt" />
     <None Remove="ABC\200_299\220_229\225\Sample\225C_Output.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336A_Input.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336A_Output.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336B_Input.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336B_Output.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336C_Input.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336C_Output.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336D_Input.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336D_Output.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336E_Input.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336E_Output.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336F_Input.txt" />
+    <None Remove="ABC\300_399\330_339\336\Sample\336F_Output.txt" />
     <None Remove="ABC\300_399\330_339\337\Sample\337A_Input.txt" />
     <None Remove="ABC\300_399\330_339\337\Sample\337A_Output.txt" />
     <None Remove="ABC\300_399\330_339\337\Sample\337B_Input.txt" />
@@ -105,6 +126,42 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\200_299\220_229\225\Sample\225A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336D_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336D_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336E_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336E_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336F_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336F_Output.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\300_399\330_339\337\Sample\337A_Input.txt">

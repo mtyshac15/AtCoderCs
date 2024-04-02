@@ -14,6 +14,7 @@ namespace AtCoderCs.Contest.Tests.ABC340
 
         private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
+#if Practice
         [TestMethod]
         public void SolveA()
         {
@@ -24,5 +25,6 @@ namespace AtCoderCs.Contest.Tests.ABC340
 
             //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
     }
 }

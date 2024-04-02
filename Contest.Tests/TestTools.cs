@@ -47,8 +47,7 @@ namespace Contest.Tests
             {
                 Console.SetIn(input);
 
-                var sampleCount = int.Parse(Console.ReadLine());
-                for (int i = 0; i < sampleCount; i++)
+                while (!input.EndOfStream)
                 {
                     using (var output = new StringWriter())
                     {

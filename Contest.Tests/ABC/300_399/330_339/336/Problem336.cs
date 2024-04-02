@@ -1,17 +1,16 @@
-
-using AtCoderCs.Contest.ABC225;
+using AtCoderCs.Contest.ABC336;
 using Contest.Tests;
 using System.Reflection;
 
-namespace AtCoderCs.Contest.Tests.ABC225
+namespace AtCoderCs.Contest.Tests.ABC336
 {
     [TestClass]
     public class Problem
     {
 #if Practice
         private static readonly string _contestSection = $"ABC";
-        private static readonly string _problemFolder = Path.Combine($"200_299", "220_229");
-        private static readonly string _problemNumber = $"225";
+        private static readonly string _problemFolder = Path.Combine($"300_399", "330_339");
+        private static readonly string _problemNumber = $"336";
 
         private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
@@ -22,6 +21,8 @@ namespace AtCoderCs.Contest.Tests.ABC225
 
             var problem = new ProblemA();
             Action method = problem.Solve;
+
+            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
 
         [TestMethod]
@@ -32,7 +33,7 @@ namespace AtCoderCs.Contest.Tests.ABC225
             var problem = new ProblemB();
             Action method = problem.Solve;
 
-            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
 
         [TestMethod]
@@ -43,7 +44,7 @@ namespace AtCoderCs.Contest.Tests.ABC225
             var problem = new ProblemC();
             Action method = problem.Solve;
 
-            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
 
         [TestMethod]
@@ -62,7 +63,7 @@ namespace AtCoderCs.Contest.Tests.ABC225
         {
             var prblemLevel = $"E";
 
-            var problem = new ProblemD();
+            var problem = new ProblemE();
             Action method = problem.Solve;
 
             //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
@@ -73,7 +74,7 @@ namespace AtCoderCs.Contest.Tests.ABC225
         {
             var prblemLevel = $"F";
 
-            var problem = new ProblemD();
+            var problem = new ProblemF();
             Action method = problem.Solve;
 
             //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);

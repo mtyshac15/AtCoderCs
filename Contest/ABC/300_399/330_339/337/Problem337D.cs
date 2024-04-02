@@ -16,6 +16,8 @@ namespace AtCoderCs.Contest.ABC337
 
         public void Solve()
         {
+            var S = Console.ReadLine().Trim();
+
             var ans = 0;
             Console.WriteLine(ans);
         }

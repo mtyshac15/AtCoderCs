@@ -7,6 +7,7 @@ namespace AtCoderCs.Contest.Tests.ABC000
     [TestClass]
     public class Problem
     {
+#if Practice
         private static readonly string _contestSection = $"ABC";
         private static readonly string _problemFolder = Path.Combine($"000_099", "000_009");
         private static readonly string _problemNumber = $"000";
@@ -78,5 +79,6 @@ namespace AtCoderCs.Contest.Tests.ABC000
 
             //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
     }
 }

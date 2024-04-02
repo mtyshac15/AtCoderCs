@@ -8,6 +8,7 @@ namespace AtCoderCs.Contest.Tests.ABC338
     [TestClass]
     public class Problem
     {
+#if Practice
         private static readonly string _contestSection = $"ABC";
         private static readonly string _problemFolder = Path.Combine($"300_399", "330_339");
         private static readonly string _problemNumber = $"338";
@@ -79,5 +80,6 @@ namespace AtCoderCs.Contest.Tests.ABC338
 
             //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
     }
 }

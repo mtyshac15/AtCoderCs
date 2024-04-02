@@ -7,6 +7,7 @@ namespace AtCoderCs.Contest.Tests.ABC337
     [TestClass]
     public class Problem
     {
+#if Practice
         private static readonly string _contestSection = $"ABC";
         private static readonly string _problemFolder = Path.Combine($"300_399", "330_339");
         private static readonly string _problemNumber = $"337";
@@ -32,7 +33,7 @@ namespace AtCoderCs.Contest.Tests.ABC337
             var problem = new ProblemB();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
 
         [TestMethod]
@@ -43,7 +44,7 @@ namespace AtCoderCs.Contest.Tests.ABC337
             var problem = new ProblemC();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
 
         [TestMethod]
@@ -78,5 +79,6 @@ namespace AtCoderCs.Contest.Tests.ABC337
 
             //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
     }
 }
