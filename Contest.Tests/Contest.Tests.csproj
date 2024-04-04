@@ -7,15 +7,17 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <Configurations>Debug;Release;Practice;Contest</Configurations>
+    <Configurations>Debug;Release;Practice;Contest;All</Configurations>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Practice|AnyCPU'">
     <DefineConstants>$(DefineConstants);Practice</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Contest|AnyCPU'">
-    <DefineConstants>$(DefineConstants);Contest</DefineConstants>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Contest|AnyCPU'" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='All|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Accepted;Contest;Practice</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,6 +33,22 @@
     <None Remove="ABC\000_099\000_009\000\Sample\000E_Output.txt" />
     <None Remove="ABC\000_099\000_009\000\Sample\000F_Input.txt" />
     <None Remove="ABC\000_099\000_009\000\Sample\000F_Output.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052A_Input.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052A_Output.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052B_Input.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052B_Output.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052C_Input.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052C_Output.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052D_Input.txt" />
+    <None Remove="ABC\000_099\050_059\052\Sample\052D_Output.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088A_Input.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088A_Output.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088B_Input.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088B_Output.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088C_Input.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088C_Output.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088D_Input.txt" />
+    <None Remove="ABC\000_099\080_089\088\Sample\088D_Output.txt" />
     <None Remove="ABC\200_299\200_209\206\Sample\206A_Input.txt" />
     <None Remove="ABC\200_299\200_209\206\Sample\206A_Output.txt" />
     <None Remove="ABC\200_299\200_209\206\Sample\206B_Input.txt" />
@@ -61,6 +79,30 @@
     <None Remove="ABC\200_299\220_229\225\Sample\225B_Output.txt" />
     <None Remove="ABC\200_299\220_229\225\Sample\225C_Input.txt" />
     <None Remove="ABC\200_299\220_229\225\Sample\225C_Output.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334A_Input.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334A_Output.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334B_Input.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334B_Output.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334C_Input.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334C_Output.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334D_Input.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334D_Output.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334E_Input.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334E_Output.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334F_Input.txt" />
+    <None Remove="ABC\300_399\330_339\334\Sample\334F_Output.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335A_Input.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335A_Output.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335B_Input.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335B_Output.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335C_Input.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335C_Output.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335D_Input.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335D_Output.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335E_Input.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335E_Output.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335F_Input.txt" />
+    <None Remove="ABC\300_399\330_339\335\Sample\335F_Output.txt" />
     <None Remove="ABC\300_399\330_339\336\Sample\336A_Input.txt" />
     <None Remove="ABC\300_399\330_339\336\Sample\336A_Output.txt" />
     <None Remove="ABC\300_399\330_339\336\Sample\336B_Input.txt" />
@@ -94,7 +136,11 @@
     <None Remove="ABC\300_399\330_339\339\Sample\339B_Input.txt" />
     <None Remove="ABC\300_399\330_339\339\Sample\339B_Output.txt" />
     <None Remove="ABC\300_399\340_349\340\Sample\340A_Input.txt" />
+    <None Remove="ABC\300_399\340_349\340\Sample\340A_Output.txt" />
+    <None Remove="ABC\300_399\340_349\340\Sample\340B_Input.txt" />
     <None Remove="ABC\300_399\340_349\340\Sample\340B_Output.txt" />
+    <None Remove="ABC\300_399\340_349\340\Sample\340C_Input.txt" />
+    <None Remove="ABC\300_399\340_349\340\Sample\340C_Output.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -132,6 +178,54 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\000_099\000_009\000\Sample\000A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052D_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\050_059\052\Sample\052D_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088D_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\000_099\080_089\088\Sample\088D_Output.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\200_299\200_209\206\Sample\206A_Input.txt">
@@ -222,6 +316,78 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\200_299\220_229\225\Sample\225A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334D_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334D_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334E_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334E_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334F_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\334\Sample\334F_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335D_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335D_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335E_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335E_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335F_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\330_339\335\Sample\335F_Output.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\300_399\330_339\336\Sample\336A_Input.txt">
@@ -320,10 +486,22 @@
     <EmbeddedResource Include="ABC\300_399\330_339\339\Sample\339A_Output.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\Sample\340A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\Sample\340B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABC\300_399\340_349\340\Sample\340B_Output.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\Sample\340C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="ABC\300_399\340_349\340\Sample\340A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\Sample\340C_Output.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

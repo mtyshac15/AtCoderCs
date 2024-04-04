@@ -5,62 +5,61 @@ using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtCoderCs.Contest.ABC337
+namespace AtCoderCs.Contest.ABC337;
+
+public class ProblemB
 {
-    public class ProblemB
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        var problem = new ProblemB();
+        problem.Solve();
+    }
+
+    /// <summary>
+    /// Extended ABC
+    /// </summary>
+    public void Solve()
+    {
+        var S = Console.ReadLine().Trim();
+
+        var current = 'A';
+
+        foreach (var c in S)
         {
-            var problem = new ProblemB();
-            problem.Solve();
-        }
-
-        /// <summary>
-        /// Extended ABC
-        /// </summary>
-        public void Solve()
-        {
-            var S = Console.ReadLine().Trim();
-
-            var current = 'A';
-
-            foreach (var c in S)
+            if (current == 'A')
             {
-                if (current == 'A')
+                if (c == 'B' || c == 'C')
                 {
-                    if (c == 'B' || c == 'C')
-                    {
-                        current = c;
-                    }
-                }
-                else if (current == 'B')
-                {
-                    if (c == 'A')
-                    {
-                        Console.WriteLine(ProblemB.ToYesOrNo(false));
-                        return;
-                    }
-                    else if (c == 'C')
-                    {
-                        current = c;
-                    }
-                }
-                else if (current == 'C')
-                {
-                    if (c != 'C')
-                    {
-                        Console.WriteLine(ProblemB.ToYesOrNo(false));
-                        return;
-                    }
+                    current = c;
                 }
             }
-
-            Console.WriteLine(ProblemB.ToYesOrNo(true));
+            else if (current == 'B')
+            {
+                if (c == 'A')
+                {
+                    Console.WriteLine(ProblemB.ToYesOrNo(false));
+                    return;
+                }
+                else if (c == 'C')
+                {
+                    current = c;
+                }
+            }
+            else if (current == 'C')
+            {
+                if (c != 'C')
+                {
+                    Console.WriteLine(ProblemB.ToYesOrNo(false));
+                    return;
+                }
+            }
         }
 
-        public static string ToYesOrNo(bool value)
-        {
-            return value ? $"Yes" : $"No";
-        }
+        Console.WriteLine(ProblemB.ToYesOrNo(true));
+    }
+
+    public static string ToYesOrNo(bool value)
+    {
+        return value ? $"Yes" : $"No";
     }
 }

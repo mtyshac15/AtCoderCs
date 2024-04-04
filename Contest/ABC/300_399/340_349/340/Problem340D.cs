@@ -4,19 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtCoderCs.Contest.ABC340
+namespace AtCoderCs.Contest.ABC340;
+
+public class ProblemD
 {
-    public class ProblemD
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var problem = new ProblemC();
-            problem.Solve();
-        }
+        var problem = new ProblemC();
+        problem.Solve();
+    }
 
-        public void Solve()
-        {
+    public void Solve()
+    {
 
-        }
     }
 }

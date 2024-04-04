@@ -58,7 +58,14 @@ namespace Contest.Tests
 
                         method?.Invoke();
 
-                        actualDic.Add(inputNumber, output.ToString());
+                        //末尾にある改行コードをすべて削除
+                        var outputStr = output.ToString().TrimEnd('\r', '\n');
+
+                        //末尾に改行コードを一つだけ追加
+                        var strBuilder = new StringBuilder();
+                        strBuilder.AppendLine(outputStr);
+
+                        actualDic.Add(inputNumber, strBuilder.ToString());
                     }
 
                     //空欄行出なかった場合、空欄行まで読み込む

@@ -4,22 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtCoderCs.Contest.ABC337
+namespace AtCoderCs.Contest.ABC337;
+
+public class ProblemD
 {
-    public class ProblemD
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var problem = new ProblemD();
-            problem.Solve();
-        }
+        var problem = new ProblemD();
+        problem.Solve();
+    }
 
-        public void Solve()
-        {
-            var S = Console.ReadLine().Trim();
+    public void Solve()
+    {
+        var S = Console.ReadLine().Trim();
 
-            var ans = 0;
-            Console.WriteLine(ans);
-        }
+        var ans = 0;
+        Console.WriteLine(ans);
     }
 }

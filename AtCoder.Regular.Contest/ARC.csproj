@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>AtCoder.Regular.Contest</AssemblyName>
-    <Configurations>Debug;Release;Practice;Contest</Configurations>
+    <Configurations>Debug;Release;Practice;Contest;All</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

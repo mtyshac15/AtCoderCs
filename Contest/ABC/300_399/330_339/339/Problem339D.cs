@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtCoderCs.Contest.ABC339
+namespace AtCoderCs.Contest.ABC339;
+
+public class ProblemD
 {
-    public class ProblemD
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-        }
+    }
+
+    public void Solve()
+    {
+
     }
 }

@@ -7,13 +7,13 @@ namespace AtCoderCs.Contest.Tests.ABC000
     [TestClass]
     public class Problem
     {
-#if Practice
         private static readonly string _contestSection = $"ABC";
         private static readonly string _problemFolder = Path.Combine($"000_099", "000_009");
         private static readonly string _problemNumber = $"000";
 
         private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
+#if None
         [TestMethod]
         public void SolveA()
         {
@@ -22,9 +22,11 @@ namespace AtCoderCs.Contest.Tests.ABC000
             var problem = new ProblemA();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
 
+#if None
         [TestMethod]
         public void SolveB()
         {
@@ -33,9 +35,12 @@ namespace AtCoderCs.Contest.Tests.ABC000
             var problem = new ProblemB();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
 
+
+#if None
         [TestMethod]
         public void SolveC()
         {
@@ -44,9 +49,11 @@ namespace AtCoderCs.Contest.Tests.ABC000
             var problem = new ProblemC();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
 
+#if None
         [TestMethod]
         public void SolveD()
         {
@@ -55,9 +62,11 @@ namespace AtCoderCs.Contest.Tests.ABC000
             var problem = new ProblemD();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
 
+#if None
         [TestMethod]
         public void SolveE()
         {
@@ -66,9 +75,11 @@ namespace AtCoderCs.Contest.Tests.ABC000
             var problem = new ProblemE();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
+#endif
 
+#if None
         [TestMethod]
         public void SolveF()
         {
@@ -77,7 +88,7 @@ namespace AtCoderCs.Contest.Tests.ABC000
             var problem = new ProblemF();
             Action method = problem.Solve;
 
-            //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+            TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
         }
 #endif
     }

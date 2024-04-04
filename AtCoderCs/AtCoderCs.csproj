@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <StartupObject>AtCoderCs.Program</StartupObject>
-    <Configurations>Debug;Release;Practice;Contest</Configurations>
+    <Configurations>Debug;Release;Practice;Contest;All</Configurations>
   </PropertyGroup>
 
   <ItemGroup>

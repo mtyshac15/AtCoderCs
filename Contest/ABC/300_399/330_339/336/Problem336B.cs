@@ -4,22 +4,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AtCoderCs.Contest.ABC336
+namespace AtCoderCs.Contest.ABC336;
+
+public class ProblemB
 {
-    public class ProblemB
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
+        var problem = new ProblemB();
+        problem.Solve();
+    }
+
+    public void Solve()
+    {
+        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+
+        var ans = 0;
+        var tmpN = N;
+
+        while (true)
         {
-            var problem = new ProblemB();
-            problem.Solve();
+            var remainder = tmpN % 2;
+            tmpN = tmpN / 2;
+
+            if (remainder == 0)
+            {
+                ans++;
+            }
+
+            if (remainder == 1 || tmpN == 0)
+            {
+                break;
+            }
         }
 
-        public void Solve()
-        {
-            var S = Console.ReadLine().Trim();
-
-            var ans = 0;
-            Console.WriteLine(ans);
-        }
+        Console.WriteLine(ans);
     }
 }

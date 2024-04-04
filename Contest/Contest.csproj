@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <StartupObject>AtCoderCs.Contest.Program</StartupObject>
-    <Configurations>Debug;Release;Practice;Contest</Configurations>
+    <Configurations>Debug;Release;Practice;Contest;All</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
