@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC334;
+namespace AtCoderCs.Contest.ABC186;
 
 public class ProblemA
 {
@@ -14,19 +14,15 @@ public class ProblemA
     }
 
     /// <summary>
-    /// Christmas Present
+    /// Brick
     /// </summary>
     public void Solve()
     {
         var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var B = input[0];
-        var G = input[1];
+        var N = input[0];
+        var W = input[1];
 
-        var ans = "Bat";
-        if (B < G)
-        {
-            ans = "Glove";
-        }
+        var ans = N / W;
         Console.WriteLine(ans);
     }
 }

@@ -292,45 +292,6 @@ public static class ABC180
 
     #region "186"
 
-    public static void Brick()
-    {
-        var (N, W) = IOLibrary.ReadInt2();
-        Console.WriteLine(N / W);
-    }
-
-    public static void BlockOnGrid()
-    {
-        var (H, W) = IOLibrary.ReadInt2();
-
-        var min = int.MaxValue;
-
-        var A = new int[H][];
-        for (var row = 0; row < H; row++)
-        {
-            A[row] = IOLibrary.ReadIntArray();
-
-            for (var col = 0; col < A[row].Length; col++)
-            {
-                var num = A[row][col];
-                if (num < min)
-                {
-                    min = num;
-                }
-            }
-        }
-
-        var sum = 0L;
-        for (var row = 0; row < H; row++)
-        {
-            for (var col = 0; col < W; col++)
-            {
-                sum += A[row][col] - min;
-            }
-        }
-
-        IOLibrary.WriteLine(sum);
-    }
-
     public static void UnluckySeven()
     {
         var N = IOLibrary.ReadInt();

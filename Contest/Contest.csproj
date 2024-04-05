@@ -9,8 +9,4 @@
     <Configurations>Debug;Release;Practice;Contest;All</Configurations>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="ABC\100_199\" />
-  </ItemGroup>
-
 </Project>

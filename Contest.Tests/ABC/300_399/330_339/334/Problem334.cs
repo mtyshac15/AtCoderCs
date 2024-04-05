@@ -13,7 +13,7 @@ public class Problem
 
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
-#if None
+#if Accepted
     [TestMethod]
     public void SolveA()
     {
@@ -26,7 +26,7 @@ public class Problem
     }
 #endif
 
-#if None
+#if Practice
     [TestMethod]
     public void SolveB()
     {
