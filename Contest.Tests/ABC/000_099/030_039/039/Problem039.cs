@@ -1,15 +1,15 @@
-using AtCoderCs.Contest.ABC186;
+using AtCoderCs.Contest.ABC039;
 using Contest.Tests;
 using System.Reflection;
 
-namespace AtCoderCs.Contest.Tests.ABC186;
+namespace AtCoderCs.Contest.Tests.ABC039;
 
 [TestClass]
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
-    private static readonly string _problemFolder = Path.Combine($"100_199", "180_189");
-    private static readonly string _problemNumber = $"186";
+    private static readonly string _problemFolder = Path.Combine($"000_099", "030_039");
+    private static readonly string _problemNumber = $"039";
 
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
@@ -39,8 +39,7 @@ public class Problem
     }
 #endif
 
-
-#if Accepted
+#if Practice
     [TestMethod]
     public void SolveC()
     {
@@ -53,7 +52,7 @@ public class Problem
     }
 #endif
 
-#if Practice
+#if None
     [TestMethod]
     public void SolveD()
     {
