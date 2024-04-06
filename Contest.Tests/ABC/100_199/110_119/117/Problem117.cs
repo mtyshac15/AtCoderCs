@@ -1,19 +1,19 @@
-using AtCoderCs.Contest.ABC340;
+using AtCoderCs.Contest.ABC117;
 using Contest.Tests;
 using System.Reflection;
 
-namespace AtCoderCs.Contest.Tests.ABC340;
+namespace AtCoderCs.Contest.Tests.ABC117;
 
 [TestClass]
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
-    private static readonly string _problemFolder = Path.Combine($"300_399", "340_349");
-    private static readonly string _problemNumber = $"340";
+    private static readonly string _problemFolder = Path.Combine($"100_199", "110_119");
+    private static readonly string _problemNumber = $"117";
 
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
-#if Accepted
+#if Practice
     [TestMethod]
     public void SolveA()
     {
@@ -22,11 +22,12 @@ public class Problem
         var problem = new ProblemA();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        var epsilon = 0.001;
+        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method, epsilon);
     }
 #endif
 
-#if Accepted
+#if Practice
     [TestMethod]
     public void SolveB()
     {
@@ -39,7 +40,7 @@ public class Problem
     }
 #endif
 
-#if Accepted
+#if Practice
     [TestMethod]
     public void SolveC()
     {
@@ -61,7 +62,7 @@ public class Problem
         var problem = new ProblemD();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -74,7 +75,7 @@ public class Problem
         var problem = new ProblemE();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -87,20 +88,7 @@ public class Problem
         var problem = new ProblemF();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
-    }
-#endif
-
-#if None
-    [TestMethod]
-    public void SolveG()
-    {
-        var prblemLevel = $"G";
-
-        var problem = new ProblemG();
-        Action method = problem.Solve;
-
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 }

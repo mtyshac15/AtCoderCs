@@ -1,19 +1,19 @@
-using AtCoderCs.Contest.ABC340;
+using AtCoderCs.Contest.ABC348;
 using Contest.Tests;
 using System.Reflection;
 
-namespace AtCoderCs.Contest.Tests.ABC340;
+namespace AtCoderCs.Contest.Tests.ABC348;
 
 [TestClass]
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"300_399", "340_349");
-    private static readonly string _problemNumber = $"340";
+    private static readonly string _problemNumber = $"348";
 
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
 
-#if Accepted
+#if Contest
     [TestMethod]
     public void SolveA()
     {
@@ -26,7 +26,7 @@ public class Problem
     }
 #endif
 
-#if Accepted
+#if Contest
     [TestMethod]
     public void SolveB()
     {
@@ -39,7 +39,7 @@ public class Problem
     }
 #endif
 
-#if Accepted
+#if Contest
     [TestMethod]
     public void SolveC()
     {
@@ -52,7 +52,7 @@ public class Problem
     }
 #endif
 
-#if None
+#if Contest
     [TestMethod]
     public void SolveD()
     {
@@ -61,7 +61,7 @@ public class Problem
         var problem = new ProblemD();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 

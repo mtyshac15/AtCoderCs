@@ -18,25 +18,4 @@ public static class ABC110
     }
 
     #endregion
-
-    #region "116"
-
-    public static void GrandGarden()
-    {
-        var N = IOLibrary.ReadInt();
-        var h = IOLibrary.ReadIntArray();
-
-        var ans = h.Zip(h.Prepend(0), (e1, e2) => e1 - e2)
-                   .Where(e => e > 0)
-                   .Sum();
-
-        IOLibrary.WriteLine(ans);
-    }
-
-    #endregion
-
-    public static void Method()
-    {
-
-    }
 }
