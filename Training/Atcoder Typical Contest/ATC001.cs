@@ -46,14 +46,14 @@ namespace Training.ATC001
                     else if (c[h][w] == 'g')
                     {
                         goalH = h;
-                        goalW= w;
+                        goalW = w;
                     }
                 }
             }
 
             //深さ優先探索
             this.Serch(H, W, c, startH, startW);
-            
+
             var can = this.field[goalH][goalW];
             IOLibrary.WriteYesOrNo(can);
         }

@@ -2,12 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Configurations>Debug;Release;Practice;Contest;All</Configurations>
+    <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
   <ItemGroup>
     <Folder Include="Boot camp for Beginners\Medium\" />
     <Folder Include="Boot camp for Beginners\Hard\" />
+    <Folder Include="TypicalProblem90\011_020\" />
+    <Folder Include="TypicalProblem90\021_030\" />
+    <Folder Include="TypicalProblem90\031_040\" />
+    <Folder Include="TypicalProblem90\041_050\" />
+    <Folder Include="TypicalProblem90\051_060\" />
+    <Folder Include="TypicalProblem90\061_070\" />
+    <Folder Include="TypicalProblem90\071_080\" />
+    <Folder Include="TypicalProblem90\081_090\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,6 +7,11 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <Configurations>Debug;Release;All</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='All|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Training</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +29,11 @@
     <Folder Include="Boot_camp_for_Beginners\Easy\" />
     <Folder Include="Boot_camp_for_Beginners\Normal\" />
     <Folder Include="Boot_camp_for_Beginners\Medium\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sample\Sample.csproj" />
+    <ProjectReference Include="..\Training\Training.csproj" />
   </ItemGroup>
 
 </Project>
