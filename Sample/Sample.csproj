@@ -227,6 +227,187 @@
     <None Remove="ABC\300_399\340_349\348\348E_Output.txt" />
     <None Remove="ABC\300_399\340_349\348\348F_Input.txt" />
     <None Remove="ABC\300_399\340_349\348\348F_Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001\001_Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001\001_Output.txt" />
+    <None Remove="TypicalProblem90\001_010\002\002_Input.txt" />
+    <None Remove="TypicalProblem90\001_010\002\002_Output.txt" />
+    <None Remove="TypicalProblem90\011_020\011\011Input.txt" />
+    <None Remove="TypicalProblem90\011_020\011\011Output.txt" />
+    <None Remove="TypicalProblem90\011_020\012\012Input.txt" />
+    <None Remove="TypicalProblem90\011_020\012\012Output.txt" />
+    <None Remove="TypicalProblem90\011_020\013\013Input.txt" />
+    <None Remove="TypicalProblem90\011_020\013\013Output.txt" />
+    <None Remove="TypicalProblem90\011_020\014\014Input.txt" />
+    <None Remove="TypicalProblem90\011_020\014\014Output.txt" />
+    <None Remove="TypicalProblem90\011_020\015\015Input.txt" />
+    <None Remove="TypicalProblem90\011_020\015\015Output.txt" />
+    <None Remove="TypicalProblem90\011_020\016\016Input.txt" />
+    <None Remove="TypicalProblem90\011_020\016\016Output.txt" />
+    <None Remove="TypicalProblem90\011_020\017\017Input.txt" />
+    <None Remove="TypicalProblem90\011_020\017\017Output.txt" />
+    <None Remove="TypicalProblem90\011_020\018\018Input.txt" />
+    <None Remove="TypicalProblem90\011_020\018\018Output.txt" />
+    <None Remove="TypicalProblem90\011_020\019\019Input.txt" />
+    <None Remove="TypicalProblem90\011_020\019\019Output.txt" />
+    <None Remove="TypicalProblem90\011_020\020\020Input.txt" />
+    <None Remove="TypicalProblem90\011_020\020\020Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\001\001Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\001\001Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\002\002Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\002\002Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\003\003Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\003\003Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\004\004Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\004\004Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\005\005Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\005\005Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\006\006Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\006\006Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\007\007Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\007\007Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\008\008Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\008\008Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\009\009Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\009\009Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\010\010Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (2)\010\010Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\001\001Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\001\001Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\002\002Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\002\002Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\003\003Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\003\003Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\004\004Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\004\004Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\005\005Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\005\005Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\006\006Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\006\006Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\007\007Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\007\007Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\008\008Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\008\008Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\009\009Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\009\009Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\010\010Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (3)\010\010Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\001\001Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\001\001Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\002\002Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\002\002Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\003\003Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\003\003Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\004\004Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\004\004Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\005\005Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\005\005Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\006\006Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\006\006Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\007\007Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\007\007Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\008\008Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\008\008Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\009\009Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\009\009Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\010\010Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (4)\010\010Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\001\001Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\001\001Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\002\002Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\002\002Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\003\003Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\003\003Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\004\004Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\004\004Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\005\005Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\005\005Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\006\006Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\006\006Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\007\007Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\007\007Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\008\008Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\008\008Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\009\009Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\009\009Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\010\010Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (5)\010\010Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\001\001Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\001\001Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\002\002Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\002\002Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\003\003Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\003\003Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\004\004Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\004\004Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\005\005Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\005\005Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\006\006Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\006\006Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\007\007Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\007\007Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\008\008Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\008\008Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\009\009Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\009\009Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\010\010Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (6)\010\010Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\001\001Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\001\001Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\002\002Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\002\002Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\003\003Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\003\003Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\004\004Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\004\004Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\005\005Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\005\005Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\006\006Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\006\006Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\007\007Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\007\007Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\008\008Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\008\008Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\009\009Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\009\009Output.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\010\010Input.txt" />
+    <None Remove="TypicalProblem90\021_020 - コピー (7)\010\010Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (2)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (2)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (3)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (3)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (4)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (4)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (5)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (5)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (6)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (6)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (7)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (7)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (8)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (8)\001Output.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (9)\001Input.txt" />
+    <None Remove="TypicalProblem90\001_010\001 - コピー (9)\001Output.txt" />
+    <None Remove="TypicalProblem90\021_030\021\021_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\021\021_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\022\022_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\022\022_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\023\023_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\023\023_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\024\024_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\024\024_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\025\025_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\025\025_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\026\026_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\026\026_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\027\027_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\027\027_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\028\028_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\028\028_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\029\029_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\029\029_Output.txt" />
+    <None Remove="TypicalProblem90\021_030\030\030_Input.txt" />
+    <None Remove="TypicalProblem90\021_030\030\030_Output.txt" />
+    <None Remove="TypicalProblem90\051_060\058\058_Output.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -888,6 +1069,546 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ABC\300_399\340_349\348\348F_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\031\031_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\031\031_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\032\032_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\032\032_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\033\033_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\033\033_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\034\034_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\034\034_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\035\035_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\035\035_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\036\036_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\036\036_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\037\037_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\037\037_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\038\038_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\038\038_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\039\039_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\039\039_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\040\040_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\031_040\040\040_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\041\041_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\041\041_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\042\042_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\042\042_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\043\043_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\043\043_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\044\044_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\044\044_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\045\045_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\045\045_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\046\046_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\046\046_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\047\047_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\047\047_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\048\048_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\048\048_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\049\049_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\049\049_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\050\050_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\041_050\050\050_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\051\051_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\051\051_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\052\052_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\052\052_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\053\053_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\053\053_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\054\054_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\054\054_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\055\055_.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\055\055_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\056\056_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\056\056_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\057\057_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\057\057_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\058\058_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\058\058_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\059\059_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\059\059_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\060\060_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\051_060\060\060_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\061\061_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\061\061_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\062\062_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\062\062_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\063\063_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\063\063_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\064\064_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\064\064_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\065\065_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\065\065_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\066\066_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\066\066_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\067\067_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\067\067_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\068\068_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\068\068_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\069\069_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\069\069_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\070\070_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\061_070\070\070_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\071\071_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\071\071_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\072\072_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\072\072_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\073\073_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\073\073_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\074\074_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\074\074_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\075\075_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\075\075_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\076\076_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\076\076_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\077\077_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\077\077_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\078\078_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\078\078_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\079\079_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\079\079_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\080\080_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\071_080\080\080_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\081\081_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\081\081_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\082\082_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\082\082_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\083\083_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\083\083_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\084\084_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\084\084_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\085\085_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\085\085_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\086\086_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\086\086_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\087\087_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\087\087_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\088\088_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\088\088_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\089\089_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\089\089_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\090\090_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\081_090\090\090_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\021\021_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\021\021_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\022\022_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\022\022_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\023\023_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\023\023_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\024\024_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\024\024_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\025\025_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\025\025_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\026\026_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\026\026_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\027\027_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\027\027_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\028\028_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\028\028_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\029\029_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\029\029_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\030\030_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\021_030\030\030_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\011\011Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\011\011Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\012\012Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\012\012Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\013\013Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\013\013Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\014\014Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\014\014Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\015\015Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\015\015Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\016\016Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\016\016Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\017\017Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\017\017Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\018\018Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\018\018Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\019\019Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\019\019Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\020\020Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\011_020\020\020Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\010\010_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\010\010_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\009\009_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\009\009_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\008\008_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\008\008_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\007\007_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\007\007_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\006\006_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\006\006_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\005\005_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\005\005_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\004\004_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\004\004_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\003\003_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\003\003_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\002\002_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\002\002_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\001\001_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypicalProblem90\001_010\001\001_Input.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

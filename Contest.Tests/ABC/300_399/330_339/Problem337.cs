@@ -1,5 +1,5 @@
 using AtCoderCs.Contest.ABC337;
-using Contest.Tests;
+using AtCoderCs.Contest.Tests;
 using System.Reflection;
 
 namespace AtCoderCs.Contest.Tests.ABC337;
