@@ -11,9 +11,9 @@ public class Problem
     private static readonly string _problemFolder = Path.Combine($"300_399", "340_349");
     private static readonly string _problemNumber = $"348";
 
-    private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}", $"Sample");
+    private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
 
-#if Contest
+#if Practice
     [TestMethod]
     public void SolveA()
     {
@@ -22,7 +22,7 @@ public class Problem
         var problem = new ProblemA();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -35,7 +35,7 @@ public class Problem
         var problem = new ProblemB();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -48,7 +48,7 @@ public class Problem
         var problem = new ProblemC();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -61,7 +61,7 @@ public class Problem
         var problem = new ProblemD();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -74,7 +74,7 @@ public class Problem
         var problem = new ProblemE();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        //TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -87,7 +87,7 @@ public class Problem
         var problem = new ProblemF();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        //TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -100,7 +100,7 @@ public class Problem
         var problem = new ProblemG();
         Action method = problem.Solve;
 
-        //TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        //TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 }
