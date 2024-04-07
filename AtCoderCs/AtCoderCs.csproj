@@ -56,7 +56,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AtCoder.Beginner.Contest\ABC.csproj" />
     <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
-    <ProjectReference Include="..\AtCoder.Heuristic.Contest\AHC.csproj" />
     <ProjectReference Include="..\AtCoder.Regular.Contest\ARC.csproj" />
     <ProjectReference Include="..\Contest\Contest.csproj" />
     <ProjectReference Include="..\Training\Training.csproj" />

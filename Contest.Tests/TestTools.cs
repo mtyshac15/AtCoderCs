@@ -1,4 +1,3 @@
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 using System.Data;
 using System.Text;
 
