@@ -1,0 +1,91 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ABC\300_399\340_349\340\340A_Input.txt" />
+    <None Remove="ABC\300_399\340_349\340\340A_Output.txt" />
+    <None Remove="ABC\300_399\340_349\340\340B_Input.txt" />
+    <None Remove="ABC\300_399\340_349\340\340B_Output.txt" />
+    <None Remove="ABC\300_399\340_349\340\340C_Input.txt" />
+    <None Remove="ABC\300_399\340_349\340\340C_Output.txt" />
+    <None Remove="ABC\300_399\340_349\348\348A_Input.txt" />
+    <None Remove="ABC\300_399\340_349\348\348A_Output.txt" />
+    <None Remove="ABC\300_399\340_349\348\348B_Input.txt" />
+    <None Remove="ABC\300_399\340_349\348\348B_Output.txt" />
+    <None Remove="ABC\300_399\340_349\348\348C_Input.txt" />
+    <None Remove="ABC\300_399\340_349\348\348C_Output.txt" />
+    <None Remove="ABC\300_399\340_349\348\348D_Input.txt" />
+    <None Remove="ABC\300_399\340_349\348\348D_Output.txt" />
+    <None Remove="ABC\300_399\340_349\348\348E_Input.txt" />
+    <None Remove="ABC\300_399\340_349\348\348E_Output.txt" />
+    <None Remove="ABC\300_399\340_349\348\348F_Input.txt" />
+    <None Remove="ABC\300_399\340_349\348\348F_Output.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\340A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\340A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\340B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\340B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\340C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\340\340C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348A_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348A_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348B_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348B_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348C_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348C_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348D_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348D_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348E_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348E_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348F_Input.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ABC\300_399\340_349\348\348F_Output.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ABC\000_099\000_009\000\" />
+  </ItemGroup>
+
+</Project>

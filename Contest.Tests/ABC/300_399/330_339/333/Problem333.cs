@@ -22,7 +22,7 @@ public class Problem
         var problem = new ProblemA();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -35,7 +35,7 @@ public class Problem
         var problem = new ProblemB();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
@@ -48,7 +48,7 @@ public class Problem
         var problem = new ProblemC();
         Action method = problem.Solve;
 
-        TestTools.TestInOut(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
