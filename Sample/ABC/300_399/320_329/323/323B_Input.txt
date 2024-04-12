@@ -1,0 +1,15 @@
+1
+3
+-xx
+o-x
+oo-
+
+2
+7
+-oxoxox
+x-xxxox
+oo-xoox
+xoo-ooo
+ooxx-ox
+xxxxx-x
+oooxoo-

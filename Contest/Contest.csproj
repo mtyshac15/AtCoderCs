@@ -9,4 +9,25 @@
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="ABC\000_099\010_019\" />
+    <Folder Include="ABC\000_099\020_029\" />
+    <Folder Include="ABC\000_099\040_049\" />
+    <Folder Include="ABC\000_099\060_069\" />
+    <Folder Include="ABC\000_099\070_079\" />
+    <Folder Include="ABC\000_099\090_099\" />
+    <Folder Include="ABC\100_199\100_109\" />
+    <Folder Include="ABC\100_199\130_139\" />
+    <Folder Include="ABC\100_199\160_169\" />
+    <Folder Include="ABC\100_199\170_179\" />
+    <Folder Include="ABC\100_199\190_199\" />
+    <Folder Include="ABC\200_299\230_239\" />
+    <Folder Include="ABC\200_299\240_249\" />
+    <Folder Include="ABC\200_299\270_279\" />
+    <Folder Include="ABC\200_299\280_289\" />
+    <Folder Include="ABC\200_299\290_299\" />
+    <Folder Include="ABC\300_399\300_309\" />
+    <Folder Include="ABC\300_399\310_319\" />
+  </ItemGroup>
+
 </Project>

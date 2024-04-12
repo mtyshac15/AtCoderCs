@@ -1,0 +1,8 @@
+1
+A B C
+
+2
+Z Z Z Z Z Z Z
+
+3
+O O X X O O

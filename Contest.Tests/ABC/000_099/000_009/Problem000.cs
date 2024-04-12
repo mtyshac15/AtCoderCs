@@ -15,6 +15,7 @@ public class Problem
 
 #if None
     [TestMethod]
+#endif
     public void SolveA()
     {
         var prblemLevel = $"A";
@@ -24,10 +25,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
-#endif
 
 #if None
     [TestMethod]
+#endif
     public void SolveB()
     {
         var prblemLevel = $"B";
@@ -37,10 +38,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
-#endif
 
 #if None
     [TestMethod]
+#endif
     public void SolveC()
     {
         var prblemLevel = $"C";
@@ -50,10 +51,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
-#endif
 
 #if None
     [TestMethod]
+#endif
     public void SolveD()
     {
         var prblemLevel = $"D";
@@ -63,10 +64,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
-#endif
 
 #if None
     [TestMethod]
+#endif
     public void SolveE()
     {
         var prblemLevel = $"E";
@@ -76,10 +77,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
-#endif
 
 #if None
     [TestMethod]
+#endif
     public void SolveF()
     {
         var prblemLevel = $"F";
@@ -89,5 +90,4 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
-#endif
 }

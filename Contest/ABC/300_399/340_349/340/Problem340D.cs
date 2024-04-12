@@ -9,7 +9,7 @@ public class ProblemD
 {
     public static void Main(string[] args)
     {
-        var problem = new ProblemC();
+        var problem = new ProblemD();
         problem.Solve();
     }
 
