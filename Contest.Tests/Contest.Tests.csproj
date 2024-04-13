@@ -8,6 +8,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <Configurations>Debug;Release;Practice;Contest;All</Configurations>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Practice|AnyCPU'">
@@ -16,6 +17,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Contest|AnyCPU'">
     <DefineConstants>$(DefineConstants);Contest</DefineConstants>
+    <Optimize>True</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='All|AnyCPU'">
@@ -23,7 +25,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
     <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
@@ -31,7 +32,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contest\Contest.csproj" />
-    <ProjectReference Include="..\Sample\Sample.csproj" />
   </ItemGroup>
 
   <ItemGroup>

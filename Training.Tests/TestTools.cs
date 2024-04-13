@@ -6,7 +6,7 @@ public static class TestTools
 {
     public static void Judge(string sampleFolder, string number, string problemLevel, Action method, double epsilon = 0)
     {
-        var testList = Sample.Logic.TestTools.TestInOut(sampleFolder, number, problemLevel, method);
+        var testList = AtCoderCs.Common.Library.TestTools.TestInOut(sampleFolder, number, problemLevel, method);
 
         if (epsilon > 0)
         {

@@ -27,7 +27,10 @@
     <Folder Include="ABC\200_299\280_289\" />
     <Folder Include="ABC\200_299\290_299\" />
     <Folder Include="ABC\300_399\300_309\" />
-    <Folder Include="ABC\300_399\310_319\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
   </ItemGroup>
 
 </Project>
