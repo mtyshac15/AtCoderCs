@@ -12,7 +12,6 @@
   <ItemGroup>
     <Folder Include="ABC\000_099\010_019\" />
     <Folder Include="ABC\000_099\020_029\" />
-    <Folder Include="ABC\000_099\040_049\" />
     <Folder Include="ABC\000_099\060_069\" />
     <Folder Include="ABC\000_099\070_079\" />
     <Folder Include="ABC\000_099\090_099\" />

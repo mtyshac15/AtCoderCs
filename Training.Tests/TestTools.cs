@@ -1,4 +1,5 @@
 using System.Text;
+using Xunit;
 
 namespace AtcoderCs.Training.Tests;
 
@@ -25,7 +26,7 @@ public static class TestTools
                     double.TryParse(item.Second, out expectedValue);
 
                     var sub = Math.Abs(actualValue - expectedValue);
-                    Assert.IsTrue(sub < epsilon);
+                    Assert.True(sub < epsilon);
                 }
             }
         }
@@ -33,7 +34,7 @@ public static class TestTools
         {
             foreach (var testCase in testList)
             {
-                Assert.AreEqual(testCase.Expected, testCase.Actual);
+                Assert.Equal(testCase.Expected, testCase.Actual);
             }
         }
     }

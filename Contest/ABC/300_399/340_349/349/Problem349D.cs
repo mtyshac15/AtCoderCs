@@ -7,17 +7,32 @@ namespace AtCoderCs.Contest.ABC349;
 
 public class ProblemD
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
-        var problem = new ProblemC();
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemD();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemD()
+    {
+    }
+
+    public ProblemD(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = 0;
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

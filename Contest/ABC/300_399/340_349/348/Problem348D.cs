@@ -7,6 +7,9 @@ namespace AtCoderCs.Contest.ABC348;
 
 public class ProblemD
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     private bool[,] field;
     private int[,] RCE;
 
@@ -20,8 +23,20 @@ public class ProblemD
 
     public static void Main(string[] args)
     {
-        var problem = new ProblemC();
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemD();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemD()
+    {
+    }
+
+    public ProblemD(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -29,22 +44,22 @@ public class ProblemD
     /// </summary>
     public void Solve()
     {
-        var HW = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var HW = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var H = HW[0];
         var W = HW[1];
 
         var A = new string[H];
         for (int i = 0; i < H; i++)
         {
-            A[i] = Console.ReadLine().Trim();
+            A[i] = _reader.ReadLine().Trim();
         }
 
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         RCE = new int[H, W];
         for (int i = 0; i < N; i++)
         {
-            var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             var R = input[0];
             var C = input[1];
             var E = input[2];
@@ -78,7 +93,7 @@ public class ProblemD
         this.Serch(H, W, A, start[0], start[1], 0);
 
         var ans = this.field[goal[0], goal[1]];
-        Console.WriteLine(ProblemD.ToYesOrNo(ans));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     private void Serch(int H, int W, string[] c, int h, int w, int energy)
@@ -127,8 +142,11 @@ public class ProblemD
         }
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

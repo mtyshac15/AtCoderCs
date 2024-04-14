@@ -1,9 +1,9 @@
 using AtcoderCs.Training.Tests;
 using AtCoderCs.Traing.Typical.Problem004;
+using Xunit;
 
 namespace AtCoderCs.Traing.Typical.Tests.Problem004;
 
-[TestClass]
 public class TestProblem
 {
     private static readonly string _contestSection = $"TypicalProblem90";
@@ -13,7 +13,7 @@ public class TestProblem
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
 
 #if Training
-    [TestMethod]
+    [Fact]
     public void Solve()
     {
         var prblemLevel = string.Empty;

@@ -7,16 +7,31 @@ namespace AtCoderCs.Contest.ABC349;
 
 public class ProblemC
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemC();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemC()
+    {
+    }
+
+    public ProblemC(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
-        var T = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
+        var T = _reader.ReadLine().Trim();
 
         var t = T.ToLower();
 
@@ -46,13 +61,15 @@ public class ProblemC
         }
 
         var ans = false;
+
+        var index1List = new List<int>();
         foreach (var index0 in indexDic[0])
         {
             var index1 = ProblemC.BinarySearch(indexDic[1], index0);
-            if (index1 < indexDic[1].Count && indexDic[1][index1] > index0)
+            if (index1 < indexDic[1].Count)
             {
                 ans = true;
-                break;
+                index1List.Add(indexDic[1][index1]);
             }
         }
 
@@ -60,10 +77,10 @@ public class ProblemC
         if (ans)
         {
             var ans2 = false;
-            foreach (var index1 in indexDic[1])
+            foreach (var index1 in index1List)
             {
                 var index2 = ProblemC.BinarySearch(indexDic[2], index1);
-                if (index2 < indexDic[2].Count && indexDic[2][index2] > index1)
+                if (index2 < indexDic[2].Count)
                 {
                     ans2 = true;
                     break;
@@ -73,7 +90,7 @@ public class ProblemC
             ans = ans & (ans2 || t[2] == 'x');
         }
 
-        Console.WriteLine(ProblemC.ToYesOrNo(ans));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
     public static int BinarySearch(IList<int> sortedList, int key)
@@ -97,8 +114,11 @@ public class ProblemC
         return ok;
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

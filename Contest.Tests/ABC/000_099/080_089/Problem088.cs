@@ -1,10 +1,10 @@
 using AtCoderCs.Contest.ABC088;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
+using Xunit;
 
 namespace AtCoderCs.Contest.Tests.ABC088;
 
-[TestClass]
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
@@ -14,7 +14,7 @@ public class Problem
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
 
 #if Accepted
-    [TestMethod]
+    [Fact]
     public void SolveA()
     {
         var prblemLevel = $"A";
@@ -27,7 +27,7 @@ public class Problem
 #endif
 
 #if Accepted
-    [TestMethod]
+    [Fact]
     public void SolveB()
     {
         var prblemLevel = $"B";
@@ -41,7 +41,7 @@ public class Problem
 
 
 #if None
-    [TestMethod]
+    [Fact]
     public void SolveC()
     {
         var prblemLevel = $"C";
@@ -49,12 +49,12 @@ public class Problem
         var problem = new ProblemC();
         Action method = problem.Solve;
 
-        //TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 
 #if None
-    [TestMethod]
+    [Fact]
     public void SolveD()
     {
         var prblemLevel = $"D";
@@ -62,7 +62,7 @@ public class Problem
         var problem = new ProblemD();
         Action method = problem.Solve;
 
-        //TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
 #endif
 }

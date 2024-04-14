@@ -1,10 +1,10 @@
 using AtCoderCs.Contest.ABC322;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
+using Xunit;
 
 namespace AtCoderCs.Contest.Tests.ABC322;
 
-[TestClass]
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
@@ -14,8 +14,7 @@ public class Problem
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
 
 #if Accepted
-    [TestMethod]
-#endif
+    [Fact]
     public void SolveA()
     {
         var prblemLevel = $"A";
@@ -25,10 +24,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
+#endif
 
 #if Accepted
-    [TestMethod]
-#endif
+    [Fact]
     public void SolveB()
     {
         var prblemLevel = $"B";
@@ -38,10 +37,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
+#endif
 
 #if Practice
-    [TestMethod]
-#endif
+    [Fact]
     public void SolveC()
     {
         var prblemLevel = $"C";
@@ -51,10 +50,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
+#endif
 
 #if None
-    [TestMethod]
-#endif
+    [Fact]
     public void SolveD()
     {
         var prblemLevel = $"D";
@@ -64,10 +63,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
+#endif
 
 #if None
-    [TestMethod]
-#endif
+    [Fact]
     public void SolveE()
     {
         var prblemLevel = $"E";
@@ -77,10 +76,10 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
+#endif
 
 #if None
-    [TestMethod]
-#endif
+    [Fact]
     public void SolveF()
     {
         var prblemLevel = $"F";
@@ -90,4 +89,5 @@ public class Problem
 
         TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
     }
+#endif
 }

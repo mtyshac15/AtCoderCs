@@ -8,15 +8,30 @@ namespace AtCoderCs.Contest.ABC340;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     public void Solve()
     {
-        var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var Q = input[0];
 
         var list = new List<long>();
@@ -25,7 +40,7 @@ public class ProblemB
 
         for (var i = 0; i < Q; i++)
         {
-            var query = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var query = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             var x = query[0];
             var k = query[1];
 
@@ -40,6 +55,7 @@ public class ProblemB
             }
         }
 
-        Console.WriteLine(strtBuilder.ToString());
+        var ans = strtBuilder.ToString();
+        _writer.WriteLine(ans);
     }
 }

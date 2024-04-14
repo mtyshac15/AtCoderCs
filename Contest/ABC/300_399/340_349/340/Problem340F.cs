@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC340;
 
 public class ProblemF
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemF();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemF()
+    {
+    }
+
+    public ProblemF(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     public void Solve()

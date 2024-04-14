@@ -3,7 +3,6 @@ using AtCoderCs.Traing.Typical.Problem001;
 
 namespace AtCoderCs.Traing.Typical.Tests.Problem000;
 
-[TestClass]
 public class TestProblem
 {
     private static readonly string _contestSection = $"TypicalProblem90";
@@ -13,7 +12,7 @@ public class TestProblem
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
 
 #if None
-    [TestMethod]
+    [Fact]
     public void Solve()
     {
         var prblemLevel = string.Empty;

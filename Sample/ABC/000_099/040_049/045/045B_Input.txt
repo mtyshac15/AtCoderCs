@@ -1,0 +1,9 @@
+1
+aca
+accc
+ca
+
+2
+abcb
+aacb
+bccc
