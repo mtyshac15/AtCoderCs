@@ -8,27 +8,13 @@ namespace AtCoderCs.Common.Library;
 
 public class Tester : IDisposable
 {
-    private static readonly string _solutionName = "AtCoderCs.sln";
-
-    private static readonly string _inputFileName = "Input.txt";
-    private static readonly string _outputFileName = "Output.txt";
-
     private StreamReader _outputSampleReader;
 
     private object _lockObject = new object();
     private bool _disposed = false;
 
-    public Tester(string problemFolder,
-                  string number,
-                  string problemLevel)
+    public Tester(string inputFilePath, string outputFilePath)
     {
-        var directory = new DirectoryInfo(Environment.CurrentDirectory);
-        var solutionDirectory = Tester.GetDirectory(directory, _solutionName);
-
-        var sampleFolder = Path.Combine($"{solutionDirectory}", "Sample", $"{problemFolder}", $"{number}{problemLevel}");
-        var inputFilePath = $"{sampleFolder}_{_inputFileName}";
-        var outputFilePath = $"{sampleFolder}_{_outputFileName}";
-
         this.Reader = new StreamReader(inputFilePath);
         this.Writer = new StringWriter();
 
@@ -139,21 +125,5 @@ public class Tester : IDisposable
         }
 
         return expectedDic;
-    }
-
-    private static string GetDirectory(DirectoryInfo directory, string fileName)
-    {
-        var path = Path.Combine(directory.FullName, fileName);
-        if (File.Exists(path))
-        {
-            return directory.FullName;
-        }
-
-        if (directory.Parent != null)
-        {
-            return Tester.GetDirectory(directory.Parent, fileName);
-        }
-
-        return string.Empty;
     }
 }

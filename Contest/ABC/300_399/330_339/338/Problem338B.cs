@@ -8,10 +8,25 @@ namespace AtCoderCs.Contest.ABC338;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -19,7 +34,7 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
 
         var dic = new Dictionary<char, int>();
 
@@ -51,6 +66,6 @@ public class ProblemB
 
         var ans = list.FirstOrDefault();
 
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

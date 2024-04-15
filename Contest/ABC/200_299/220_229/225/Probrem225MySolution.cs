@@ -43,7 +43,7 @@ public class MySolution
 
         //最大の辺を持つノードの辺の本数がN-1のときスター
         var isStar = tree.Values.Max() == N - 1;
-        Console.WriteLine(ProblemB.ToYesOrNo(isStar));
+        Console.WriteLine(MySolution.ToYesOrNo(isStar));
     }
 
     public void OldB2()

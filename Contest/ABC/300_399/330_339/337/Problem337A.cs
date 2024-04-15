@@ -8,10 +8,25 @@ namespace AtCoderCs.Contest.ABC337;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -19,7 +34,7 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = input[0];
 
         var sumX = 0;
@@ -27,22 +42,22 @@ public class ProblemA
 
         for (var i = 0; i < N; i++)
         {
-            var XY = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var XY = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             sumX += XY[0];
             sumY += XY[1];
         }
 
         if (sumX > sumY)
         {
-            Console.WriteLine("Takahashi");
+            _writer.WriteLine("Takahashi");
             return;
         }
         else if (sumX < sumY)
         {
-            Console.WriteLine("Aoki");
+            _writer.WriteLine("Aoki");
             return;
         }
 
-        Console.WriteLine("Draw");
+        _writer.WriteLine("Draw");
     }
 }

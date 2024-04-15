@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC314;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
         var pi = "3.1415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679";
 
         var ansBuilder = new StringBuilder();
@@ -30,6 +45,6 @@ public class ProblemA
         }
 
         var ans = ansBuilder.ToString();
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC212;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,14 +33,14 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var X = Console.ReadLine().Trim().Select(x => int.Parse(x.ToString())).ToArray();
+        var X = _reader.ReadLine().Trim().Select(x => int.Parse(x.ToString())).ToArray();
 
         //4桁とも同じ数字
         if (X[0] == X[1]
             && X[1] == X[2]
             && X[2] == X[3])
         {
-            Console.WriteLine("Weak");
+            _writer.WriteLine("Weak");
             return;
         }
 
@@ -34,11 +49,11 @@ public class ProblemB
             var nextNum = (X[i] + 1) % 10;
             if (X[i + 1] != nextNum)
             {
-                Console.WriteLine("Strong");
+                _writer.WriteLine("Strong");
                 return;
             }
         }
 
-        Console.WriteLine("Weak");
+        _writer.WriteLine("Weak");
     }
 }

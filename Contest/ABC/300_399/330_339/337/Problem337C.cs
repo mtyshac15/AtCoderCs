@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC337;
 
 public class ProblemC
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemC();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemC()
+    {
+    }
+
+    public ProblemC(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,8 +33,8 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var A = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
         //最後尾を検索
         var set = new HashSet<int>(A);
@@ -47,6 +62,6 @@ public class ProblemC
         }
 
         var ans = string.Join(" ", result);
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

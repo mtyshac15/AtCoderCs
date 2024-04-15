@@ -12,7 +12,12 @@ public class Problem
     private static readonly string _problemFolder = Path.Combine($"000_099", "040_049");
     private static readonly string _problemNumber = $"044";
 
-    private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
+    private SampleFiePath _sampleFiePath;
+
+    public Problem()
+    {
+        _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
+    }
 
 #if false
     [Fact]

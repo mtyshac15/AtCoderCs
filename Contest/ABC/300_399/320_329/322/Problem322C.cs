@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC322;
 
 public class ProblemC
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemC();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemC()
+    {
+    }
+
+    public ProblemC(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,11 +33,11 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var NM = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NM[0];
         var M = NM[1];
 
-        var A = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var newA = A.Prepend(0).Append(A[M - 1]).ToArray();
 
         var ansBuilder = new StringBuilder();
@@ -53,6 +68,6 @@ public class ProblemC
         }
 
         var ans = ansBuilder.ToString();
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

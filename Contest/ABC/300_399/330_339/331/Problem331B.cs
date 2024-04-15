@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC331;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var NSML = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NSML = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NSML[0];
         var S = NSML[1];
         var M = NSML[2];
@@ -42,6 +57,6 @@ public class ProblemB
             }
         }
 
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

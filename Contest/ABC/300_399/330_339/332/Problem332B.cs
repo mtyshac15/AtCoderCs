@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC332;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var KGM = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var KGM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var K = KGM[0];
         var G = KGM[1];
         var M = KGM[2];
@@ -44,6 +59,6 @@ public class ProblemB
         }
 
         var ans = string.Join(" ", glass, cup);
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

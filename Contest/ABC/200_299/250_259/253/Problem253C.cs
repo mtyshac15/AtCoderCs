@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC253;
 
 public class ProblemC
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemC();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemC()
+    {
+    }
+
+    public ProblemC(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,13 +33,13 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var Q = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var Q = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
         var dic = new SortedDictionary<int, long>();
         var list = new SortedList<int, int>();
 
         for (int i = 0; i < Q; i++)
         {
-            var query = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var query = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             var num = query[0];
             if (num == 1)
             {
@@ -60,7 +75,7 @@ public class ProblemC
             else if (num == 3)
             {
                 var ans = list.Keys[list.Count - 1] - list.Keys[0];
-                Console.WriteLine(ans);
+                _writer.WriteLine(ans);
             }
         }
     }

@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC212;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,22 +33,22 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var A = input[0];
         var B = input[1];
 
         if (A > 0 && B == 0)
         {
-            Console.WriteLine("Gold");
+            _writer.WriteLine("Gold");
         }
         else if (A == 0 && B > 0)
         {
-            Console.WriteLine("Silver");
+            _writer.WriteLine("Silver");
 
         }
         else
         {
-            Console.WriteLine("Alloy");
+            _writer.WriteLine("Alloy");
         }
     }
 }

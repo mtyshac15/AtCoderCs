@@ -8,10 +8,25 @@ namespace AtCoderCs.Contest.ABC312;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -19,14 +34,14 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var NM = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NM[0];
         var M = NM[1];
 
         var S = new string[N];
         for (int i = 0; i < N; i++)
         {
-            S[i] = Console.ReadLine().Trim();
+            S[i] = _reader.ReadLine().Trim();
         }
 
         var ansBuilder = new StringBuilder();
@@ -43,7 +58,7 @@ public class ProblemB
         }
 
         var ans = ansBuilder.ToString();
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 
     private bool IsTakCode(string[] S, int i, int j)

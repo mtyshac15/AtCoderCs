@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC332;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var NSK = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NSK = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NSK[0];
         var S = NSK[1];
         var K = NSK[2];
@@ -26,7 +41,7 @@ public class ProblemA
         var total = 0;
         for (int i = 0; i < N; i++)
         {
-            var PQ = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var PQ = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             total += PQ[0] * PQ[1];
         }
 
@@ -37,6 +52,6 @@ public class ProblemA
         }
 
         var ans = total + postage;
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

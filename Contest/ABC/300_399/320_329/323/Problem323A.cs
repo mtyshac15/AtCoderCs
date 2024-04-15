@@ -8,10 +8,25 @@ namespace AtCoderCs.Contest.ABC323;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -19,7 +34,7 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
 
         var ans = true;
         for (int i = 1; i < S.Length; i += 2)
@@ -31,11 +46,14 @@ public class ProblemA
             }
         }
 
-        Console.WriteLine(ProblemA.ToYesOrNo(ans));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

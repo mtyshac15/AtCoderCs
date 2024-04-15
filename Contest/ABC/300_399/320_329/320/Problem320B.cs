@@ -8,15 +8,30 @@ namespace AtCoderCs.Contest.ABC320;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
 
         var ans = 1;
         for (int count = 2; count <= S.Length; count++)
@@ -42,6 +57,6 @@ public class ProblemB
             }
         }
 
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

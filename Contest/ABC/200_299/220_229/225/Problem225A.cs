@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC225;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
 
         //文字種類の個数を算出
         var charSet = new HashSet<char>(S.ToCharArray());
@@ -34,6 +49,6 @@ public class ProblemA
             ans = 3;
         }
 
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

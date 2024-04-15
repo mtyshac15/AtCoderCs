@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC267;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,12 +33,12 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
         var pins = S.ToCharArray().Select(x => int.Parse(x.ToString())).ToArray();
 
         if (pins[0] == 1)
         {
-            Console.WriteLine(ProblemB.ToYesOrNo(false));
+            _writer.WriteLine(IOLibrary.ToYesOrNo(false));
             return;
         }
 
@@ -67,11 +82,14 @@ public class ProblemB
         }
 
         var ans = !pinExists && emptyCount > 0;
-        Console.WriteLine(ProblemB.ToYesOrNo(ans));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

@@ -11,10 +11,25 @@ namespace AtCoderCs.Contest.ABC313;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -22,7 +37,7 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var NM = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NM[0];
         var M = NM[1];
 
@@ -35,7 +50,7 @@ public class ProblemB
         //B→Aの辺を追加
         for (int i = 0; i < M; i++)
         {
-            var AB = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             dic[AB[1]].Add(AB[0]);
         }
 
@@ -48,6 +63,6 @@ public class ProblemB
             ans = keyValueArray.FirstOrDefault().Key;
         }
 
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

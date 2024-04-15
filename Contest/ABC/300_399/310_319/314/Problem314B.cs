@@ -8,10 +8,25 @@ namespace AtCoderCs.Contest.ABC314;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -19,18 +34,17 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
         var C = new int[N];
         var A = new int[N][];
 
         for (int i = 0; i < N; i++)
         {
-            C[i] = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-            A[i] = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            C[i] = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+            A[i] = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         }
 
-        var X = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var X = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var iList = new List<int>();
         for (int i = 0; i < N; i++)
@@ -55,6 +69,6 @@ public class ProblemB
         ansBuilder.AppendLine(string.Join(" ", B.Select(i => i + 1)));
 
         var ans = ansBuilder.ToString();
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

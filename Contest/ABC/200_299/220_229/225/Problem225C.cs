@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC225;
 
 public class ProblemC
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemC();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemC()
+    {
+    }
+
+    public ProblemC(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = input[0];
         var M = input[1];
 
@@ -26,7 +41,7 @@ public class ProblemC
 
         for (var i = 0; i < N; i++)
         {
-            var tmp = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var tmp = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
             for (var j = 0; j < M; j++)
             {
@@ -43,7 +58,7 @@ public class ProblemC
             if (num == 0
                 && col != M - 1)
             {
-                Console.WriteLine(ProblemC.ToYesOrNo(false));
+                _writer.WriteLine(IOLibrary.ToYesOrNo(false));
                 return;
             }
         }
@@ -57,7 +72,7 @@ public class ProblemC
                 var sub = B[row, col] - num;
                 if (sub != 1)
                 {
-                    Console.WriteLine(ProblemC.ToYesOrNo(false));
+                    _writer.WriteLine(IOLibrary.ToYesOrNo(false));
                     return;
                 }
 
@@ -74,7 +89,7 @@ public class ProblemC
                 var sub = B[row, col] - num;
                 if (sub != 7)
                 {
-                    Console.WriteLine(ProblemC.ToYesOrNo(false));
+                    _writer.WriteLine(IOLibrary.ToYesOrNo(false));
                     return;
                 }
 
@@ -82,11 +97,14 @@ public class ProblemC
             }
         }
 
-        Console.WriteLine(ProblemC.ToYesOrNo(true));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(true));
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

@@ -7,16 +7,31 @@ namespace AtCoderCs.Contest.ABC186;
 
 public class ProblemD
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemD();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemD()
+    {
+    }
+
+    public ProblemD(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var A = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
         Array.Sort(A);
         var sortedA = A.Reverse().ToArray();
@@ -30,6 +45,6 @@ public class ProblemD
             ans += (long)a * subA;
         }
 
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC253;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,14 +33,14 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var H = input[0];
         var W = input[1];
 
         var S = new string[H];
         for (int i = 0; i < H; i++)
         {
-            S[i] = Console.ReadLine().Trim();
+            S[i] = _reader.ReadLine().Trim();
         }
 
         var piece = new int[2, 2];
@@ -48,6 +63,6 @@ public class ProblemB
         var dW = Math.Abs(piece[0, 1] - piece[1, 1]);
 
         var ans = dH + dW;
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

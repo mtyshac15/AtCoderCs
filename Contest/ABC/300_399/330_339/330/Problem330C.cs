@@ -7,20 +7,36 @@ namespace AtCoderCs.Contest.ABC330;
 
 public class ProblemC
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemC();
         problem.Solve();
+        Console.Out.Flush();
     }
+
+    public ProblemC()
+    {
+    }
+
+    public ProblemC(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
+    }
+
 
     /// <summary>
     /// Minimize Abs 2
     /// </summary>
     public void Solve()
     {
-        var D = Console.ReadLine().Trim().Split().Select(long.Parse).ToList()[0];
+        var D = _reader.ReadLine().Trim().Split().Select(long.Parse).ToList()[0];
         var ans = this.Calc(D);
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 
     public long Calc(long D)

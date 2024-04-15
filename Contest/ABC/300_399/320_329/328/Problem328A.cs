@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC328;
 
 public class ProblemA
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemA();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemA()
+    {
+    }
+
+    public ProblemA(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,13 +33,13 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var NX = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NX = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NX[0];
         var X = NX[1];
 
-        var S = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var S = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
         var ans = S.Where(x => x <= X).Sum();
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

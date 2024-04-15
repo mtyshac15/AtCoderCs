@@ -7,10 +7,25 @@ namespace AtCoderCs.Contest.ABC144;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -18,7 +33,7 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = false;
         for (int i = 1; i <= 9; i++)
@@ -38,7 +53,7 @@ public class ProblemB
             }
         }
 
-        Console.WriteLine(ProblemB.ToYesOrNo(ans));
+        _writer.WriteLine(ProblemB.ToYesOrNo(ans));
     }
 
     public static string ToYesOrNo(bool value)

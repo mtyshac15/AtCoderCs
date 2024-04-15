@@ -8,10 +8,25 @@ namespace AtCoderCs.Contest.ABC310;
 
 public class ProblemB
 {
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
+
     public static void Main(string[] args)
     {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
         var problem = new ProblemB();
         problem.Solve();
+        Console.Out.Flush();
+    }
+
+    public ProblemB()
+    {
+    }
+
+    public ProblemB(TextReader reader, TextWriter writer)
+    {
+        _reader = reader;
+        _writer = writer;
     }
 
     /// <summary>
@@ -19,7 +34,7 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var NM = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var N = NM[0];
         var M = NM[1];
 
@@ -30,7 +45,7 @@ public class ProblemB
 
         for (int i = 0; i < N; i++)
         {
-            var input = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
             P[i] = input[0];
             C[i] = input[1];
             F[i] = input.Skip(2).ToArray();
@@ -67,11 +82,14 @@ public class ProblemB
             }
         }
 
-        Console.WriteLine(ProblemB.ToYesOrNo(ans));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }
