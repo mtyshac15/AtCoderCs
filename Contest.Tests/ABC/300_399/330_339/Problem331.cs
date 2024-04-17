@@ -65,29 +65,6 @@ public class Problem
     }
 #endif
 
-#if Practice
-    [Fact]
-    public void SolveC()
-    {
-        var prblemLevel = $"C";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.Generate(prblemLevel);
-        using (var tester = new Tester(sample.Input, sample.Output))
-        {
-            var problem = new ProblemC(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.Execute(method);
-            actualDic = tester.ReadOutputSample();
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-    }
-#endif
-
 #if false
     [Fact]
     public void SolveD()
@@ -97,8 +74,8 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.Generate(prblemLevel);
-        using (var tester = new Tester(sample.Input, sample.Output))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemD(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -120,8 +97,8 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.Generate(prblemLevel);
-        using (var tester = new Tester(sample.Input, sample.Output))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemE(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -143,8 +120,8 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.Generate(prblemLevel);
-        using (var tester = new Tester(sample.Input, sample.Output))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemF(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -166,8 +143,8 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.Generate(prblemLevel);
-        using (var tester = new Tester(sample.Input, sample.Output))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemG(tester.Reader, tester.Writer);
             Action method = problem.Solve;

@@ -33,22 +33,22 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var price = (int)(N * 1.08);
 
         var originalPrice = 206;
         if (price < originalPrice)
         {
-            Console.WriteLine("Yay!");
+            _writer.WriteLine("Yay!");
         }
         else if (price > originalPrice)
         {
-            Console.WriteLine(":(");
+            _writer.WriteLine(":(");
         }
         else
         {
-            Console.WriteLine("so-so");
+            _writer.WriteLine("so-so");
         }
     }
 }

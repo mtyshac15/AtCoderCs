@@ -1,3 +1,4 @@
+using AtCoderCs.Common.Library;
 using AtCoderCs.Contest.ABC039;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
@@ -5,37 +6,63 @@ using Xunit;
 
 namespace AtCoderCs.Contest.Tests.ABC039;
 
+[Collection("ABC039")]
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"000_099", "030_039");
     private static readonly string _problemNumber = $"039";
 
-    private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
+    private readonly SampleFiePath _sampleFiePath;
 
-#if Accepted
+    public Problem()
+    {
+        _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
+    }
+
+#if false
     [Fact]
     public void SolveA()
     {
         var prblemLevel = $"A";
 
-        var problem = new ProblemA();
-        Action method = problem.Solve;
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
 
-        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        {
+            var problem = new ProblemA(tester.Reader, tester.Writer);
+            Action method = problem.Solve;
+
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
+        }
+
+        TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 
-#if Accepted
+#if Practice
     [Fact]
     public void SolveB()
     {
         var prblemLevel = $"B";
 
-        var problem = new ProblemB();
-        Action method = problem.Solve;
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
 
-        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        {
+            var problem = new ProblemB(tester.Reader, tester.Writer);
+            Action method = problem.Solve;
+
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
+        }
+
+        TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 
@@ -45,49 +72,43 @@ public class Problem
     {
         var prblemLevel = $"C";
 
-        var problem = new ProblemC();
-        Action method = problem.Solve;
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
 
-        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        {
+            var problem = new ProblemC(tester.Reader, tester.Writer);
+            Action method = problem.Solve;
+
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
+        }
+
+        TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 
-#if None
+#if false
     [Fact]
     public void SolveD()
     {
         var prblemLevel = $"D";
 
-        var problem = new ProblemD();
-        Action method = problem.Solve;
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
 
-        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
-    }
-#endif
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        {
+            var problem = new ProblemD(tester.Reader, tester.Writer);
+            Action method = problem.Solve;
 
-#if None
-    [Fact]
-    public void SolveE()
-    {
-        var prblemLevel = $"E";
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
+        }
 
-        var problem = new ProblemE();
-        Action method = problem.Solve;
-
-        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
-    }
-#endif
-
-#if None
-    [Fact]
-    public void SolveF()
-    {
-        var prblemLevel = $"F";
-
-        var problem = new ProblemF();
-        Action method = problem.Solve;
-
-        TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 }

@@ -38,7 +38,7 @@ public class ProblemA
         var P = NPQ[1];
         var Q = NPQ[2];
 
-        var D = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var D = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
         var ans = Math.Min(P, Q + D.Min());
         _writer.WriteLine(ans);

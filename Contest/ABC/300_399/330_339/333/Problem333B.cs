@@ -33,8 +33,8 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = Console.ReadLine().Trim();
-        var T = Console.ReadLine().Trim();
+        var S = _reader.ReadLine().Trim();
+        var T = _reader.ReadLine().Trim();
 
         var adjust = new string[]
         {
@@ -52,11 +52,14 @@ public class ProblemB
             ans = true;
         }
 
-        Console.WriteLine(ProblemB.ToYesOrNo(ans));
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
     }
 
-    public static string ToYesOrNo(bool value)
+    public static class IOLibrary
     {
-        return value ? $"Yes" : $"No";
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

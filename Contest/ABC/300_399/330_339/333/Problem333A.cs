@@ -33,7 +33,7 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var N = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ansBuilder = new StringBuilder();
         for (int i = 0; i < N; i++)
@@ -42,6 +42,6 @@ public class ProblemA
         }
 
         var ans = ansBuilder.ToString();
-        Console.WriteLine(ans);
+        _writer.WriteLine(ans);
     }
 }

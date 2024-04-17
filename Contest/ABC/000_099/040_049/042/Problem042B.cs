@@ -37,7 +37,7 @@ public class ProblemB
         var S = new string[N];
         for (int i = 0; i < N; i++)
         {
-            S[i] = Console.ReadLine().Trim();
+            S[i] = _reader.ReadLine().Trim();
         }
 
         Array.Sort(S);

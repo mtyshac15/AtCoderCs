@@ -1,6 +1,7 @@
 using System.Data;
 using System.IO;
 using System.Reflection;
+using System.Runtime.Versioning;
 using System.Text;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -9,28 +10,51 @@ namespace AtCoderCs.Common.Library;
 public class SampleFiePath
 {
     private static readonly string _solutionName = "AtCoderCs.sln";
+    private static readonly DirectoryInfo _directory = new DirectoryInfo(Environment.CurrentDirectory);
+    private static string _solutionDirectory;
 
     private static readonly string _inputFileName = "Input.txt";
     private static readonly string _outputFileName = "Output.txt";
 
-    private static string _sampleFolder;
+    private string _sampleFolderPath;
 
     public SampleFiePath(string contestSection, string problemFolder, string problemNumber)
     {
-        var directory = new DirectoryInfo(Environment.CurrentDirectory);
-        var solutionDirectory = SampleFiePath.GetDirectory(directory, _solutionName);
-        _sampleFolder = Path.Combine($"{solutionDirectory}",
-                                     $"Sample",
-                                     $"{contestSection}",
-                                     $"{problemFolder}",
-                                     $"{problemNumber}");
+        if (string.IsNullOrWhiteSpace(_solutionDirectory))
+        {
+            _solutionDirectory = SampleFiePath.GetDirectory(_directory, _solutionName);
+        }
+
+        var sampleFolder = Path.Combine($"Sample",
+                                        $"{contestSection}",
+                                        $"{problemFolder}",
+                                        $"{problemNumber}",
+                                        $"{problemNumber}");
+
+        _sampleFolderPath = Path.Combine($"{_solutionDirectory}", $"{sampleFolder}");
     }
 
-    public (string Input, string Output) Generate(string level)
+    public (string InputText, string OutputText) ReadFiles(string level)
     {
-        var inputFilePath = $"{_sampleFolder}{level}_{_inputFileName}";
-        var outputFilePath = $"{_sampleFolder}{level}_{_outputFileName}";
-        return (inputFilePath, outputFilePath);
+        var inputFilePath = $"{_sampleFolderPath}{level}_{_inputFileName}";
+
+        string inputText;
+        using (var reader = new StreamReader(inputFilePath))
+        using (var synchronized = StreamReader.Synchronized(reader))
+        {
+            inputText = synchronized.ReadToEnd();
+        }
+
+        var outputFilePath = $"{_sampleFolderPath}{level}_{_outputFileName}";
+
+        string outputText;
+        using (var reader = new StreamReader(outputFilePath))
+        using (var synchronized = StreamReader.Synchronized(reader))
+        {
+            outputText = synchronized.ReadToEnd();
+        }
+
+        return (inputText, outputText);
     }
 
     private static string GetDirectory(DirectoryInfo directory, string fileName)

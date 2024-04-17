@@ -3,6 +3,7 @@ using AtCoderCs.Contest.ABC000;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
+//[assembly: CollectionBehavior(DisableTestParallelization = true)]
 
 namespace AtCoderCs.Contest.Tests.ABC000;
 

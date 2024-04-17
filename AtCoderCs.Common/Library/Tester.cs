@@ -8,20 +8,20 @@ namespace AtCoderCs.Common.Library;
 
 public class Tester : IDisposable
 {
-    private StreamReader _outputSampleReader;
-
     private object _lockObject = new object();
     private bool _disposed = false;
 
-    public Tester(string inputFilePath, string outputFilePath)
+    private StringReader _outputSampleReader;
+
+    public Tester(string inputSampleText, string outputSampleText)
     {
-        this.Reader = new StreamReader(inputFilePath);
+        this.Reader = new StringReader(inputSampleText);
         this.Writer = new StringWriter();
 
-        _outputSampleReader = new StreamReader(outputFilePath);
+        _outputSampleReader = new StringReader(outputSampleText);
     }
 
-    public StreamReader Reader { get; }
+    public StringReader Reader { get; }
 
     public StringWriter Writer { get; }
 
@@ -53,20 +53,14 @@ public class Tester : IDisposable
     {
         var actualDic = new Dictionary<int, string>();
 
-        while (!this.Reader.EndOfStream)
+        while (this.Reader.Peek() > -1)
         {
             var inputNumber = int.Parse(this.Reader.ReadLine());
 
             method?.Invoke();
 
-            //末尾にある愛業コードをすべて削除
-            var outputStr = this.Writer.ToString().TrimEnd('\r', '\n');
+            actualDic.Add(inputNumber, this.Writer.ToString().Trim());
 
-            //末尾に改行コードを一つだけ追加
-            var strBuilder = new StringBuilder();
-            strBuilder.AppendLine(outputStr);
-
-            actualDic.Add(inputNumber, strBuilder.ToString());
             //内容をクリア
             var tmpBuilder = this.Writer.GetStringBuilder();
             tmpBuilder.Clear();
@@ -93,7 +87,7 @@ public class Tester : IDisposable
     public IDictionary<int, string> ReadOutputSample()
     {
         var expectedDic = new Dictionary<int, string>();
-        while (!_outputSampleReader.EndOfStream)
+        while (_outputSampleReader.Peek() > -1)
         {
             //サンプル番号
             var sampleNumber = int.Parse(_outputSampleReader.ReadLine());
@@ -110,15 +104,7 @@ public class Tester : IDisposable
                 else
                 {
                     //空欄を読み込んだ場合は、そこまでが1サンプルの出力例
-
-                    //末尾にある改行コードをすべて削除
-                    var expectedOutputStr = strBuilder.ToString().TrimEnd('\r', '\n');
-
-                    //末尾に改行コードを一つだけ追加
-                    var formatBuilder = new StringBuilder();
-                    formatBuilder.AppendLine(expectedOutputStr);
-
-                    expectedDic.Add(sampleNumber, formatBuilder.ToString());
+                    expectedDic.Add(sampleNumber, strBuilder.ToString().Trim());
                     break;
                 }
             }

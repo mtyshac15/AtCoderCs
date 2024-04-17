@@ -1,0 +1,8 @@
+1
+vowel
+
+2
+consonant
+
+3
+consonant

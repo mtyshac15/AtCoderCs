@@ -12,7 +12,7 @@ public class Problem
     private static readonly string _problemFolder = Path.Combine($"000_099", "040_049");
     private static readonly string _problemNumber = $"043";
 
-    private SampleFiePath _sampleFiePath;
+    private readonly SampleFiePath _sampleFiePath;
 
     public Problem()
     {
@@ -28,20 +28,21 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemA(tester.Reader, tester.Writer);
             Action method = problem.Solve;
 
-            expectedDic = tester.Execute(method);
-            actualDic = tester.ReadOutputSample();
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
         }
 
         TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 
-#if false
+#if Practice
     [Fact]
     public void SolveB()
     {
@@ -50,20 +51,21 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemB(tester.Reader, tester.Writer);
             Action method = problem.Solve;
 
-            expectedDic = tester.Execute(method);
-            actualDic = tester.ReadOutputSample();
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
         }
 
         TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 
-#if false
+#if Practice
     [Fact]
     public void SolveC()
     {
@@ -72,13 +74,14 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemC(tester.Reader, tester.Writer);
             Action method = problem.Solve;
 
-            expectedDic = tester.Execute(method);
-            actualDic = tester.ReadOutputSample();
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
         }
 
         TestTools.Judge(expectedDic, actualDic);
@@ -94,13 +97,14 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
+        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemD(tester.Reader, tester.Writer);
             Action method = problem.Solve;
 
-            expectedDic = tester.Execute(method);
-            actualDic = tester.ReadOutputSample();
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
         }
 
         TestTools.Judge(expectedDic, actualDic);
