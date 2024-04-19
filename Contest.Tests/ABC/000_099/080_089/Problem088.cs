@@ -9,8 +9,8 @@ namespace AtCoderCs.Contest.Tests.ABC088;
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
-    private static readonly string _problemFolder = Path.Combine($"000_099", "000_009");
-    private static readonly string _problemNumber = $"000";
+    private static readonly string _problemFolder = Path.Combine($"000_099", "000_089");
+    private static readonly string _problemNumber = $"088";
 
     private SampleFiePath _sampleFiePath;
 
