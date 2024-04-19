@@ -29,13 +29,71 @@ public class ProblemB
     }
 
     /// <summary>
-    /// A to Z String 
+    /// Template Matching
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NM[0];
+        var M = NM[1];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var A = new string[N];
+        var B = new string[M];
+
+        for (int i = 0; i < N; i++)
+        {
+            A[i] = _reader.ReadLine().Trim();
+        }
+
+        for (int i = 0; i < M; i++)
+        {
+            B[i] = _reader.ReadLine().Trim();
+        }
+
+        var ans = true;
+        for (int ai = 0; ai < N - M; ai++)
+        {
+            for (int aj = 0; aj < N - M; aj++)
+            {
+                var isMatch = true;
+                for (int bi = 0; bi < M; bi++)
+                {
+                    for (int bj = 0; bj < M; bj++)
+                    {
+                        if (A[ai + bi][aj + bj] != B[bi][bj])
+                        {
+                            isMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (!isMatch)
+                    {
+                        break;
+                    }
+                }
+
+                ans = isMatch;
+                if (ans)
+                {
+                    break;
+                }
+            }
+
+            if (ans)
+            {
+                break;
+            }
+        }
+
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

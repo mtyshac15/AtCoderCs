@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC054;
+namespace AtCoderCs.Contest.ABC055;
 
 public class ProblemA
 {
@@ -29,38 +29,16 @@ public class ProblemA
     }
 
     /// <summary>
-    /// One Card Poker
+    /// Restaurant
     /// </summary>
     public void Solve()
     {
-        var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var A = AB[0];
-        var B = AB[1];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        if (A == 1)
-        {
-            A = 14;
-        }
+        var x = 800 * N;
+        var y = 200 * (N / 15);
 
-        if (B == 1)
-        {
-            B = 14;
-        }
-
-        var ans = string.Empty;
-        if (A == B)
-        {
-            ans = "Draw";
-        }
-        else if (A > B)
-        {
-            ans = "Alice";
-        }
-        else if (A < B)
-        {
-            ans = "Bob";
-        }
-
+        var ans = x - y;
         _writer.WriteLine(ans);
     }
 }

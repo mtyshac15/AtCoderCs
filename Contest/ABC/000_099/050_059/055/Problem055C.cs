@@ -33,9 +33,25 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var NM = _reader.ReadLine().Trim().Split().Select(long.Parse).ToArray();
+        var N = NM[0];
+        var M = NM[1];
 
-        var ans = 0;
+        //cをすべて使用した場合に必要なSの残り数
+        var sub = M / 2 - N;
+
+        var ans = 0L;
+        if (sub < 0)
+        {
+            //S が余る場合
+            ans = M / 2;
+        }
+        else
+        {
+            //cを組み合わせる場合
+            ans = N + sub / 2;
+        }
+
         _writer.WriteLine(ans);
     }
 }

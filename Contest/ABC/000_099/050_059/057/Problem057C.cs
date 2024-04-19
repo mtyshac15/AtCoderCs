@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.WebSockets;
+using System.Runtime.InteropServices.Marshalling;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC055;
+namespace AtCoderCs.Contest.ABC057;
 
-public class ProblemA
+public class ProblemC
 {
     private TextReader _reader = Console.In;
     private TextWriter _writer = Console.Out;
@@ -13,27 +15,27 @@ public class ProblemA
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemA();
+        var problem = new ProblemC();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemA()
+    public ProblemC()
     {
     }
 
-    public ProblemA(TextReader reader, TextWriter writer)
+    public ProblemC(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;
     }
 
     /// <summary>
-    /// ABC/ARC
+    /// 
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var X = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = 0;
         _writer.WriteLine(ans);
