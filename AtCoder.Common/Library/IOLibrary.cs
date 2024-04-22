@@ -58,19 +58,6 @@ public static class IOLibrary
         }
         return array;
     }
-
-    public static Matrix GetMatrix(int rowCount, int colCount)
-    {
-        var matrix = new Matrix(rowCount, colCount);
-
-        for (var row = 0; row < rowCount; row++)
-        {
-            var rows = IOLibrary.ReadLongArray();
-            matrix.Init(row, rows);
-        }
-
-        return matrix;
-    }
     #endregion
 
     #region "int"

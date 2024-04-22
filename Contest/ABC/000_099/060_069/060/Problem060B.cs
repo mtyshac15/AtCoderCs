@@ -7,8 +7,8 @@ namespace AtCoderCs.Contest.ABC060;
 
 public class ProblemB
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private TextReader _reader;
+    private TextWriter _writer;
 
     public static void Main(string[] args)
     {
@@ -20,6 +20,8 @@ public class ProblemB
 
     public ProblemB()
     {
+        _reader = Console.In;
+        _writer = Console.Out;
     }
 
     public ProblemB(TextReader reader, TextWriter writer)
@@ -29,13 +31,41 @@ public class ProblemB
     }
 
     /// <summary>
-    /// A to Z String 
+    /// Choose Integers
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ABC = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = ABC[0];
+        var B = ABC[1];
+        var C = ABC[2];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var set = new HashSet<int>();
+
+        var total = A % B;
+
+        //余りが一巡するまでに、Cと等しくならなければNo
+        var ans = false;
+        while (set.Add(total))
+        {
+            if (total == C)
+            {
+                ans = true;
+                break;
+            }
+
+            total += A;
+            total %= B;
+        }
+
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"YES" : $"NO";
+        }
     }
 }

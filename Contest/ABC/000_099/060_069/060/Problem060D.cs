@@ -7,8 +7,8 @@ namespace AtCoderCs.Contest.ABC060;
 
 public class ProblemD
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private TextReader _reader;
+    private TextWriter _writer;
 
     public static void Main(string[] args)
     {
@@ -20,6 +20,8 @@ public class ProblemD
 
     public ProblemD()
     {
+        _reader = Console.In;
+        _writer = Console.Out;
     }
 
     public ProblemD(TextReader reader, TextWriter writer)

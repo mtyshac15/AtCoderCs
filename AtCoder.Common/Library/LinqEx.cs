@@ -29,12 +29,6 @@ public static class LinqEx
         return array;
     }
 
-    public static IEnumerable<long> Sort(this IEnumerable<long> collection)
-    {
-        var array = collection.ToArray();
-        return array.Sort();
-    }
-
     public static long[] Sort(this long[] array)
     {
         Array.Sort(array);
@@ -59,34 +53,7 @@ public static class LinqEx
         }
         return array;
     }
-
-    public static IEnumerable<T> LongRepeat<T>(T element, long count)
-    {
-        var array = new T[count];
-        for (var i = 0; i < count; i++)
-        {
-            array[i] = element;
-        }
-        return array;
-    }
-
     #endregion
-
-    public static IEnumerable<T> LongSkip<T>(this IEnumerable<T> collection, long count)
-    {
-        var array = collection.ToArray();
-        if (array.LongLength <= count)
-        {
-            return new T[0];
-        }
-
-        var list = new List<T>();
-        for (long i = count; i < array.LongLength; i++)
-        {
-            list.Add(array[i]);
-        }
-        return list;
-    }
 
     /// <summary>
     /// 階差数列
