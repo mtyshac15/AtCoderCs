@@ -1,5 +1,4 @@
-﻿using AtCoderCs.Common.Library;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,11 +30,13 @@ public class ProblemA
         _writer = writer;
     }
 
+    /// <summary>
+    /// Past ABCs
+    /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
-        var numStr = string.Join(string.Empty, S[S.Length - 3], S[S.Length - 2], S[S.Length - 1]);
-        var number = int.Parse(numStr);
+        var number = int.Parse(S.Substring(S.Length - 3, 3));
 
         var ans = false;
         if (number == 316)

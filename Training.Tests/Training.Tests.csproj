@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
     <ProjectReference Include="..\Training\Training.csproj" />
   </ItemGroup>
 

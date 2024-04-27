@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
     <ProjectReference Include="..\Contest\Contest.csproj" />
   </ItemGroup>
 

@@ -28,6 +28,9 @@ public class ProblemB
         _writer = writer;
     }
 
+    /// <summary>
+    /// Commencement
+    /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();

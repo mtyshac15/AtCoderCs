@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace AtCoderCs.Contest.ABC350;
 
 public class ProblemB
@@ -43,15 +42,7 @@ public class ProblemB
 
         for (int i = 0; i < Q; i++)
         {
-            var hole = T[i];
-            if (teeth[hole - 1] == 1)
-            {
-                teeth[hole - 1] = 0;
-            }
-            else if (teeth[hole - 1] == 0)
-            {
-                teeth[hole - 1] = 1;
-            }
+            teeth[T[i] - 1] = 1 - teeth[T[i] - 1];
         }
 
         var ans = teeth.Sum();

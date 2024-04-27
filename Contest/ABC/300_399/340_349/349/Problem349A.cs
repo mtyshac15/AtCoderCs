@@ -28,6 +28,9 @@ public class ProblemA
         _writer = writer;
     }
 
+    /// <summary>
+    /// Zero Sum Game
+    /// </summary>
     public void Solve()
     {
         var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];

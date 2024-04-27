@@ -30,8 +30,7 @@ public class ProblemC
 
     public void Solve()
     {
-        var input = _reader.ReadLine().Trim().Split().Select(long.Parse).ToArray();
-        var N = input[0];
+        var N = _reader.ReadLine().Trim().Split().Select(long.Parse).ToArray()[0];
 
         // 2^k < N <= 2^(k+1) を満たすk
         var k = 0;

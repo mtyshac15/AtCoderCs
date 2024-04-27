@@ -34,37 +34,30 @@ public class ProblemC
     public void Solve()
     {
         var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var AC = new int[N, 2];
 
+        var A = new int[N];
+        var C = new int[N];
         for (int i = 0; i < N; i++)
         {
             var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-            AC[i, 0] = input[0];
-            AC[i, 1] = input[1];
+            A[i] = input[0];
+            C[i] = input[1];
         }
 
-        var dic = new SortedDictionary<int, int>();
-        dic.Add(AC[0, 1], AC[0, 0]);
-
-        var valueArray = new List<int>();
+        var dic = new Dictionary<int, int>();
+        dic.Add(C[0], A[0]);
 
         for (int i = 1; i < N; i++)
         {
-            var A = AC[i, 0];
-            var C = AC[i, 1];
-
-            if (!dic.ContainsKey(C))
+            if (!dic.ContainsKey(C[i]))
             {
                 //色が異なる場合追加
-                dic.Add(C, A);
+                dic.Add(C[i], A[i]);
             }
             else
             {
                 //色が同じものがある場合、おいしさの低い方を選ぶ
-                if (A < dic[C])
-                {
-                    dic[C] = A;
-                }
+                dic[C[i]] = Math.Min(A[i], dic[C[i]]);
             }
         }
 

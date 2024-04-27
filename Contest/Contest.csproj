@@ -20,8 +20,4 @@
     <Folder Include="ABC\300_399\300_309\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
-  </ItemGroup>
-
 </Project>

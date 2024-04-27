@@ -1,0 +1,8 @@
+1
+safe
+
+2
+delicious
+
+3
+dangerous
