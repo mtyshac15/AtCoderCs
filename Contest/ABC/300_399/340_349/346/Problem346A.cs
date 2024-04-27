@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC347;
+namespace AtCoderCs.Contest.ABC346;
 
 public class ProblemA
 {

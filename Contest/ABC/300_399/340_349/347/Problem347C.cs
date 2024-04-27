@@ -28,6 +28,9 @@ public class ProblemC
         _writer = writer;
     }
 
+    /// <summary>
+    /// Ideal Holidays
+    /// </summary>
     public void Solve()
     {
         var NAB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();

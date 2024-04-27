@@ -30,31 +30,9 @@ public class ProblemB
 
     public void Solve()
     {
-        var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var Q = input[0];
+        var S = _reader.ReadLine().Trim();
 
-        var list = new List<long>();
-
-        var strtBuilder = new StringBuilder();
-
-        for (var i = 0; i < Q; i++)
-        {
-            var query = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-            var x = query[0];
-            var k = query[1];
-
-            if (x == 1)
-            {
-                list.Add(k);
-            }
-            else if (x == 2)
-            {
-                var result = list[list.Count - k];
-                strtBuilder.AppendLine($"{result}");
-            }
-        }
-
-        var ans = strtBuilder.ToString();
+        var ans = 0;
         _writer.WriteLine(ans);
     }
 }

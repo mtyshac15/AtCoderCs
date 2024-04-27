@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC347;
+namespace AtCoderCs.Contest.ABC346;
 
-public class ProblemA
+public class ProblemF
 {
     private TextReader _reader = Console.In;
     private TextWriter _writer = Console.Out;
@@ -13,16 +13,16 @@ public class ProblemA
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemA();
+        var problem = new ProblemF();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemA()
+    public ProblemF()
     {
     }
 
-    public ProblemA(TextReader reader, TextWriter writer)
+    public ProblemF(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;

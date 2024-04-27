@@ -30,6 +30,9 @@ public class ProblemF
 
     public void Solve()
     {
+        var S = _reader.ReadLine().Trim();
 
+        var ans = 0;
+        _writer.WriteLine(ans);
     }
 }
