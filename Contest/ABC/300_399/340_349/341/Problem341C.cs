@@ -33,9 +33,64 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim().Split();
+        var HWN = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var H = HWN[0];
+        var W = HWN[1];
+        var N = HWN[2];
+
+        var T = _reader.ReadLine().Trim();
+
+        var S = new string[H];
+        for (int i = 0; i < H; i++)
+        {
+            S[i] = _reader.ReadLine().Trim();
+        }
 
         var ans = 0;
+        for (int startH = 1; startH < H - 1; startH++)
+        {
+            for (int startW = 1; startW < W - 1; startW++)
+            {
+                if (S[startH][startW] != '#')
+                {
+                    var isMatch = true;
+
+                    var h = startH;
+                    var w = startW;
+
+                    for (int i = 0; i < N; i++)
+                    {
+                        switch (T[i])
+                        {
+                            case 'L':
+                                w--;
+                                break;
+                            case 'R':
+                                w++;
+                                break;
+                            case 'U':
+                                h--;
+                                break;
+                            case 'D':
+                                h++;
+                                break;
+                        }
+
+                        if (S[h][w] == '#')
+                        {
+                            isMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (isMatch)
+                    {
+                        ans++;
+                    }
+                }
+            }
+        }
+
         _writer.WriteLine(ans);
     }
 }

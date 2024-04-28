@@ -1,9 +1,7 @@
 using System.Data;
 using System.IO;
 using System.Reflection;
-using System.Runtime.Versioning;
 using System.Text;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AtCoderCs.Common.Library;
 
