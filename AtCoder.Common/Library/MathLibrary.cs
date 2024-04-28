@@ -871,4 +871,63 @@ public static class MathLibrary
     }
 
     #endregion
+
+    #region MyRegion
+    struct UnionFind
+    {
+        IList<int> _par;
+        IList<int> _size;
+
+        public UnionFind(int n)
+        {
+            _par = Enumerable.Repeat(-1, n).ToList();
+            _size = Enumerable.Repeat(1, n).ToList();
+        }
+
+        public int Root(int x)
+        {
+            if (_par[x] == -1)
+            {
+                return x;
+            }
+            else
+            {
+                _par[x] = this.Root(_par[x]);
+                return _par[x];
+            }
+        }
+
+        public bool IsSame(int x, int y)
+        {
+            return this.Root(x) == this.Root(y);
+        }
+
+        public bool Unite(int x, int y)
+        {
+            var rootX = this.Root(x);
+            var rootY = this.Root(y);
+
+            if (rootX == rootY)
+            {
+                return false;
+            }
+
+            if (_size[rootX] < _size[rootY])
+            {
+                var temp = rootX;
+                rootX = rootY;
+                rootY = temp;
+            }
+
+            _par[rootX] = rootY;
+            _size[rootX] += _size[rootY];
+            return true;
+        }
+
+        public int Size(int x)
+        {
+            return _size[x];
+        }
+    }
+    #endregion
 }
