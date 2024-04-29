@@ -29,7 +29,7 @@ public class ProblemA
     }
 
     /// <summary>
-    /// ABC/ARC
+    /// 
     /// </summary>
     public void Solve()
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC323;
+namespace AtCoderCs.Contest.ABC121;
 
 public class ProblemB
 {
@@ -29,28 +29,35 @@ public class ProblemB
     }
 
     /// <summary>
-    /// Round-Robin Tournament
+    /// Can you solve this?
     /// </summary>
     public void Solve()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var NMC = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NMC[0];
+        var M = NMC[1];
+        var C = NMC[2];
 
-        var S = new string[N];
+        var B = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+
+        var A = new int[N][];
         for (int i = 0; i < N; i++)
         {
-            S[i] = _reader.ReadLine().Trim();
+            A[i] = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         }
 
-        //勝敗を集計
-        var win = new int[N];
+        var ans = 0;
         for (int i = 0; i < N; i++)
         {
-            win[i] = S[i].Count(x => x == 'o');
+            //内積
+            var sum = A[i].Zip(B, (a, b) => a * b).Sum();
+            sum += C;
+            if (sum > 0)
+            {
+                ans++;
+            }
         }
 
-        var array = win.Select((x, i) => (x, i)).OrderByDescending(x => x.x);
-
-        var ans = string.Join(" ", array.Select(x => x.i + 1));
         _writer.WriteLine(ans);
     }
 }

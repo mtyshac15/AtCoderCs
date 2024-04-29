@@ -12,7 +12,7 @@ namespace AtCoderCs
         {
             var problem = new AtCoderCs.Contest.ABC330.ProblemC();
             var a = problem.Calc(28);
-            Debug.WriteLine(a);
+            Console.WriteLine(a);
         }
     }
 }

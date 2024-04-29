@@ -32,9 +32,18 @@ public class SampleFiePath
         _sampleFolderPath = Path.Combine($"{_solutionDirectory}", $"{sampleFolder}");
     }
 
-    public (string InputText, string OutputText) ReadFiles(string level)
+    public (string InputText, string OutputText) ReadFiles(string level, string suffix = "")
     {
-        var inputFilePath = $"{_sampleFolderPath}{level}_{_inputFileName}";
+        var inputFileName = _inputFileName;
+        var outputFileName = _outputFileName;
+
+        if (!string.IsNullOrWhiteSpace(suffix))
+        {
+            inputFileName = $"{suffix}_{inputFileName}";
+            outputFileName = $"{suffix}_{outputFileName}";
+        }
+
+        var inputFilePath = $"{_sampleFolderPath}{level}_{inputFileName}";
 
         string inputText;
         using (var reader = new StreamReader(inputFilePath))
@@ -43,7 +52,7 @@ public class SampleFiePath
             inputText = synchronized.ReadToEnd();
         }
 
-        var outputFilePath = $"{_sampleFolderPath}{level}_{_outputFileName}";
+        var outputFilePath = $"{_sampleFolderPath}{level}_{outputFileName}";
 
         string outputText;
         using (var reader = new StreamReader(outputFilePath))
@@ -70,6 +79,4 @@ public class SampleFiePath
 
         return string.Empty;
     }
-
-
 }
