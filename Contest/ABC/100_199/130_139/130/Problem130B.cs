@@ -29,7 +29,7 @@ public class ProblemB
     }
 
     /// <summary>
-    /// A to Z String 
+    /// 
     /// </summary>
     public void Solve()
     {

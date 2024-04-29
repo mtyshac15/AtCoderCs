@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC130;
+namespace AtCoderCs.Contest.ABC139;
 
 public class ProblemA
 {
@@ -29,13 +29,14 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Tenki
     /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
+        var T = _reader.ReadLine().Trim();
 
-        var ans = 0;
+        var ans = S.Zip(T, (s, t) => (s, t)).Count(x => x.t == x.s);
         _writer.WriteLine(ans);
     }
 }
