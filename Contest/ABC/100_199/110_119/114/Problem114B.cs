@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC110;
+namespace AtCoderCs.Contest.ABC114;
 
 public class ProblemB
 {
@@ -29,13 +29,19 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// 754
     /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
 
-        var ans = 0;
+        var ans = int.MaxValue;
+        for (int i = 0; i < S.Length - 2; i++)
+        {
+            var X = int.Parse(S.Substring(i, 3));
+            ans = Math.Min(ans, Math.Abs(X - 753));
+        }
+
         _writer.WriteLine(ans);
     }
 }

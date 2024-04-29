@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC110;
+namespace AtCoderCs.Contest.ABC114;
 
 public class ProblemA
 {
@@ -29,13 +29,22 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// 753
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var X = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var age = new int[] { 3, 5, 7 };
+        var ans = age.Contains(X);
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"YES" : $"NO";
+        }
     }
 }
