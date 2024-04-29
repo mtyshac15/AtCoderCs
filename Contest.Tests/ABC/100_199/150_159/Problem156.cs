@@ -1,16 +1,16 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC150;
+using AtCoderCs.Contest.ABC156;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC150;
+namespace AtCoderCs.Contest.Tests.ABC156;
 
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"100_199", "150_159");
-    private static readonly string _problemNumber = $"150";
+    private static readonly string _problemNumber = $"156";
 
     private SampleFiePath _sampleFiePath;
 
@@ -65,7 +65,7 @@ public class Problem
     }
 #endif
 
-#if Practice
+#if false
     [Fact]
     public void SolveC()
     {

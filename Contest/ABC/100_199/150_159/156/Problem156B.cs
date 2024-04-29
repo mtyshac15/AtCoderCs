@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC150;
+namespace AtCoderCs.Contest.ABC156;
 
 public class ProblemB
 {
@@ -29,26 +29,25 @@ public class ProblemB
     }
 
     /// <summary>
-    /// Count ABC
+    /// Digits
     /// </summary>
     public void Solve()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var S = _reader.ReadLine().Trim();
+        var NK = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NK[0];
+        var K = NK[1];
 
-        var target = "ABC";
+        var list = new List<int>();
 
-        var ans = 0;
-
-        for (int i = 0; i < N - target.Length + 1; i++)
+        var num = N;
+        while (num > 0)
         {
-            var str = string.Join("", S.Substring(i, 3));
-            if (str == target)
-            {
-                ans++;
-            }
+            var remainder = num % K;
+            list.Add(remainder);
+            num /= K;
         }
 
+        var ans = list.Count;
         _writer.WriteLine(ans);
     }
 }

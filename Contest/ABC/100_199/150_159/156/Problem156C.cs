@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC150;
+namespace AtCoderCs.Contest.ABC156;
 
-public class ProblemB
+public class ProblemC
 {
     private TextReader _reader = Console.In;
     private TextWriter _writer = Console.Out;
@@ -13,40 +13,43 @@ public class ProblemB
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new ProblemC();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemB()
+    public ProblemC()
     {
     }
 
-    public ProblemB(TextReader reader, TextWriter writer)
+    public ProblemC(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;
     }
 
     /// <summary>
-    /// Count ABC
+    /// Rally
     /// </summary>
     public void Solve()
     {
         var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var S = _reader.ReadLine().Trim();
+        var X = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
-        var target = "ABC";
+        var ans = int.MaxValue;
 
-        var ans = 0;
+        var min = X.Min();
+        var max = X.Max();
 
-        for (int i = 0; i < N - target.Length + 1; i++)
+        for (int P = min; P <= max; P++)
         {
-            var str = string.Join("", S.Substring(i, 3));
-            if (str == target)
+            var total = 0;
+            for (int i = 0; i < N; i++)
             {
-                ans++;
+                total += (X[i] - P) * (X[i] - P);
             }
+
+            ans = Math.Min(total, ans);
         }
 
         _writer.WriteLine(ans);

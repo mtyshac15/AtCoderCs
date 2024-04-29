@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC150;
+namespace AtCoderCs.Contest.ABC156;
 
-public class ProblemB
+public class ProblemA
 {
     private TextReader _reader = Console.In;
     private TextWriter _writer = Console.Out;
@@ -13,40 +13,34 @@ public class ProblemB
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new ProblemA();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemB()
+    public ProblemA()
     {
     }
 
-    public ProblemB(TextReader reader, TextWriter writer)
+    public ProblemA(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;
     }
 
     /// <summary>
-    /// Count ABC
+    /// Beginner
     /// </summary>
     public void Solve()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var S = _reader.ReadLine().Trim();
+        var NR = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NR[0];
+        var R = NR[1];
 
-        var target = "ABC";
-
-        var ans = 0;
-
-        for (int i = 0; i < N - target.Length + 1; i++)
+        var ans = R;
+        if (N < 10)
         {
-            var str = string.Join("", S.Substring(i, 3));
-            if (str == target)
-            {
-                ans++;
-            }
+            ans = R + 100 * (10 - N);
         }
 
         _writer.WriteLine(ans);
