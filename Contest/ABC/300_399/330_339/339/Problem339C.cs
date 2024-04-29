@@ -30,9 +30,16 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
-        var ans = 0;
+        var ans = 0L;
+        for (var i = 0; i < N; i++)
+        {
+            //負になった場合は0にする
+            ans = Math.Max(ans + A[i], 0);
+        }
+
         _writer.WriteLine(ans);
     }
 }

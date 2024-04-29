@@ -28,11 +28,26 @@ public class ProblemB
         _writer = writer;
     }
 
+    /// <summary>
+    /// Polygon
+    /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var L = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var maxL = L.Max();
+        var sum = L.Sum() - maxL;
+
+        var ans = sum > maxL;
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

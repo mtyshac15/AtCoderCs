@@ -10,6 +10,8 @@ public class ProblemC
     private TextReader _reader = Console.In;
     private TextWriter _writer = Console.Out;
 
+    private IDictionary<long, long> _memo;
+
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
@@ -28,44 +30,39 @@ public class ProblemC
         _writer = writer;
     }
 
+    /// <summary>
+    /// Divide and Divide
+    /// </summary>
     public void Solve()
     {
         var N = _reader.ReadLine().Trim().Split().Select(long.Parse).ToArray()[0];
 
-        // 2^k < N <= 2^(k+1) を満たすk
-        var k = 0;
+        _memo = new Dictionary<long, long>();
+
+        var ans = this.Calc(N);
+        _writer.WriteLine(ans);
+    }
+
+    public long Calc(long N)
+    {
+        if (N == 1)
         {
-            //k=log2N
-            var tmpN = N;
-            var basis = 2;
-            while (tmpN > 1)
-            {
-                tmpN /= basis;
-                k++;
-            }
+            return 0;
         }
 
-        var count = 1L;
+        if (_memo.ContainsKey(N))
         {
-            //2^k
-            var tmpK = k;
-            var basis = 2L;
-            while (tmpK > 0)
-            {
-                //指定したビットが1の場合に
-                if ((tmpK & (1 << 0)) > 0)
-                {
-                    count *= basis;
-                }
-
-                basis *= basis;
-                tmpK >>= 1;
-            }
+            return _memo[N];
         }
 
-        // 深さ 0 から k-1 までのノードの和はN
-        // 2^kから1増えるごとに、深さ k のノードに 2が 1つずつ増える
-        var result = N * k + 2 * (N - count);
-        _writer.WriteLine(result);
+        var left = N / 2;
+        var right = N - left;
+
+        var sum = N + this.Calc(left) + this.Calc(right);
+
+        //メモ化
+        _memo.Add(N, sum);
+
+        return sum;
     }
 }

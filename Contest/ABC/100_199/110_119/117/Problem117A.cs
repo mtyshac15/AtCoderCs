@@ -28,6 +28,9 @@ public class ProblemA
         _writer = writer;
     }
 
+    /// <summary>
+    /// Entrance Examination
+    /// </summary>
     public void Solve()
     {
         var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();

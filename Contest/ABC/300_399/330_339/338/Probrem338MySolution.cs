@@ -5,30 +5,12 @@ using System.Text;
 
 namespace AtCoderCs.Contest.ABC338;
 
-public class ProblemC
+public class MySolution
 {
     private TextReader _reader = Console.In;
     private TextWriter _writer = Console.Out;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC();
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
-    public ProblemC()
-    {
-    }
-
-    public ProblemC(TextReader reader, TextWriter writer)
-    {
-        _reader = reader;
-        _writer = writer;
-    }
-
-    public void Solve()
+    public void OldC()
     {
         var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
@@ -36,6 +18,7 @@ public class ProblemC
         var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var B = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
+        //Aを最大まで作った場合
         var maxA = int.MaxValue;
         for (int i = 0; i < N; i++)
         {
@@ -45,25 +28,35 @@ public class ProblemC
             }
         }
 
-        var total = 0;
+        //残りの材料
+        var remainderQ = Q.Zip(A, (q, a) => q - a * maxA).ToArray();
 
-        //Aを固定し、残りの材料でBを作る
-        for (int countA = 0; countA <= maxA; countA++)
+        var countB = int.MaxValue;
+        for (int i = 0; i < N; i++)
         {
-            var countB = int.MaxValue;
+            if (B[i] != 0)
+            {
+                countB = Math.Min(remainderQ[i] / B[i], countB);
+            }
+        }
+
+        var total = maxA + countB;
+
+        //Aを1人分ずつ減らし、その分Bを作る
+        for (int i = 1; i <= maxA; i++)
+        {
+            countB = int.MaxValue;
             for (int j = 0; j < N; j++)
             {
+                var q = remainderQ[j] + A[j] * i;
+
                 if (B[j] != 0)
                 {
-                    var remainder = Q[j] - A[j] * countA;
-                    countB = Math.Min(remainder / B[j], countB);
+                    countB = Math.Min(q / B[j], countB);
                 }
             }
 
-            total = Math.Max(total, countA + countB);
+            total = Math.Max(total, maxA - i + countB);
         }
-
-        var ans = total;
-        _writer.WriteLine(ans);
     }
 }
