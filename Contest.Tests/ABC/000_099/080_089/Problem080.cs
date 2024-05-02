@@ -10,7 +10,7 @@ public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"000_099", "080_089");
-    private static readonly string _problemNumber = $"070";
+    private static readonly string _problemNumber = $"080";
 
     private SampleFiePath _sampleFiePath;
 

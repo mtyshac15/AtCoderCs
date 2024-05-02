@@ -29,7 +29,7 @@ public class ProblemC
     }
 
     /// <summary>
-    /// X: Yet Another Die Game
+    /// 
     /// </summary>
     public void Solve()
     {
