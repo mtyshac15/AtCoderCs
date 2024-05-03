@@ -29,13 +29,13 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Grouping 2
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var ans = N / 3;
         _writer.WriteLine(ans);
     }
 }

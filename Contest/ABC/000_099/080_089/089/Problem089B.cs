@@ -29,13 +29,24 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Hina Arare
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var S = _reader.ReadLine().Trim().Split();
 
-        var ans = 0;
+        var ans = string.Empty;
+        var count = S.Distinct().Count();
+        if (count == 3)
+        {
+            ans = $"Three";
+        }
+        else
+        {
+            ans = $"Four";
+        }
+
         _writer.WriteLine(ans);
     }
 }

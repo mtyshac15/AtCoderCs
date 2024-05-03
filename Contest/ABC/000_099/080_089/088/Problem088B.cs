@@ -28,6 +28,9 @@ public class ProblemB
         _writer = writer;
     }
 
+    /// <summary>
+    /// Card Game for Two
+    /// </summary>
     public void Solve()
     {
         var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
