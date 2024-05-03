@@ -29,13 +29,28 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// HEX
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var XY = _reader.ReadLine().Trim().Split();
+        var X = XY[0][0];
+        var Y = XY[1][0];
 
-        var ans = 0;
+        var ans = string.Empty;
+        if (X == Y)
+        {
+            ans = "=";
+        }
+        else if (X - 'A' < Y - 'A')
+        {
+            ans = "<";
+        }
+        else
+        {
+            ans = ">";
+        }
+
         _writer.WriteLine(ans);
     }
 }

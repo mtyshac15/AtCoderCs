@@ -29,13 +29,17 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// ISU
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var XYZ = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var X = XYZ[0];
+        var Y = XYZ[1];
+        var Z = XYZ[2];
 
-        var ans = 0;
+        // nY + (n+1)Z <= X
+        var ans = (X - Z) / (Y + Z);
         _writer.WriteLine(ans);
     }
 }
