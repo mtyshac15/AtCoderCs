@@ -29,13 +29,24 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Not Found
     /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
+        var charSet = new HashSet<char>(S);
 
-        var ans = 0;
+        var ans = "None";
+        for (int i = 0; i < 26; i++)
+        {
+            var str = (char)('a' + i);
+            if (!charSet.Contains(str))
+            {
+                ans = str.ToString();
+                break;
+            }
+        }
+
         _writer.WriteLine(ans);
     }
 }

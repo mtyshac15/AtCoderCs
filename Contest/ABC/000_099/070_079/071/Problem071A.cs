@@ -29,13 +29,23 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Meal Delivery
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var xab = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var x = xab[0];
+        var a = xab[1];
+        var b = xab[2];
 
-        var ans = 0;
+        var ans = "A";
+        var da = Math.Abs(x - a);
+        var db = Math.Abs(x - b);
+        if (da > db)
+        {
+            ans = "B";
+        }
+
         _writer.WriteLine(ans);
     }
 }

@@ -19,7 +19,7 @@ public class Problem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if false
+#if true
     [Fact]
     public void SolveA()
     {
@@ -42,7 +42,7 @@ public class Problem
     }
 #endif
 
-#if false
+#if true
     [Fact]
     public void SolveB()
     {
