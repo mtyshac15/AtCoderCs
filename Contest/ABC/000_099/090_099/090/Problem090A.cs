@@ -29,13 +29,17 @@ public class ProblemA
     }
 
     /// <summary>
-    /// ABC/ARC
+    /// Diagonal String
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var c = new string[3];
+        for (int i = 0; i < 3; i++)
+        {
+            c[i] = _reader.ReadLine().Trim();
+        }
 
-        var ans = 0;
+        var ans = $"{c[0][0]}{c[1][1]}{c[2][2]}";
         _writer.WriteLine(ans);
     }
 }

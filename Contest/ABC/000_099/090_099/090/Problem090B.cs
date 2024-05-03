@@ -29,13 +29,23 @@ public class ProblemB
     }
 
     /// <summary>
-    /// A to Z String 
+    /// Palindromic Numbers
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = AB[0];
+        var B = AB[1];
 
         var ans = 0;
+        for (int i = A; i <= B; i++)
+        {
+            if (i.ToString() == string.Join("", i.ToString().Reverse()))
+            {
+                ans++;
+            }
+        }
+
         _writer.WriteLine(ans);
     }
 }

@@ -1,0 +1,9 @@
+1
+ant
+obe
+rec
+
+2
+edu
+cat
+ion
