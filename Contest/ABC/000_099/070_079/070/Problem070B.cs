@@ -29,13 +29,20 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Two Switches
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ABCD = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = ABCD[0];
+        var B = ABCD[1];
+        var C = ABCD[2];
+        var D = ABCD[3];
 
-        var ans = 0;
+        var start = Math.Max(A, C);
+        var end = Math.Min(B, D);
+
+        var ans = Math.Max(end - start, 0);
         _writer.WriteLine(ans);
     }
 }

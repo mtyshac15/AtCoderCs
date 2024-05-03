@@ -29,13 +29,20 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Palindromic Number
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var ans = N.ToString().ToCharArray().SequenceEqual(N.ToString().Reverse());
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }
