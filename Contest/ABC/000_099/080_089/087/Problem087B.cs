@@ -29,13 +29,31 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Coins
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var B = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var C = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var X = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = 0;
+        for (int a = 0; a <= A; a++)
+        {
+            for (int b = 0; b <= B; b++)
+            {
+                for (int c = 0; c <= C; c++)
+                {
+                    var total = 500 * a + 100 * b + 50 * c;
+                    if (total == X)
+                    {
+                        ans++;
+                    }
+                }
+            }
+        }
+
         _writer.WriteLine(ans);
     }
 }

@@ -29,13 +29,15 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Buying Sweets
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var X = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var B = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var ans = (X - A) % B;
         _writer.WriteLine(ans);
     }
 }
