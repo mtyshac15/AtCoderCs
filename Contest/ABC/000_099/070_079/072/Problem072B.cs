@@ -29,13 +29,16 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// OddString
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var s = _reader.ReadLine().Trim();
+        var array = s.Select((x, i) => (x, i))
+                     .Where(x => x.i % 2 != 1)
+                     .Select(x => x.x);
 
-        var ans = 0;
+        var ans = string.Join("", array);
         _writer.WriteLine(ans);
     }
 }

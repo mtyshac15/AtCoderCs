@@ -29,13 +29,15 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Sandglass2
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var Xt = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var X = Xt[0];
+        var t = Xt[1];
 
-        var ans = 0;
+        var ans = Math.Max(X - t, 0);
         _writer.WriteLine(ans);
     }
 }
