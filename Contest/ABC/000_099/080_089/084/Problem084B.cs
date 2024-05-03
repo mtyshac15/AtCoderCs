@@ -29,13 +29,36 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Postal Code
     /// </summary>
     public void Solve()
     {
+        var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = AB[0];
+        var B = AB[1];
+
         var S = _reader.ReadLine().Trim();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = true;
+
+        int num = 0;
+
+        //前半
+        ans = ans & int.TryParse(S.Substring(0, A), out num);
+
+        ans = ans & S.Substring(A, 1) == "-";
+
+        //後半
+        ans = ans & int.TryParse(S.Substring(A + 1, B), out num);
+
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

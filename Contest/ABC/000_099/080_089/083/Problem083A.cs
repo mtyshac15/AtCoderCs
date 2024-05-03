@@ -29,7 +29,7 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Libra
     /// </summary>
     public void Solve()
     {

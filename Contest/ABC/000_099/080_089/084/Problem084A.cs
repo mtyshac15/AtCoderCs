@@ -29,13 +29,13 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// New Year
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var M = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var ans = 48 - M;
         _writer.WriteLine(ans);
     }
 }

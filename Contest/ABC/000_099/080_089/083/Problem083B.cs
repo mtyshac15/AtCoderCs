@@ -29,7 +29,7 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Some Sums
     /// </summary>
     public void Solve()
     {
