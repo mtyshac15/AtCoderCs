@@ -29,13 +29,24 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Good Integer
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var first = N.ToString().Substring(0, 3).Distinct();
+        var second = N.ToString().Substring(1, 3).Distinct();
+
+        var ans = first.Count() == 1 || second.Count() == 1;
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

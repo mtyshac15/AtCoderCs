@@ -29,13 +29,30 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Lucas Number
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var ans = 0L;
+        if (N == 1)
+        {
+            ans = 1;
+        }
+        else
+        {
+            var Li = 2L;
+            var Li1 = 1L;
+
+            for (int i = 2; i <= N; i++)
+            {
+                ans = Li1 + Li;
+                Li = Li1;
+                Li1 = ans;
+            }
+        }
+
         _writer.WriteLine(ans);
     }
 }
