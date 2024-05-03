@@ -29,13 +29,34 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Rotation
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var C = new string[2];
+        for (int i = 0; i < 2; i++)
+        {
+            C[i] = _reader.ReadLine().Trim();
+        }
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = true;
+        for (int i = 0; i < 3; i++)
+        {
+            if (C[0][i] != C[1][2 - i])
+            {
+                ans = false;
+                break;
+            }
+        }
+
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"YES" : $"NO";
+        }
     }
 }

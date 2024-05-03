@@ -29,13 +29,17 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Around Square
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = 0;
+        for (int i = 0; i * i <= N; i++)
+        {
+            ans = i * i;
+        }
         _writer.WriteLine(ans);
     }
 }
