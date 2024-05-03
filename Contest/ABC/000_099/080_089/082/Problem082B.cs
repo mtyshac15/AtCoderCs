@@ -29,7 +29,7 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Two Anagrams
     /// </summary>
     public void Solve()
     {

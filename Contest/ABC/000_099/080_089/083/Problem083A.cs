@@ -33,9 +33,26 @@ public class ProblemA
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ABCD = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = ABCD[0];
+        var B = ABCD[1];
+        var C = ABCD[2];
+        var D = ABCD[3];
 
-        var ans = 0;
+        var ans = string.Empty;
+        if (A + B < C + D)
+        {
+            ans = "Right";
+        }
+        else if (A + B > C + D)
+        {
+            ans = "Left";
+        }
+        else
+        {
+            ans = "Balanced";
+        }
+
         _writer.WriteLine(ans);
     }
 }

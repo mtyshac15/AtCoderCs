@@ -33,9 +33,21 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var NAB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NAB[0];
+        var A = NAB[1];
+        var B = NAB[2];
 
         var ans = 0;
+        for (int i = 1; i <= N; i++)
+        {
+            var sum = i.ToString().ToCharArray().Sum(x => int.Parse(x.ToString()));
+            if (sum >= A && sum <= B)
+            {
+                ans += i;
+            }
+        }
+
         _writer.WriteLine(ans);
     }
 }
