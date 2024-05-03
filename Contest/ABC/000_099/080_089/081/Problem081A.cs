@@ -29,13 +29,13 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Placing Marbles
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var s = _reader.ReadLine().Trim();
 
-        var ans = 0;
+        var ans = s.Select(x => int.Parse(x.ToString())).Sum();
         _writer.WriteLine(ans);
     }
 }

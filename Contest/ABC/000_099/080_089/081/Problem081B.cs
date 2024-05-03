@@ -29,13 +29,24 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Shift only
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
         var ans = 0;
+        while (A.All(x => x % 2 == 0))
+        {
+            for (int i = 0; i < N; i++)
+            {
+                A[i] /= 2;
+            }
+
+            ans++;
+        }
+
         _writer.WriteLine(ans);
     }
 }
