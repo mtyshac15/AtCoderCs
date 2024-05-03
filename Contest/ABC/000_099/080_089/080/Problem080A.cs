@@ -29,13 +29,16 @@ public class ProblemA
     }
 
     /// <summary>
-    /// ABC/ARC
+    /// Parking
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var NAB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NAB[0];
+        var A = NAB[1];
+        var B = NAB[2];
 
-        var ans = 0;
+        var ans = Math.Min(A * N, B);
         _writer.WriteLine(ans);
     }
 }
