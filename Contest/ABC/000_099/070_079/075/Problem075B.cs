@@ -29,7 +29,7 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Minesweeper
     /// </summary>
     public void Solve()
     {

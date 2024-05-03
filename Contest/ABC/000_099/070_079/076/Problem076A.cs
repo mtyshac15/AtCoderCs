@@ -29,13 +29,14 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Rating Goal
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var R = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var G = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var ans = 2 * G - R;
         _writer.WriteLine(ans);
     }
 }

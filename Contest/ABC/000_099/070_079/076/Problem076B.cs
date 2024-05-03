@@ -29,13 +29,27 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Addition and Multiplication
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var K = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var num = 1;
+        for (int i = 0; i < N; i++)
+        {
+            if (num < K)
+            {
+                num *= 2;
+            }
+            else
+            {
+                num += K;
+            }
+        }
+
+        var ans = num;
         _writer.WriteLine(ans);
     }
 }
