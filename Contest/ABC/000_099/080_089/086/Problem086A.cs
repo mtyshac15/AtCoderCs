@@ -29,13 +29,24 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Product
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ab = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var a = ab[0];
+        var b = ab[1];
 
-        var ans = 0;
+        var ans = string.Empty;
+        if (a * b % 2 == 1)
+        {
+            ans = $"Odd";
+        }
+        else
+        {
+            ans = $"Even";
+        }
+
         _writer.WriteLine(ans);
     }
 }

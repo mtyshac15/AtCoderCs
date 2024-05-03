@@ -33,9 +33,30 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ab = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var a = ab[0];
+        var b = ab[1];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var n = int.Parse($"{a}{b}");
+
+        var ans = false;
+        for (int i = 1; i * i <= n; i++)
+        {
+            if (i * i == n)
+            {
+                ans = true;
+                break;
+            }
+        }
+
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }
