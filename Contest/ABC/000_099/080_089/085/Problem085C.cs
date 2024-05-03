@@ -33,7 +33,9 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var NY = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NY[0];
+        var Y = NY[1];
 
         var ans = 0;
         _writer.WriteLine(ans);

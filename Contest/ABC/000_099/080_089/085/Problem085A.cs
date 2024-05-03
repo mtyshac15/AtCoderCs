@@ -29,13 +29,13 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Already 2018
     /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
 
-        var ans = 0;
+        var ans = $"2018{S.Substring(4, S.Length - 4)}";
         _writer.WriteLine(ans);
     }
 }

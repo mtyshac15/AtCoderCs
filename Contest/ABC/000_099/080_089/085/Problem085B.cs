@@ -33,9 +33,15 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var d = new int[N];
+        for (int i = 0; i < N; i++)
+        {
+            d[i] = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        }
+
+        var ans = d.Distinct().Count();
         _writer.WriteLine(ans);
     }
 }
