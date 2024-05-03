@@ -29,13 +29,14 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Bichrome Cells
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
+        var ans = N * N - A;
         _writer.WriteLine(ans);
     }
 }

@@ -33,9 +33,17 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var K = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var x = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
         var ans = 0;
+        for (int i = 0; i < N; i++)
+        {
+            var d = Math.Min(x[i], K - x[i]);
+            ans += d * 2;
+        }
+
         _writer.WriteLine(ans);
     }
 }
