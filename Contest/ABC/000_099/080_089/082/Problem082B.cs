@@ -33,9 +33,48 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var s = _reader.ReadLine().Trim();
+        var t = _reader.ReadLine().Trim();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var sArray = s.ToCharArray();
+        Array.Sort(sArray);
+
+        var tArray = t.ToCharArray();
+        Array.Sort(tArray);
+        tArray = tArray.Reverse().ToArray();
+
+        var ans = false;
+        if (sArray.Length < tArray.Length)
+        {
+            ans = sArray.SequenceEqual(tArray.Take(sArray.Length));
+        }
+
+        if (!ans)
+        {
+            var length = Math.Min(sArray.Length, tArray.Length);
+            for (int i = 0; i < length; i++)
+            {
+                if (sArray[i] < tArray[i])
+                {
+                    ans = true;
+                    break;
+                }
+                else if (sArray[i] > tArray[i])
+                {
+                    ans = false;
+                    break;
+                }
+            }
+        }
+
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }

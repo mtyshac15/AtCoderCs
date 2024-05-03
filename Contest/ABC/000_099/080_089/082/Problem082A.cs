@@ -29,13 +29,13 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// Round Up the Mean
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ab = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
-        var ans = 0;
+        var ans = (int)Math.Ceiling(ab.Average());
         _writer.WriteLine(ans);
     }
 }
