@@ -29,13 +29,29 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// One out of Three
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var ABC = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = ABC[0];
+        var B = ABC[1];
+        var C = ABC[2];
 
         var ans = 0;
+        if (A == B)
+        {
+            ans = C;
+        }
+        else if (A == C)
+        {
+            ans = B;
+        }
+        else
+        {
+            ans = A;
+        }
+
         _writer.WriteLine(ans);
     }
 }
