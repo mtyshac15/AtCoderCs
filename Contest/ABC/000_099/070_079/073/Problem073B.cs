@@ -29,13 +29,26 @@ public class ProblemB
     }
 
     /// <summary>
-    /// 
+    /// Theater
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var l = new int[N];
+        var r = new int[N];
+        for (int i = 0; i < N; i++)
+        {
+            var lr = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+            l[i] = lr[0];
+            r[i] = lr[1];
+        }
 
         var ans = 0;
+        for (int i = 0; i < N; i++)
+        {
+            ans += r[i] - l[i] + 1;
+        }
+
         _writer.WriteLine(ans);
     }
 }

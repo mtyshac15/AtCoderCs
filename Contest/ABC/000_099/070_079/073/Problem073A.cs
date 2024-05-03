@@ -29,13 +29,21 @@ public class ProblemA
     }
 
     /// <summary>
-    /// 
+    /// September 9
     /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = N.ToString().Contains('9');
+        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
     }
 }
