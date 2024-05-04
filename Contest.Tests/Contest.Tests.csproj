@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='All|AnyCPU'">
-    <DefineConstants>$(DefineConstants);Accepted;Contest;Practice</DefineConstants>
+    <DefineConstants>$(DefineConstants);Contest;Practice</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>

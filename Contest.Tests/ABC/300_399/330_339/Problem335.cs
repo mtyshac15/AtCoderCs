@@ -65,7 +65,7 @@ public class Problem
     }
 #endif
 
-#if Practice
+#if false
     [Fact]
     public void SolveC()
     {
