@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC000;
+namespace AtCoderCs.Contest.ABC352;
 
-public class ProblemG
+public class ProblemE
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private TextReader _reader;
+    private TextWriter _writer;
 
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemG();
+        var problem = new ProblemE();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemG()
+    public ProblemE()
     {
+        _reader = Console.In;
+        _writer = Console.Out;
     }
 
-    public ProblemG(TextReader reader, TextWriter writer)
+    public ProblemE(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;
@@ -31,7 +33,6 @@ public class ProblemG
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = 0;
         _writer.WriteLine(ans);

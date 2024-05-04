@@ -31,6 +31,7 @@ public class ProblemD
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
         var ans = 0;
         _writer.WriteLine(ans);

@@ -88,7 +88,7 @@ public class Problem
     }
 #endif
 
-#if Contest
+#if Practice
     [Fact]
     public void SolveD()
     {

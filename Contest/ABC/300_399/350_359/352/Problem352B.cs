@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC000;
+namespace AtCoderCs.Contest.ABC352;
 
 public class ProblemB
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private TextReader _reader;
+    private TextWriter _writer;
 
     public static void Main(string[] args)
     {
@@ -20,6 +21,8 @@ public class ProblemB
 
     public ProblemB()
     {
+        _reader = Console.In;
+        _writer = Console.Out;
     }
 
     public ProblemB(TextReader reader, TextWriter writer)
@@ -28,12 +31,27 @@ public class ProblemB
         _writer = writer;
     }
 
+    /// <summary>
+    /// Typing
+    /// </summary>
     public void Solve()
     {
         var S = _reader.ReadLine().Trim();
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var T = _reader.ReadLine().Trim();
 
-        var ans = 0;
+        var list = new List<int>();
+
+        var sIndex = 0;
+        for (var i = 0; i < T.Length; i++)
+        {
+            if (T[i] == S[sIndex])
+            {
+                list.Add(i + 1);
+                sIndex++;
+            }
+        }
+
+        var ans = string.Join(" ", list);
         _writer.WriteLine(ans);
     }
 }
