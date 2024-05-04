@@ -49,76 +49,94 @@ public class ProblemD
 
         var ans = 0;
 
+        var seen = new int[H, W];
+
+        var startNum = 1;
         for (int startH = 0; startH < H; startH++)
         {
             for (int startW = 0; startW < W; startW++)
             {
-                var queue = new Queue<(int H, int W)>();
-
-                if (S[startH][startW] != '#')
+                if (S[startH][startW] == '#'
+                    || seen[startH, startW] > 0)
                 {
-                    var seen = new bool[H, W];
+                    //すでに見たことあるマスからはスタートしない
+                    continue;
+                }
 
+                var count = 0;
+
+                if (!this.CanMove(S, startH, startW))
+                {
+                    //初期位置から移動できない場合
+                    count++;
+                }
+                else
+                {
+                    var queue = new Queue<(int H, int W)>();
+
+                    count++;
                     queue.Enqueue((startH, startW));
-                    seen[startH, startW] = true;
+                    seen[startH, startW] = startNum;
 
-                    var count = 1;
                     while (queue.Any())
                     {
                         var current = queue.Dequeue();
 
                         //隣接するマスに磁石がないか調べる
-                        var canMove = true;
-                        for (int i = 0; i < 4; i++)
+                        if (this.CanMove(S, current.H, current.W))
                         {
-                            var nextH = current.H + dh[i];
-                            var nextW = current.W + dw[i];
-
-                            if (nextH >= 0 && nextH < H
-                               && nextW >= 0 && nextW < W)
+                            //4方向に磁石がない場合は移動可
+                            for (int i = 0; i < 4; i++)
                             {
-                                if (S[nextH][nextW] == '#')
+                                var nextH = current.H + dh[i];
+                                var nextW = current.W + dw[i];
+
+                                if (this.IsInside(S, nextH, nextW))
                                 {
-                                    if (count != 1)
+                                    if (S[nextH][nextW] == '.'
+                                        && seen[nextH, nextW] != startNum)
                                     {
                                         count++;
+                                        queue.Enqueue((nextH, nextW));
+                                        seen[nextH, nextW] = startNum;
                                     }
-
-                                    canMove = false;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (!canMove)
-                        {
-                            break;
-                        }
-
-                        //4方向に磁石がない場合は移動可
-                        for (int i = 0; i < 4; i++)
-                        {
-                            var nextH = current.H + dh[i];
-                            var nextW = current.W + dw[i];
-
-                            if (nextH >= 0 && nextH < H
-                                && nextW >= 0 && nextW < W)
-                            {
-                                if (S[nextH][nextW] == '.' && !seen[nextH, nextW])
-                                {
-                                    count++;
-                                    queue.Enqueue((nextH, nextW));
-                                    seen[nextH, nextW] = true;
                                 }
                             }
                         }
                     }
 
-                    ans = Math.Max(count, ans);
+                    startNum++;
                 }
+
+                ans = Math.Max(count, ans);
             }
         }
 
         _writer.WriteLine(ans);
+    }
+
+    private bool IsInside(string[] grid, int h, int w)
+    {
+        return h >= 0 && h < grid.Length && w >= 0 && w < grid[0].Length;
+    }
+
+    private bool CanMove(string[] grid, int h, int w)
+    {
+        var dh = new int[] { 0, 1, 0, -1 };
+        var dw = new int[] { 1, 0, -1, 0 };
+
+        //隣接4方向のいずれかに磁石が存在した場合は、移動不可
+        for (int i = 0; i < 4; i++)
+        {
+            var nextH = h + dh[i];
+            var nextW = w + dw[i];
+
+            if (this.IsInside(grid, nextH, nextW) && grid[nextH][nextW] == '#')
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -28,11 +28,33 @@ public class ProblemC
         _writer = writer;
     }
 
+    /// <summary>
+    /// Even Digits
+    /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(long.Parse).ToArray()[0];
 
-        var ans = 0;
+        var evenArray = new List<int>();
+
+        var tmpN = N - 1;
+        while (tmpN > 0)
+        {
+            evenArray.Add((int)(tmpN % 5) * 2);
+            tmpN /= 5;
+        }
+
+        var ans = string.Empty;
+        if (evenArray.Any())
+        {
+            evenArray.Reverse();
+            ans = string.Join("", evenArray);
+        }
+        else
+        {
+            ans = $"0";
+        }
+
         _writer.WriteLine(ans);
     }
 }
