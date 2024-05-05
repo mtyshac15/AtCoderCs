@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 
@@ -41,40 +40,34 @@ public class ProblemD
         var K = NK[1];
 
         var P = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-
         var sortedP = P.Select((p, i) => (p, i)).OrderBy(x => x.p).ToArray();
 
         var ascSet = new SortedSet<int>();
-        var desSet = new SortedSet<int>();
+        var descSet = new SortedSet<int>();
 
-        foreach (var num in sortedP.Take(K))
-        {
-            ascSet.Add(num.i + 1);
-            desSet.Add((num.i + 1) * (-1));
-        }
-
-        var min = ascSet.FirstOrDefault();
-        var max = desSet.FirstOrDefault() * (-1);
-        var ans = max - min;
-
+        var ans = int.MaxValue;
         var prevIndex = 0;
-        for (int i = K; i < N; i++)
+
+        for (int i = 0; i < N; i++)
         {
-            var prev = sortedP[prevIndex];
-            var index = prev.i + 1;
-
-            ascSet.Remove(index);
-            desSet.Remove(index * (-1));
-
             var current = sortedP[i];
-            ascSet.Add(current.i + 1);
-            desSet.Add((current.i + 1) * (-1));
+            ascSet.Add(current.i);
+            descSet.Add(current.i * (-1));
 
-            min = ascSet.FirstOrDefault();
-            max = desSet.FirstOrDefault() * (-1);
-            ans = Math.Min(max - min, ans);
+            if (ascSet.Count == K + 1)
+            {
+                var prev = sortedP[prevIndex];
+                ascSet.Remove(prev.i);
+                descSet.Remove(prev.i * (-1));
+                prevIndex++;
+            }
 
-            prevIndex++;
+            if (ascSet.Count == K)
+            {
+                var min = ascSet.FirstOrDefault();
+                var max = descSet.FirstOrDefault() * (-1);
+                ans = Math.Min(max - min, ans);
+            }
         }
 
         _writer.WriteLine(ans);
