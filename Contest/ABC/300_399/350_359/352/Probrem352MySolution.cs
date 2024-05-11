@@ -46,4 +46,44 @@ public class MySolution
 
         _writer.WriteLine(ans);
     }
+
+    public void OldD()
+    {
+        var NK = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = NK[0];
+        var K = NK[1];
+
+        var P = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var sortedP = P.Select((p, i) => (p, i)).OrderBy(x => x.p).ToArray();
+
+        var ascSet = new SortedSet<int>();
+        var descSet = new SortedSet<int>();
+
+        var ans = int.MaxValue;
+        var prevIndex = 0;
+
+        for (int i = 0; i < N; i++)
+        {
+            var current = sortedP[i];
+            ascSet.Add(current.i);
+            descSet.Add(current.i * (-1));
+
+            if (ascSet.Count == K + 1)
+            {
+                var prev = sortedP[prevIndex];
+                ascSet.Remove(prev.i);
+                descSet.Remove(prev.i * (-1));
+                prevIndex++;
+            }
+
+            if (ascSet.Count == K)
+            {
+                var min = ascSet.FirstOrDefault();
+                var max = descSet.FirstOrDefault() * (-1);
+                ans = Math.Min(max - min, ans);
+            }
+        }
+
+        _writer.WriteLine(ans);
+    }
 }

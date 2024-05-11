@@ -42,8 +42,7 @@ public class ProblemD
         var P = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
         var sortedP = P.Select((p, i) => (p, i)).OrderBy(x => x.p).ToArray();
 
-        var ascSet = new SortedSet<int>();
-        var descSet = new SortedSet<int>();
+        var set = new SortedSet<int>();
 
         var ans = int.MaxValue;
         var prevIndex = 0;
@@ -51,22 +50,18 @@ public class ProblemD
         for (int i = 0; i < N; i++)
         {
             var current = sortedP[i];
-            ascSet.Add(current.i);
-            descSet.Add(current.i * (-1));
+            set.Add(current.i);
 
-            if (ascSet.Count == K + 1)
+            if (set.Count == K + 1)
             {
                 var prev = sortedP[prevIndex];
-                ascSet.Remove(prev.i);
-                descSet.Remove(prev.i * (-1));
+                set.Remove(prev.i);
                 prevIndex++;
             }
 
-            if (ascSet.Count == K)
+            if (set.Count == K)
             {
-                var min = ascSet.FirstOrDefault();
-                var max = descSet.FirstOrDefault() * (-1);
-                ans = Math.Min(max - min, ans);
+                ans = Math.Min(set.Max - set.Min, ans);
             }
         }
 

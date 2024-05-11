@@ -43,34 +43,19 @@ public class ProblemB
         var ans = 0;
 
         // 1文字からN文字列分調べる
-        for (int count = 1; count < S.Length + 1; count++)
+        for (int count = 1; count <= S.Length; count++)
         {
             for (int startIndex = 0; startIndex < S.Length; startIndex++)
             {
-                if (startIndex + count <= S.Length)
+                // Sから count の文字数分、文字列を抽出
+                var length = Math.Min(count, S.Length - startIndex);
+                var str = S.Substring(startIndex, length);
+
+                //部分文字列かどうか判定
+                var isPartial = str.All(c => acgt.Contains(c));
+                if (isPartial)
                 {
-                    // Sから count の文字数分、文字列を抽出
-                    var sArray = new char[count];
-                    for (int i = 0; i < count; i++)
-                    {
-                        sArray[i] = S[startIndex + i];
-                    }
-
-                    //部分文字列かどうか判定
-                    var isPartial = true;
-                    foreach (char c in sArray)
-                    {
-                        if (!acgt.Contains(c))
-                        {
-                            isPartial = false;
-                            break;
-                        }
-                    }
-
-                    if (isPartial)
-                    {
-                        ans = Math.Max(sArray.Length, ans);
-                    }
+                    ans = Math.Max(str.Length, ans);
                 }
             }
         }
