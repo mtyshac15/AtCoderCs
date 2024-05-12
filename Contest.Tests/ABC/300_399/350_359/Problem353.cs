@@ -1,16 +1,16 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC352;
+using AtCoderCs.Contest.ABC353;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC352;
+namespace AtCoderCs.Contest.Tests.ABC353;
 
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"300_399", "350_359");
-    private static readonly string _problemNumber = $"352";
+    private static readonly string _problemNumber = $"353";
 
     private SampleFiePath _sampleFiePath;
 
@@ -19,7 +19,7 @@ public class Problem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if false
+#if Contest
     [Fact]
     public void SolveA()
     {
@@ -42,7 +42,7 @@ public class Problem
     }
 #endif
 
-#if false
+#if Contest
     [Fact]
     public void SolveB()
     {
@@ -65,7 +65,7 @@ public class Problem
     }
 #endif
 
-#if false
+#if Contest
     [Fact]
     public void SolveC()
     {
@@ -88,7 +88,7 @@ public class Problem
     }
 #endif
 
-#if false
+#if Contest
     [Fact]
     public void SolveD()
     {
