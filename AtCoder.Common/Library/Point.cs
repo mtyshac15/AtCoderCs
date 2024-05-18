@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+namespace AtCoder.Common;
+
 public struct Point
 {
     public Point(double x, double y, double z = 0)

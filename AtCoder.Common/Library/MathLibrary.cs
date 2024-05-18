@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+namespace AtCoder.Common;
+
 public static class MathLibrary
 {
     #region "約数、素数"
@@ -621,10 +623,10 @@ public static class MathLibrary
     /// <returns></returns>
     public static IEnumerable<int[]> GetCombinationIndexCollection(int n, int k)
     {
-        return MathLibrary.GetCombinationIndexCollection(Enumerable.Range(0, n), k);
+        return MathLibrary.GetCombinationIndexCollection(Enumerable.Range(0, n), k, false);
     }
 
-    public static IEnumerable<int[]> GetCombinationIndexCollection(IEnumerable<int> collection, int k)
+    public static IEnumerable<int[]> GetCombinationIndexCollection(IEnumerable<int> collection, int k, bool withRepetition)
     {
         if (k == 1)
         {
@@ -638,8 +640,8 @@ public static class MathLibrary
         foreach (var item in collection)
         {
             var searchedArray = new int[] { item };
-            var unsearchedArray = collection.SkipWhile(x => !x.Equals(item)).Skip(1).ToArray();
-            foreach (var searchedItem in MathLibrary.GetCombinationIndexCollection(unsearchedArray, k - 1))
+            var unsearchedArray = withRepetition ? collection : collection.SkipWhile(x => !x.Equals(item)).Skip(1).ToArray();
+            foreach (var searchedItem in MathLibrary.GetCombinationIndexCollection(unsearchedArray, k - 1, withRepetition))
             {
                 yield return searchedArray.Concat(searchedItem).ToArray();
             }

@@ -14,6 +14,8 @@ public class SampleFiePath
     private static readonly string _inputFileName = "Input.txt";
     private static readonly string _outputFileName = "Output.txt";
 
+    private readonly string _problemNumber;
+
     private string _sampleFolderPath;
 
     public SampleFiePath(string contestSection, string problemFolder, string problemNumber)
@@ -23,11 +25,16 @@ public class SampleFiePath
             _solutionDirectory = SampleFiePath.GetDirectory(_directory, _solutionName);
         }
 
-        var sampleFolder = Path.Combine($"Sample",
-                                        $"{contestSection}",
-                                        $"{problemFolder}",
-                                        $"{problemNumber}",
-                                        $"{problemNumber}");
+        _problemNumber = problemNumber;
+
+        var array = new string[]
+        {
+            $"Sample",
+            contestSection,
+            problemFolder,
+            problemNumber,
+        }.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+        var sampleFolder = Path.Combine(array);
 
         _sampleFolderPath = Path.Combine($"{_solutionDirectory}", $"{sampleFolder}");
     }
@@ -37,13 +44,15 @@ public class SampleFiePath
         var inputFileName = _inputFileName;
         var outputFileName = _outputFileName;
 
-        if (!string.IsNullOrWhiteSpace(suffix))
+        var suffixArray = new string[]
         {
-            inputFileName = $"{suffix}_{inputFileName}";
-            outputFileName = $"{suffix}_{outputFileName}";
-        }
+            $"{_problemNumber}{level}",
+            suffix,
+        }.Where(x => !string.IsNullOrWhiteSpace(x));
 
-        var inputFilePath = $"{_sampleFolderPath}{level}_{inputFileName}";
+        var fileSuffix = string.Join("_", suffixArray);
+
+        var inputFilePath = Path.Combine($"{_sampleFolderPath}", $"{fileSuffix}_{inputFileName}");
 
         string inputText;
         using (var reader = new StreamReader(inputFilePath))
@@ -52,8 +61,7 @@ public class SampleFiePath
             inputText = synchronized.ReadToEnd();
         }
 
-        var outputFilePath = $"{_sampleFolderPath}{level}_{outputFileName}";
-
+        var outputFilePath = Path.Combine($"{_sampleFolderPath}", $"{fileSuffix}_{outputFileName}");
         string outputText;
         using (var reader = new StreamReader(outputFilePath))
         using (var synchronized = StreamReader.Synchronized(reader))

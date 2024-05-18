@@ -42,7 +42,7 @@ public class Problem
     }
 #endif
 
-#if false
+#if true
     [Fact]
     public void SolveB()
     {

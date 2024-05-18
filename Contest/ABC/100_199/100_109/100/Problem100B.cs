@@ -28,14 +28,20 @@ public class ProblemB
         _writer = writer;
     }
 
-    /// <summary>
-    /// A to Z String 
-    /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var DN = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var D = DN[0];
+        var N = DN[1];
 
-        var ans = 0;
+        var num = 1;
+        for (int i = 0; i < D; i++)
+        {
+            num *= 100;
+        }
+
+        var order = N < 100 ? N : N + 1;
+        var ans = order * num;
         _writer.WriteLine(ans);
     }
 }

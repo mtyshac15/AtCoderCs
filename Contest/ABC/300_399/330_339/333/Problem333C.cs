@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -30,9 +31,27 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var count = 1;
+
+        for (int d = 1; d <= 12; d++)
+        {
+            for (int a = d - 1; a >= 0; a--)
+            {
+                for (int b = d - a - 1; b >= 0; b--)
+                {
+                    if (count == N)
+                    {
+                        var c = d - a - b;
+                        var ans = new string('1', a) + new string('2', b) + new string('3', c);
+                        _writer.WriteLine(ans);
+                        return;
+                    }
+
+                    count++;
+                }
+            }
+        }
     }
 }

@@ -7,8 +7,8 @@ namespace AtCoderCs.Contest.ABC064;
 
 public class MySolution
 {
-    private TextReader _reader;
-    private TextWriter _writer;
+    private TextReader _reader = Console.In;
+    private TextWriter _writer = Console.Out;
 
     public void OldB()
     {

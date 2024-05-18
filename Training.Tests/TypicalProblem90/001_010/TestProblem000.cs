@@ -1,5 +1,5 @@
-using AtcoderCs.Training.Tests;
 using AtCoderCs.Traing.Typical.Problem001;
+using AtCoderCs.Training.Tests;
 
 namespace AtCoderCs.Traing.Typical.Tests.Problem000;
 
@@ -11,7 +11,7 @@ public class TestProblem
 
     private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
 
-#if None
+#if false
     [Fact]
     public void Solve()
     {

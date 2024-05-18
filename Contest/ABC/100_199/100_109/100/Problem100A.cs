@@ -28,14 +28,13 @@ public class ProblemA
         _writer = writer;
     }
 
-    /// <summary>
-    /// ABC/ARC
-    /// </summary>
     public void Solve()
     {
-        var S = _reader.ReadLine().Trim();
+        var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = AB[0];
+        var B = AB[1];
 
-        var ans = 0;
+        var ans = A <= 8 && B <= 8 ? $"Yay!" : $":(";
         _writer.WriteLine(ans);
     }
 }
