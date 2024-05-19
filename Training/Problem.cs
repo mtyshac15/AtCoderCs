@@ -31,46 +31,43 @@ public class Problem
 
     public void Solve()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var x = new int[N];
-        var y = new int[N];
+        var n = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var q = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var m = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
-        for (int i = 0; i < N; i++)
+        var bit = 1L << n;
+        for (int i = 0; i < q; i++)
         {
-            var xy = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-            x[i] = xy[0];
-            y[i] = xy[1];
-        }
-
-        var vectorSet = new HashSet<string>();
-
-        for (int i = 0; i < N; i++)
-        {
-            vectorSet.Add($"{x[i]} {y[i]}");
-        }
-
-        var ans = 0;
-        for (int i = 0; i < N; i++)
-        {
-            for (int j = i + 1; j < N; j++)
+            var isMatch = false;
+            for (int j = 0; j <= bit; j++)
             {
-                //2点を指定し、正方形を成す残りの2点が存在するかを調べる
-                var xq = x[j] - y[j] + y[i];
-                var yq = y[j] + x[j] - x[i];
-
-                var xr = x[i] - y[j] + y[i];
-                var yr = y[i] + x[j] - x[i];
-
-                if (vectorSet.Contains($"{xq} {yq}")
-                    && vectorSet.Contains($"{xr} {yr}"))
+                var sum = 0;
+                for (int k = 0; k < n; k++)
                 {
-                    var square = (x[j] - x[i]) * (x[j] - x[i]) + (y[j] - y[i]) * (y[j] - y[i]);
+                    if (((j >> k) & 1) == 1)
+                    {
+                        sum += A[k];
+                    }
+                }
 
-                    ans = Math.Max(square, ans);
+                if (sum == m[i])
+                {
+                    isMatch = true;
+                    break;
                 }
             }
-        }
 
-        _writer.WriteLine(ans);
+            var ans = IOLibrary.ToYesOrNo(isMatch);
+            _writer.WriteLine(ans);
+        }
+    }
+
+    public static class IOLibrary
+    {
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"yes" : $"no";
+        }
     }
 }

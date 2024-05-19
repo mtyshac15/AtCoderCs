@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC350;
+namespace AtCoderCs.Contest.ABC354;
 
-public class ProblemD
+public class ProblemA
 {
     private TextReader _reader;
     private TextWriter _writer;
@@ -14,18 +14,18 @@ public class ProblemD
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemD();
+        var problem = new ProblemA();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemD()
+    public ProblemA()
     {
         _reader = Console.In;
         _writer = Console.Out;
     }
 
-    public ProblemD(TextReader reader, TextWriter writer)
+    public ProblemA(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;
@@ -33,21 +33,16 @@ public class ProblemD
 
     public void Solve()
     {
-        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var N = NM[0];
-        var M = NM[1];
+        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var H = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
 
-        var A = new int[M];
-        var B = new int[M];
-
-        for (int i = 0; i < M; i++)
+        var hArray = H.Select((x, i) => (x, i)).Skip(1).ToArray();
+        var ans = -1;
+        if (hArray.Any(x => x.x > H[0]))
         {
-            var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-            A[i] = AB[0];
-            B[i] = AB[1];
+            ans = hArray.FirstOrDefault(x => x.x > H[0]).i + 1;
         }
 
-        var ans = 0L;
         _writer.WriteLine(ans);
     }
 }

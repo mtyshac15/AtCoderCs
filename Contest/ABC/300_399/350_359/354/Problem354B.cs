@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC353;
+namespace AtCoderCs.Contest.ABC354;
 
 public class ProblemB
 {

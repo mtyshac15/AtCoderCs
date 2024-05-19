@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC350;
+namespace AtCoderCs.Contest.ABC354;
 
-public class ProblemD
+public class ProblemG
 {
     private TextReader _reader;
     private TextWriter _writer;
@@ -14,18 +14,18 @@ public class ProblemD
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemD();
+        var problem = new ProblemG();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemD()
+    public ProblemG()
     {
         _reader = Console.In;
         _writer = Console.Out;
     }
 
-    public ProblemD(TextReader reader, TextWriter writer)
+    public ProblemG(TextReader reader, TextWriter writer)
     {
         _reader = reader;
         _writer = writer;
@@ -33,21 +33,9 @@ public class ProblemD
 
     public void Solve()
     {
-        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var N = NM[0];
-        var M = NM[1];
+        var S = _reader.ReadLine().Trim();
 
-        var A = new int[M];
-        var B = new int[M];
-
-        for (int i = 0; i < M; i++)
-        {
-            var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-            A[i] = AB[0];
-            B[i] = AB[1];
-        }
-
-        var ans = 0L;
+        var ans = 0;
         _writer.WriteLine(ans);
     }
 }
