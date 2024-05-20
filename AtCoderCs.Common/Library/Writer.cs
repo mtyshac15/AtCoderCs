@@ -7,19 +7,30 @@ namespace AtCoderCs.Common.Library;
 
 public class Writer
 {
-    private TextWriter _writer = Console.Out;
+    private TextWriter _writer;
 
     public Writer()
+       : this(Console.Out)
     {
     }
 
-    private void Initialize(TextWriter writer)
+    public Writer(TextWriter writer)
     {
-        this._writer = writer;
+        _writer = writer;
     }
 
     public void WriteLine(object value = null)
     {
         _writer.WriteLine(value);
+    }
+
+    public void WriteYesOrNo(bool value)
+    {
+        this.WriteLine(Writer.ToYesOrNo(value));
+    }
+
+    public static string ToYesOrNo(bool value)
+    {
+        return value ? $"Yes" : $"No";
     }
 }

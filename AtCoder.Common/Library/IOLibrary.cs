@@ -262,9 +262,3 @@ public static class IOLibrary
     }
     #endregion
 }
-
-public class Scanner
-{
-    private string current;
-    private int currentIndex;
-}
