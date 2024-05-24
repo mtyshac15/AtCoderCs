@@ -19,7 +19,7 @@ public class Problem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if false
+#if true
     [Fact]
     public void SolveA()
     {
@@ -40,9 +40,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveB()
     {
@@ -63,9 +61,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveC()
     {
@@ -84,11 +80,9 @@ public class Problem
             actualDic = tester.Execute(method);
         }
 
-        TestTools.Judge(expectedDic, actualDic);
+        TestTools.Judge(expectedDic, actualDic, 0.01);
     }
-#endif
 
-#if true
     [Fact]
     public void SolveD()
     {

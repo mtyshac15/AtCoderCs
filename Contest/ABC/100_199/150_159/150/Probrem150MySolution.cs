@@ -1,40 +1,57 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC000;
+namespace AtCoderCs.Contest.ABC150;
 
-public class ProblemF
+public class MySolution
 {
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
+    public MySolution()
     {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemF();
-        problem.Solve();
-        Console.Out.Flush();
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
     }
 
-    public ProblemF()
-          : this(Console.In, Console.Out)
+    public void OldC()
     {
-    }
+        var N = _reader.NextInt();
+        var P = _reader.NextIntArray();
+        var Q = _reader.NextIntArray();
 
-    public ProblemF(TextReader textReader, TextWriter textWriter)
-    {
-        _reader = new Reader(textReader);
-        _writer = new Writer(textWriter);
-    }
+        var factorial = new int[N + 1];
+        factorial[0] = 1;
+        for (int i = 1; i < N + 1; i++)
+        {
+            factorial[i] = i * factorial[i - 1];
+        }
 
-    public void Solve()
-    {
-        var S = _reader.Next();
+        var a = 1;
+        var list = Enumerable.Range(1, N).ToList();
+        for (int i = 0; i < N; i++)
+        {
+            var index = list.IndexOf(P[i]);
+            var num = factorial[N - i - 1];
 
-        var ans = 0;
+            a += index * num;
+            list.Remove(P[i]);
+        }
+
+        var b = 1;
+        list = Enumerable.Range(1, N).ToList();
+        for (int i = 0; i < N; i++)
+        {
+            var index = list.IndexOf(Q[i]);
+            var num = factorial[N - i - 1];
+
+            b += index * num;
+            list.Remove(Q[i]);
+        }
+
+        var ans = Math.Abs(a - b);
         _writer.WriteLine(ans);
     }
 
@@ -45,7 +62,12 @@ public class ProblemF
         private int _index;
         private string[] _line;
 
-        private char[] _cs = new char[] { ' ' };
+        char[] _cs = new char[] { ' ' };
+
+        public Reader()
+            : this(Console.In)
+        {
+        }
 
         public Reader(TextReader reader)
         {
@@ -101,6 +123,11 @@ public class ProblemF
     {
         private TextWriter _writer;
 
+        public Writer()
+           : this(Console.Out)
+        {
+        }
+
         public Writer(TextWriter writer)
         {
             _writer = writer;
@@ -122,4 +149,5 @@ public class ProblemF
         }
     }
     #endregion
+
 }

@@ -886,6 +886,11 @@ public static class MathLibrary
             _size = Enumerable.Repeat(1, n).ToList();
         }
 
+        /// <summary>
+        /// 根を求める
+        /// </summary>
+        /// <param name="x"></param>
+        /// <returns></returns>
         public int Root(int x)
         {
             if (_par[x] == -1)
@@ -899,6 +904,12 @@ public static class MathLibrary
             }
         }
 
+        /// <summary>
+        /// xとyが同じグループの所属するか
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public bool IsSame(int x, int y)
         {
             return this.Root(x) == this.Root(y);
@@ -906,6 +917,7 @@ public static class MathLibrary
 
         public bool Unite(int x, int y)
         {
+            //x,yの親を取得
             var rootX = this.Root(x);
             var rootY = this.Root(y);
 
@@ -921,14 +933,14 @@ public static class MathLibrary
                 rootY = temp;
             }
 
-            _par[rootX] = rootY;
+            _par[rootY] = rootX;
             _size[rootX] += _size[rootY];
             return true;
         }
 
         public int Size(int x)
         {
-            return _size[x];
+            return _size[this.Root(x)];
         }
     }
     #endregion

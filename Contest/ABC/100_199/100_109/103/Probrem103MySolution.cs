@@ -1,40 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC000;
+namespace AtCoderCs.Contest.ABC103;
 
-public class ProblemF
+public class MySolution
 {
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
+    public MySolution()
     {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemF();
-        problem.Solve();
-        Console.Out.Flush();
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
     }
 
-    public ProblemF()
-          : this(Console.In, Console.Out)
+    public void OldA()
     {
-    }
+        var A = _reader.NextIntArray();
 
-    public ProblemF(TextReader textReader, TextWriter textWriter)
-    {
-        _reader = new Reader(textReader);
-        _writer = new Writer(textWriter);
-    }
+        var time = new List<int>();
+        for (int i = 0; i < A.Length; i++)
+        {
+            var nextI = (i + 1) % A.Length;
+            time.Add(Math.Abs(A[i] - A[nextI]));
+        }
 
-    public void Solve()
-    {
-        var S = _reader.Next();
-
-        var ans = 0;
+        var ans = time.Sum() - time.Max();
         _writer.WriteLine(ans);
     }
 
@@ -45,7 +38,12 @@ public class ProblemF
         private int _index;
         private string[] _line;
 
-        private char[] _cs = new char[] { ' ' };
+        char[] _cs = new char[] { ' ' };
+
+        public Reader()
+            : this(Console.In)
+        {
+        }
 
         public Reader(TextReader reader)
         {
@@ -101,6 +99,11 @@ public class ProblemF
     {
         private TextWriter _writer;
 
+        public Writer()
+           : this(Console.Out)
+        {
+        }
+
         public Writer(TextWriter writer)
         {
             _writer = writer;
@@ -122,4 +125,5 @@ public class ProblemF
         }
     }
     #endregion
+
 }

@@ -8,8 +8,8 @@ namespace AtCoderCs.Contest.ABC351;
 
 public class ProblemD
 {
-    private TextReader _reader;
-    private TextWriter _writer;
+    private Reader _reader;
+    private Writer _writer;
 
     public static void Main(string[] args)
     {
@@ -20,28 +20,26 @@ public class ProblemD
     }
 
     public ProblemD()
+          : this(Console.In, Console.Out)
     {
-        _reader = Console.In;
-        _writer = Console.Out;
     }
 
-    public ProblemD(TextReader reader, TextWriter writer)
+    public ProblemD(TextReader textReader, TextWriter textWriter)
     {
-        _reader = reader;
-        _writer = writer;
+        _reader = new Reader(textReader);
+        _writer = new Writer(textWriter);
     }
 
     public void Solve()
     {
-        var HW = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var H = HW[0];
-        var W = HW[1];
+        var H = _reader.NextInt();
+        var W = _reader.NextInt();
 
         var S = new string[H];
 
         for (int i = 0; i < H; i++)
         {
-            S[i] = _reader.ReadLine().Trim();
+            S[i] = _reader.Next();
         }
 
         var dh = new int[] { 0, 1, 0, -1 };
@@ -139,4 +137,89 @@ public class ProblemD
 
         return true;
     }
+
+    #region "IO"
+    public class Reader
+    {
+        private TextReader _reader;
+        private int _index;
+        private string[] _line;
+
+        private char[] _cs = new char[] { ' ' };
+
+        public Reader(TextReader reader)
+        {
+            _reader = reader;
+            _index = 0;
+            _line = new string[0];
+        }
+
+        private string NextLine()
+        {
+            return _reader.ReadLine().Trim();
+        }
+
+        public string Next()
+        {
+            if (_index < _line.Length)
+            {
+                return _line[_index++];
+            }
+
+            _line = this.NextArray();
+            if (!_line.Any())
+            {
+                return this.Next();
+            }
+
+            _index = 0;
+            return _line[_index++];
+        }
+
+        public int NextInt()
+        {
+            return int.Parse(this.Next());
+        }
+
+        public long NextLong()
+        {
+            return long.Parse(this.Next());
+        }
+
+        public string[] NextArray()
+        {
+            return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public int[] NextIntArray()
+        {
+            return this.NextArray().Select(int.Parse).ToArray();
+        }
+    }
+
+    class Writer
+    {
+        private TextWriter _writer;
+
+        public Writer(TextWriter writer)
+        {
+            _writer = writer;
+        }
+
+        public void WriteLine(object value = null)
+        {
+            _writer.WriteLine(value);
+        }
+
+        public void WriteYesOrNo(bool value)
+        {
+            this.WriteLine(Writer.ToYesOrNo(value));
+        }
+
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
+    }
+    #endregion
 }

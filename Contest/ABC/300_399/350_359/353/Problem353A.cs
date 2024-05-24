@@ -11,7 +11,6 @@ public class ProblemA
     private Reader _reader;
     private Writer _writer;
 
-
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
@@ -53,12 +52,7 @@ public class ProblemA
         private int _index;
         private string[] _line;
 
-        char[] _cs = new char[] { ' ' };
-
-        public Reader()
-            : this(Console.In)
-        {
-        }
+        private char[] _cs = new char[] { ' ' };
 
         public Reader(TextReader reader)
         {
@@ -113,11 +107,6 @@ public class ProblemA
     class Writer
     {
         private TextWriter _writer;
-
-        public Writer()
-           : this(Console.Out)
-        {
-        }
 
         public Writer(TextWriter writer)
         {

@@ -35,7 +35,14 @@ public static class TestTools
                     double.TryParse(item.Second, out expectedValue);
 
                     var sub = Math.Abs(actualValue - expectedValue);
-                    Assert.True(sub < epsilon);
+                    if (sub < epsilon)
+                    {
+                        Assert.True(sub < epsilon);
+                    }
+                    else
+                    {
+                        Assert.Equal(expectedValue, actualValue);
+                    }
                 }
             }
         }

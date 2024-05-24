@@ -9,11 +9,6 @@ public class Writer
 {
     private TextWriter _writer;
 
-    public Writer()
-       : this(Console.Out)
-    {
-    }
-
     public Writer(TextWriter writer)
     {
         _writer = writer;
