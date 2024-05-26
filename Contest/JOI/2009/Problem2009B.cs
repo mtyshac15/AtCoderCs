@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC331;
+namespace AtCoderCs.Contest.JOI2009;
 
-public class ProblemF
+public class ProblemB
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemF
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemF();
+        var problem = new ProblemB();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemF()
-          : this(Console.In, Console.Out)
+    public ProblemB()
+        : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemF(TextReader textReader, TextWriter textWriter)
+    public ProblemB(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,9 +32,62 @@ public class ProblemF
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var length = _reader.NextInt();
+        var n = _reader.NextInt();
+        var m = _reader.NextInt();
 
-        var ans = 0;
+        var d = new List<int>();
+        for (int i = 0; i < n - 1; i++)
+        {
+            d.Add(_reader.NextInt());
+        }
+
+        var k = new List<int>();
+        for (int i = 0; i < m; i++)
+        {
+            k.Add(_reader.NextInt());
+        }
+
+        var sortedD = new SortedList<int, int>();
+        sortedD.Add(0, 1);
+
+        for (int i = 0; i < d.Count; i++)
+        {
+            sortedD.Add(d[i], i + 1);
+        }
+
+        //S1の位置を追加
+        sortedD.Add(length, 1);
+
+        var total = 0;
+        for (int i = 0; i < m; i++)
+        {
+            var target = k[i];
+
+            var left = -1;
+            var right = sortedD.Count;
+
+            while (Math.Abs(right - left) > 1)
+            {
+                var middle = left + (right - left) / 2;
+
+                if (sortedD.Keys[middle] <= target)
+                {
+                    left = middle;
+                }
+                else
+                {
+                    right = middle;
+                }
+            }
+
+            var leftLength = Math.Abs(target - sortedD.Keys[left]);
+            var rightLength = Math.Abs(target - sortedD.Keys[left + 1]);
+
+            total += Math.Min(leftLength, rightLength);
+        }
+
+        var ans = total;
         _writer.WriteLine(ans);
     }
 

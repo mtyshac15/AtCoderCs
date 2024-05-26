@@ -33,9 +33,21 @@ public class ProblemB
     public void Solve()
     {
         var S = _reader.Next();
+        var T = _reader.Next();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = false;
+        for (int i = 0; i <= S.Length; i++)
+        {
+            if (S == T)
+            {
+                ans = true;
+                break;
+            }
+
+            S = $"{S[S.Length - 1]}{S.Substring(0, S.Length - 1)}";
+        }
+
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"
@@ -45,12 +57,7 @@ public class ProblemB
         private int _index;
         private string[] _line;
 
-        char[] _cs = new char[] { ' ' };
-
-        public Reader()
-            : this(Console.In)
-        {
-        }
+        private char[] _cs = new char[] { ' ' };
 
         public Reader(TextReader reader)
         {
@@ -105,11 +112,6 @@ public class ProblemB
     class Writer
     {
         private TextWriter _writer;
-
-        public Writer()
-           : this(Console.Out)
-        {
-        }
 
         public Writer(TextWriter writer)
         {

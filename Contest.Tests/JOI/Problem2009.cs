@@ -1,16 +1,16 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC331;
+using AtCoderCs.Contest.JOI2009;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC331;
+namespace AtCoderCs.Contest.Tests.JOI2009;
 
 public class Problem
 {
-    private static readonly string _contestSection = $"ABC";
-    private static readonly string _problemFolder = Path.Combine($"300_399", "330_339");
-    private static readonly string _problemNumber = $"331";
+    private static readonly string _contestSection = $"JOI";
+    private static readonly string _problemFolder = string.Empty;
+    private static readonly string _problemNumber = $"2009";
 
     private SampleFiePath _sampleFiePath;
 
@@ -19,7 +19,7 @@ public class Problem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if true
+#if false
     [Fact]
     public void SolveA()
     {
@@ -28,8 +28,7 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
         {
             var problem = new ProblemA(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -40,7 +39,9 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
+#endif
 
+#if true
     [Fact]
     public void SolveB()
     {
@@ -61,7 +62,9 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
+#endif
 
+#if false
     [Fact]
     public void SolveC()
     {
@@ -70,8 +73,7 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
         {
             var problem = new ProblemC(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -82,7 +84,9 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
+#endif
 
+#if false
     [Fact]
     public void SolveD()
     {
@@ -91,8 +95,7 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
         {
             var problem = new ProblemD(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -103,7 +106,9 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
+#endif
 
+#if false
     [Fact]
     public void SolveE()
     {
@@ -112,8 +117,7 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
         {
             var problem = new ProblemE(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -124,7 +128,9 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
+#endif
 
+#if false
     [Fact]
     public void SolveF()
     {
@@ -133,8 +139,7 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
         {
             var problem = new ProblemF(tester.Reader, tester.Writer);
             Action method = problem.Solve;
@@ -145,7 +150,9 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
+#endif
 
+#if false
     [Fact]
     public void SolveG()
     {
@@ -154,8 +161,7 @@ public class Problem
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        using (var tester = new Tester(_sampleFilePath, _problemNumber, prblemLevel))
         {
             var problem = new ProblemG(tester.Reader, tester.Writer);
             Action method = problem.Solve;

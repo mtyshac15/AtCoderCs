@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC331;
+namespace AtCoderCs.Traing.MathematicsAlgorithm.Problem000;
 
-public class ProblemF
+public class Problem
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemF
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemF();
+        var problem = new Problem();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemF()
+    public Problem()
           : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemF(TextReader textReader, TextWriter textWriter)
+    public Problem(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);

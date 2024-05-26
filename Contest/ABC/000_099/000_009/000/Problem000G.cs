@@ -39,7 +39,7 @@ public class ProblemG
     }
 
     #region "IO"
-    class Reader
+    public class Reader
     {
         private TextReader _reader;
         private int _index;
@@ -54,6 +54,11 @@ public class ProblemG
             _line = new string[0];
         }
 
+        private string NextLine()
+        {
+            return _reader.ReadLine().Trim();
+        }
+
         public string Next()
         {
             if (_index < _line.Length)
@@ -61,13 +66,7 @@ public class ProblemG
                 return _line[_index++];
             }
 
-            string str = _reader.ReadLine().Trim();
-            while (string.IsNullOrWhiteSpace(str))
-            {
-                str = _reader.ReadLine().Trim();
-            }
-
-            _line = str.Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+            _line = this.NextArray();
             if (!_line.Any())
             {
                 return this.Next();
@@ -86,16 +85,21 @@ public class ProblemG
         {
             return long.Parse(this.Next());
         }
+
+        public string[] NextArray()
+        {
+            return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public int[] NextIntArray()
+        {
+            return this.NextArray().Select(int.Parse).ToArray();
+        }
     }
 
     class Writer
     {
         private TextWriter _writer;
-
-        public Writer()
-           : this(Console.Out)
-        {
-        }
 
         public Writer(TextWriter writer)
         {

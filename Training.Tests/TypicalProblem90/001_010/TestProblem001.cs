@@ -3,13 +3,13 @@ using AtCoderCs.Traing.Typical.Problem001;
 using AtCoderCs.Training.Tests;
 using Xunit;
 
-namespace AtCoderCs.Traing.Typical.Tests.Problem000;
+namespace AtCoderCs.Traing.Typical.Tests.Problem001;
 
 public class TestProblem
 {
     private static readonly string _contestSection = $"TypicalProblem90";
     private static readonly string _problemFolder = $"001_010";
-    private static readonly string _problemNumber = $"000";
+    private static readonly string _problemNumber = $"001";
 
     private SampleFiePath _sampleFiePath;
 
@@ -18,7 +18,7 @@ public class TestProblem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if false
+#if true
     [Fact]
     public void Solve()
     {
