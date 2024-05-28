@@ -46,36 +46,21 @@ public class ProblemD
         }
 
         //‘Œ¸‚ğ‹L˜^
-        var heater = new SortedDictionary<int, long>();
+        var heater = new long[T.Max() + 1];
         for (int i = 0; i < N; i++)
         {
-            if (heater.ContainsKey(S[i]))
-            {
-                heater[S[i]] += P[i];
-            }
-            else
-            {
-                heater.Add(S[i], P[i]);
-            }
-
-            if (heater.ContainsKey(T[i]))
-            {
-                heater[T[i]] -= P[i];
-            }
-            else
-            {
-                heater.Add(T[i], P[i] * (-1));
-            }
+            heater[S[i]] += P[i];
+            heater[T[i]] -= P[i];
         }
 
         //WŒv
-        var water = new List<long>() { heater.Values.FirstOrDefault() };
-        foreach (var keyValue in heater.Skip(1))
+        var water = new List<long>() { heater[0] };
+        for (int i = 1; i < heater.Length; i++)
         {
-            water.Add(water[water.Count - 1] + keyValue.Value);
+            water.Add(water[i - 1] + heater[i]);
         }
 
-        var ans = water.All(x => x <= W);
+        var ans = water.Max() <= W;
         _writer.WriteYesOrNo(ans);
     }
 

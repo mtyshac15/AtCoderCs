@@ -456,42 +456,6 @@ public static class ABC180
         Console.WriteLine(count);
     }
 
-    public static void WaterHeater()
-    {
-        var (N, W) = IOLibrary.ReadLong2();
-
-        var S = new long[N];
-        var T = new long[N];
-        var P = new long[N];
-
-        for (var i = 0; i < N; i++)
-        {
-            (S[i], T[i], P[i]) = IOLibrary.ReadLong3();
-        }
-
-        var maxTime = T.Max();
-        var table = new long[maxTime + 2];
-
-        for (var i = 0; i < N; i++)
-        {
-            table[S[i]] += P[i];
-            table[T[i]] -= P[i];
-        }
-
-        //集計
-        for (var i = 0; i < table.Length; i++)
-        {
-            table[i + 1] += table[i];
-            if (table[i] > W)
-            {
-                IOLibrary.WriteLine(IOLibrary.ToYesOrNo(false));
-                return;
-            }
-        }
-
-        IOLibrary.WriteLine(IOLibrary.ToYesOrNo(true));
-    }
-
     public static void QueenOnGrid()
     {
         var (H, W) = IOLibrary.ReadInt2();
