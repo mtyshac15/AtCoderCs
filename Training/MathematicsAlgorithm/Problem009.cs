@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC188;
+namespace AtCoderCs.Traing.MathematicsAlgorithm.Problem009;
 
-public class ProblemB
+public class Problem
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemB
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new Problem();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemB()
-           : this(Console.In, Console.Out)
+    public Problem()
+          : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemB(TextReader textReader, TextWriter textWriter)
+    public Problem(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -33,8 +33,16 @@ public class ProblemB
     public void Solve()
     {
         var N = _reader.NextInt();
+        var S = _reader.NextInt();
+        var A = _reader.NextIntArray();
 
-        var ans = 0;
+        var count = 0;
+        for (int red = 1; red <= N; red++)
+        {
+            count += Math.Clamp(S - red, 0, N);
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 

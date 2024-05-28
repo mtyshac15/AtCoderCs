@@ -20,10 +20,10 @@ public class AtCoderMain
         Action method = null;
         AtCoder.Common.ProblemBase problem;
 
-        problem = new ABC035.Problem();
+        problem = new AtCoderCs.Traing.MathematicsAlgorithm.Problem008.Problem();
 
         //method = problem.SolveA;
-        method = problem.SolveB;
+        //method = problem.SolveB;
         //method = problem.SolveC;
         //method = problem.SolveD;
         //method = problem.SolveE;

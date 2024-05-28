@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC188;
+namespace AtCoderCs.Training.A03;
 
-public class ProblemB
+public class Problem
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemB
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new Problem();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemB()
+    public Problem()
            : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemB(TextReader textReader, TextWriter textWriter)
+    public Problem(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -33,9 +33,21 @@ public class ProblemB
     public void Solve()
     {
         var N = _reader.NextInt();
+        var K = _reader.NextInt();
+        var P = _reader.NextIntArray();
+        var Q = _reader.NextIntArray();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = false;
+        for (int red = 0; red < N; red++)
+        {
+            if (Q.Contains(K - P[red]))
+            {
+                ans = true;
+                break;
+            }
+        }
+
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"

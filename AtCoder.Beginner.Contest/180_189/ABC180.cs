@@ -141,68 +141,6 @@ public static class ABC180
         var ans = (rate1 < rate2) ? championNum1 + 1 : championNum2 + 1;
         Console.WriteLine(ans);
     }
-
-    public static void SnukePrime()
-    {
-        var (N, C) = IOLibrary.ReadLong2();
-
-        var dic = new SortedDictionary<long, long>();
-
-        for (var i = 0L; i < N; i++)
-        {
-            var (a, b, c) = IOLibrary.ReadLong3();
-            if (dic.ContainsKey(a))
-            {
-                dic[a] += c;
-            }
-            else
-            {
-                dic.Add(a, c);
-            }
-
-            var afterB = b + 1;
-            if (dic.ContainsKey(afterB))
-            {
-                dic[afterB] -= c;
-            }
-            else
-            {
-                dic.Add(afterB, -c);
-            }
-        }
-
-        //集計
-        var array = dic.Values.ToArray();
-        var sum = 0L;
-
-        var startDay = 1L;
-        var prevCost = 0L;
-
-        var isFirst = true;
-
-        foreach (var keyValue in dic)
-        {
-            if (isFirst)
-            {
-                startDay = keyValue.Key;
-                prevCost = keyValue.Value;
-                isFirst = false;
-            }
-            else
-            {
-                var days = keyValue.Key - startDay;
-
-                var minCost = Math.Min(prevCost, C);
-                sum += minCost * days;
-
-                startDay = keyValue.Key;
-                prevCost += keyValue.Value; ;
-            }
-        }
-
-        IOLibrary.WriteLine(sum);
-    }
-
     #endregion
 
     #region "187"

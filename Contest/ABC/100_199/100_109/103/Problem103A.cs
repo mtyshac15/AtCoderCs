@@ -33,7 +33,6 @@ public class ProblemA
     public void Solve()
     {
         var A = _reader.NextIntArray();
-        Array.Sort(A);
 
         var ans = A.Max() - A.Min();
         _writer.WriteLine(ans);

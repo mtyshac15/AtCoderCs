@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC188;
+namespace AtCoderCs.Training.A06;
 
-public class ProblemB
+public class Problem
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemB
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new Problem();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemB()
+    public Problem()
            : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemB(TextReader textReader, TextWriter textWriter)
+    public Problem(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -33,8 +33,32 @@ public class ProblemB
     public void Solve()
     {
         var N = _reader.NextInt();
+        var Q = _reader.NextInt();
+        var A = _reader.NextIntArray();
 
-        var ans = 0;
+        var L = new List<int>();
+        var R = new List<int>();
+        for (int i = 0; i < Q; i++)
+        {
+            L.Add(_reader.NextInt());
+            R.Add(_reader.NextInt());
+        }
+
+        //累積和
+        var sumA = new List<int>() { 0 };
+        for (int i = 0; i < A.Length; i++)
+        {
+            sumA.Add(sumA[i] + A[i]);
+        }
+
+        var ansBuilder = new StringBuilder();
+        for (int i = 0; i < Q; i++)
+        {
+            var count = sumA[R[i]] - sumA[L[i] - 1];
+            ansBuilder.AppendLine($"{count}");
+        }
+
+        var ans = ansBuilder.ToString();
         _writer.WriteLine(ans);
     }
 
