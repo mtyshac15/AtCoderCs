@@ -34,8 +34,20 @@ public class ProblemB
     {
         var N = _reader.NextInt();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = false;
+
+        var maxDonuts = N / 7;
+        for (int i = 0; i <= maxDonuts; i++)
+        {
+            var reminder = N - 7 * i;
+            if (reminder % 4 == 0)
+            {
+                ans = true;
+                break;
+            }
+        }
+
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"
