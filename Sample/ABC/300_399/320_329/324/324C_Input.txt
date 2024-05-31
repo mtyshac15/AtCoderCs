@@ -1,0 +1,31 @@
+1
+5 ababc
+ababc
+babc
+abacbc
+abdbc
+abbac
+
+2
+1 aoki
+takahashi
+
+3
+9 atcoder
+atoder
+atcode
+athqcoder
+atcoder
+tacoder
+jttcoder
+atoder
+atceoder
+atcoer
+
+4
+5 aaaaa
+aaaaa
+aaaa
+aaaaaa
+aaa
+aaaaaaa
