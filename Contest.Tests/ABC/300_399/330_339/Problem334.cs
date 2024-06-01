@@ -23,12 +23,12 @@ public class Problem
     [Fact]
     public void SolveA()
     {
-        var prblemLevel = $"A";
+        var problemLevel = $"A";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemA(tester.Reader, tester.Writer);
@@ -40,18 +40,16 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveB()
     {
-        var prblemLevel = $"B";
+        var problemLevel = $"B";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemB(tester.Reader, tester.Writer);
@@ -63,18 +61,16 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if true
     [Fact]
     public void SolveC()
     {
-        var prblemLevel = $"C";
+        var problemLevel = $"C";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemC(tester.Reader, tester.Writer);
@@ -86,18 +82,16 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveD()
     {
-        var prblemLevel = $"D";
+        var problemLevel = $"D";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemD(tester.Reader, tester.Writer);
@@ -109,18 +103,16 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveE()
     {
-        var prblemLevel = $"E";
+        var problemLevel = $"E";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemE(tester.Reader, tester.Writer);
@@ -132,18 +124,16 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveF()
     {
-        var prblemLevel = $"F";
+        var problemLevel = $"F";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemF(tester.Reader, tester.Writer);
@@ -155,18 +145,16 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveG()
     {
-        var prblemLevel = $"G";
+        var problemLevel = $"G";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new ProblemG(tester.Reader, tester.Writer);

@@ -16,7 +16,7 @@ public class TestProblem
         _sampleFiePath = new SampleFiePath(_contestSection, string.Empty, string.Empty);
     }
 
-#if true
+#if false
     [Fact]
     public void Solve()
     {

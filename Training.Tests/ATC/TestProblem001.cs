@@ -18,7 +18,7 @@ public class TestProblem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if true
+#if false
     [Fact]
     public void SolveA()
     {
