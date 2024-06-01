@@ -1,4 +1,5 @@
 ﻿using AtCoderCs.Common.Library;
+using AtCoderCs.Training.Sample;
 using System.Reflection;
 using Xunit;
 
@@ -19,12 +20,12 @@ public class TestProblem
     [Fact]
     public void Solve()
     {
-        var prblemLevel = $"Problem";
+        var problemLevel = $"Problem";
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new Problem(tester.Reader, tester.Writer);

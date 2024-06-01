@@ -1,20 +1,19 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC002;
-using AtCoderCs.Contest.Tests;
-using System.Reflection;
+using AtCoderCs.Training.ATC001;
+using AtCoderCs.Training.Tests;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC002;
+namespace AtCoderCs.Traing.Tests.ATC001;
 
-public class Problem
+public class TestProblem
 {
-    private static readonly string _contestSection = $"ABC";
-    private static readonly string _problemFolder = Path.Combine($"000_099", "000_009");
-    private static readonly string _problemNumber = $"002";
+    private static readonly string _contestSection = $"ATC";
+    private static readonly string _problemFolder = string.Empty;
+    private static readonly string _problemNumber = $"001";
 
     private SampleFiePath _sampleFiePath;
 
-    public Problem()
+    public TestProblem()
     {
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
@@ -73,28 +72,7 @@ public class Problem
         var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
-            var problem = new ProblemC(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic, 0.01);
-    }
-
-    [Fact]
-    public void SolveD()
-    {
-        var problemLevel = $"D";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemD(tester.Reader, tester.Writer);
+            var problem = new ProblemB(tester.Reader, tester.Writer);
             Action method = problem.Solve;
 
             expectedDic = tester.ReadOutputSample();

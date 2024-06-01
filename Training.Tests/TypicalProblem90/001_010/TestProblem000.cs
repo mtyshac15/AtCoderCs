@@ -1,9 +1,9 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Traing.Typical.Problem001;
 using AtCoderCs.Training.Tests;
+using AtCoderCs.Training.Typical.Problem001;
 using Xunit;
 
-namespace AtCoderCs.Traing.Typical.Tests.Problem000;
+namespace AtCoderCs.Training.Typical.Tests.Problem000;
 
 public class TestProblem
 {
@@ -22,12 +22,12 @@ public class TestProblem
     [Fact]
     public void Solve()
     {
-        var prblemLevel = string.Empty;
+        var problemLevel = string.Empty;
 
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
         using (var tester = new Tester(sample.InputText, sample.OutputText))
         {
             var problem = new Problem(tester.Reader, tester.Writer);

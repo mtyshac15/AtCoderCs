@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Traing.Typical.Problem004;
+namespace AtCoderCs.Training.Typical.Problem004;
 
 public class Problem
 {

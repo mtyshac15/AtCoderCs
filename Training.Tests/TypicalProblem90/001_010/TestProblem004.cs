@@ -1,8 +1,9 @@
-using AtCoderCs.Traing.Typical.Problem004;
+using AtCoderCs.Common.Library;
 using AtCoderCs.Training.Tests;
+using AtCoderCs.Training.Typical.Problem004;
 using Xunit;
 
-namespace AtCoderCs.Traing.Typical.Tests.Problem004;
+namespace AtCoderCs.Training.Typical.Tests.Problem004;
 
 public class TestProblem
 {
@@ -10,18 +11,33 @@ public class TestProblem
     private static readonly string _problemFolder = $"001_010";
     private static readonly string _problemNumber = $"004";
 
-    private static readonly string _sampleFilePath = Path.Combine($"{_contestSection}", $"{_problemFolder}", $"{_problemNumber}");
+    private SampleFiePath _sampleFiePath;
 
-#if Training
+    public TestProblem()
+    {
+        _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
+    }
+
+#if true
     [Fact]
     public void Solve()
     {
-        var prblemLevel = string.Empty;
+        var problemLevel = string.Empty;
 
-        var problem = new Problem();
-        Action method = problem.Solve;
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
 
-        //TestTools.Judge(_sampleFilePath, _problemNumber, prblemLevel, method);
+        var sample = _sampleFiePath.ReadFiles(problemLevel);
+        using (var tester = new Tester(sample.InputText, sample.OutputText))
+        {
+            var problem = new Problem(tester.Reader, tester.Writer);
+            Action method = problem.Solve;
+
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(method);
+        }
+
+        TestTools.Judge(expectedDic, actualDic);
     }
 #endif
 }

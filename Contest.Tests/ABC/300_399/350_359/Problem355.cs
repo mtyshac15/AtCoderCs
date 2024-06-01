@@ -4,13 +4,13 @@ using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC354;
+namespace AtCoderCs.Contest.Tests.ABC355;
 
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"300_399", "350_359");
-    private static readonly string _problemNumber = $"354";
+    private static readonly string _problemNumber = $"355";
 
     private SampleFiePath _sampleFiePath;
 

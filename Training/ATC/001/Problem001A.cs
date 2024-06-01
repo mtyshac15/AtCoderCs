@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Training.Typical.Problem000;
+namespace AtCoderCs.Training.ATC001;
 
-public class Problem
+public class ProblemA
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class Problem
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new Problem();
+        var problem = new ProblemA();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public Problem()
-          : this(Console.In, Console.Out)
+    public ProblemA()
+        : this(Console.In, Console.Out)
     {
     }
 
-    public Problem(TextReader textReader, TextWriter textWriter)
+    public ProblemA(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,10 +32,77 @@ public class Problem
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var H = _reader.NextInt();
+        var W = _reader.NextInt();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var c = new List<string>();
+        for (int i = 0; i < H; i++)
+        {
+            c.Add(_reader.Next());
+        }
+
+        var sh = 0;
+        var sw = 0;
+        var gh = 0;
+        var gw = 0;
+
+        for (int h = 0; h < H; h++)
+        {
+            for (int w = 0; w < W; w++)
+            {
+                if (c[h][w] == 's')
+                {
+                    sh = h;
+                    sw = w;
+                }
+                else if (c[h][w] == 'g')
+                {
+                    gh = h;
+                    gw = w;
+                }
+            }
+        }
+
+        var seen = new bool[H, W];
+
+        var dh = new int[] { 0, 1, 0, -1 };
+        var dw = new int[] { 1, 0, -1, 0 };
+
+        var stack = new Stack<(int H, int W)>();
+        stack.Push((sh, sw));
+        seen[sh, sw] = true;
+
+        while (stack.Any())
+        {
+            var cell = stack.Pop();
+
+            if (c[cell.H][cell.W] != '#')
+            {
+                if (cell.H == gh && cell.W == gw)
+                {
+                    break;
+                }
+
+                for (int i = 0; i < 4; i++)
+                {
+                    var nextH = cell.H + dh[i];
+                    var nextW = cell.W + dw[i];
+
+                    if (nextH >= 0 && nextH < H
+                        && nextW >= 0 && nextW < W)
+                    {
+                        if (!seen[nextH, nextW])
+                        {
+                            seen[nextH, nextW] = true;
+                            stack.Push((nextH, nextW));
+                        }
+                    }
+                }
+            }
+        }
+
+        var ans = seen[gh, gw];
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"
