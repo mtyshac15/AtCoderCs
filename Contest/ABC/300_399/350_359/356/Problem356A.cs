@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC346;
+namespace AtCoderCs.Contest.ABC356;
 
-public class ProblemE
+public class ProblemA
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemE
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemE();
+        var problem = new ProblemA();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemE()
+    public ProblemA()
         : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemE(TextReader textReader, TextWriter textWriter)
+    public ProblemA(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,9 +32,17 @@ public class ProblemE
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
+        var L = _reader.NextInt();
+        var R = _reader.NextInt();
 
-        var ans = 0;
+        var ansList = Enumerable.Range(1, N).ToList();
+        for (int i = 0; i < R - L + 1; i++)
+        {
+            ansList[L + i - 1] = R - i;
+        }
+
+        var ans = string.Join(" ", ansList);
         _writer.WriteLine(ans);
     }
 

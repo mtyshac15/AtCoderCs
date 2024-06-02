@@ -1,5 +1,5 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC354;
+using AtCoderCs.Contest.ABC355;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;

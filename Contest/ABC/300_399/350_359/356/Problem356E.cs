@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC346;
+namespace AtCoderCs.Contest.ABC356;
 
 public class ProblemE
 {
@@ -20,7 +20,7 @@ public class ProblemE
     }
 
     public ProblemE()
-        : this(Console.In, Console.Out)
+          : this(Console.In, Console.Out)
     {
     }
 
@@ -39,7 +39,7 @@ public class ProblemE
     }
 
     #region "IO"
-    public class Reader
+    class Reader
     {
         private TextReader _reader;
         private int _index;

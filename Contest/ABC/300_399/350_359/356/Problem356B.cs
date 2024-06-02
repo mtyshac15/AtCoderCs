@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC346;
+namespace AtCoderCs.Contest.ABC356;
 
-public class ProblemE
+public class ProblemB
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemE
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemE();
+        var problem = new ProblemB();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemE()
-        : this(Console.In, Console.Out)
+    public ProblemB()
+          : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemE(TextReader textReader, TextWriter textWriter)
+    public ProblemB(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,14 +32,41 @@ public class ProblemE
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
+        var M = _reader.NextInt();
+        var A = _reader.NextIntArray();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var X = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            X.Add(_reader.NextIntArray());
+        }
+
+        var total = new long[M];
+        for (int i = 0; i < N; i++)
+        {
+            for (int j = 0; j < M; j++)
+            {
+                total[j] += X[i][j];
+            }
+        }
+
+        var isEnuough = true;
+        for (int i = 0; i < M; i++)
+        {
+            if (total[i] < A[i])
+            {
+                isEnuough = false;
+                break;
+            }
+        }
+
+        var ans = isEnuough;
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"
-    public class Reader
+    class Reader
     {
         private TextReader _reader;
         private int _index;
