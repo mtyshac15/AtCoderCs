@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtCoderCs.Common.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,17 +8,23 @@ namespace AtCoderCs.Contest.ABC323;
 
 public class MySolution
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
+
+    public MySolution()
+    {
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
+    }
 
     public void OldB()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.NextInt();
 
         var S = new string[N];
         for (int i = 0; i < N; i++)
         {
-            S[i] = _reader.ReadLine().Trim();
+            S[i] = _reader.Next();
         }
 
         var array = new int[N];

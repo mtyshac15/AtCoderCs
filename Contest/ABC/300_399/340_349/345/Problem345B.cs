@@ -32,9 +32,18 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var X = _reader.NextLong();
 
-        var ans = 0;
+        var ans = 0L;
+        if (X > 0)
+        {
+            ans = (X + 9) / 10;
+        }
+        else
+        {
+            ans = X / 10;
+        }
+
         _writer.WriteLine(ans);
     }
 
