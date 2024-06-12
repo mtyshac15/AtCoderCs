@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC341;
+namespace AtCoderCs.Contest.ABC357;
 
 public class ProblemA
 {
@@ -33,9 +33,25 @@ public class ProblemA
     public void Solve()
     {
         var N = _reader.NextInt();
+        var M = _reader.NextInt();
+        var H = _reader.NextIntArray();
 
-        var collection = Enumerable.Repeat("10", N).Append("1");
-        var ans = string.Join(string.Empty, collection);
+        var sum = 0;
+        var count = 0;
+        for (int i = 0; i < N; i++)
+        {
+            if (sum + H[i] <= M)
+            {
+                sum += H[i];
+                count++;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 

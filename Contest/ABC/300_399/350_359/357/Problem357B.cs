@@ -4,9 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC341;
+namespace AtCoderCs.Contest.ABC357;
 
-public class ProblemA
+public class ProblemB
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemA
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemA();
+        var problem = new ProblemB();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemA()
-        : this(Console.In, Console.Out)
+    public ProblemB()
+          : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemA(TextReader textReader, TextWriter textWriter)
+    public ProblemB(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,15 +32,38 @@ public class ProblemA
 
     public void Solve()
     {
-        var N = _reader.NextInt();
+        var S = _reader.Next();
 
-        var collection = Enumerable.Repeat("10", N).Append("1");
-        var ans = string.Join(string.Empty, collection);
+        var upperCount = 0;
+        var lowerCount = 0;
+
+        for (int i = 0; i < S.Length; i++)
+        {
+            if (char.IsUpper(S[i]))
+            {
+                upperCount++;
+            }
+            else if (char.IsLower(S[i]))
+            {
+                lowerCount++;
+            }
+        }
+
+        var ans = string.Empty;
+        if (upperCount > lowerCount)
+        {
+            ans = S.ToUpper();
+        }
+        else
+        {
+            ans = S.ToLower();
+        }
+
         _writer.WriteLine(ans);
     }
 
     #region "IO"
-    public class Reader
+    class Reader
     {
         private TextReader _reader;
         private int _index;
