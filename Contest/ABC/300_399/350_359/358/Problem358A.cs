@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC309;
+namespace AtCoderCs.Contest.ABC358;
 
-public class ProblemE
+public class ProblemA
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemE
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemE();
+        var problem = new ProblemA();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemE()
+    public ProblemA()
         : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemE(TextReader textReader, TextWriter textWriter)
+    public ProblemA(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -33,9 +33,10 @@ public class ProblemE
     public void Solve()
     {
         var S = _reader.Next();
+        var T = _reader.Next();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = $"{S} {T}" == "AtCoder Land";
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"

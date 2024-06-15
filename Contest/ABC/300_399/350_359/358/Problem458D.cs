@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC309;
+namespace AtCoderCs.Contest.ABC358;
 
-public class ProblemE
+public class ProblemD
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemE
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemE();
+        var problem = new ProblemD();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemE()
-        : this(Console.In, Console.Out)
+    public ProblemD()
+          : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemE(TextReader textReader, TextWriter textWriter)
+    public ProblemD(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,9 +32,70 @@ public class ProblemE
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
+        var M = _reader.NextInt();
+        var A = _reader.NextIntArray();
+        var B = _reader.NextIntArray();
 
-        var ans = 0;
+        Array.Sort(A);
+        Array.Sort(B);
+
+        var dictionary = new SortedDictionary<int, int>();
+        for (int i = 0; i < N; i++)
+        {
+            if (dictionary.ContainsKey(A[i]))
+            {
+                dictionary[A[i]]++;
+            }
+            else
+            {
+                dictionary.Add(A[i], 1);
+            }
+        }
+
+        var total = 0L;
+        for (int i = 0; i < M; i++)
+        {
+            var ng = -1;
+            var ok = A.Length;
+
+            while (Math.Abs(ok - ng) > 1)
+            {
+                var mid = (ok + ng) / 2;
+                if (A[mid] >= B[i]
+                    && dictionary[A[mid]] > 0)
+                {
+                    ok = mid;
+                }
+                else
+                {
+                    ng = mid;
+                }
+            }
+
+            if (ok == A.Length)
+            {
+                //配れるお菓子がない場合
+                total = -1;
+                break;
+            }
+            else
+            {
+                var price = A[ok];
+                if (dictionary[price] > 0)
+                {
+                    total += price;
+                    dictionary[price]--;
+                }
+                else
+                {
+                    total = -1;
+                    break;
+                }
+            }
+        }
+
+        var ans = total;
         _writer.WriteLine(ans);
     }
 

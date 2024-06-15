@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC309;
+namespace AtCoderCs.Contest.ABC358;
 
-public class ProblemE
+public class ProblemC
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemE
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemE();
+        var problem = new ProblemC();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemE()
-        : this(Console.In, Console.Out)
+    public ProblemC()
+          : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemE(TextReader textReader, TextWriter textWriter)
+    public ProblemC(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,9 +32,48 @@ public class ProblemE
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
+        var M = _reader.NextInt();
 
-        var ans = 0;
+        var S = new List<string>();
+        for (int i = 0; i < N; i++)
+        {
+            S.Add(_reader.Next());
+        }
+
+        var numS = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            var line = S[i].Select((e, i) => (e, i))
+                           .Where(x => x.e == 'o')
+                           .Select(x => x.i);
+            numS.Add(line.ToList());
+        }
+
+        var minNum = 10;
+        for (int bit = 0; bit < (1 << N); bit++)
+        {
+            var count = 0;
+            var popcorn = new HashSet<int>();
+            for (int i = 0; i < N; i++)
+            {
+                if (((bit >> i) & 1) == 1)
+                {
+                    count++;
+                    foreach (var x in numS[i])
+                    {
+                        popcorn.Add(x);
+                    }
+                }
+
+                if (popcorn.Count == M)
+                {
+                    minNum = Math.Min(count, minNum);
+                }
+            }
+        }
+
+        var ans = minNum;
         _writer.WriteLine(ans);
     }
 
