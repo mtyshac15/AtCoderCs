@@ -291,7 +291,7 @@ public struct ModInt : IEquatable<ModInt>
 
     public override int GetHashCode()
     {
-        return this.value;
+        return EqualityComparer<int>.Default.GetHashCode(this.value);
     }
 
     public int ToInt()
