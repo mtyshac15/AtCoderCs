@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AtCoderCs.Contest.ABC088;
 
-public class Probrem088MySolution
+public class Problem088MySolution
 {
     public void OldB()
     {

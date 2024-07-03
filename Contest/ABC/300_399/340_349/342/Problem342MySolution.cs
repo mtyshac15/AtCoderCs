@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtCoderCs.Common.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,23 +8,28 @@ namespace AtCoderCs.Contest.ABC342;
 
 public class MySolution
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
+
+    public MySolution()
+    {
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
+    }
 
     public void OldC()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-        var S = _reader.ReadLine().Trim();
-        var Q = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.NextInt();
+        var S = _reader.Next();
+        var Q = _reader.NextInt();
 
-        var c = new char[Q];
-        var d = new char[Q];
+        var c = new List<char>();
+        var d = new List<char>();
 
         for (int i = 0; i < Q; i++)
         {
-            var cd = _reader.ReadLine().Trim().Split().Select(char.Parse).ToArray();
-            c[i] = cd[0];
-            d[i] = cd[1];
+            c.Add(_reader.Next()[0]);
+            d.Add(_reader.Next()[0]);
         }
 
         var converter = new Dictionary<char, char>();

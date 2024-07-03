@@ -39,11 +39,6 @@ public class Problem
         }
 
         TestTools.Judge(expectedDic, actualDic);
-
-        var a = Enumerable.Repeat("1", 64);
-        var binary = string.Join(string.Empty, a);
-        var b = Convert.ToUInt64(binary);
-        Assert.Equal(ulong.MaxValue, b);
     }
 
     [Fact]
