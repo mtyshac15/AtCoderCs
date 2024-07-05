@@ -40,9 +40,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveB()
     {
@@ -63,9 +61,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if true
     [Fact]
     public void SolveC()
     {
@@ -86,9 +82,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveD()
     {
@@ -109,9 +103,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveE()
     {
@@ -132,9 +124,7 @@ public class Problem
 
         TestTools.Judge(expectedDic, actualDic);
     }
-#endif
 
-#if false
     [Fact]
     public void SolveF()
     {

@@ -11,12 +11,10 @@ public class SampleFiePath
     private static readonly DirectoryInfo _directory = new DirectoryInfo(Environment.CurrentDirectory);
     private static string _solutionDirectory;
 
-    private static readonly string _inputFileName = "Input.txt";
-    private static readonly string _outputFileName = "Output.txt";
-
     private readonly string _problemNumber;
 
-    private string _sampleFolderPath;
+    private SampleInput _sampleInput;
+    private SampleOutput _sampleOutput;
 
     public SampleFiePath(string contestSection, string problemFolder, string problemNumber)
     {
@@ -36,14 +34,13 @@ public class SampleFiePath
         }.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
         var sampleFolder = Path.Combine(array);
 
-        _sampleFolderPath = Path.Combine($"{_solutionDirectory}", $"{sampleFolder}");
+        var sampleFolderPath = Path.Combine($"{_solutionDirectory}", $"{sampleFolder}");
+        _sampleInput = new SampleInput(sampleFolderPath);
+        _sampleOutput = new SampleOutput(sampleFolderPath);
     }
 
-    public (string InputText, string OutputText) ReadFiles(string level, string suffix = "")
+    public SampleDto ReadFiles(string level, string suffix = "")
     {
-        var inputFileName = _inputFileName;
-        var outputFileName = _outputFileName;
-
         var suffixArray = new string[]
         {
             $"{_problemNumber}{level}",
@@ -52,24 +49,10 @@ public class SampleFiePath
 
         var fileSuffix = string.Join("_", suffixArray);
 
-        var inputFilePath = Path.Combine($"{_sampleFolderPath}", $"{fileSuffix}_{inputFileName}");
+        string inputText = _sampleInput.Read(fileSuffix);
+        string outputText = _sampleOutput.Read(fileSuffix);
 
-        string inputText;
-        using (var reader = new StreamReader(inputFilePath))
-        using (var synchronized = StreamReader.Synchronized(reader))
-        {
-            inputText = synchronized.ReadToEnd();
-        }
-
-        var outputFilePath = Path.Combine($"{_sampleFolderPath}", $"{fileSuffix}_{outputFileName}");
-        string outputText;
-        using (var reader = new StreamReader(outputFilePath))
-        using (var synchronized = StreamReader.Synchronized(reader))
-        {
-            outputText = synchronized.ReadToEnd();
-        }
-
-        return (inputText, outputText);
+        return new SampleDto(inputText, outputText);
     }
 
     private static string GetDirectory(DirectoryInfo directory, string fileName)

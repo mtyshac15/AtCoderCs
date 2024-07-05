@@ -41,10 +41,52 @@ public class ProblemB
             S.Add(_reader.Next());
         }
 
+        //—×Ú8•ûŒü
+        var dr = new int[] { 0, 1, 1, 1, 0, -1, -1, -1 };
+        var dc = new int[] { 1, 1, 0, -1, -1, -1, 0, 1 };
+
         var A = "snuke";
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        for (int h = 0; h < H; h++)
+        {
+            for (int w = 0; w < W; w++)
+            {
+                if (S[h][w] == A[0])
+                {
+                    for (int direction = 0; direction < 8; direction++)
+                    {
+                        var isMatch = true;
+
+                        var ansList = new List<string>();
+
+                        for (int distance = 0; distance < A.Length; distance++)
+                        {
+                            var r = h + dr[direction] * distance;
+                            var c = w + dc[direction] * distance;
+
+                            if (r >= 0 && r < H
+                                && c >= 0 && c < W
+                                && S[r][c] == A[distance])
+                            {
+                                ansList.Add($"{r + 1} {c + 1}");
+                            }
+                            else
+                            {
+                                isMatch = false;
+                                break;
+                            }
+                        }
+
+                        if (isMatch)
+                        {
+                            var ans = string.Join(Environment.NewLine, ansList);
+                            _writer.WriteLine(ans);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     #region "IO"

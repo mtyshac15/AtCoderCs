@@ -33,6 +33,7 @@ public class ProblemE
     public void Solve()
     {
         var S = _reader.Next();
+        var N = _reader.NextInt();
 
         var ans = 0;
         _writer.WriteLine(ans);

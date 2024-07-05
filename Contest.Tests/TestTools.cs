@@ -1,3 +1,4 @@
+using AtCoderCs.Common.Library;
 using System.Text;
 using Xunit;
 
@@ -5,6 +6,30 @@ namespace AtCoderCs.Contest.Tests;
 
 public static class TestTools
 {
+    public static void Solve(SampleDto sample, Type problemType, string methodName)
+    {
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
+
+        //引数蟻のコンストラクタ
+        var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });
+        var method = problemType.GetMethod(methodName);
+
+        using (var tester = new Common.Library.Tester(sample.Input, sample.Output))
+        {
+            var instance = constructor.Invoke(new object[] { tester.Reader, tester.Writer });
+
+            //MethodInfoからデリゲートを作成する
+            var solveMethod = (Action)Delegate.CreateDelegate(typeof(Action), instance, method);
+
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(solveMethod);
+        }
+
+        TestTools.Judge(expectedDic, actualDic);
+    }
+
+
     public static void Judge(IDictionary<int, string> expectedDic, IDictionary<int, string> actualDic, double epsilon = 0)
     {
         var testCases = expectedDic.Join(actualDic,
