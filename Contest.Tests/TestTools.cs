@@ -11,7 +11,7 @@ public static class TestTools
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        //引数蟻のコンストラクタ
+        //引数ありのコンストラクタ
         var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });
         var method = problemType.GetMethod(methodName);
 

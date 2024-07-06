@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtCoderCs.Common.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,13 +8,19 @@ namespace AtCoderCs.Contest.ABC349;
 
 public class MySolution
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
+
+    public MySolution()
+    {
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
+    }
 
     public void OldC()
     {
-        var S = _reader.ReadLine().Trim();
-        var T = _reader.ReadLine().Trim();
+        var S = _reader.Next();
+        var T = _reader.Next();
 
         var t = T.ToLower();
 
@@ -72,7 +79,7 @@ public class MySolution
             ans = ans & (ans2 || t[2] == 'x');
         }
 
-        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+        _writer.WriteYesOrNo(ans);
     }
 
     public static int BinarySearch(IList<int> sortedList, int key)
@@ -94,13 +101,5 @@ public class MySolution
         }
 
         return ok;
-    }
-
-    public static class IOLibrary
-    {
-        public static string ToYesOrNo(bool value)
-        {
-            return value ? $"Yes" : $"No";
-        }
     }
 }

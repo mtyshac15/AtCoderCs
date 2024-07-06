@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AtCoderCs.Common.Library;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -7,12 +9,18 @@ namespace AtCoderCs.Contest.ABC340;
 
 public class MySolution
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
+
+    public MySolution()
+    {
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
+    }
 
     public void OldC()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(long.Parse).ToArray()[0];
+        var N = _reader.NextLong();
 
         // 2^k < N <= 2^(k+1) を満たすk
         var k = 0;

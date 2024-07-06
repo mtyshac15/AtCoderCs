@@ -35,7 +35,7 @@ public class ProblemC
     /// </summary>
     public void Solve()
     {
-        var N = _reader.NextInt();
+        var N = _reader.NextLong();
 
         var cube = new List<long>();
         for (var x = 1L; x * x * x <= N; x++)

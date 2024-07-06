@@ -59,15 +59,7 @@ public class ProblemB
             ans = false;
         }
 
-        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
-    }
-
-    public static class IOLibrary
-    {
-        public static string ToYesOrNo(bool value)
-        {
-            return value ? $"Yes" : $"No";
-        }
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"

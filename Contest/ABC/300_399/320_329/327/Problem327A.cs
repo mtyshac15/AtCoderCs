@@ -39,15 +39,7 @@ public class ProblemA
         var S = _reader.Next();
 
         var ans = S.Contains("ab") || S.Contains("ba");
-        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
-    }
-
-    public static class IOLibrary
-    {
-        public static string ToYesOrNo(bool value)
-        {
-            return value ? $"Yes" : $"No";
-        }
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"

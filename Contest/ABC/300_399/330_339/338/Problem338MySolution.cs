@@ -1,5 +1,7 @@
-﻿using System;
+﻿using AtCoderCs.Common.Library;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -7,16 +9,21 @@ namespace AtCoderCs.Contest.ABC338;
 
 public class MySolution
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
+
+    public MySolution()
+    {
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
+    }
 
     public void OldC()
     {
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
-
-        var Q = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var A = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var B = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var N = _reader.NextInt();
+        var Q = _reader.NextIntArray();
+        var A = _reader.NextIntArray();
+        var B = _reader.NextIntArray();
 
         //Aを最大まで作った場合
         var maxA = int.MaxValue;

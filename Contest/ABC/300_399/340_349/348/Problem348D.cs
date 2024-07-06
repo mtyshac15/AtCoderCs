@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -7,13 +8,13 @@ namespace AtCoderCs.Contest.ABC348;
 
 public class ProblemD
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
 
-    private bool[,] field;
-    private int[,] RCE;
+    private bool[,] _field;
+    private int[,] _RCE;
 
-    private int[,] direction = new int[,]
+    private int[,] _direction = new int[,]
     {
         { 0, -1 },
         { 1, 0 },
@@ -30,13 +31,14 @@ public class ProblemD
     }
 
     public ProblemD()
+        : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemD(TextReader reader, TextWriter writer)
+    public ProblemD(TextReader textReader, TextWriter textWriter)
     {
-        _reader = reader;
-        _writer = writer;
+        _reader = new Reader(textReader);
+        _writer = new Writer(textWriter);
     }
 
     /// <summary>
@@ -44,29 +46,27 @@ public class ProblemD
     /// </summary>
     public void Solve()
     {
-        var HW = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var H = HW[0];
-        var W = HW[1];
+        var H = _reader.NextInt();
+        var W = _reader.NextInt();
 
-        var A = new string[H];
+        var A = new List<string>();
         for (int i = 0; i < H; i++)
         {
-            A[i] = _reader.ReadLine().Trim();
+            A.Add(_reader.Next());
         }
 
-        var N = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray()[0];
+        var N = _reader.NextInt();
 
-        RCE = new int[H, W];
+        _RCE = new int[H, W];
         for (int i = 0; i < N; i++)
         {
-            var input = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-            var R = input[0];
-            var C = input[1];
-            var E = input[2];
-            RCE[R - 1, C - 1] = E;
+            var R = _reader.NextInt();
+            var C = _reader.NextInt();
+            var E = _reader.NextInt();
+            _RCE[R - 1, C - 1] = E;
         }
 
-        this.field = new bool[H, W];
+        this._field = new bool[H, W];
 
         var start = new int[2];
         var goal = new int[2];
@@ -92,14 +92,14 @@ public class ProblemD
         //深さ優先探索
         this.Serch(H, W, A, start[0], start[1], 0);
 
-        var ans = this.field[goal[0], goal[1]];
-        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+        var ans = this._field[goal[0], goal[1]];
+        _writer.WriteYesOrNo(ans);
     }
 
-    private void Serch(int H, int W, string[] c, int h, int w, int energy)
+    private void Serch(int H, int W, IReadOnlyList<string> c, int h, int w, int energy)
     {
         //探索済み
-        this.field[h, w] = true;
+        this._field[h, w] = true;
 
         if (c[h][w] == 'T')
         {
@@ -113,9 +113,9 @@ public class ProblemD
         }
 
         //薬を使う場合、現在のエネルギーの方が少ない場合に薬を使用
-        if (this.RCE[h, w] > energy)
+        if (this._RCE[h, w] > energy)
         {
-            energy = this.RCE[h, w];
+            energy = this._RCE[h, w];
         }
 
         //各方向を探索
@@ -127,13 +127,13 @@ public class ProblemD
                 break;
             }
 
-            int nextH = h + this.direction[i, 0];
-            int nextW = w + this.direction[i, 1];
+            int nextH = h + this._direction[i, 0];
+            int nextW = w + this._direction[i, 1];
 
             if (nextH >= 0 && nextH < H
                 && nextW >= 0 && nextW < W)
             {
-                if (!this.field[nextH, nextW])
+                if (!this._field[nextH, nextW])
                 {
                     //未探索の場合は、探索を行う
                     this.Serch(H, W, c, nextH, nextW, energy - 1);
@@ -142,11 +142,88 @@ public class ProblemD
         }
     }
 
-    public static class IOLibrary
+    #region "IO"
+    public class Reader
     {
+        private TextReader _reader;
+        private int _index;
+        private string[] _line;
+
+        private char[] _cs = new char[] { ' ' };
+
+        public Reader(TextReader reader)
+        {
+            _reader = reader;
+            _index = 0;
+            _line = new string[0];
+        }
+
+        private string NextLine()
+        {
+            return _reader.ReadLine().Trim();
+        }
+
+        public string Next()
+        {
+            if (_index < _line.Length)
+            {
+                return _line[_index++];
+            }
+
+            _line = this.NextArray();
+            if (!_line.Any())
+            {
+                return this.Next();
+            }
+
+            _index = 0;
+            return _line[_index++];
+        }
+
+        public int NextInt()
+        {
+            return int.Parse(this.Next());
+        }
+
+        public long NextLong()
+        {
+            return long.Parse(this.Next());
+        }
+
+        public string[] NextArray()
+        {
+            return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public int[] NextIntArray()
+        {
+            return this.NextArray().Select(int.Parse).ToArray();
+        }
+    }
+
+    class Writer
+    {
+        private TextWriter _writer;
+
+        public Writer(TextWriter writer)
+        {
+            _writer = writer;
+        }
+
+        public void WriteLine(object value = null)
+        {
+            _writer.WriteLine(value);
+        }
+
+        public void WriteYesOrNo(bool value)
+        {
+            this.WriteLine(Writer.ToYesOrNo(value));
+        }
+
         public static string ToYesOrNo(bool value)
         {
             return value ? $"Yes" : $"No";
         }
     }
+    #endregion
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AtCoderCs.Common.Library;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,14 +8,22 @@ namespace AtCoderCs.Contest.ABC330;
 
 public class MySolution
 {
+    private Reader _reader;
+    private Writer _writer;
+
+    public MySolution()
+    {
+        _reader = new Reader(Console.In);
+        _writer = new Writer(Console.Out);
+    }
+
     public void OldB()
     {
-        var NLR = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var N = NLR[0];
-        var L = NLR[1];
-        var R = NLR[2];
+        var N = _reader.NextInt();
+        var L = _reader.NextInt();
+        var R = _reader.NextInt();
 
-        var A = Console.ReadLine().Trim().Split().Select(int.Parse).ToArray();
+        var A = _reader.NextIntArray();
 
         var ansList = new List<int>();
         for (int i = 0; i < N; i++)
