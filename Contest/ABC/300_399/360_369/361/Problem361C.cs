@@ -20,7 +20,7 @@ public class ProblemC
     }
 
     public ProblemC()
-          : this(Console.In, Console.Out)
+        : this(Console.In, Console.Out)
     {
     }
 
@@ -32,10 +32,22 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Next();
         var N = _reader.NextInt();
+        var K = _reader.NextInt();
+        var A = _reader.NextIntArray();
 
-        var ans = 0;
+        Array.Sort(A);
+
+        //連続したN-K個の数の最大値と最小値を計算
+
+        var min = int.MaxValue;
+        for (int i = 0; i < K + 1; i++)
+        {
+            var sub = A[i + N - K - 1] - A[i];
+            min = Math.Min(sub, min);
+        }
+
+        var ans = min;
         _writer.WriteLine(ans);
     }
 

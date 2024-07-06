@@ -40,18 +40,8 @@ public class ProblemD
         Array.Sort(A);
         Array.Sort(B);
 
-        var dictionary = new SortedDictionary<int, int>();
-        for (int i = 0; i < N; i++)
-        {
-            if (dictionary.ContainsKey(A[i]))
-            {
-                dictionary[A[i]]++;
-            }
-            else
-            {
-                dictionary.Add(A[i], 1);
-            }
-        }
+        var dictionary = A.GroupBy(x => x)
+                          .ToDictionary(x => x.Key, y => y.Count());
 
         var total = 0L;
         for (int i = 0; i < M; i++)

@@ -32,9 +32,16 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
+        var K = _reader.NextInt();
+        var X = _reader.NextInt();
 
-        var ans = 0;
+        var A = _reader.NextIntArray();
+
+        var B = new List<int>(A);
+        B.Insert(K, X);
+
+        var ans = string.Join(" ", B);
         _writer.WriteLine(ans);
     }
 

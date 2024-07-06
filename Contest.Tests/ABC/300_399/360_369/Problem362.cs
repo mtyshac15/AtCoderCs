@@ -1,16 +1,16 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC361;
+using AtCoderCs.Contest.ABC362;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC361;
+namespace AtCoderCs.Contest.Tests.ABC362;
 
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
     private static readonly string _problemFolder = Path.Combine($"300_399", "360_369");
-    private static readonly string _problemNumber = $"361";
+    private static readonly string _problemNumber = $"362";
 
     private SampleFiePath _sampleFiePath;
 

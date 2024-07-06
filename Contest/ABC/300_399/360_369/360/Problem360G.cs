@@ -32,7 +32,9 @@ public class ProblemG
 
     public void Solve()
     {
+        var N = _reader.NextInt();
         var S = _reader.Next();
+        var A = _reader.NextIntArray();
 
         var ans = 0;
         _writer.WriteLine(ans);

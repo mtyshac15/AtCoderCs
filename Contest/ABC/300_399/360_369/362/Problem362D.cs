@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC361;
+namespace AtCoderCs.Contest.ABC362;
 
 public class ProblemD
 {
@@ -34,67 +34,9 @@ public class ProblemD
     {
         var N = _reader.NextInt();
         var S = _reader.Next();
-        var T = _reader.Next();
+        var A = _reader.NextIntArray();
 
-        var start = S + "..";
-        var goal = T + "..";
-
-        var bCountS = S.Count(x => x == 'B');
-        var bCountT = T.Count(x => x == 'B');
-
-        if (bCountS != bCountT)
-        {
-            _writer.WriteLine(-1);
-            return;
-        }
-
-        var seen = new Dictionary<string, int>()
-        {
-            { start, 0 }
-        };
-
-        var queue = new Queue<string>();
-        queue.Enqueue(start);
-
-        while (queue.Any())
-        {
-            var current = queue.Dequeue();
-            if (current == goal)
-            {
-                break;
-            }
-
-            //入れ替える2コマを順に探索
-            for (int x = 0; x < N + 1; x++)
-            {
-                //xとx+1にともに石が置かれていない場合に交換可能
-                var span = current.AsSpan(x, 2);
-                if (span[0] != '.' && span[1] != '.')
-                {
-                    var breakIndex = current.IndexOf('.');
-
-                    var nextList = current.ToList();
-                    nextList[breakIndex] = current[x];
-                    nextList[breakIndex + 1] = current[x + 1];
-                    nextList[x] = '.';
-                    nextList[x + 1] = '.';
-
-                    var next = string.Join(string.Empty, nextList);
-                    if (!seen.ContainsKey(next))
-                    {
-                        seen.Add(next, seen[current] + 1);
-                        queue.Enqueue(next);
-                    }
-                }
-            }
-        }
-
-        var ans = -1;
-        if (seen.ContainsKey(goal))
-        {
-            ans = seen[goal];
-        }
-
+        var ans = 0;
         _writer.WriteLine(ans);
     }
 

@@ -34,6 +34,7 @@ public class ProblemE
     {
         var S = _reader.Next();
         var N = _reader.NextInt();
+        var A = _reader.NextIntArray();
 
         var ans = 0;
         _writer.WriteLine(ans);

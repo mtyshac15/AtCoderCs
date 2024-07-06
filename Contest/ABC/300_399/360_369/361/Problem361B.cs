@@ -20,7 +20,7 @@ public class ProblemB
     }
 
     public ProblemB()
-          : this(Console.In, Console.Out)
+        : this(Console.In, Console.Out)
     {
     }
 
@@ -32,11 +32,26 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Next();
-        var N = _reader.NextInt();
+        var a = _reader.NextInt();
+        var b = _reader.NextInt();
+        var c = _reader.NextInt();
+        var d = _reader.NextInt();
+        var e = _reader.NextInt();
+        var f = _reader.NextInt();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var g = _reader.NextInt();
+        var h = _reader.NextInt();
+        var i = _reader.NextInt();
+        var j = _reader.NextInt();
+        var k = _reader.NextInt();
+        var l = _reader.NextInt();
+
+        var x = j <= a || d <= g;
+        var y = k <= b || e <= h;
+        var z = l <= c || f <= i;
+
+        var ans = !x && !y && !z;
+        _writer.WriteYesOrNo(ans);
     }
 
     #region "IO"
