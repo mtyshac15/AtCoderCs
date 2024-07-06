@@ -6,7 +6,7 @@ namespace AtCoderCs.Contest.Tests;
 
 public static class TestTools
 {
-    public static void Solve(SampleDto sample, Type problemType, string methodName)
+    public static void Solve(SampleDto sample, Type problemType, string methodName, double epsilon = 0)
     {
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
@@ -26,9 +26,8 @@ public static class TestTools
             actualDic = tester.Execute(solveMethod);
         }
 
-        TestTools.Judge(expectedDic, actualDic);
+        TestTools.Judge(expectedDic, actualDic, epsilon);
     }
-
 
     public static void Judge(IDictionary<int, string> expectedDic, IDictionary<int, string> actualDic, double epsilon = 0)
     {
@@ -37,6 +36,7 @@ public static class TestTools
                                          a => a.Key,
                                          (e, a) => new
                                          {
+                                             Index = e.Key,
                                              Expected = e.Value,
                                              Actual = a.Value
                                          })

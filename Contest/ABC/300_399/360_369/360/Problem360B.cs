@@ -60,7 +60,6 @@ public class ProblemB
             {
                 break;
             }
-
         }
 
         var ans = isMatch;
