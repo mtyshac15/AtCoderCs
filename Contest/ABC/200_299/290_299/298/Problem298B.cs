@@ -32,11 +32,62 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Next();
         var N = _reader.NextInt();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var A = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            A.Add(_reader.NextIntArray());
+        }
+
+        var B = new List<IList<int>>();
+        for (int i = 0; i < N; i++)
+        {
+            B.Add(_reader.NextIntArray());
+        }
+
+        for (int r = 0; r < 4; r++)
+        {
+            var newA = new List<IList<int>>();
+            for (int i = 0; i < N; i++)
+            {
+                newA.Add(A[i].ToList());
+            }
+
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    newA[i][j] = A[N - 1 - j][i];
+                }
+            }
+
+            var isOk = true;
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = 0; j < N; j++)
+                {
+                    if (newA[i][j] == 1)
+                    {
+                        if (B[i][j] != 1)
+                        {
+                            isOk = false;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (isOk)
+            {
+                _writer.WriteYesOrNo(true);
+                return;
+            }
+
+            A = newA;
+        }
+
+        _writer.WriteYesOrNo(false);
     }
 
     #region "IO"
