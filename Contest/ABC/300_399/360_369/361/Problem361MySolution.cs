@@ -52,4 +52,24 @@ public class MySolution
         var ans = min;
         _writer.WriteLine(ans);
     }
+
+    public void OldC2()
+    {
+        var N = _reader.NextInt();
+        var K = _reader.NextInt();
+        var A = _reader.NextIntArray();
+
+        Array.Sort(A);
+
+        //連続したN-K個の数の最大値と最小値を計算
+        var min = int.MaxValue;
+        for (int i = 0; i < K + 1; i++)
+        {
+            var sub = A[i + N - K - 1] - A[i];
+            min = Math.Min(sub, min);
+        }
+
+        var ans = min;
+        _writer.WriteLine(ans);
+    }
 }

@@ -20,7 +20,7 @@ public class ProblemH
     }
 
     public ProblemH()
-          : this(Console.In, Console.Out)
+        : this(Console.In, Console.Out)
     {
     }
 

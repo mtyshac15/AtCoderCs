@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -8,8 +8,8 @@ namespace AtCoderCs.Contest.ABC312;
 
 public class ProblemB
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
 
     public static void Main(string[] args)
     {
@@ -20,13 +20,14 @@ public class ProblemB
     }
 
     public ProblemB()
+        : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemB(TextReader reader, TextWriter writer)
+    public ProblemB(TextReader textReader, TextWriter textWriter)
     {
-        _reader = reader;
-        _writer = writer;
+        _reader = new Reader(textReader);
+        _writer = new Writer(textWriter);
     }
 
     /// <summary>
@@ -34,14 +35,13 @@ public class ProblemB
     /// </summary>
     public void Solve()
     {
-        var NM = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var N = NM[0];
-        var M = NM[1];
+        var N = _reader.NextInt();
+        var M = _reader.NextInt();
 
-        var S = new string[N];
+        var S = new List<string>();
         for (int i = 0; i < N; i++)
         {
-            S[i] = _reader.ReadLine().Trim();
+            S.Add(_reader.Next());
         }
 
         var ansBuilder = new StringBuilder();
@@ -61,7 +61,7 @@ public class ProblemB
         _writer.WriteLine(ans);
     }
 
-    private bool IsTakCode(string[] S, int i, int j)
+    private bool IsTakCode(IReadOnlyList<string> S, int i, int j)
     {
         for (int dx = 0; dx < 3; dx++)
         {
@@ -109,4 +109,89 @@ public class ProblemB
 
         return true;
     }
+
+    #region "IO"
+    public class Reader
+    {
+        private TextReader _reader;
+        private int _index;
+        private string[] _line;
+
+        private char[] _cs = new char[] { ' ' };
+
+        public Reader(TextReader reader)
+        {
+            _reader = reader;
+            _index = 0;
+            _line = new string[0];
+        }
+
+        private string NextLine()
+        {
+            return _reader.ReadLine().Trim();
+        }
+
+        public string Next()
+        {
+            if (_index < _line.Length)
+            {
+                return _line[_index++];
+            }
+
+            _line = this.NextArray();
+            if (!_line.Any())
+            {
+                return this.Next();
+            }
+
+            _index = 0;
+            return _line[_index++];
+        }
+
+        public int NextInt()
+        {
+            return int.Parse(this.Next());
+        }
+
+        public long NextLong()
+        {
+            return long.Parse(this.Next());
+        }
+
+        public string[] NextArray()
+        {
+            return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public int[] NextIntArray()
+        {
+            return this.NextArray().Select(int.Parse).ToArray();
+        }
+    }
+
+    class Writer
+    {
+        private TextWriter _writer;
+
+        public Writer(TextWriter writer)
+        {
+            _writer = writer;
+        }
+
+        public void WriteLine(object value = null)
+        {
+            _writer.WriteLine(value);
+        }
+
+        public void WriteYesOrNo(bool value)
+        {
+            this.WriteLine(Writer.ToYesOrNo(value));
+        }
+
+        public static string ToYesOrNo(bool value)
+        {
+            return value ? $"Yes" : $"No";
+        }
+    }
+    #endregion
 }

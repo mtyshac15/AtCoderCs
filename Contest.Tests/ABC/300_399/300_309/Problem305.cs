@@ -23,153 +23,57 @@ public class Problem
     [Fact]
     public void SolveA()
     {
-        var problemLevel = $"A";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemA(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-
-        var a = Enumerable.Repeat("1", 64);
-        var binary = string.Join(string.Empty, a);
-        var b = Convert.ToUInt64(binary);
-        Assert.Equal(ulong.MaxValue, b);
+        var sample = _sampleFiePath.ReadFiles($"A");
+        TestTools.Solve(sample, typeof(ProblemA), nameof(ProblemA.Solve));
     }
 
     [Fact]
     public void SolveB()
     {
-        var problemLevel = $"B";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemB(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var sample = _sampleFiePath.ReadFiles($"B");
+        TestTools.Solve(sample, typeof(ProblemB), nameof(ProblemB.Solve));
     }
 
     [Fact]
     public void SolveC()
     {
-        var problemLevel = $"C";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemC(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var sample = _sampleFiePath.ReadFiles($"C");
+        TestTools.Solve(sample, typeof(ProblemC), nameof(ProblemC.Solve));
     }
 
     [Fact]
     public void SolveD()
     {
-        var problemLevel = $"D";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemD(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var sample = _sampleFiePath.ReadFiles($"D");
+        TestTools.Solve(sample, typeof(ProblemD), nameof(ProblemD.Solve));
     }
 
     [Fact]
     public void SolveE()
     {
-        var problemLevel = $"E";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemE(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var sample = _sampleFiePath.ReadFiles($"E");
+        TestTools.Solve(sample, typeof(ProblemE), nameof(ProblemE.Solve));
     }
 
     [Fact]
     public void SolveF()
     {
-        var problemLevel = $"F";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemF(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var sample = _sampleFiePath.ReadFiles($"F");
+        TestTools.Solve(sample, typeof(ProblemF), nameof(ProblemF.Solve));
     }
 
     [Fact]
     public void SolveG()
     {
-        var problemLevel = $"G";
+        var sample = _sampleFiePath.ReadFiles($"G");
+        TestTools.Solve(sample, typeof(ProblemG), nameof(ProblemG.Solve));
+    }
 
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemG(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+    [Fact]
+    public void SolveH()
+    {
+        var sample = _sampleFiePath.ReadFiles($"H");
+        TestTools.Solve(sample, typeof(ProblemH), nameof(ProblemH.Solve));
     }
 #endif
 }

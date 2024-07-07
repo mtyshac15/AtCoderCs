@@ -19,7 +19,7 @@ public class Problem
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if true
+#if false
     [Fact]
     public void SolveA()
     {
@@ -65,7 +65,7 @@ public class Problem
     [Fact]
     public void SolveG()
     {
-        var sample = _sampleFiePath.ReadFiles($"F");
+        var sample = _sampleFiePath.ReadFiles($"G");
         TestTools.Solve(sample, typeof(ProblemG), nameof(ProblemG.Solve));
     }
 #endif

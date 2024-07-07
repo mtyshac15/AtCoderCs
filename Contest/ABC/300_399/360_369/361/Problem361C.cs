@@ -39,12 +39,17 @@ public class ProblemC
         Array.Sort(A);
 
         //連続したN-K個の数の最大値と最小値を計算
-
+        var count = N - K;
         var min = int.MaxValue;
-        for (int i = 0; i < K + 1; i++)
+
+        var index = 0;
+        while (index + count <= N)
         {
-            var sub = A[i + N - K - 1] - A[i];
+            var span = A.AsSpan().Slice(index, count);
+            var sub = span[count - 1] - span[0];
             min = Math.Min(sub, min);
+
+            index++;
         }
 
         var ans = min;
