@@ -40,7 +40,7 @@ public class ProblemB
 
         var piece = "*";
 
-        var line = string.Join(string.Empty, S);
+        var line = string.Concat(S);
         var index = line.IndexOf(piece);
 
         var col = (char)('a' + index % 8);

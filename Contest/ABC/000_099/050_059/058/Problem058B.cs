@@ -36,8 +36,8 @@ public class ProblemB
         var O = _reader.ReadLine().Trim();
         var E = _reader.ReadLine().Trim();
 
-        var zip = O.Zip(E.Append(' '), (o, e) => string.Join(string.Empty, o, e));
-        var ans = string.Join(string.Empty, zip).Trim();
+        var zip = O.Zip(E.Append(' '), (o, e) => string.Concat(o, e));
+        var ans = string.Concat(zip).Trim();
         _writer.WriteLine(ans);
     }
 }

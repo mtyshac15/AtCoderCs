@@ -36,7 +36,7 @@ public class ProblemA
         var S = _reader.Next();
 
         var collection = S.Zip(S, (i, j) => $"{i}{j}");
-        var ans = string.Join(string.Empty, collection);
+        var ans = string.Concat(collection);
         _writer.WriteLine(ans);
     }
 

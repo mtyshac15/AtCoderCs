@@ -40,7 +40,7 @@ public class ProblemA
         var kick = Enumerable.Range(1, N)
                              .Select(x => x % 3 == 0 ? "x" : "o");
 
-        var ans = string.Join(string.Empty, kick);
+        var ans = string.Concat(kick);
         _writer.WriteLine(ans);
     }
 

@@ -41,7 +41,7 @@ public class ProblemB
             ansList.Add($"{num}");
         }
 
-        var ans = string.Join(string.Empty, ansList);
+        var ans = string.Concat(ansList);
         _writer.WriteLine(ans);
     }
 

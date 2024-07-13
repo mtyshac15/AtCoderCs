@@ -35,7 +35,7 @@ public class ProblemA
         var N = _reader.NextInt();
 
         var collection = Enumerable.Repeat("10", N).Append("1");
-        var ans = string.Join(string.Empty, collection);
+        var ans = string.Concat(collection);
         _writer.WriteLine(ans);
     }
 

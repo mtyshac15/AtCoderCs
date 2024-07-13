@@ -68,7 +68,7 @@ public class ProblemB
             }
         }
 
-        var ans = string.Join("", list);
+        var ans = string.Concat(list);
         _writer.WriteLine(ans);
     }
 

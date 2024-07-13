@@ -37,7 +37,7 @@ public class ProblemB
         var total = W + B;
 
         var S = "wbwbwwbwbwbw";
-        var newS = string.Join(string.Empty, Enumerable.Repeat(S, 20));
+        var newS = string.Concat(Enumerable.Repeat(S, 20));
 
         var ans = false;
         for (int i = 0; i < newS.Length - total; i++)

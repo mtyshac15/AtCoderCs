@@ -117,7 +117,7 @@ public class ProblemC
                 {
                     line.Add(grid[w, h]);
                 }
-                ansGrid.Add(string.Join(string.Empty, line));
+                ansGrid.Add(string.Concat(line));
             }
 
             _carpet.Add(K, ansGrid);
