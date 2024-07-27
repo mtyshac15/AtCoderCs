@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC294;
+namespace AtCoderCs.Contest.ABC363;
 
 public class ProblemC
 {
@@ -32,8 +32,8 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Next();
         var N = _reader.NextInt();
+        var S = _reader.Next();
         var A = _reader.NextIntArray();
 
         var ans = 0;

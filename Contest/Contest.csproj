@@ -16,7 +16,6 @@
     <Folder Include="ABC\200_299\240_249\" />
     <Folder Include="ABC\200_299\270_279\" />
     <Folder Include="ABC\200_299\280_289\" />
-    <Folder Include="ABC\200_299\290_299\" />
   </ItemGroup>
 
   <ItemGroup>

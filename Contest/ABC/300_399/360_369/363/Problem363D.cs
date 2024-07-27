@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC294;
+namespace AtCoderCs.Contest.ABC363;
 
-public class ProblemC
+public class ProblemD
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemC
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC();
+        var problem = new ProblemD();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemC()
+    public ProblemD()
         : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemC(TextReader textReader, TextWriter textWriter)
+    public ProblemD(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -32,8 +32,8 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Next();
         var N = _reader.NextInt();
+        var S = _reader.Next();
         var A = _reader.NextIntArray();
 
         var ans = 0;
