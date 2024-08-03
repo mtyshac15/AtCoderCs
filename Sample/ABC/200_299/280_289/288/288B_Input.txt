@@ -1,0 +1,20 @@
+1
+5 3
+abc
+aaaaa
+xyz
+a
+def
+
+2
+4 4
+z
+zyx
+zzz
+rbg
+
+3
+3 1
+abc
+arc
+agc

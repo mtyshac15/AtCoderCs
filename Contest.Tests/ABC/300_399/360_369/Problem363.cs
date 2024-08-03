@@ -1,16 +1,16 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC293;
+using AtCoderCs.Contest.ABC363;
 using AtCoderCs.Contest.Tests;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC293;
+namespace AtCoderCs.Contest.Tests.ABC363;
 
 public class Problem
 {
     private static readonly string _contestSection = $"ABC";
-    private static readonly string _problemFolder = Path.Combine($"200_299", "290_299");
-    private static readonly string _problemNumber = $"293";
+    private static readonly string _problemFolder = Path.Combine($"300_399", "360_369");
+    private static readonly string _problemNumber = $"363";
 
     private SampleFiePath _sampleFiePath;
 
@@ -67,13 +67,6 @@ public class Problem
     {
         var sample = _sampleFiePath.ReadFiles($"G");
         TestTools.Solve(sample, typeof(ProblemG), nameof(ProblemG.Solve));
-    }
-
-    [Fact]
-    public void SolveHG()
-    {
-        var sample = _sampleFiePath.ReadFiles($"H");
-        TestTools.Solve(sample, typeof(ProblemH), nameof(ProblemH.Solve));
     }
 #endif
 }

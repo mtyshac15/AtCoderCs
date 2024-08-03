@@ -32,9 +32,70 @@ public class ProblemF
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextLong();
 
-        var ans = 0;
+        var primeB = new List<int>() { 2 };
+        for (int b = 3; b < 60; b++)
+        {
+            var isPrime = true;
+            if (b % 2 == 0)
+            {
+                isPrime = false;
+            }
+            else
+            {
+                for (int i = 3; i * i <= b; i += 2)
+                {
+                    if (i != b && b % i == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+
+            if (isPrime)
+            {
+                primeB.Add(b);
+            }
+        }
+
+        var count = 1L;
+        foreach (var b in primeB)
+        {
+            var ok = 1L;
+            var ng = (long)int.MaxValue;
+
+            while (Math.Abs(ok - ng) > 1)
+            {
+                var middle = (ok + ng) / 2;
+
+                var isOk = true;
+                var product = 1L;
+                for (int i = 0; i < b; i++)
+                {
+                    product *= middle;
+                    if (product > N)
+                    {
+                        isOk = false;
+                        break;
+                    }
+                }
+
+                if (isOk)
+                {
+                    ok = middle;
+                }
+                else
+                {
+                    ng = middle;
+                }
+            }
+
+            count += ok - 1;
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 
