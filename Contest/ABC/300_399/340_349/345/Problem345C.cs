@@ -38,18 +38,8 @@ public class ProblemC
         var S = _reader.Next();
         var n = S.Length;
 
-        var dic = new Dictionary<char, int>();
-        for (int i = 0; i < n; i++)
-        {
-            if (!dic.ContainsKey(S[i]))
-            {
-                dic.Add(S[i], 1);
-            }
-            else
-            {
-                dic[S[i]]++;
-            }
-        }
+        var dic = S.GroupBy(x => x)
+            .ToDictionary(x => x.Key, x => x.Count());
 
         //入れ替える文字のすべての選び方
         var total = (long)n * (n - 1) / 2;

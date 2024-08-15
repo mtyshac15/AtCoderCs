@@ -63,8 +63,7 @@ public class ProblemC
         var sum = N + this.Calc(left) + this.Calc(right);
 
         //メモ化
-        _memo.Add(N, sum);
-
+        _memo[N] = sum;
         return sum;
     }
 

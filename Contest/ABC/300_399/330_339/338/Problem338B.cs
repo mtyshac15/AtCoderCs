@@ -37,20 +37,8 @@ public class ProblemB
     {
         var S = _reader.Next();
 
-        var dic = new Dictionary<char, int>();
-
         //文字の個数を算出
-        foreach (char c in S)
-        {
-            if (!dic.ContainsKey(c))
-            {
-                dic.Add(c, 1);
-            }
-            else
-            {
-                dic[c]++;
-            }
-        }
+        var dic = S.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
 
         //個数でグルーピングし、同じ個数の文字のうち、アルファベット順で最も早い文字を取得
         var group = dic.GroupBy(x => x.Value);

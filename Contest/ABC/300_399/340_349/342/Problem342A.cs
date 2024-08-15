@@ -34,19 +34,7 @@ public class ProblemA
     {
         var S = _reader.Next();
 
-        var dictionary = new Dictionary<char, int>();
-
-        foreach (var c in S)
-        {
-            if (!dictionary.ContainsKey(c))
-            {
-                dictionary.Add(c, 1);
-            }
-            else
-            {
-                dictionary[c]++;
-            }
-        }
+        var dictionary = S.GroupBy(x => x).ToDictionary(x => x.Key, x => x.Count());
 
         var key = dictionary.MinBy(x => x.Value).Key;
         var ans = S.IndexOf(key) + 1;

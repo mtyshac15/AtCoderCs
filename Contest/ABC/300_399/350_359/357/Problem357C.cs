@@ -58,7 +58,7 @@ public class ProblemC
 
         if (K == 0)
         {
-            _carpet.Add(K, new string[] { "#" });
+            _carpet[K] = new string[] { "#" };
         }
         else
         {
@@ -120,7 +120,7 @@ public class ProblemC
                 ansGrid.Add(string.Concat(line));
             }
 
-            _carpet.Add(K, ansGrid);
+            _carpet[K] = ansGrid;
         }
         return _carpet[K];
     }

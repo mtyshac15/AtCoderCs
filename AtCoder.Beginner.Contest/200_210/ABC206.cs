@@ -52,25 +52,14 @@ namespace ABC206
             var N = IOLibrary.ReadLong();
             var A = IOLibrary.ReadLongArray();
 
-            var dictionary = new Dictionary<long, long>();
+            var dic = A.GroupBy(x => x)
+                .ToDictionary(x => x.Key, x => x.Count());
 
             long ans = N * (N - 1) / 2;
-            foreach (var item in A)
+            foreach (var item in dic.Values)
             {
-                if (!dictionary.ContainsKey(item))
-                {
-                    dictionary.Add(item, 1);
-                }
-                else
-                {
-                    dictionary[item]++;
-                }
-            }
-
-            foreach (var item in dictionary.Values)
-            {
-                var dupulicate = item * (item - 1) / 2;
-                ans -= dupulicate;
+                var duplicate = item * (item - 1) / 2;
+                ans -= duplicate;
             }
 
             IOLibrary.WriteLine(ans);

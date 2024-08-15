@@ -21,18 +21,8 @@ public class MySolution
     {
         var S = _reader.Next();
 
-        var dic = new Dictionary<char, int>();
-        for (int i = 0; i < S.Length; i++)
-        {
-            if (!dic.ContainsKey(S[i]))
-            {
-                dic.Add(S[i], 1);
-            }
-            else
-            {
-                dic[S[i]]++;
-            }
-        }
+        var dic = S.GroupBy(x => x)
+            .ToDictionary(x => x.Key, x => x.Count());
 
         var ans = 0L;
         for (int i = 0; i < S.Length; i++)

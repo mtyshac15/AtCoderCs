@@ -32,10 +32,72 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Next();
-        var N = _reader.NextInt();
+        var M = _reader.NextInt();
 
-        var ans = 0;
+        var S = new List<string>();
+        for (int i = 0; i < 3; i++)
+        {
+            S.Add(_reader.Next());
+        }
+
+        var reels = new List<IDictionary<char, SortedSet<int>>>();
+
+        for (int i = 0; i < 3; i++)
+        {
+            var reel = new Dictionary<char, SortedSet<int>>();
+
+            var indexS = S[i].Select((x, i) => (x, i))
+                             .ToLookup(x => x.x, x => x.i);
+
+            foreach (var item in indexS)
+            {
+                reel.Add(item.Key, new SortedSet<int>(item));
+            }
+
+            reels.Add(reel);
+        }
+
+        var hashSet1 = new HashSet<char>(S[0]);
+        var hashSet2 = new HashSet<char>(S[1]);
+        var hashSet3 = new HashSet<char>(S[2]);
+
+        var canMatch = true;
+        foreach (var num in reels[0])
+        {
+            if (!reels[1].ContainsKey(num.Key))
+            {
+                canMatch = false;
+                break;
+            }
+
+            if (!reels[2].ContainsKey(num.Key))
+            {
+                canMatch = false;
+                break;
+            }
+        }
+
+        if (!canMatch)
+        {
+            _writer.WriteLine($"{-1}");
+            return;
+        }
+
+        var minTime = int.MaxValue;
+        for (int i = 0; i < 3; i++)
+        {
+            var reel1 = reels[(i + 1) % 3];
+            var reel2 = reels[(i + 2) % 3];
+
+            var time = 0;
+            foreach (var num in S[i])
+            {
+                var times1 = reel1[num];
+                var times2 = reel2[num];
+            }
+        }
+
+        var ans = minTime;
         _writer.WriteLine(ans);
     }
 
