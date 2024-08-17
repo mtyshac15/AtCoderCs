@@ -1,10 +1,10 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC278;
+namespace AtCoderCs.Contest.ABC366;
 
 public class ProblemA
 {
@@ -32,13 +32,11 @@ public class ProblemA
 
     public void Solve()
     {
+        var S = _reader.Next();
         var N = _reader.NextInt();
-        var K = _reader.NextInt();
         var A = _reader.NextIntArray();
 
-        var k = Math.Min(N, K);
-        var collection = A.Skip(k).Concat(Enumerable.Repeat(0, k));
-        var ans = string.Join(" ", collection);
+        var ans = 0;
         _writer.WriteLine(ans);
     }
 
