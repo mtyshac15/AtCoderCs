@@ -14,7 +14,7 @@ public class Writer
         _writer = writer;
     }
 
-    public void WriteLine(object value = null)
+    public void WriteLine(object? value = null)
     {
         _writer.WriteLine(value);
     }

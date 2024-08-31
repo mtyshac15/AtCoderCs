@@ -18,6 +18,14 @@ public class Tester : IDisposable
         _outputSampleReader = new StringReader(outputSampleText);
     }
 
+    public Tester(SampleSet sample)
+    {
+        this.Reader = sample.InputReader;
+        this.Writer = new StringWriter();
+
+        _outputSampleReader = sample.OutputReader;
+    }
+
     public StringReader Reader { get; }
 
     public StringWriter Writer { get; }
@@ -87,7 +95,7 @@ public class Tester : IDisposable
         while (_outputSampleReader.Peek() > -1)
         {
             //ƒTƒ“ƒvƒ‹”Ô†
-            var sampleNumber = int.Parse(_outputSampleReader.ReadLine());
+            var sampleNumber = int.Parse(_outputSampleReader.ReadLine()!);
 
             var strBuilder = new StringBuilder();
             while (true)

@@ -9,7 +9,7 @@ public class SampleFiePath
 {
     private static readonly string _solutionName = "AtCoderCs.sln";
     private static readonly DirectoryInfo _directory = new DirectoryInfo(Environment.CurrentDirectory);
-    private static string _solutionDirectory;
+    private static string _solutionDirectory = string.Empty;
 
     private readonly string _problemNumber;
 

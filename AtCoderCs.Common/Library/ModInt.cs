@@ -9,9 +9,9 @@ public struct ModInt : IEquatable<ModInt>
 
     private int value;
 
-    private static IList<long> facList;
-    private static IList<long> facInvList;
-    private static IList<long> invList;
+    private static IList<long> facList = new List<long>();
+    private static IList<long> facInvList = new List<long>();
+    private static IList<long> invList = new List<long>();
 
     public ModInt(int value)
         : this((long)value)
@@ -279,7 +279,7 @@ public struct ModInt : IEquatable<ModInt>
         return this.value == other.value;
     }
 
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         if (!(obj is ModInt))
         {

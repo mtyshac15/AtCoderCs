@@ -13,60 +13,32 @@ public class Problem
     private static readonly string _problemNumber = $"357";
 
     private SampleFiePath _sampleFiePath;
+    private TestFixture _fixture;
 
     public Problem()
     {
         _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
     }
 
-#if false
-    [Fact]
-    public void SolveA()
+    public Problem(TestFixture fixture)
     {
-        var sample = _sampleFiePath.ReadFiles($"A");
-        TestTools.Solve(sample, typeof(ProblemA), nameof(ProblemA.Solve));
+        _fixture = fixture;
+        _fixture.ConfigureSampleFolder(_contestSection, _problemFolder, _problemNumber);
     }
 
-    [Fact]
-    public void SolveB()
+#if true
+    [Theory(DisplayName = $"ABC 357")]
+    [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
+    [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
+    [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
+    [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
+    [InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
+    [InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
+    [InlineData($"G", typeof(ProblemG), nameof(ProblemG.Solve))]
+    public void Solve(string level, Type problemType, string methodName)
     {
-        var sample = _sampleFiePath.ReadFiles($"B");
-        TestTools.Solve(sample, typeof(ProblemB), nameof(ProblemB.Solve));
-    }
-
-    [Fact]
-    public void SolveC()
-    {
-        var sample = _sampleFiePath.ReadFiles($"C");
-        TestTools.Solve(sample, typeof(ProblemC), nameof(ProblemC.Solve));
-    }
-
-    [Fact]
-    public void SolveD()
-    {
-        var sample = _sampleFiePath.ReadFiles($"D");
-        TestTools.Solve(sample, typeof(ProblemD), nameof(ProblemD.Solve));
-    }
-
-    [Fact]
-    public void SolveE()
-    {
-        var sample = _sampleFiePath.ReadFiles($"E");
-        TestTools.Solve(sample, typeof(ProblemE), nameof(ProblemE.Solve));
-    }
-
-    [Fact]
-    public void SolveF()
-    {
-        var sample = _sampleFiePath.ReadFiles($"F");
-        TestTools.Solve(sample, typeof(ProblemF), nameof(ProblemF.Solve));
-    }
-
-    [Fact]
-    public void SolveG()
-    {
-        var sample = _sampleFiePath.ReadFiles($"G");
-        TestTools.Solve(sample, typeof(ProblemG), nameof(ProblemG.Solve));
+        var sample = _fixture.ReadFiles(_problemNumber, level);
+        TestTools.Solve(sample, problemType, methodName);
     }
 #endif
 }

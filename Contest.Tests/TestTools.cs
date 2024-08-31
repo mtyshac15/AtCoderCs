@@ -29,6 +29,29 @@ public static class TestTools
         TestTools.Judge(expectedDic, actualDic, epsilon);
     }
 
+    public static void Solve(SampleSet sample, Type problemType, string methodName, double epsilon = 0)
+    {
+        IDictionary<int, string> expectedDic;
+        IDictionary<int, string> actualDic;
+
+        //引数ありのコンストラクタ
+        var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });
+        var method = problemType.GetMethod(methodName);
+
+        using (var tester = new Common.Library.Tester(sample))
+        {
+            var instance = constructor.Invoke(new object[] { tester.Reader, tester.Writer });
+
+            //MethodInfoからデリゲートを作成する
+            var solveMethod = (Action)Delegate.CreateDelegate(typeof(Action), instance, method);
+
+            expectedDic = tester.ReadOutputSample();
+            actualDic = tester.Execute(solveMethod);
+        }
+
+        TestTools.Judge(expectedDic, actualDic, epsilon);
+    }
+
     public static void Judge(IDictionary<int, string> expectedDic, IDictionary<int, string> actualDic, double epsilon = 0)
     {
         var testCases = expectedDic.Join(actualDic,
