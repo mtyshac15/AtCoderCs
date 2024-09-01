@@ -17,7 +17,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Contest|AnyCPU'">
     <DefineConstants>$(DefineConstants);Contest</DefineConstants>
-    <Optimize>True</Optimize>
+    <Optimize>False</Optimize>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='All|AnyCPU'">
