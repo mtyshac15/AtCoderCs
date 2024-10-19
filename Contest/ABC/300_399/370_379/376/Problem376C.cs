@@ -1,12 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC273;
+namespace AtCoderCs.Contest.ABC376;
 
-public class ProblemA
+public class ProblemC
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,17 @@ public class ProblemA
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemA();
+        var problem = new ProblemC();
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemA()
+    public ProblemC()
         : this(Console.In, Console.Out)
     {
     }
 
-    public ProblemA(TextReader textReader, TextWriter textWriter)
+    public ProblemC(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -33,21 +33,38 @@ public class ProblemA
     public void Solve()
     {
         var N = _reader.NextInt();
+        var A = _reader.NextIntArray();
+        var B = _reader.NextIntArray();
 
-        Func<int, int, int> f = default;
+        Array.Sort(A);
+        Array.Sort(B);
 
-        f = (int x, int result) =>
+        var box = 0;
+        var boxIndex = B.Length - 1;
+
+        for (int i = A.Length - 1; i >= 0; i--)
         {
-            if (x == 0)
+            if (boxIndex >= 0
+                && A[i] <= B[boxIndex])
             {
-                return result;
+                boxIndex--;
             }
+            else
+            {
+                if (box == 0)
+                {
+                    box = A[i];
+                }
+                else
+                {
+                    _writer.WriteLine(-1);
+                    return;
+                }
+            }
+        }
 
-            return f(x - 1, x * result);
-        };
-
-        var ans = f(N, 1);
-        _writer.WriteLine(ans);
+        var ans = box;
+        _writer.WriteLine(box);
     }
 
     #region "IO"

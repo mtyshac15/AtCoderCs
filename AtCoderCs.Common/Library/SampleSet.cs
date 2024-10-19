@@ -9,13 +9,73 @@ namespace AtCoderCs.Common.Library;
 
 public class SampleSet
 {
+    private static readonly string _baseFileName = "Sample";
+    private static readonly string _inputSection = "Input";
+    private static readonly string _outputSection = "Output";
+
     public SampleSet(SampleInput input, SampleOutput output)
     {
         this.InputReader = input.CreateReader();
         this.OutputReader = output.CreateReader();
     }
 
+    private SampleSet(StringReader inputReader, StringReader outputReader)
+    {
+        this.InputReader = inputReader;
+        this.OutputReader = outputReader;
+    }
+
     public StringReader InputReader { get; }
 
     public StringReader OutputReader { get; }
+
+    public static SampleSet LoadSample(string folderPath, string fileNum)
+    {
+        var input = new List<string>();
+        var output = new List<string>();
+
+
+        var filePath = Path.Combine(folderPath, $"{_baseFileName}{fileNum}.txt");
+
+        using (var reader = new StreamReader(filePath))
+        using (var synchronized = StreamReader.Synchronized(reader))
+        {
+            if (synchronized.ReadLine() != _inputSection)
+            {
+                throw new FormatException();
+            }
+
+            // 入力
+            while (true)
+            {
+                var line = synchronized.ReadLine() ?? string.Empty;
+                if (line == _outputSection)
+                {
+                    break;
+                }
+                else
+                {
+                    input.Add(line);
+                }
+            }
+
+            // 出力
+            while (true)
+            {
+                var line = synchronized.ReadLine();
+                if (line is null)
+                {
+                    break;
+                }
+                else
+                {
+                    output.Add(line);
+                }
+            }
+        }
+
+        var inputReader = new StringReader(string.Join(Environment.NewLine, input));
+        var outputReader = new StringReader(string.Join(Environment.NewLine, output));
+        return new SampleSet(inputReader, outputReader);
+    }
 }

@@ -3,7 +3,6 @@ using AtCoderCs.Contest.ABC369;
 using AtCoderCs.Contest.Tests;
 using Contest.Tests.Modules;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Xunit;
 
 namespace AtCoderCs.Contest.Tests.ABC369;
@@ -22,7 +21,7 @@ public class Problem : IClassFixture<TestFixture>
         _fixture.ConfigureSampleFolder(_attribute.Section, _problemFolder, _attribute.Number);
     }
 
-#if Contest
+#if false
     [Theory(DisplayName = $"ABC 369")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]

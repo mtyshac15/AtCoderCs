@@ -3,7 +3,6 @@ using AtCoderCs.Contest.ABC367;
 using AtCoderCs.Contest.Tests;
 using Contest.Tests.Modules;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using Xunit;
 
 namespace AtCoderCs.Contest.Tests.ABC367;

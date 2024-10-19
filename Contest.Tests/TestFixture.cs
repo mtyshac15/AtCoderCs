@@ -39,7 +39,7 @@ public class TestFixture
         _baseDirectory = SampleDirectory.Create(new DirectoryInfo(fullPath));
     }
 
-    public SampleSet ReadFiles(string number, string level, string suffix = "")
+    public SampleSet ReadFilesOld(string number, string level, string suffix = "")
     {
         var suffixArray = new string[]
         {
@@ -56,6 +56,18 @@ public class TestFixture
         sampleOutput.Load(fileSuffix);
 
         return new SampleSet(sampleInput, sampleOutput);
+    }
+
+    public SampleSet ReadFiles(string number, string level, string suffix = "")
+    {
+        var suffixArray = new string[]
+        {
+            $"{number}{level}",
+            suffix,
+        }.Where(x => !string.IsNullOrWhiteSpace(x));
+
+        var fileNum = string.Join("_", suffixArray);
+        return SampleSet.LoadSample(_baseDirectory, fileNum);
     }
 
     private static string GetDirectory(DirectoryInfo directory, string fileName)
