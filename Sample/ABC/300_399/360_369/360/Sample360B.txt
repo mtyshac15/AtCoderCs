@@ -1,0 +1,25 @@
+Input
+1
+atcoder toe
+
+2
+beginner r
+
+3
+verticalreading agh
+
+4
+atcoder atcoder
+
+Output
+1
+Yes
+
+2
+No
+
+3
+No
+
+4
+Yes

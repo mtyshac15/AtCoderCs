@@ -1,0 +1,13 @@
+Input
+1
+RSM
+
+2
+SMR
+
+Output
+1
+Yes
+
+3
+No

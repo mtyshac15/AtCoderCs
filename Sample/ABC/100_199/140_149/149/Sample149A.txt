@@ -1,0 +1,13 @@
+Input
+1
+oder atc
+
+2
+humu humu
+
+Output
+1
+atcoder
+
+2
+humuhumu

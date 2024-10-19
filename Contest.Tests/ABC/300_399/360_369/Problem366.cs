@@ -1,17 +1,17 @@
 using AtCoderCs.Common.Library;
-using AtCoderCs.Contest.ABC148;
+using AtCoderCs.Contest.ABC366;
 using AtCoderCs.Contest.Tests;
 using Contest.Tests.Modules;
 using System.Reflection;
 using Xunit;
 
-namespace AtCoderCs.Contest.Tests.ABC148;
+namespace AtCoderCs.Contest.Tests.ABC366;
 
-[Contest($"ABC", $"148")]
+[Contest($"ABC", $"366")]
 public class Problem : IClassFixture<TestFixture>
 {
     private static readonly ContestAttribute _attribute = Attribute.GetCustomAttribute(typeof(Problem), typeof(ContestAttribute)) as ContestAttribute;
-    private static readonly string _problemFolder = Path.Combine($"100_199", "140_149");
+    private static readonly string _problemFolder = Path.Combine($"300_399", "360_369");
 
     private TestFixture _fixture;
 
@@ -22,13 +22,14 @@ public class Problem : IClassFixture<TestFixture>
     }
 
 #if false
-    [Theory(DisplayName = $"ABC 148")]
+    [Theory(DisplayName = $"ABC 366")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
-    //[InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
-    //[InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
-    //[InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
-    //[InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
-    //[InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
+    [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
+    [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
+    [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
+    [InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
+    [InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
+    [InlineData($"G", typeof(ProblemG), nameof(ProblemG.Solve))]
     public void Solve(string level, Type problemType, string methodName)
     {
         var sample = _fixture.ReadFiles(_attribute.Number, level);
