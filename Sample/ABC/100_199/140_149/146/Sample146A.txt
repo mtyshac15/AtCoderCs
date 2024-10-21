@@ -1,0 +1,13 @@
+Input
+1
+SAT
+
+2
+SUN
+
+Output
+1
+1
+
+2
+7
