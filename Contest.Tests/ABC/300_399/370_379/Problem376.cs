@@ -21,7 +21,7 @@ public class Problem : IClassFixture<TestFixture>
         _fixture.ConfigureSampleFolder(_attribute.Section, _problemFolder, _attribute.Number);
     }
 
-#if Contest
+#if true
     [Theory(DisplayName = $"ABC 376")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]

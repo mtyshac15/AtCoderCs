@@ -50,112 +50,40 @@ public class ProblemB
         for (int i = 0; i < Q; i++)
         {
             var hand = H[i];
-            var after = T[i];
+            var to = T[i];
 
             if (hand == "L")
             {
-                var clockwise = 0;
-                var reverse = 0;
-
-                // 時計回り
-                {
-                    var current = currentL;
-                    while (current != after)
-                    {
-                        if (current == currentR)
-                        {
-                            clockwise = int.MaxValue;
-                            break;
-                        }
-
-                        current++;
-                        if (current == N + 1)
-                        {
-                            current = 1;
-                        }
-
-                        clockwise++;
-                    }
-                }
-
-                // 反時計回り
-                {
-                    var current = currentL;
-                    while (current != after)
-                    {
-                        if (current == currentR)
-                        {
-                            reverse = int.MaxValue;
-                            break;
-                        }
-
-                        current--;
-                        if (current == 0)
-                        {
-                            current = N;
-                        }
-
-                        reverse++;
-                    }
-                }
-
-                total += Math.Min(clockwise, reverse);
-                currentL = after;
+                total += this.Move(N, currentL, to, currentR);
+                currentL = to;
             }
             else
             {
-                var clockwise = 0;
-                var reverse = 0;
-
-                // 時計回り
-                {
-                    var current = currentR;
-                    while (current != after)
-                    {
-
-                        if (current == currentL)
-                        {
-                            clockwise = int.MaxValue;
-                            break;
-                        }
-
-                        current++;
-                        if (current == N + 1)
-                        {
-                            current = 1;
-                        }
-
-                        clockwise++;
-                    }
-                }
-
-                // 反時計回り
-                {
-                    var current = currentR;
-                    while (current != after)
-                    {
-                        if (current == currentL)
-                        {
-                            reverse = int.MaxValue;
-                            break;
-                        }
-
-                        current--;
-                        if (current == 0)
-                        {
-                            current = N;
-                        }
-
-                        reverse++;
-                    }
-                }
-
-                total += Math.Min(clockwise, reverse);
-                currentR = after;
+                total += this.Move(N, currentR, to, currentL);
+                currentR = to;
             }
         }
         var ans = total;
         _writer.WriteLine(ans);
+    }
+
+    private int Move(int N, int from, int to, int ng)
+    {
+        if (from > to)
+        {
+            var tmp = from;
+            from = to;
+            to = tmp;
+        }
+
+        if (from < ng && ng < to)
+        {
+            return from - to + N;
+        }
+        else
+        {
+            return to - from;
+        }
     }
 
     #region "IO"
