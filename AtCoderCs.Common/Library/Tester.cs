@@ -10,14 +10,6 @@ public class Tester : IDisposable
 
     private StringReader _outputSampleReader;
 
-    public Tester(string inputSampleText, string outputSampleText)
-    {
-        this.Reader = new StringReader(inputSampleText);
-        this.Writer = new StringWriter();
-
-        _outputSampleReader = new StringReader(outputSampleText);
-    }
-
     public Tester(SampleSet sample)
     {
         this.Reader = sample.InputReader;

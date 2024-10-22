@@ -13,12 +13,6 @@ public class SampleSet
     private static readonly string _inputSection = "Input";
     private static readonly string _outputSection = "Output";
 
-    public SampleSet(SampleInput input, SampleOutput output)
-    {
-        this.InputReader = input.CreateReader();
-        this.OutputReader = output.CreateReader();
-    }
-
     private SampleSet(StringReader inputReader, StringReader outputReader)
     {
         this.InputReader = inputReader;
@@ -76,6 +70,7 @@ public class SampleSet
 
         var inputReader = new StringReader(string.Join(Environment.NewLine, input));
         var outputReader = new StringReader(string.Join(Environment.NewLine, output));
+
         return new SampleSet(inputReader, outputReader);
     }
 }

@@ -39,25 +39,6 @@ public class TestFixture
         _baseDirectory = SampleDirectory.Create(new DirectoryInfo(fullPath));
     }
 
-    public SampleSet ReadFilesOld(string number, string level, string suffix = "")
-    {
-        var suffixArray = new string[]
-        {
-            $"{number}{level}",
-            suffix,
-        }.Where(x => !string.IsNullOrWhiteSpace(x));
-
-        var fileSuffix = string.Join("_", suffixArray);
-
-        var sampleInput = new SampleInput(_baseDirectory);
-        sampleInput.Load(fileSuffix);
-
-        var sampleOutput = new SampleOutput(_baseDirectory);
-        sampleOutput.Load(fileSuffix);
-
-        return new SampleSet(sampleInput, sampleOutput);
-    }
-
     public SampleSet ReadFiles(string number, string level, string suffix = "")
     {
         var suffixArray = new string[]

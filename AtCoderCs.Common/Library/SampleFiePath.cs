@@ -5,6 +5,7 @@ using System.Text;
 
 namespace AtCoderCs.Common.Library;
 
+[Obsolete]
 public class SampleFiePath
 {
     private static readonly string _solutionName = "AtCoderCs.sln";
@@ -12,9 +13,6 @@ public class SampleFiePath
     private static string _solutionDirectory = string.Empty;
 
     private readonly string _problemNumber;
-
-    private SampleInput _sampleInput;
-    private SampleOutput _sampleOutput;
 
     public SampleFiePath(string contestSection, string problemFolder, string problemNumber)
     {
@@ -35,24 +33,6 @@ public class SampleFiePath
         var sampleFolder = Path.Combine(array);
 
         var sampleFolderPath = Path.Combine($"{_solutionDirectory}", $"{sampleFolder}");
-        _sampleInput = new SampleInput(sampleFolderPath);
-        _sampleOutput = new SampleOutput(sampleFolderPath);
-    }
-
-    public SampleDto ReadFiles(string level, string suffix = "")
-    {
-        var suffixArray = new string[]
-        {
-            $"{_problemNumber}{level}",
-            suffix,
-        }.Where(x => !string.IsNullOrWhiteSpace(x));
-
-        var fileSuffix = string.Join("_", suffixArray);
-
-        string inputText = _sampleInput.Read(fileSuffix);
-        string outputText = _sampleOutput.Read(fileSuffix);
-
-        return new SampleDto(inputText, outputText);
     }
 
     private static string GetDirectory(DirectoryInfo directory, string fileName)
