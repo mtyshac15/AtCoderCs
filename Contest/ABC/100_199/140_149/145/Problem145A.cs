@@ -20,7 +20,7 @@ public class ProblemA
     }
 
     public ProblemA()
-          : this(Console.In, Console.Out)
+        : this(Console.In, Console.Out)
     {
     }
 
@@ -32,9 +32,9 @@ public class ProblemA
 
     public void Solve()
     {
-        var N = _reader.NextInt();
+        var r = _reader.NextInt();
 
-        var ans = 0;
+        var ans = r * r;
         _writer.WriteLine(ans);
     }
 
