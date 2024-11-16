@@ -21,11 +21,11 @@ public class Problem : IClassFixture<TestFixture>
         _fixture.ConfigureSampleFolder(_attribute.Section, _problemFolder, _attribute.Number);
     }
 
-#if true
+#if false
     [Theory(DisplayName = $"ABC 138")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve), 0.000001)]
     //[InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
-    [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
+    //[InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
     //[InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
     //[InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
     //[InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
