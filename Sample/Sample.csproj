@@ -1338,42 +1338,6 @@
     <None Update="ABC\200_299\220_229\225\225C_Output.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="ABC\200_299\250_259\253\253A_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253A_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253B_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253B_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253C_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253C_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253D_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253D_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253E_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253E_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253F_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\200_299\250_259\253\253F_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="ABC\200_299\260_269\267\267A_Input.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

@@ -1,7 +1,5 @@
 using AtCoderCs.Common.Library;
 using AtCoderCs.Common.ValueObjects;
-using System.Text;
-using Xunit;
 
 namespace AtCoderCs.Contest.Tests;
 
@@ -9,7 +7,6 @@ public class TestFixture
 {
     private static readonly string _solutionName = "AtCoderCs.sln";
     private static string _solutionDirectory;
-    private string _problemNumber;
 
     private SampleDirectory _baseDirectory;
 
@@ -32,8 +29,6 @@ public class TestFixture
             problemNumber,
         }.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
         var sampleFolder = Path.Combine(array);
-
-        _problemNumber = problemNumber;
 
         var fullPath = Path.Combine(_solutionDirectory, sampleFolder);
         _baseDirectory = SampleDirectory.Create(new DirectoryInfo(fullPath));
