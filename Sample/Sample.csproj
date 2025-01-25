@@ -900,30 +900,6 @@
     <None Update="ABC\000_099\000_009\001\001_Input.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="ABC\000_099\030_039\039\039A_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039A_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039B_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039B_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039C_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039C_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039D_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\030_039\039\039D_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="ABC\000_099\040_049\042\042A_Input.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
