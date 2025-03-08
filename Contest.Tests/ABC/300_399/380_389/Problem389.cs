@@ -1,7 +1,7 @@
 using AtCoderCs.Common.Library;
 using AtCoderCs.Contest.ABC389;
 using AtCoderCs.Contest.Tests;
-using Contest.Tests.Modules;
+using Contest.Tests.Services;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Xunit;

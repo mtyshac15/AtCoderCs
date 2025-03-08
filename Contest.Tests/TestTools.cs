@@ -1,5 +1,5 @@
 using AtCoderCs.Common.Library;
-using Contest.Tests.Modules;
+using Contest.Tests.Services;
 using Microsoft.Extensions.Logging;
 using System.Text;
 using Xunit;
@@ -38,6 +38,7 @@ public static class TestTools
 
     public static void Judge(ILogger logger, IReadOnlyCollection<TestResult> testResults, double epsilon = 0)
     {
+        var results = new List<string>();
         var errors = new List<TestResult>();
 
         if (epsilon > 0)
@@ -60,11 +61,20 @@ public static class TestTools
             }
         }
 
-        foreach (var result in testResults)
+        if (!errors.Any())
         {
-            logger.LogInformation($"No. {result.Number}");
-            logger.LogInformation($"Expected: {result.Expected}");
-            logger.LogInformation($"Actual: {result.Actual}");
+            logger.LogInformation($"AC");
+        }
+        else
+        {
+            logger.LogInformation($"WA");
+
+            foreach (var result in errors)
+            {
+                logger.LogInformation($"No. {result.Number}: ");
+                logger.LogInformation($"Expected: {result.Expected}");
+                logger.LogInformation($"Actual: {result.Actual}");
+            }
         }
 
         Assert.Empty(errors);

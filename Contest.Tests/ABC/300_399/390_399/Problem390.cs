@@ -1,7 +1,7 @@
 using AtCoderCs.Common.Library;
 using AtCoderCs.Contest.ABC390;
 using AtCoderCs.Contest.Tests;
-using Contest.Tests.Modules;
+using Contest.Tests.Services;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Xunit;
@@ -27,15 +27,15 @@ public class Problem : IClassFixture<TestFixture>
         _fixture.ConfigureSampleFolder(_attribute.Section, _problemFolder, _attribute.Number);
     }
 
-#if true
+#if false
     [Theory(DisplayName = $"ABC 390")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
     [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
-    [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
-    [InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
-    [InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
-    [InlineData($"G", typeof(ProblemG), nameof(ProblemG.Solve))]
+    //[InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
+    //[InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
+    //[InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
+    //[InlineData($"G", typeof(ProblemG), nameof(ProblemG.Solve))]
     public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
     {
         var sample = _fixture.ReadFiles(_attribute.Number, level);

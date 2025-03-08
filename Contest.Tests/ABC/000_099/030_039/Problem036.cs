@@ -1,5 +1,5 @@
 using AtCoderCs.Contest.ABC036;
-using Contest.Tests.Modules;
+using Contest.Tests.Services;
 using Microsoft.Extensions.Logging;
 using Xunit;
 using Xunit.Abstractions;

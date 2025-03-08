@@ -32,11 +32,19 @@ public class ProblemA
 
     public void Solve()
     {
-        var N = _reader.NextInt();
-        var S = _reader.Next();
-        var A = _reader.NextIntArray();
+        var R = _reader.NextInt();
+        var G = _reader.NextInt();
+        var B = _reader.NextInt();
+        var C = _reader.Next();
 
-        var ans = 0;
+        var dic = new Dictionary<string, int>()
+        {
+            { "Red",  R },
+            { "Green",  G },
+            { "Blue",  B },
+        };
+
+        var ans = dic.Where(x => x.Key != C).Min(x => x.Value);
         _writer.WriteLine(ans);
     }
 

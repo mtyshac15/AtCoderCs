@@ -32,9 +32,10 @@ public class ProblemA
 
     public void Solve()
     {
-        var N = _reader.NextInt();
+        var A = _reader.NextInt();
+        var B = _reader.NextInt();
 
-        var ans = 0;
+        var ans = A != B ? 6 - A - B : -1;
         _writer.WriteLine(ans);
     }
 

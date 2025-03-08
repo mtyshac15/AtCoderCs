@@ -32,9 +32,25 @@ public class ProblemA
 
     public void Solve()
     {
-        var N = _reader.NextInt();
+        var H = _reader.NextInt();
 
-        var ans = 0;
+        var height = 0;
+        var day = 0;
+
+        do
+        {
+            var pow = 1;
+            for (int i = 0; i < day; i++)
+            {
+                pow *= 2;
+            }
+
+            height += pow;
+            day++;
+        }
+        while (height <= H);
+
+        var ans = day;
         _writer.WriteLine(ans);
     }
 

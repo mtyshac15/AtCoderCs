@@ -51,16 +51,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Text\Sample.txt" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Text\Sample.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="AtCoderMain.cs" />
     <None Include="OldProblem.cs" />
     <None Include="Template.cs" />

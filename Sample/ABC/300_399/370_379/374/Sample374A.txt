@@ -1,0 +1,13 @@
+Input
+1
+takahashisan
+
+2
+aokikun
+
+Output
+1
+Yes
+
+2
+No

@@ -97,6 +97,11 @@ public class ProblemG
         {
             return this.NextArray().Select(int.Parse).ToArray();
         }
+
+        public long[] NextLongArray()
+        {
+            return this.NextArray().Select(long.Parse).ToArray();
+        }
     }
 
     class Writer

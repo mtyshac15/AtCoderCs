@@ -32,9 +32,15 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
 
-        var ans = 0;
+        var S = new List<string>();
+        for (int i = 0; i < N; i++)
+        {
+            S.Add(_reader.Next());
+        }
+
+        var ans = S.Count(x => x == "Takahashi");
         _writer.WriteLine(ans);
     }
 

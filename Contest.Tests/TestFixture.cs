@@ -1,22 +1,45 @@
 using AtCoderCs.Common.Library;
 using AtCoderCs.Common.ValueObjects;
+using Contest.Tests.Services;
+using Xunit.Abstractions;
 
 namespace AtCoderCs.Contest.Tests;
 
 public class TestFixture
 {
     private static readonly string _solutionName = "AtCoderCs.sln";
-    private static string _solutionDirectory;
+    private static DirectoryInfo? _solutionDirectory;
 
     private SampleDirectory _baseDirectory;
 
     public TestFixture()
     {
-        if (string.IsNullOrWhiteSpace(_solutionDirectory))
+        if (_solutionDirectory is null)
         {
             var directory = new DirectoryInfo(Environment.CurrentDirectory);
-            _solutionDirectory = TestFixture.GetDirectory(directory, _solutionName);
+            _solutionDirectory = GetDirectory(directory, _solutionName);
         }
+    }
+
+    public DirectoryInfo GetBaseDirectory(string contestSection, string problemFolder, string problemNumber)
+    {
+        if (_solutionDirectory is null)
+        {
+            var directory = new DirectoryInfo(Environment.CurrentDirectory);
+            _solutionDirectory = GetDirectory(directory, _solutionName);
+        }
+
+        var array = new string[]
+        {
+            $"Sample",
+            contestSection,
+            problemFolder,
+            problemNumber,
+        }.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+        var sampleFolder = Path.Combine(array);
+
+        var fullPath = Path.Combine(_solutionDirectory.FullName, sampleFolder);
+        return new DirectoryInfo(fullPath);
     }
 
     public void ConfigureSampleFolder(string contestSection, string problemFolder, string problemNumber)
@@ -30,7 +53,7 @@ public class TestFixture
         }.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
         var sampleFolder = Path.Combine(array);
 
-        var fullPath = Path.Combine(_solutionDirectory, sampleFolder);
+        var fullPath = Path.Combine(_solutionDirectory.FullName, sampleFolder);
         _baseDirectory = SampleDirectory.Create(new DirectoryInfo(fullPath));
     }
 
@@ -46,19 +69,19 @@ public class TestFixture
         return SampleSet.LoadSample(_baseDirectory, fileNum);
     }
 
-    private static string GetDirectory(DirectoryInfo directory, string fileName)
+    private static DirectoryInfo GetDirectory(DirectoryInfo directory, string fileName)
     {
         var path = Path.Combine(directory.FullName, fileName);
         if (File.Exists(path))
         {
-            return directory.FullName;
+            return directory;
         }
 
         if (directory.Parent != null)
         {
-            return TestFixture.GetDirectory(directory.Parent, fileName);
+            return GetDirectory(directory.Parent, fileName);
         }
 
-        return string.Empty;
+        throw new DirectoryNotFoundException();
     }
 }

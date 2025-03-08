@@ -1,7 +1,7 @@
 using AtCoderCs.Common.Library;
 using AtCoderCs.Contest.ABC259;
 using AtCoderCs.Contest.Tests;
-using Contest.Tests.Modules;
+using Contest.Tests.Services;
 using System.Reflection;
 using Xunit;
 using Xunit.Sdk;

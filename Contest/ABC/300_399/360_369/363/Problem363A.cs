@@ -32,11 +32,11 @@ public class ProblemA
 
     public void Solve()
     {
-        var N = _reader.NextInt();
-        var S = _reader.Next();
-        var A = _reader.NextIntArray();
+        var R = _reader.NextInt();
 
-        var ans = 0;
+        var next = (R / 100 + 1) * 100;
+
+        var ans = next - R;
         _writer.WriteLine(ans);
     }
 

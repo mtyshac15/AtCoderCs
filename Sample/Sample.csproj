@@ -869,8 +869,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ABC\000_099\010_019\" />
-    <Folder Include="ABC\000_099\020_029\" />
     <Folder Include="ABC\300_399\300_309\" />
     <Folder Include="ARC\" />
   </ItemGroup>
