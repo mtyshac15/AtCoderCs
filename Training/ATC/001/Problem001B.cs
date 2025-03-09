@@ -134,10 +134,8 @@ public class ProblemB
             return _size[this.Root(x)];
         }
     }
-    #endregion
 
-    #region "IO"
-    public class Reader
+    class Reader
     {
         private TextReader _reader;
         private int _index;

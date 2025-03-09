@@ -1,7 +1,6 @@
-using System.Reflection;
 using System.Text;
 
-namespace AtCoderCs.Common.Library;
+namespace Tests.Contents.Services;
 
 public class Tester : IDisposable
 {

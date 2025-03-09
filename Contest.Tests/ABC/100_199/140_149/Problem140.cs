@@ -1,159 +1,40 @@
-using AtCoderCs.Common.Library;
 using AtCoderCs.Contest.ABC140;
-using AtCoderCs.Contest.Tests;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
+using Tests.Contents.Services;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AtCoderCs.Contest.Tests.ABC140;
 
-public class Problem
+[Contest($"ABC", $"140")]
+public class Problem : IClassFixture<TestFixture>
 {
-    private static readonly string _contestSection = $"ABC";
+    private static readonly ContestAttribute _attribute = typeof(Problem).GetCustomAttribute<ContestAttribute>();
     private static readonly string _problemFolder = Path.Combine($"100_199", "140_149");
-    private static readonly string _problemNumber = $"140";
 
-    private SampleFiePath _sampleFiePath;
+    private ILogger _logger;
+    private TestJudgeService _judgeService;
 
-    public Problem()
+    public Problem(ITestOutputHelper output, TestFixture fixture)
     {
-        _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
+        _logger = new XunitLogger(output);
+        var baseDirectory = fixture.GetBaseDirectory(_attribute.Section, _problemFolder, _attribute.Number);
+        _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
     }
 
 #if false
-    [Fact]
-    public void SolveA()
+    [Theory(DisplayName = $"ABC 140")]
+    [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
+    [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
+    [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
+    [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
+    //[InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
+    //[InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
+    public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
     {
-        var prblemLevel = $"A";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemA(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-    }
-#endif
-
-#if false
-    [Fact]
-    public void SolveB()
-    {
-        var prblemLevel = $"B";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemB(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-    }
-#endif
-
-#if false
-    [Fact]
-    public void SolveC()
-    {
-        var prblemLevel = $"C";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemC(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-    }
-#endif
-
-#if false
-    [Fact]
-    public void SolveD()
-    {
-        var prblemLevel = $"D";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemD(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-    }
-#endif
-
-#if false
-    [Fact]
-    public void SolveE()
-    {
-        var prblemLevel = $"E";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemE(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
-    }
-#endif
-
-#if false
-    [Fact]
-    public void SolveF()
-    {
-        var prblemLevel = $"F";
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(prblemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new ProblemF(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var results = _judgeService.Solve(level, problemType, methodName);
+        _judgeService.Judge(results, epcilon);
     }
 #endif
 }

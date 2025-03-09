@@ -1,4 +1,4 @@
-﻿namespace AtCoderCs.Common.Library;
+﻿namespace Tests.Contents.Services;
 
 public class SampleSet
 {

@@ -1,9 +1,8 @@
 using AtCoderCs.Common.Library;
 using AtCoderCs.Common.ValueObjects;
-using Contest.Tests.Services;
-using Xunit.Abstractions;
+using Tests.Contents.Services;
 
-namespace AtCoderCs.Contest.Tests;
+namespace AtCoderCs.Contest.Tests.Fixture;
 
 public class TestFixture
 {
@@ -12,23 +11,18 @@ public class TestFixture
 
     private SampleDirectory _baseDirectory;
 
+    static TestFixture()
+    {
+        var directory = new DirectoryInfo(Environment.CurrentDirectory);
+        _solutionDirectory = GetDirectory(directory, _solutionName);
+    }
+
     public TestFixture()
     {
-        if (_solutionDirectory is null)
-        {
-            var directory = new DirectoryInfo(Environment.CurrentDirectory);
-            _solutionDirectory = GetDirectory(directory, _solutionName);
-        }
     }
 
     public DirectoryInfo GetBaseDirectory(string contestSection, string problemFolder, string problemNumber)
     {
-        if (_solutionDirectory is null)
-        {
-            var directory = new DirectoryInfo(Environment.CurrentDirectory);
-            _solutionDirectory = GetDirectory(directory, _solutionName);
-        }
-
         var array = new string[]
         {
             $"Sample",
@@ -36,8 +30,8 @@ public class TestFixture
             problemFolder,
             problemNumber,
         }.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
-        var sampleFolder = Path.Combine(array);
 
+        var sampleFolder = Path.Combine(array);
         var fullPath = Path.Combine(_solutionDirectory.FullName, sampleFolder);
         return new DirectoryInfo(fullPath);
     }

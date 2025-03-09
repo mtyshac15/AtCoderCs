@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "Sample\Sample.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtCoderCs.Common", "AtCoderCs.Common\AtCoderCs.Common.csproj", "{5811E7C3-3FCC-4523-8996-9F6FB8091D53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Contents", "Tests.Contents\Tests.Contents.csproj", "{20F312EC-0FDE-401C-B837-01A5A880D60F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		All|Any CPU = All|Any CPU
@@ -118,6 +120,16 @@ Global
 		{5811E7C3-3FCC-4523-8996-9F6FB8091D53}.Practice|Any CPU.Build.0 = Debug|Any CPU
 		{5811E7C3-3FCC-4523-8996-9F6FB8091D53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5811E7C3-3FCC-4523-8996-9F6FB8091D53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.All|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.All|Any CPU.Build.0 = Debug|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Contest|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Contest|Any CPU.Build.0 = Debug|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Practice|Any CPU.ActiveCfg = Release|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Practice|Any CPU.Build.0 = Release|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{20F312EC-0FDE-401C-B837-01A5A880D60F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

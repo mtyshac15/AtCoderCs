@@ -1,14 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace Contest.Tests.Services;
+namespace Tests.Contents.Services;
 
-internal class XunitLogger : ILogger
+public class XunitLogger : ILogger
 {
     private ITestOutputHelper _output;
     private string _categoryName;

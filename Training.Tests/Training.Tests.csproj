@@ -16,22 +16,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
-    <PackageReference Include="xunit" Version="2.7.1" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.8">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Boot_camp_for_Beginners\Easy\" />
     <Folder Include="Boot_camp_for_Beginners\Normal\" />
     <Folder Include="Boot_camp_for_Beginners\Medium\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
+    <ProjectReference Include="..\Tests.Contents\Tests.Contents.csproj" />
     <ProjectReference Include="..\Training\Training.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,4 @@
-﻿using AtCoderCs.Common.Library;
-
-namespace Contest.Tests.Services;
+﻿namespace Tests.Contents.Services;
 
 public interface ISampleRepository
 {

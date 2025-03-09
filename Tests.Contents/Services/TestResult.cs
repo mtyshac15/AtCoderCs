@@ -1,4 +1,4 @@
-﻿namespace Contest.Tests.Services;
+﻿namespace Tests.Contents.Services;
 
 public class TestResult
 {

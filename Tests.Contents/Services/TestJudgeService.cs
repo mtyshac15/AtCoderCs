@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Xunit;
 
-namespace Contest.Tests.Services;
+namespace Tests.Contents.Services;
 
 public class TestJudgeService
 {
@@ -58,7 +58,7 @@ public class TestJudgeService
         var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });
         var method = problemType.GetMethod(methodName);
 
-        using (var tester = new AtCoderCs.Common.Library.Tester(sample))
+        using (var tester = new Tester(sample))
         {
             var instance = constructor.Invoke(new object[] { tester.Reader, tester.Writer });
 

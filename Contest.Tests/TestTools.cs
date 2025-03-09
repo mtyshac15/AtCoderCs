@@ -1,7 +1,7 @@
 using AtCoderCs.Common.Library;
-using Contest.Tests.Services;
 using Microsoft.Extensions.Logging;
 using System.Text;
+using Tests.Contents.Services;
 using Xunit;
 
 namespace AtCoderCs.Contest.Tests;
@@ -17,7 +17,7 @@ public static class TestTools
         var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });
         var method = problemType.GetMethod(methodName);
 
-        using (var tester = new Common.Library.Tester(sample))
+        using (var tester = new Tester(sample))
         {
             var instance = constructor.Invoke(new object[] { tester.Reader, tester.Writer });
 

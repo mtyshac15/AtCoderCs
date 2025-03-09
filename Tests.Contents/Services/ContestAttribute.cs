@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Contest.Tests.Services;
+﻿namespace Tests.Contents.Services;
 
 [AttributeUsage(AttributeTargets.Class)]
-internal class ContestAttribute : Attribute
+public class ContestAttribute : Attribute
 {
     /// <summary>
     /// 

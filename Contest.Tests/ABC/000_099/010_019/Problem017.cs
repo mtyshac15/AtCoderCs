@@ -1,6 +1,7 @@
 using AtCoderCs.Contest.ABC017;
-using Contest.Tests.Services;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
+using Tests.Contents.Services;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -9,11 +10,10 @@ namespace AtCoderCs.Contest.Tests.ABC017;
 [Contest($"ABC", $"017")]
 public class Problem : IClassFixture<TestFixture>
 {
-    private static readonly ContestAttribute _attribute = Attribute.GetCustomAttribute(typeof(Problem), typeof(ContestAttribute)) as ContestAttribute;
+    private static readonly ContestAttribute _attribute = typeof(Problem).GetCustomAttribute<ContestAttribute>();
     private static readonly string _problemFolder = Path.Combine($"000_099", "010_019");
 
     private ILogger _logger;
-    private TestFixture _fixture;
     private TestJudgeService _judgeService;
 
     public Problem(ITestOutputHelper output, TestFixture fixture)

@@ -40,8 +40,8 @@ public class ProblemA
         _writer.WriteLine(ans);
     }
 
-    #region "IO"
-    public class Reader
+    #region
+    class Reader
     {
         private TextReader _reader;
         private int _index;

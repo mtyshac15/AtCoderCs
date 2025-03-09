@@ -105,8 +105,8 @@ public class ProblemA
         _writer.WriteYesOrNo(ans);
     }
 
-    #region "IO"
-    public class Reader
+    #region
+    class Reader
     {
         private TextReader _reader;
         private int _index;

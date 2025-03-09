@@ -1,23 +1,26 @@
-using AtCoderCs.Common.Library;
 using AtCoderCs.Contest.ABC350;
-using AtCoderCs.Contest.Tests;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
+using Tests.Contents.Services;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AtCoderCs.Contest.Tests.ABC350;
 
+[Contest($"ABC", $"350")]
 public class Problem : IClassFixture<TestFixture>
 {
-    private static readonly string _contestSection = $"ABC";
+    private static readonly ContestAttribute _attribute = typeof(Problem).GetCustomAttribute<ContestAttribute>();
     private static readonly string _problemFolder = Path.Combine($"300_399", "350_359");
-    private static readonly string _problemNumber = $"350";
 
-    private TestFixture _fixture;
+    private ILogger _logger;
+    private TestJudgeService _judgeService;
 
-    public Problem(TestFixture fixture)
+    public Problem(ITestOutputHelper output, TestFixture fixture)
     {
-        _fixture = fixture;
-        _fixture.ConfigureSampleFolder(_contestSection, _problemFolder, _problemNumber);
+        _logger = new XunitLogger(output);
+        var baseDirectory = fixture.GetBaseDirectory(_attribute.Section, _problemFolder, _attribute.Number);
+        _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
     }
 
 #if false
@@ -29,10 +32,10 @@ public class Problem : IClassFixture<TestFixture>
     [InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
     [InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
     [InlineData($"G", typeof(ProblemG), nameof(ProblemG.Solve))]
-    public void Solve(string level, Type problemType, string methodName)
+    public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
     {
-        var sample = _fixture.ReadFiles(_problemNumber, level);
-        TestTools.Solve(sample, problemType, methodName);
+        var results = _judgeService.Solve(level, problemType, methodName);
+        _judgeService.Judge(results, epcilon);
     }
 #endif
 }
