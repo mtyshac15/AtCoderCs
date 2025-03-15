@@ -874,27 +874,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ABC\000_099\000_009\001\001A_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\000_009\001\001B_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\000_009\001\001B_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\000_009\001\001C_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\000_009\001\001C_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\000_009\001\001D_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="ABC\000_099\000_009\001\001D_Output.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="ABC\000_099\000_009\001\001_Input.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

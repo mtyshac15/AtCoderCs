@@ -7,58 +7,130 @@ namespace AtCoderCs.Contest.ABC084;
 
 public class ProblemB
 {
-    private TextReader _reader = Console.In;
-    private TextWriter _writer = Console.Out;
+    private Reader _reader;
+    private Writer _writer;
 
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new ProblemB(Console.In, Console.Out);
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public ProblemB()
+    public ProblemB(TextReader textReader, TextWriter textWriter)
     {
+        _reader = new Reader(textReader);
+        _writer = new Writer(textWriter);
     }
 
-    public ProblemB(TextReader reader, TextWriter writer)
-    {
-        _reader = reader;
-        _writer = writer;
-    }
-
-    /// <summary>
-    /// Postal Code
-    /// </summary>
     public void Solve()
     {
-        var AB = _reader.ReadLine().Trim().Split().Select(int.Parse).ToArray();
-        var A = AB[0];
-        var B = AB[1];
+        var A = _reader.NextInt();
+        var B = _reader.NextInt();
+        var S = _reader.Next();
 
-        var S = _reader.ReadLine().Trim();
-
-        var ans = true;
+        // ハイフン
+        var isMatch = S[A] == '-';
 
         int num = 0;
-
         //前半
-        ans = ans & int.TryParse(S.Substring(0, A), out num);
-
-        ans = ans & S.Substring(A, 1) == "-";
+        isMatch = isMatch & int.TryParse(S.Substring(0, A), out num);
 
         //後半
-        ans = ans & int.TryParse(S.Substring(A + 1, B), out num);
+        isMatch = isMatch & int.TryParse(S.Substring(A + 1, B), out num);
 
-        _writer.WriteLine(IOLibrary.ToYesOrNo(ans));
+        var ans = isMatch;
+        _writer.WriteYesOrNo(ans);
     }
 
-    public static class IOLibrary
+    #region
+    class Reader
     {
+        private TextReader _reader;
+        private int _index;
+        private string[] _line;
+
+        private char[] _cs = new char[] { ' ' };
+
+        public Reader(TextReader reader)
+        {
+            _reader = reader;
+            _index = 0;
+            _line = new string[0];
+        }
+
+        private string NextLine()
+        {
+            return _reader.ReadLine().Trim();
+        }
+
+        public string Next()
+        {
+            if (_index < _line.Length)
+            {
+                return _line[_index++];
+            }
+
+            _line = this.NextArray();
+            if (!_line.Any())
+            {
+                return this.Next();
+            }
+
+            _index = 0;
+            return _line[_index++];
+        }
+
+        public int NextInt()
+        {
+            return int.Parse(this.Next());
+        }
+
+        public long NextLong()
+        {
+            return long.Parse(this.Next());
+        }
+
+        public string[] NextArray()
+        {
+            return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        public int[] NextIntArray()
+        {
+            return this.NextArray().Select(int.Parse).ToArray();
+        }
+
+        public long[] NextLongArray()
+        {
+            return this.NextArray().Select(long.Parse).ToArray();
+        }
+    }
+
+    class Writer
+    {
+        private TextWriter _writer;
+
+        public Writer(TextWriter writer)
+        {
+            _writer = writer;
+        }
+
+        public void WriteLine(object value = null)
+        {
+            _writer.WriteLine(value);
+        }
+
+        public void WriteYesOrNo(bool value)
+        {
+            this.WriteLine(Writer.ToYesOrNo(value));
+        }
+
         public static string ToYesOrNo(bool value)
         {
             return value ? $"Yes" : $"No";
         }
     }
+    #endregion
 }

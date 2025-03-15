@@ -1,0 +1,13 @@
+Input
+1
+Kyoto
+
+2
+Tohoku
+
+Output
+1
+KUPC
+
+2
+TUPC

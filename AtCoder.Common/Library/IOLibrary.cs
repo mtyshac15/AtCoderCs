@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+namespace AtCoder.Common.Library;
+
 public static class IOLibrary
 {
     private static StreamWriter sw = new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false };

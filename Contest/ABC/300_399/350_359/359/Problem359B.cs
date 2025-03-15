@@ -32,9 +32,19 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Next();
+        var N = _reader.NextInt();
+        var A = _reader.NextIntArray();
 
-        var ans = 0;
+        var count = 0;
+        for (int i = 0; i < 2 * N - 2; i++)
+        {
+            if (A[i] == A[i + 2])
+            {
+                count++;
+            }
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 

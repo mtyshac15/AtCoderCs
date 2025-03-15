@@ -24,7 +24,7 @@ public class XunitLogger : ILogger
         return true;
     }
 
-    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
+    public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception? exception, Func<TState, Exception, string> formatter)
     {
         _output.WriteLine($"{_categoryName} [{eventId}] {formatter(state, exception)}");
 

@@ -1,4 +1,4 @@
-using AtCoderCs.Contest.ABC173;
+using AtCoderCs.Contest.ABC174;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Tests.Contents.Services;
@@ -7,7 +7,7 @@ using Xunit.Abstractions;
 
 namespace AtCoderCs.Contest.Tests.ABC174;
 
-[Contest($"ABC", $"173")]
+[Contest($"ABC", $"174")]
 public class Problem : IClassFixture<TestFixture>
 {
     private static readonly ContestAttribute _attribute = typeof(Problem).GetCustomAttribute<ContestAttribute>();
@@ -24,8 +24,8 @@ public class Problem : IClassFixture<TestFixture>
         _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
     }
 
-#if false
-    [Theory(DisplayName = $"ABC 173")]
+#if true
+    [Theory(DisplayName = $"ABC 174")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
     [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]

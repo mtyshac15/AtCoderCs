@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <Compile Remove="Library\Template.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Library\Template.cs" />
   </ItemGroup>
 
 </Project>

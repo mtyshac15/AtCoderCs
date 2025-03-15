@@ -20,7 +20,6 @@ public struct Point
     public double Z { get; }
 
     #region
-
     public static Point operator +(Point a)
     {
         return a;
@@ -45,11 +44,9 @@ public struct Point
     {
         return new Point(k * a.X, k * a.Y, k * a.Z);
     }
-
     #endregion
 
     #region
-
     public static double CalcLength(Point a)
     {
         var length = Math.Sqrt(a.X * a.X + a.Y * a.Y + a.Z * a.Z);
@@ -99,8 +96,6 @@ public struct Point
         var area = length / 2;
         return area;
     }
-
     #endregion
-
     #endregion
 }

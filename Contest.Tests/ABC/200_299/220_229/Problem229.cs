@@ -23,7 +23,7 @@ public class Problem : IClassFixture<TestFixture>
         _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
     }
 
-#if false
+#if DEBUG
     [Theory(DisplayName = $"ABC 229")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     //[InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]

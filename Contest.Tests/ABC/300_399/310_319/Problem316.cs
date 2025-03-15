@@ -7,10 +7,4 @@ namespace AtCoderCs.Contest.Tests.ABC316;
 
 public class Problem
 {
-#if false
-    [Fact]
-    public void Solve()
-    {
-    }
-#endif
 }

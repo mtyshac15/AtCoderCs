@@ -34,7 +34,22 @@ public class ProblemC
     {
         var K = _reader.NextInt();
 
-        var ans = 0;
+        var index = -1;
+        var a = 7 % K;
+        for (int i = 1; i <= K + 1; i++)
+        {
+            if (a == 0)
+            {
+                index = i;
+                break;
+            }
+
+            a *= 10;
+            a += 7;
+            a %= K;
+        }
+
+        var ans = index;
         _writer.WriteLine(ans);
     }
 

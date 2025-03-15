@@ -14,14 +14,9 @@ public class ProblemF
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemF();
+        var problem = new ProblemF(Console.In, Console.Out);
         problem.Solve();
         Console.Out.Flush();
-    }
-
-    public ProblemF()
-        : this(Console.In, Console.Out)
-    {
     }
 
     public ProblemF(TextReader textReader, TextWriter textWriter)

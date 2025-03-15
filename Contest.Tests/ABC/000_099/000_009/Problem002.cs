@@ -23,11 +23,11 @@ public class Problem : IClassFixture<TestFixture>
         _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
     }
 
-#if false
+#if DEBUG
     [Theory(DisplayName = $"ABC 002")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
-    [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
+    [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve), 0.01)]
     [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
     public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
     {

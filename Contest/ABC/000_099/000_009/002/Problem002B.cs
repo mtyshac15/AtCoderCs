@@ -14,14 +14,9 @@ public class ProblemB
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB();
+        var problem = new ProblemB(Console.In, Console.Out);
         problem.Solve();
         Console.Out.Flush();
-    }
-
-    public ProblemB()
-        : this(Console.In, Console.Out)
-    {
     }
 
     public ProblemB(TextReader textReader, TextWriter textWriter)
@@ -32,25 +27,26 @@ public class ProblemB
 
     public void Solve()
     {
-        var vowel = new char[] { 'a', 'i', 'u', 'e', 'o' };
-
         var S = _reader.Next();
 
+        var vowel = new char[] { 'a', 'i', 'u', 'e', 'o' };
+
         var ansBuilder = new StringBuilder();
+        var ansList = new List<char>();
         foreach (var c in S)
         {
             if (!vowel.Contains(c))
             {
-                ansBuilder.Append(c);
+                ansList.Add(c);
             }
         }
 
-        var ans = ansBuilder.ToString();
+        var ans = string.Concat(ansList);
         _writer.WriteLine(ans);
     }
 
-    #region "IO"
-    public class Reader
+    #region
+    class Reader
     {
         private TextReader _reader;
         private int _index;
@@ -105,6 +101,11 @@ public class ProblemB
         public int[] NextIntArray()
         {
             return this.NextArray().Select(int.Parse).ToArray();
+        }
+
+        public long[] NextLongArray()
+        {
+            return this.NextArray().Select(long.Parse).ToArray();
         }
     }
 

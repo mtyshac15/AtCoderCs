@@ -47,13 +47,11 @@
   <ItemGroup>
     <Compile Remove="AtCoderMain.cs" />
     <Compile Remove="OldProblem.cs" />
-    <Compile Remove="Template.cs" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="AtCoderMain.cs" />
     <None Include="OldProblem.cs" />
-    <None Include="Template.cs" />
   </ItemGroup>
 
   <ItemGroup>

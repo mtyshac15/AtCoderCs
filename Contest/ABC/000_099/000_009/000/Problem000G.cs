@@ -14,14 +14,9 @@ public class ProblemG
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemG();
+        var problem = new ProblemG(Console.In, Console.Out);
         problem.Solve();
         Console.Out.Flush();
-    }
-
-    public ProblemG()
-        : this(Console.In, Console.Out)
-    {
     }
 
     public ProblemG(TextReader textReader, TextWriter textWriter)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 
+namespace AtCoder.Common.Library;
+
 public struct ModInt : IEquatable<ModInt>
 {
     public const int MOD = 1000000007;

@@ -24,8 +24,8 @@ public class TestResult
 
         foreach (var item in actuaValues.Zip(expectedValues))
         {
-            double.TryParse(item.First, out double expectedValue);
-            double.TryParse(item.Second, out double actualValue);
+            double.TryParse(item.First, out double actualValue);
+            double.TryParse(item.Second, out double expectedValue);
 
             var sub = Math.Abs(expectedValue - actualValue);
             if (sub > epsilon)

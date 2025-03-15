@@ -10,7 +10,7 @@ public class TestJudgeService
     private DirectoryInfo _baseDirectory;
     private string _problemNumber;
 
-    private ISampleRepository _sampleRepository;
+    private ISampleRepository? _sampleRepository;
 
     /// <summary>
     /// コンストラクタ
@@ -58,7 +58,7 @@ public class TestJudgeService
         var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });
         var method = problemType.GetMethod(methodName);
 
-        using (var tester = new Tester(sample))
+        using (var tester = new Tester(_logger, sample))
         {
             var instance = constructor.Invoke(new object[] { tester.Reader, tester.Writer });
 

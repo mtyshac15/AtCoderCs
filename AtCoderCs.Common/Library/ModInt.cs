@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 
+namespace AtCoderCs.Common.Library;
+
 public struct ModInt : IEquatable<ModInt>
 {
-    public const int MOD = 1000000007;
-    private static int m = ModInt.MOD;
+    //public const int MOD = 1000000007;
+    public const int MOD = 998244353;
+    private static int _m = ModInt.MOD;
 
-    private int value;
+    private static IList<long> _facList = new List<long>();
+    private static IList<long> _facInvList = new List<long>();
+    private static IList<long> _invList = new List<long>();
 
-    private static IList<long> facList = new List<long>();
-    private static IList<long> facInvList = new List<long>();
-    private static IList<long> invList = new List<long>();
+    private int _value;
 
     public ModInt(int value)
         : this((long)value)
@@ -19,19 +22,17 @@ public struct ModInt : IEquatable<ModInt>
     }
 
     public ModInt(long value)
-        : this()
     {
         var tmpX = value;
         while (tmpX < 0)
         {
-            tmpX += ModInt.m;
+            tmpX += _m;
         }
-        var x = (int)(tmpX % ModInt.m);
-        this.value = x;
+        var x = (int)(tmpX % _m);
+        _value = x;
     }
 
     #region
-
     public static implicit operator ModInt(int value)
     {
         return new ModInt(value);
@@ -44,12 +45,12 @@ public struct ModInt : IEquatable<ModInt>
 
     public static ModInt operator +(ModInt a)
     {
-        return a.value;
+        return a._value;
     }
 
     public static ModInt operator -(ModInt a)
     {
-        return -a.value;
+        return -a._value;
     }
 
     public static ModInt operator ++(ModInt a)
@@ -64,7 +65,7 @@ public struct ModInt : IEquatable<ModInt>
 
     public static ModInt operator +(ModInt a, ModInt b)
     {
-        return a.value + b.value;
+        return a._value + b._value;
     }
 
     public static ModInt operator -(ModInt a, ModInt b)
@@ -74,7 +75,7 @@ public struct ModInt : IEquatable<ModInt>
 
     public static ModInt operator *(ModInt a, ModInt b)
     {
-        return (long)a.value * b.value;
+        return (long)a._value * b._value;
     }
 
     public static ModInt operator /(ModInt a, ModInt b)
@@ -84,12 +85,12 @@ public struct ModInt : IEquatable<ModInt>
 
     public static bool operator <(ModInt a, ModInt b)
     {
-        return a.value < b.value;
+        return a._value < b._value;
     }
 
     public static bool operator >(ModInt a, ModInt b)
     {
-        return a.value > b.value;
+        return a._value > b._value;
     }
 
     public static bool operator <=(ModInt a, ModInt b)
@@ -111,23 +112,18 @@ public struct ModInt : IEquatable<ModInt>
     {
         return !(a == b);
     }
-
     #endregion
 
     public static ModInt Max
     {
-        get
-        {
-            return ModInt.m - 1;
-        }
+        get { return _m - 1; }
     }
 
-    #region 
-
+    #region
     public static void Init(int m = ModInt.MOD)
     {
-        ModInt.m = m;
-        ModInt.CombinationInit();
+        _m = m;
+        CombinationInit();
     }
 
     /// <summary>
@@ -155,16 +151,6 @@ public struct ModInt : IEquatable<ModInt>
         }
 
         return ans;
-    }
-
-    /// <summary>
-    /// べき乗
-    /// </summary>
-    /// <param name="n"></param>
-    /// <returns></returns>
-    public ModInt Pow(long n)
-    {
-        return ModInt.Pow(this, n);
     }
 
     /// <summary>
@@ -199,22 +185,22 @@ public struct ModInt : IEquatable<ModInt>
     public static void CombinationInit()
     {
         var max = 510000;
-        ModInt.facList = new long[max];
-        ModInt.facList[0] = 1;
-        ModInt.facList[1] = 1;
+        _facList = new long[max];
+        _facList[0] = 1;
+        _facList[1] = 1;
 
-        ModInt.facInvList = new long[max];
-        ModInt.facInvList[0] = 1;
-        ModInt.facInvList[1] = 1;
+        _facInvList = new long[max];
+        _facInvList[0] = 1;
+        _facInvList[1] = 1;
 
-        ModInt.invList = new long[max];
-        ModInt.invList[1] = 1;
+        _invList = new long[max];
+        _invList[1] = 1;
 
         for (int i = 2; i < max; i++)
         {
-            ModInt.facList[i] = ModInt.facList[i - 1] * i % ModInt.m;
-            ModInt.invList[i] = ModInt.m - ModInt.invList[ModInt.m % i] * (ModInt.m / i) % ModInt.m;
-            ModInt.facInvList[i] = ModInt.facInvList[i - 1] * ModInt.invList[i] % ModInt.m;
+            _facList[i] = _facList[i - 1] * i % _m;
+            _invList[i] = _m - _invList[_m % i] * (_m / i) % _m;
+            _facInvList[i] = _facInvList[i - 1] * _invList[i] % _m;
         }
     }
 
@@ -231,20 +217,20 @@ public struct ModInt : IEquatable<ModInt>
             return 0;
         }
 
-        return ModInt.facList[n.ToInt()] * (ModInt.facInvList[k.ToInt()] * ModInt.facInvList[(n - k).ToInt()] % ModInt.m);
+        return _facList[n.ToInt()] * (_facInvList[k.ToInt()] * _facInvList[(n - k).ToInt()] % _m);
     }
 
     /// <summary>
     /// 逆元
     /// </summary>
-    /// <param name="x"></param>
+    /// <param name="modInt"></param>
     /// <returns></returns>
     public static ModInt Inverse(ModInt modInt)
     {
         try
         {
-            var a = modInt.value;
-            var b = ModInt.m;
+            var a = modInt._value;
+            var b = _m;
 
             ModInt x0 = 1;
             ModInt x1 = 0;
@@ -268,15 +254,41 @@ public struct ModInt : IEquatable<ModInt>
             throw;
         }
     }
+    #endregion
 
+    #region 
+    /// <summary>
+    /// べき乗
+    /// </summary>
+    /// <param name="n"></param>
+    /// <returns></returns>
+    public ModInt Pow(long n)
+    {
+        return ModInt.Pow(this, n);
+    }
+
+    /// <summary>
+    /// 逆元
+    /// </summary>
+    /// <returns></returns>
     public ModInt Inverse()
     {
         return ModInt.Inverse(this);
     }
 
+    public int ToInt()
+    {
+        return this._value;
+    }
+
+    public override int GetHashCode()
+    {
+        return EqualityComparer<int>.Default.GetHashCode(_value);
+    }
+
     public bool Equals(ModInt other)
     {
-        return this.value == other.value;
+        return _value == other._value;
     }
 
     public override bool Equals(object? obj)
@@ -289,20 +301,10 @@ public struct ModInt : IEquatable<ModInt>
         return this.Equals((ModInt)obj);
     }
 
-    public override int GetHashCode()
-    {
-        return EqualityComparer<int>.Default.GetHashCode(this.value);
-    }
-
-    public int ToInt()
-    {
-        return this.value;
-    }
-
     public override string ToString()
     {
-        return $"{this.value}";
+        return $"{_value}";
     }
-
     #endregion
+
 }

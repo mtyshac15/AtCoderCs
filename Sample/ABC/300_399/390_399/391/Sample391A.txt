@@ -1,0 +1,13 @@
+Input
+1
+N
+
+2
+SE
+
+Output
+1
+S
+
+2
+NW

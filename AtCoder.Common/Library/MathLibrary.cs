@@ -75,6 +75,33 @@ public static class MathLibrary
         return true;
     }
 
+    public static int[] Primes(int n)
+    {
+        var primes = new bool[n + 1];
+        for (int i = 0; i < n; i++)
+        {
+            primes[i] = true;
+        }
+
+        primes[0] = false;
+        primes[1] = false;
+
+        for (int i = 2; i * i <= n; i++)
+        {
+            if (IsPrime(i))
+            {
+                for (int j = i * i; j <= n; j += i)
+                {
+                    primes[j] = false;
+                }
+            }
+        }
+
+        // リストに変換
+        return primes.Where(e => e).Select((e, i) => i).ToArray();
+    }
+
+
     /// <summary>
     /// 素因数分解
     /// </summary>
@@ -626,7 +653,7 @@ public static class MathLibrary
         return MathLibrary.GetCombinationIndexCollection(Enumerable.Range(0, n), k, false);
     }
 
-    public static IEnumerable<int[]> GetCombinationIndexCollection(IEnumerable<int> collection, int k, bool withRepetition)
+    public static IEnumerable<int[]> GetCombinationIndexCollection(IEnumerable<int> collection, int k, bool withRepetition = false)
     {
         if (k == 1)
         {
@@ -872,76 +899,5 @@ public static class MathLibrary
         return result;
     }
 
-    #endregion
-
-    #region MyRegion
-    struct UnionFind
-    {
-        IList<int> _par;
-        IList<int> _size;
-
-        public UnionFind(int n)
-        {
-            _par = Enumerable.Repeat(-1, n).ToList();
-            _size = Enumerable.Repeat(1, n).ToList();
-        }
-
-        /// <summary>
-        /// 根を求める
-        /// </summary>
-        /// <param name="x"></param>
-        /// <returns></returns>
-        public int Root(int x)
-        {
-            if (_par[x] == -1)
-            {
-                return x;
-            }
-            else
-            {
-                _par[x] = this.Root(_par[x]);
-                return _par[x];
-            }
-        }
-
-        /// <summary>
-        /// xとyが同じグループの所属するか
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <returns></returns>
-        public bool IsSame(int x, int y)
-        {
-            return this.Root(x) == this.Root(y);
-        }
-
-        public bool Unite(int x, int y)
-        {
-            //x,yの親を取得
-            var rootX = this.Root(x);
-            var rootY = this.Root(y);
-
-            if (rootX == rootY)
-            {
-                return false;
-            }
-
-            if (_size[rootX] < _size[rootY])
-            {
-                var temp = rootX;
-                rootX = rootY;
-                rootY = temp;
-            }
-
-            _par[rootY] = rootX;
-            _size[rootX] += _size[rootY];
-            return true;
-        }
-
-        public int Size(int x)
-        {
-            return _size[this.Root(x)];
-        }
-    }
     #endregion
 }

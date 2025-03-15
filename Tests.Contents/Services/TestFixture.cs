@@ -3,7 +3,7 @@ namespace Tests.Contents.Services;
 public class TestFixture
 {
     private static readonly string _solutionName = "AtCoderCs.sln";
-    private static DirectoryInfo? _solutionDirectory;
+    private static DirectoryInfo _solutionDirectory;
 
     static TestFixture()
     {

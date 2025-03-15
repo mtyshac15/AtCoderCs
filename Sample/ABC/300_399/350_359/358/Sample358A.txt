@@ -1,0 +1,19 @@
+Input
+1
+AtCoder Land
+
+2
+CodeQUEEN Land
+
+3
+aTcodeR lANd
+
+Output
+1
+Yes
+
+2
+No
+
+3
+No

@@ -52,29 +52,35 @@ public class ProblemD
 
         var maxCount = 0;
 
-        var indexCellection = Enumerable.Range(1, N).ToArray();
-        for (int count = 1; count <= N; count++)
+        for (int i = 0; i < 1 << N; i++)
         {
-            //N個の点からcountだけ選ぶ組み合わせを列挙
-            foreach (var indexes in MathLibrary.GetCombinationIndexCollection(indexCellection, count, false))
-            {
-                //完全グラフかどうか
-                var isComplete = true;
-                foreach (var node in indexes)
-                {
-                    var others = indexes.Except(new int[] { node });
-                    if (!others.All(x => graph[node].Contains(x)))
-                    {
-                        //辺が存在しない2点が存在した場合
-                        isComplete = false;
-                        break;
-                    }
-                }
+            // グループを作成
 
-                if (isComplete)
+            var group = new List<int>();
+            for (int bit = 0; bit < N; bit++)
+            {
+                if (((i >> bit) & 1) == 1)
                 {
-                    maxCount = Math.Max(count, maxCount);
+                    group.Add(bit + 1);
                 }
+            }
+
+            //完全グラフかどうか
+            var isComplete = true;
+            foreach (var person in group)
+            {
+                var others = group.Except(new int[] { person });
+                if (!others.All(x => graph[person].Contains(x)))
+                {
+                    //辺が存在しない2点が存在した場合
+                    isComplete = false;
+                    break;
+                }
+            }
+
+            if (isComplete)
+            {
+                maxCount = Math.Max(group.Count, maxCount);
             }
         }
 
@@ -82,8 +88,8 @@ public class ProblemD
         _writer.WriteLine(ans);
     }
 
-    #region "IO"
-    public class Reader
+    #region
+    class Reader
     {
         private TextReader _reader;
         private int _index;
@@ -139,6 +145,11 @@ public class ProblemD
         {
             return this.NextArray().Select(int.Parse).ToArray();
         }
+
+        public long[] NextLongArray()
+        {
+            return this.NextArray().Select(long.Parse).ToArray();
+        }
     }
 
     class Writer
@@ -163,33 +174,6 @@ public class ProblemD
         public static string ToYesOrNo(bool value)
         {
             return value ? $"Yes" : $"No";
-        }
-    }
-    #endregion
-
-    #region 
-    static class MathLibrary
-    {
-        public static IEnumerable<int[]> GetCombinationIndexCollection(IEnumerable<int> collection, int k, bool withRepetition)
-        {
-            if (k == 1)
-            {
-                foreach (var item in collection)
-                {
-                    yield return new int[] { item };
-                }
-                yield break;
-            }
-
-            foreach (var item in collection)
-            {
-                var searchedArray = new int[] { item };
-                var unsearchedArray = withRepetition ? collection : collection.SkipWhile(x => !x.Equals(item)).Skip(1).ToArray();
-                foreach (var searchedItem in MathLibrary.GetCombinationIndexCollection(unsearchedArray, k - 1, withRepetition))
-                {
-                    yield return searchedArray.Concat(searchedItem).ToArray();
-                }
-            }
         }
     }
     #endregion

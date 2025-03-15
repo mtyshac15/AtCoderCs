@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace Tests.Contents.Services;
@@ -7,10 +8,13 @@ public class Tester : IDisposable
     private object _lockObject = new object();
     private bool _disposed = false;
 
+    private ILogger _logger;
     private StringReader _outputSampleReader;
 
-    public Tester(SampleSet sample)
+    public Tester(ILogger logger, SampleSet sample)
     {
+        _logger = logger;
+
         this.Reader = sample.InputReader;
         this.Writer = new StringWriter();
 
@@ -20,65 +24,6 @@ public class Tester : IDisposable
     public StringReader Reader { get; }
 
     public StringWriter Writer { get; }
-
-    public void Dispose()
-    {
-        this.Dispose(false);
-        GC.SuppressFinalize(this);
-    }
-
-    public void Dispose(bool disposing)
-    {
-        lock (_lockObject)
-        {
-            if (!_disposed)
-            {
-                if (disposing)
-                {
-                    this.Reader?.Dispose();
-                    this.Writer?.Dispose();
-                    _outputSampleReader?.Dispose();
-                }
-
-                _disposed = true;
-            }
-        }
-    }
-
-    public IDictionary<int, string> Execute(Action method)
-    {
-        var actualDic = new Dictionary<int, string>();
-
-        while (this.Reader.Peek() > -1)
-        {
-            var inputNumber = int.Parse(this.Reader.ReadLine());
-
-            method?.Invoke();
-
-            actualDic.Add(inputNumber, this.Writer.ToString().Trim());
-
-            //内容をクリア
-            var tmpBuilder = this.Writer.GetStringBuilder();
-            tmpBuilder.Clear();
-
-            //空欄行でなかった場合、空欄行まで読み込む
-            var extraLine = this.Reader.ReadLine();
-            if (!string.IsNullOrWhiteSpace(extraLine))
-            {
-                while (true)
-                {
-                    //空欄行を読み込んだら処理を終了する
-                    extraLine = this.Reader.ReadLine();
-                    if (string.IsNullOrWhiteSpace(extraLine))
-                    {
-                        break;
-                    }
-                }
-            }
-        }
-
-        return actualDic;
-    }
 
     public IDictionary<int, string> ReadOutputSample()
     {
@@ -107,5 +52,75 @@ public class Tester : IDisposable
         }
 
         return expectedDic;
+    }
+
+    public IDictionary<int, string> Execute(Action method)
+    {
+        var actualDic = new Dictionary<int, string>();
+
+        while (this.Reader.Peek() > -1)
+        {
+            int.TryParse(this.Reader.ReadLine(), out int testCase);
+
+            var secondTime = Timer(method);
+            _logger.LogInformation($"テストケース{testCase}, 処理時間: {secondTime} ms");
+
+            actualDic.Add(testCase, this.Writer.ToString().Trim());
+
+            //内容をクリア
+            var tmpBuilder = this.Writer.GetStringBuilder();
+            tmpBuilder.Clear();
+
+            //空欄行でなかった場合、空欄行まで読み込む
+            var extraLine = this.Reader.ReadLine();
+            if (!string.IsNullOrWhiteSpace(extraLine))
+            {
+                while (true)
+                {
+                    //空欄行を読み込んだら処理を終了する
+                    extraLine = this.Reader.ReadLine();
+                    if (string.IsNullOrWhiteSpace(extraLine))
+                    {
+                        break;
+                    }
+                }
+            }
+        }
+
+        return actualDic;
+    }
+
+    public static int Timer(Action method)
+    {
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+
+        method?.Invoke();
+
+        sw.Stop();
+        return (int)(sw.Elapsed.TotalMilliseconds);
+    }
+
+    public void Dispose()
+    {
+        this.Dispose(false);
+        GC.SuppressFinalize(this);
+    }
+
+    public void Dispose(bool disposing)
+    {
+        lock (_lockObject)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    this.Reader?.Dispose();
+                    this.Writer?.Dispose();
+                    _outputSampleReader?.Dispose();
+                }
+
+                _disposed = true;
+            }
+        }
     }
 }

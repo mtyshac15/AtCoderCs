@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AtCoderCs.Training.A01;
 
-public class Problem
+public class ProblemA
 {
     private Reader _reader;
     private Writer _writer;
@@ -14,17 +14,12 @@ public class Problem
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new Problem();
+        var problem = new ProblemA(Console.In, Console.Out);
         problem.Solve();
         Console.Out.Flush();
     }
 
-    public Problem()
-           : this(Console.In, Console.Out)
-    {
-    }
-
-    public Problem(TextReader textReader, TextWriter textWriter)
+    public ProblemA(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
         _writer = new Writer(textWriter);
@@ -38,8 +33,8 @@ public class Problem
         _writer.WriteLine(ans);
     }
 
-    #region "IO"
-    public class Reader
+    #region
+    class Reader
     {
         private TextReader _reader;
         private int _index;
@@ -94,6 +89,11 @@ public class Problem
         public int[] NextIntArray()
         {
             return this.NextArray().Select(int.Parse).ToArray();
+        }
+
+        public long[] NextLongArray()
+        {
+            return this.NextArray().Select(long.Parse).ToArray();
         }
     }
 

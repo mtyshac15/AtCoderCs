@@ -14,14 +14,9 @@ public class ProblemC
     public static void Main(string[] args)
     {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC();
+        var problem = new ProblemC(Console.In, Console.Out);
         problem.Solve();
         Console.Out.Flush();
-    }
-
-    public ProblemC()
-        : this(Console.In, Console.Out)
-    {
     }
 
     public ProblemC(TextReader textReader, TextWriter textWriter)
@@ -53,8 +48,8 @@ public class ProblemC
         _writer.WriteLine(ans);
     }
 
-    #region "IO"
-    public class Reader
+    #region
+    class Reader
     {
         private TextReader _reader;
         private int _index;
@@ -109,6 +104,11 @@ public class ProblemC
         public int[] NextIntArray()
         {
             return this.NextArray().Select(int.Parse).ToArray();
+        }
+
+        public long[] NextLongArray()
+        {
+            return this.NextArray().Select(long.Parse).ToArray();
         }
     }
 

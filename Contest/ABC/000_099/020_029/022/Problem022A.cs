@@ -44,7 +44,6 @@ public class ProblemA
         }
 
         var weight = W;
-        var count = 0;
 
         var P = new List<int>() { W };
 

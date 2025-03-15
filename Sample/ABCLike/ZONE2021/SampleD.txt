@@ -1,0 +1,12 @@
+Input
+1
+ozRnonnoe
+
+2
+hellospaceRhellospace
+
+Output
+1
+zone
+
+2
