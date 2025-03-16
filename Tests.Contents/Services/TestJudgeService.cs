@@ -17,27 +17,24 @@ public class TestJudgeService
     /// </summary>
     /// <param name="logger"></param>
     /// <param name="baseDirectory"></param>
+    /// <param name="problemNumber"></param>
     public TestJudgeService(ILogger logger, DirectoryInfo baseDirectory, string problemNumber)
     {
         _logger = logger;
         _baseDirectory = baseDirectory;
         _problemNumber = problemNumber;
+        _sampleRepository = new SampleRepository(_baseDirectory, _problemNumber);
     }
 
     /// <summary>
-    /// サンプル用のリポジトリ
+    /// 
     /// </summary>
-    public ISampleRepository SampleRepository
+    /// <param name="logger"></param>
+    /// <param name="sampleRepository"></param>
+    public TestJudgeService(ILogger logger, ISampleRepository sampleRepository)
     {
-        get
-        {
-            if (_sampleRepository is null)
-            {
-                _sampleRepository = new SampleRepository(_baseDirectory, _problemNumber);
-            }
-
-            return _sampleRepository;
-        }
+        _logger = logger;
+        _sampleRepository = sampleRepository;
     }
 
     /// <summary>
@@ -52,7 +49,7 @@ public class TestJudgeService
         IDictionary<int, string> expectedDic;
         IDictionary<int, string> actualDic;
 
-        var sample = SampleRepository.Find(level);
+        var sample = _sampleRepository.Find(level);
 
         //引数ありのコンストラクタ
         var constructor = problemType.GetConstructor(new Type[] { typeof(StringReader), typeof(StringWriter) });

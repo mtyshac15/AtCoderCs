@@ -19,8 +19,8 @@ public class Problem : IClassFixture<TestFixture>
     public Problem(ITestOutputHelper output, TestFixture fixture)
     {
         _logger = new XunitLogger(output);
-        var baseDirectory = fixture.GetBaseDirectory(_attribute.Section, _problemFolder, _attribute.Number);
-        _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
+        var repository = fixture.GetSampleRepository(_attribute.Section, _problemFolder, _attribute.Number);
+        _judgeService = new TestJudgeService(_logger, repository);
     }
 
     public void Solve(string level, Type problemType, string methodName, double epcilon = 0)

@@ -30,6 +30,12 @@ public class TestFixture
         return new DirectoryInfo(fullPath);
     }
 
+    public ISampleRepository GetSampleRepository(string contestSection, string problemFolder, string problemNumber)
+    {
+        var baseDirectory = GetBaseDirectory(contestSection, problemFolder, problemNumber);
+        return new SampleRepository(baseDirectory, problemNumber);
+    }
+
     private static DirectoryInfo GetDirectory(DirectoryInfo directory, string fileName)
     {
         var path = Path.Combine(directory.FullName, fileName);

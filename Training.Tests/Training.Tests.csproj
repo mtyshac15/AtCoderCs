@@ -19,6 +19,7 @@
     <Folder Include="Boot_camp_for_Beginners\Easy\" />
     <Folder Include="Boot_camp_for_Beginners\Normal\" />
     <Folder Include="Boot_camp_for_Beginners\Medium\" />
+    <Folder Include="None\" />
   </ItemGroup>
 
   <ItemGroup>

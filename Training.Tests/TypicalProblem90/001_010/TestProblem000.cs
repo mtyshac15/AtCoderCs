@@ -1,43 +1,30 @@
-using AtCoderCs.Common.Library;
-using AtCoderCs.Training.Tests;
-using AtCoderCs.Training.Typical.Problem001;
+using Microsoft.Extensions.Logging;
+using System.Reflection;
+using Tests.Contents.Services;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace AtCoderCs.Training.Typical.Tests.Problem000;
 
+[Contest($"TypicalProblem90", $"000")]
 public class TestProblem
 {
-    private static readonly string _contestSection = $"TypicalProblem90";
-    private static readonly string _problemFolder = $"001_010";
-    private static readonly string _problemNumber = $"000";
+    private static readonly ContestAttribute _attribute = typeof(TestProblem).GetCustomAttribute<ContestAttribute>();
+    private static readonly string _problemFolder = Path.Combine($"000_000", "000_000");
 
-    private SampleFiePath _sampleFiePath;
+    private ILogger _logger;
+    private TestJudgeService _judgeService;
 
-    public TestProblem()
+    public TestProblem(ITestOutputHelper output, TestFixture fixture)
     {
-        _sampleFiePath = new SampleFiePath(_contestSection, _problemFolder, _problemNumber);
+        _logger = new XunitLogger(output);
+        var baseDirectory = fixture.GetBaseDirectory(_attribute.Section, _problemFolder, _attribute.Number);
+        _judgeService = new TestJudgeService(_logger, baseDirectory, _attribute.Number);
     }
 
-#if false
-    [Fact]
-    public void Solve()
+    public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
     {
-        var problemLevel = string.Empty;
-
-        IDictionary<int, string> expectedDic;
-        IDictionary<int, string> actualDic;
-
-        var sample = _sampleFiePath.ReadFiles(problemLevel);
-        using (var tester = new Tester(sample.InputText, sample.OutputText))
-        {
-            var problem = new Problem(tester.Reader, tester.Writer);
-            Action method = problem.Solve;
-
-            expectedDic = tester.ReadOutputSample();
-            actualDic = tester.Execute(method);
-        }
-
-        TestTools.Judge(expectedDic, actualDic);
+        var results = _judgeService.Solve(level, problemType, methodName);
+        _judgeService.Judge(results, epcilon);
     }
-#endif
 }

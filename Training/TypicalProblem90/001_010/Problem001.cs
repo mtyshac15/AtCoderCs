@@ -30,9 +30,6 @@ public class Problem
         _writer = new Writer(textWriter);
     }
 
-    /// <summary>
-    /// Yokan Party
-    /// </summary>
     public void Solve()
     {
         var N = _reader.NextInt();

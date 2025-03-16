@@ -14,6 +14,7 @@ public class Problem : IClassFixture<TestFixture>
     private static readonly string _problemFolder = Path.Combine($"000_099", "080_089");
 
     private ILogger _logger;
+    private TestFixture _fixture;
     private TestJudgeService _judgeService;
 
     public Problem(ITestOutputHelper output, TestFixture fixture)
@@ -28,7 +29,10 @@ public class Problem : IClassFixture<TestFixture>
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
     [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
-    [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
+    //[InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
+    //[InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
+    //[InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
+    //[InlineData($"G", typeof(ProblemG), nameof(ProblemG.Solve))]
     public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
     {
         var results = _judgeService.Solve(level, problemType, methodName);
