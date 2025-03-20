@@ -19,9 +19,9 @@ public class MySolution
 
     public void OldA()
     {
-        var S = _reader.NextInt();
-        var T = _reader.NextInt();
-        var X = _reader.NextInt();
+        var S = _reader.Int();
+        var T = _reader.Int();
+        var X = _reader.Int();
 
         var on = S;
         var off = T > S ? T : T + 24;

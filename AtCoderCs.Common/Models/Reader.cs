@@ -26,40 +26,45 @@ public class Reader
         return _reader.ReadLine().Trim();
     }
 
-    public string Next()
+    public string Str()
     {
         if (_index < _line.Length)
         {
             return _line[_index++];
         }
 
-        _line = NextArray();
+        _line = StrArray();
         if (!_line.Any())
         {
-            return Next();
+            return Str();
         }
 
         _index = 0;
         return _line[_index++];
     }
 
-    public int NextInt()
+    public int Int()
     {
-        return int.Parse(Next());
+        return int.Parse(Str());
     }
 
-    public long NextLong()
+    public long Long()
     {
-        return long.Parse(Next());
+        return long.Parse(Str());
     }
 
-    public string[] NextArray()
+    public string[] StrArray()
     {
         return NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
     }
 
-    public int[] NextIntArray()
+    public int[] IntArray()
     {
-        return NextArray().Select(int.Parse).ToArray();
+        return StrArray().Select(int.Parse).ToArray();
+    }
+
+    public long[] LongArray()
+    {
+        return StrArray().Select(long.Parse).ToArray();
     }
 }

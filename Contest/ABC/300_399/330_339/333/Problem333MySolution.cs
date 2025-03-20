@@ -20,7 +20,7 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
+        var N = _reader.Int();
 
         var sortedList = new SortedList<long, long>();
         foreach (var indexes in MathLibrary.GetCombinationIndexCollection(Enumerable.Range(0, 12), 3, true))

@@ -19,12 +19,12 @@ public class MySolution
 
     public void OldB()
     {
-        var N = _reader.NextInt();
+        var N = _reader.Int();
 
         var S = new string[N];
         for (int i = 0; i < N; i++)
         {
-            S[i] = _reader.Next();
+            S[i] = _reader.Str();
         }
 
         var array = new int[N];

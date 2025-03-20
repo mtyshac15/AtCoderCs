@@ -19,9 +19,9 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var A = _reader.NextIntArray();
-        var W = _reader.NextIntArray();
+        var N = _reader.Int();
+        var A = _reader.IntArray();
+        var W = _reader.IntArray();
 
         var dictionary = new Dictionary<int, List<int>>();
         for (int i = 0; i < N; i++)

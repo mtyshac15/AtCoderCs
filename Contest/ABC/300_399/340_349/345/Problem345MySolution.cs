@@ -19,7 +19,7 @@ public class MySolution
 
     public void OldC()
     {
-        var S = _reader.Next();
+        var S = _reader.Str();
 
         var dic = S.GroupBy(x => x)
             .ToDictionary(x => x.Key, x => x.Count());

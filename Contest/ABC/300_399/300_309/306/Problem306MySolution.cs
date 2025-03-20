@@ -19,7 +19,7 @@ public class MySolution
 
     public void OldB()
     {
-        var A = _reader.NextIntArray();
+        var A = _reader.IntArray();
 
         var total = 0UL;
         var mask = 1UL;

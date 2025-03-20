@@ -19,13 +19,13 @@ public class MySolution
 
     public void OldD()
     {
-        var Q = _reader.NextInt();
+        var Q = _reader.Int();
         var l = new List<int>();
         var r = new List<int>();
         for (int i = 0; i < Q; i++)
         {
-            l.Add(_reader.NextInt());
-            r.Add(_reader.NextInt());
+            l.Add(_reader.Int());
+            r.Add(_reader.Int());
         }
 
         var N = 100_000;

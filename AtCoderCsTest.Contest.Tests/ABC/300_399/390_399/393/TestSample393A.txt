@@ -1,0 +1,13 @@
+Input
+1
+sick fine
+
+2
+fine fine
+
+Output
+1
+2
+
+2
+4

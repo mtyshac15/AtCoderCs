@@ -19,25 +19,25 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var M = _reader.NextInt();
-        var K = _reader.NextInt();
+        var N = _reader.Int();
+        var M = _reader.Int();
+        var K = _reader.Int();
 
         var A = new List<ISet<int>>();
         var R = new List<char>();
 
         for (int i = 0; i < M; i++)
         {
-            var C = _reader.NextInt();
+            var C = _reader.Int();
 
             var set = new HashSet<int>();
             for (int j = 0; j < C; j++)
             {
-                set.Add(_reader.NextInt());
+                set.Add(_reader.Int());
             }
             A.Add(set);
 
-            R.Add(_reader.Next()[0]);
+            R.Add(_reader.Str()[0]);
         }
 
         var count = 0;

@@ -19,12 +19,12 @@ public class MySolution
 
     public void OldD()
     {
-        var N = _reader.NextInt();
+        var N = _reader.Int();
 
         var A = new List<int>() { 0 };
         for (int i = 0; i < N; i++)
         {
-            A.Add(_reader.NextInt());
+            A.Add(_reader.Int());
         }
 
         var dpOdd = new long[N + 1];

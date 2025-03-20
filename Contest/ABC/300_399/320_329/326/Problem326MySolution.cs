@@ -20,9 +20,9 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var M = _reader.NextInt();
-        var A = _reader.NextIntArray();
+        var N = _reader.Int();
+        var M = _reader.Int();
+        var A = _reader.IntArray();
         Array.Sort(A);
 
         var present = new SortedDictionary<int, int>();

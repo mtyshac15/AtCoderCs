@@ -28,4 +28,24 @@ public class Writer
     {
         return value ? $"Yes" : $"No";
     }
+
+    public void WriteGrid<T>(T[,] grid)
+    {
+        var row = grid.GetLength(0);
+        var col = grid.GetLength(1);
+
+        var list = new List<string>();
+        var line = new T[col];
+        for (int i = 0; i < grid.GetLength(0); i++)
+        {
+            for (int j = 0; j < grid.GetLength(1); j++)
+            {
+                line[j] = grid[i, j];
+            }
+
+            list.Add(string.Concat(line));
+        }
+
+        this.WriteLine(string.Join(Environment.NewLine, list));
+    }
 }

@@ -20,10 +20,10 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var Q = _reader.NextIntArray();
-        var A = _reader.NextIntArray();
-        var B = _reader.NextIntArray();
+        var N = _reader.Int();
+        var Q = _reader.IntArray();
+        var A = _reader.IntArray();
+        var B = _reader.IntArray();
 
         //Aを最大まで作った場合
         var maxA = int.MaxValue;

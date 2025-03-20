@@ -19,15 +19,15 @@ public class MySolution
 
     public void OldB()
     {
-        var N = _reader.NextInt();
-        var Q = _reader.NextInt();
+        var N = _reader.Int();
+        var Q = _reader.Int();
 
         var c = new List<int>();
         var x = new List<int>();
         for (int i = 0; i < Q; i++)
         {
-            c.Add(_reader.NextInt());
-            x.Add(_reader.NextInt());
+            c.Add(_reader.Int());
+            x.Add(_reader.Int());
         }
 
         var players = Enumerable.Range(0, N + 1)

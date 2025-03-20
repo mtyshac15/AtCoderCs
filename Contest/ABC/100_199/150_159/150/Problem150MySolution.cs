@@ -19,9 +19,9 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var P = _reader.NextIntArray();
-        var Q = _reader.NextIntArray();
+        var N = _reader.Int();
+        var P = _reader.IntArray();
+        var Q = _reader.IntArray();
 
         var factorial = new int[N + 1];
         factorial[0] = 1;

@@ -19,7 +19,7 @@ public class MySolution
 
     public void OldA()
     {
-        var N = _reader.NextInt();
+        var N = _reader.Int();
 
         var strBuilder = new StringBuilder();
         for (int i = 0; i < N; i++)

@@ -19,8 +19,8 @@ public class MySolution
 
     public void OldB()
     {
-        var N = _reader.NextInt();
-        var A = _reader.NextIntArray();
+        var N = _reader.Int();
+        var A = _reader.IntArray();
 
         var array = A.Distinct().ToArray();
         Array.Sort(array);

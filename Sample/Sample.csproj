@@ -874,9 +874,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="ABC\000_099\000_009\001\001_Input.txt">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="ABC\000_099\040_049\042\042A_Input.txt">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

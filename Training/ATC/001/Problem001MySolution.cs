@@ -19,13 +19,13 @@ public class MySolution
 
     public void SolveA()
     {
-        var H = _reader.NextInt();
-        var W = _reader.NextInt();
+        var H = _reader.Int();
+        var W = _reader.Int();
 
         var c = new List<string>();
         for (int i = 0; i < H; i++)
         {
-            c.Add(_reader.Next());
+            c.Add(_reader.Str());
         }
 
         var sh = 0;

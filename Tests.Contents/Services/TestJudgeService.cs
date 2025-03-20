@@ -114,9 +114,10 @@ public class TestJudgeService
 
             foreach (var result in errors)
             {
-                _logger.LogInformation($"No. {result.Number}: ");
-                _logger.LogInformation($"Expected: {result.Expected}");
-                _logger.LogInformation($"Actual: {result.Actual}");
+                _logger.LogInformation($"No. {result.Number}:");
+                _logger.LogInformation($"Expected: {Environment.NewLine}{result.Expected}");
+                _logger.LogInformation($"Actual: {Environment.NewLine}{result.Actual}");
+                _logger.LogInformation($"");
             }
         }
 

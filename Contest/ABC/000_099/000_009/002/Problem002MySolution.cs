@@ -19,8 +19,8 @@ public class MySolution
 
     public void OldD()
     {
-        var N = _reader.NextInt();
-        var M = _reader.NextInt();
+        var N = _reader.Int();
+        var M = _reader.Int();
 
         var graph = new List<int>[N + 1];
         for (int i = 0; i < graph.Length; i++)
@@ -30,8 +30,8 @@ public class MySolution
 
         for (int i = 0; i < M; i++)
         {
-            var x = _reader.NextInt();
-            var y = _reader.NextInt();
+            var x = _reader.Int();
+            var y = _reader.Int();
 
             graph[x].Add(y);
             graph[y].Add(x);

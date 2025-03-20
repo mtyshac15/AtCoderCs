@@ -19,8 +19,8 @@ public class MySolution
 
     public void OldC()
     {
-        var S = _reader.Next();
-        var T = _reader.Next();
+        var S = _reader.Str();
+        var T = _reader.Str();
 
         var t = T.ToLower();
 

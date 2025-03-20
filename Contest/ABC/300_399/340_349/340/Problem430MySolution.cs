@@ -20,7 +20,7 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextLong();
+        var N = _reader.Long();
 
         // 2^k < N <= 2^(k+1) を満たすk
         var k = 0;

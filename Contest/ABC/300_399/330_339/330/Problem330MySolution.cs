@@ -19,11 +19,11 @@ public class MySolution
 
     public void OldB()
     {
-        var N = _reader.NextInt();
-        var L = _reader.NextInt();
-        var R = _reader.NextInt();
+        var N = _reader.Int();
+        var L = _reader.Int();
+        var R = _reader.Int();
 
-        var A = _reader.NextIntArray();
+        var A = _reader.IntArray();
 
         var ansList = new List<int>();
         for (int i = 0; i < N; i++)

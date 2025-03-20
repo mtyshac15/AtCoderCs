@@ -19,16 +19,16 @@ public class MySolution
 
     public void OldD()
     {
-        var N = _reader.NextInt();
-        var Q = _reader.NextInt();
-        var a = _reader.NextIntArray();
+        var N = _reader.Int();
+        var Q = _reader.Int();
+        var a = _reader.IntArray();
 
         var b = new List<int>();
         var k = new List<int>();
         for (int i = 0; i < Q; i++)
         {
-            b.Add(_reader.NextInt());
-            k.Add(_reader.NextInt());
+            b.Add(_reader.Int());
+            k.Add(_reader.Int());
         }
 
         Array.Sort(a);

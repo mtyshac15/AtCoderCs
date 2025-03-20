@@ -19,17 +19,17 @@ public class MySolution
 
     public void OldD()
     {
-        var N = _reader.NextInt();
-        var W = _reader.NextInt();
+        var N = _reader.Int();
+        var W = _reader.Int();
 
         var S = new List<int>();
         var T = new List<int>();
         var P = new List<int>();
         for (int i = 0; i < N; i++)
         {
-            S.Add(_reader.NextInt());
-            T.Add(_reader.NextInt());
-            P.Add(_reader.NextInt());
+            S.Add(_reader.Int());
+            T.Add(_reader.Int());
+            P.Add(_reader.Int());
         }
 
         //増減を記録
@@ -68,17 +68,17 @@ public class MySolution
 
     public void OldD2()
     {
-        var N = _reader.NextInt();
-        var W = _reader.NextInt();
+        var N = _reader.Int();
+        var W = _reader.Int();
 
         var S = new List<int>();
         var T = new List<int>();
         var P = new List<int>();
         for (int i = 0; i < N; i++)
         {
-            S.Add(_reader.NextInt());
-            T.Add(_reader.NextInt());
-            P.Add(_reader.NextInt());
+            S.Add(_reader.Int());
+            T.Add(_reader.Int());
+            P.Add(_reader.Int());
         }
 
         var table = new long[T.Max() + 1];

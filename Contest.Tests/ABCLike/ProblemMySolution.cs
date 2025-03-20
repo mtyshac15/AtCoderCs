@@ -20,12 +20,12 @@ public class MySolution
 
     public void SolveC()
     {
-        var N = _reader.NextInt();
+        var N = _reader.Int();
 
         var dic = new Dictionary<int, int[]>();
         for (int i = 0; i < N; i++)
         {
-            dic[i] = _reader.NextIntArray();
+            dic[i] = _reader.IntArray();
         }
 
         var ng = 1000000001;

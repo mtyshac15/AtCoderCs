@@ -20,17 +20,17 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var S = _reader.Next();
-        var Q = _reader.NextInt();
+        var N = _reader.Int();
+        var S = _reader.Str();
+        var Q = _reader.Int();
 
         var c = new List<char>();
         var d = new List<char>();
 
         for (int i = 0; i < Q; i++)
         {
-            c.Add(_reader.Next()[0]);
-            d.Add(_reader.Next()[0]);
+            c.Add(_reader.Str()[0]);
+            d.Add(_reader.Str()[0]);
         }
 
         var converter = new Dictionary<char, char>();

@@ -19,16 +19,16 @@ public class MySolution
 
     public void SolveB()
     {
-        var N = _reader.NextInt();
-        var D = _reader.NextInt();
-        var H = _reader.NextInt();
+        var N = _reader.Int();
+        var D = _reader.Int();
+        var H = _reader.Int();
 
         var d = new List<int>();
         var h = new List<int>();
         for (int i = 0; i < N; i++)
         {
-            d.Add(_reader.NextInt());
-            h.Add(_reader.NextInt());
+            d.Add(_reader.Int());
+            h.Add(_reader.Int());
         }
 
         var max = 0m;
@@ -47,7 +47,7 @@ public class MySolution
 
     public void SolveD()
     {
-        var S = _reader.Next();
+        var S = _reader.Str();
         var T = new LinkedList<char>();
         var isReverse = false;
 

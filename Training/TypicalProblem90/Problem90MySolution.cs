@@ -20,10 +20,10 @@ public class MySolution
 
     public void Old001()
     {
-        var N = _reader.NextInt();
-        var L = _reader.NextInt();
-        var K = _reader.NextInt();
-        var A = _reader.NextIntArray();
+        var N = _reader.Int();
+        var L = _reader.Int();
+        var K = _reader.Int();
+        var A = _reader.IntArray();
 
         //階差
         var newA = A.Prepend(0).Append(L);

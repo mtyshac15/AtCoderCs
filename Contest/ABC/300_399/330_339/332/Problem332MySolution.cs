@@ -19,9 +19,9 @@ public class MySolution
 
     public void OldC()
     {
-        var N = _reader.NextInt();
-        var M = _reader.NextInt();
-        var S = _reader.Next();
+        var N = _reader.Int();
+        var M = _reader.Int();
+        var S = _reader.Str();
 
         var newS = S.ToCharArray().Append('0');
 

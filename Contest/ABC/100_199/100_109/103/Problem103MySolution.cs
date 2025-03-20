@@ -19,7 +19,7 @@ public class MySolution
 
     public void OldA()
     {
-        var A = _reader.NextIntArray();
+        var A = _reader.IntArray();
 
         var time = new List<int>();
         for (int i = 0; i < A.Length; i++)
