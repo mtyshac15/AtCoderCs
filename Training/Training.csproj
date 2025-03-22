@@ -8,7 +8,6 @@
   <ItemGroup>
     <Folder Include="Boot camp for Beginners\Medium\" />
     <Folder Include="Boot camp for Beginners\Hard\" />
-    <Folder Include="IroncladRule\ProblemB\" />
     <Folder Include="TypicalProblem90\011_020\" />
     <Folder Include="TypicalProblem90\021_030\" />
     <Folder Include="TypicalProblem90\031_040\" />

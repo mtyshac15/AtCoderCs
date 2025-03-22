@@ -27,11 +27,37 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var q = new List<int>() { 0 };
+        var r = new List<int>() { 0 };
+        for (int i = 0; i < N; i++)
+        {
+            q.Add(_reader.Int());
+            r.Add(_reader.Int());
+        }
 
-        var ans = 0;
+        var Q = _reader.Int();
+        var t = new List<int>();
+        var d = new List<int>();
+        for (int i = 0; i < Q; i++)
+        {
+            t.Add(_reader.Int());
+            d.Add(_reader.Int());
+        }
+
+        var ansList = new List<int>();
+
+        for (int i = 0; i < Q; i++)
+        {
+            var b = d[i] / q[t[i]];
+            var c = d[i] % q[t[i]];
+
+            var a = c <= r[t[i]] ? b : b + 1;
+            var day = a * q[t[i]] + r[t[i]];
+            ansList.Add(day);
+        }
+
+        var ans = string.Join(Environment.NewLine, ansList);
         _writer.WriteLine(ans);
     }
 }

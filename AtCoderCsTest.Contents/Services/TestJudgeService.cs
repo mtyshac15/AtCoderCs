@@ -55,12 +55,14 @@ public class TestJudgeService
     /// 判定
     /// </summary>
     /// <param name="testResults"></param>
-    /// <param name="epsilon"></param>
-    public void Judge(IReadOnlyCollection<TestResult> testResults, double epsilon = 0)
+    /// <param name="radix"></param>
+    /// <param name="exp"></param>
+    public void Judge(IReadOnlyCollection<TestResult> testResults, int radix, int exp)
     {
         var results = new List<string>();
         var errors = new List<TestResult>();
 
+        var epsilon = Pow(radix, exp);
         if (epsilon > 0)
         {
             foreach (var testResult in testResults)
@@ -99,5 +101,23 @@ public class TestJudgeService
         }
 
         Assert.Empty(errors);
+    }
+
+    public decimal Pow(int radix, int exp)
+    {
+        if (exp >= 0)
+        {
+            return 0;
+        }
+        else
+        {
+            var epsilon = (decimal)1;
+            for (int i = 0; i < Math.Abs(exp); i++)
+            {
+                epsilon /= radix;
+            }
+
+            return epsilon;
+        }
     }
 }

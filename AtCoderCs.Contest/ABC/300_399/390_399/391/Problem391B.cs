@@ -27,11 +27,54 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var M = _reader.Int();
 
-        var ans = 0;
+        var S = _reader.Grid(N, N);
+        var T = _reader.Grid(M, M);
+
+        var a = 1;
+        var b = 1;
+
+        var isMatch = true;
+
+        for (int si = 0; si < N - M + 1; si++)
+        {
+            for (int sj = 0; sj < N - M + 1; sj++)
+            {
+                isMatch = true;
+
+                for (int ti = 0; ti < M; ti++)
+                {
+                    for (int tj = 0; tj < M; tj++)
+                    {
+                        if (S[si + ti, sj + tj] != T[ti, tj])
+                        {
+                            isMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (!isMatch)
+                    {
+                        break;
+                    }
+                }
+
+                if (isMatch)
+                {
+                    a = si + 1;
+                    b = sj + 1;
+                }
+            }
+
+            if (isMatch)
+            {
+                break;
+            }
+        }
+
+        var ans = $"{a} {b}";
         _writer.WriteLine(ans);
     }
 }
@@ -98,6 +141,20 @@ class Reader
     public long[] LongArray()
     {
         return this.StrArray().Select(long.Parse).ToArray();
+    }
+
+    public char[,] Grid(int H, int W)
+    {
+        var grid = new char[H, W];
+        for (int h = 0; h < H; h++)
+        {
+            var line = Str();
+            for (int w = 0; w < W; w++)
+            {
+                grid[h, w] = line[w];
+            }
+        }
+        return grid;
     }
 }
 

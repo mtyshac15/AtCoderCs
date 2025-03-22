@@ -27,11 +27,25 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
+        var SAB = _reader.Str();
+        var SAC = _reader.Str();
+        var SBC = _reader.Str();
 
-        var ans = 0;
+        var second = string.Empty;
+        if (SAB != SAC)
+        {
+            second = "A";
+        }
+        else if (SAB == SBC)
+        {
+            second = "B";
+        }
+        else if (SAC != SBC)
+        {
+            second = "C";
+        }
+
+        var ans = second;
         _writer.WriteLine(ans);
     }
 }

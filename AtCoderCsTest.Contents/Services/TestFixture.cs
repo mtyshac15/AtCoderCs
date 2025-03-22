@@ -8,7 +8,7 @@ public class TestFixture
     static TestFixture()
     {
         var directory = new DirectoryInfo(Environment.CurrentDirectory);
-        _solutionDirectory = GetDirectory(directory);
+        _solutionDirectory = GetDirectory(directory, _projectName);
     }
 
     public TestFixture()
@@ -22,9 +22,9 @@ public class TestFixture
         return new SampleRepository(baseDirectoryPath);
     }
 
-    private static DirectoryInfo GetDirectory(DirectoryInfo directory)
+    public static DirectoryInfo GetDirectory(DirectoryInfo directory, string projectName)
     {
-        var path = Path.Combine(directory.FullName, _projectName);
+        var path = Path.Combine(directory.FullName, projectName);
         if (File.Exists(path))
         {
             return directory;
@@ -32,7 +32,7 @@ public class TestFixture
 
         if (directory.Parent != null)
         {
-            return GetDirectory(directory.Parent);
+            return GetDirectory(directory.Parent, projectName);
         }
 
         throw new DirectoryNotFoundException();

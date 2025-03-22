@@ -28,11 +28,9 @@ public class ProblemA
     public void Solve()
     {
         var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = S.Contains('A') && S.Contains('B') && S.Contains('C');
+        _writer.WriteYesOrNo(ans);
     }
 }
 

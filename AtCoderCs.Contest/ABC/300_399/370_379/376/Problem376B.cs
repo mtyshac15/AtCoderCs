@@ -27,12 +27,61 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var Q = _reader.Int();
 
-        var ans = 0;
+        var H = new List<string>();
+        var T = new List<int>();
+        for (int i = 0; i < Q; i++)
+        {
+            H.Add(_reader.Str());
+            T.Add(_reader.Int());
+        }
+
+        var count = 0;
+
+        var l = 1;
+        var r = 2;
+
+        for (int i = 0; i < Q; i++)
+        {
+            switch (H[i])
+            {
+                case "L":
+                    count += Move(N, l, T[i], r);
+                    l = T[i];
+                    break;
+
+                case "R":
+                    count += Move(N, r, T[i], l);
+                    r = T[i];
+                    break;
+            }
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
+    }
+
+    public int Move(int n, int from, int to, int ng)
+    {
+        if (from > to)
+        {
+            var tmp = from;
+            from = to;
+            to = tmp;
+        }
+
+        // from < ng < to
+        if (ng >= from
+            && ng <= to)
+        {
+            return from - to + n;
+        }
+        else
+        {
+            return to - from;
+        }
     }
 }
 

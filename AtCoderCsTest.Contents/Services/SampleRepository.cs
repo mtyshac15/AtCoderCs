@@ -1,6 +1,6 @@
 ﻿namespace AtCoderCsTest.Contents.Services;
 
-class SampleRepository : ISampleRepository
+public class SampleRepository : ISampleRepository
 {
     private static readonly string _baseFileName = "TestSample";
 

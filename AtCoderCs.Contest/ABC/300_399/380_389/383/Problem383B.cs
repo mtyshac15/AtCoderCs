@@ -31,11 +31,7 @@ public class ProblemB
         var W = _reader.Int();
         var D = _reader.Int();
 
-        var S = new List<string>();
-        for (int h = 0; h < H; h++)
-        {
-            S.Add(_reader.Str());
-        }
+        var S = _reader.Grid(H, W);
 
         var maxCount = 0;
 
@@ -50,8 +46,8 @@ public class ProblemB
                         var same = h1 == h2 && w1 == w2;
 
                         if (!same
-                            && S[h1][w1] == '.'
-                            && S[h2][w2] == '.')
+                            && S[h1, w1] == '.'
+                            && S[h2, w2] == '.')
                         {
                             var count = 0;
 
@@ -60,7 +56,7 @@ public class ProblemB
                             {
                                 for (int w = 0; w < W; w++)
                                 {
-                                    if (S[h][w] == '.')
+                                    if (S[h, w] == '.')
                                     {
                                         var d1 = Math.Abs(h - h1) + Math.Abs(w - w1);
                                         var d2 = Math.Abs(h - h2) + Math.Abs(w - w2);
@@ -147,6 +143,20 @@ class Reader
     public long[] LongArray()
     {
         return this.StrArray().Select(long.Parse).ToArray();
+    }
+
+    public char[,] Grid(int H, int W)
+    {
+        var grid = new char[H, W];
+        for (int h = 0; h < H; h++)
+        {
+            var line = Str();
+            for (int w = 0; w < W; w++)
+            {
+                grid[h, w] = line[w];
+            }
+        }
+        return grid;
     }
 }
 

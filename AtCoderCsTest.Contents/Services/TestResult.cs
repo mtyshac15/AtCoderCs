@@ -15,7 +15,7 @@ public class TestResult
 
     public string Actual { get; }
 
-    public IReadOnlyCollection<TestResult> CalcDetailErrors(double epsilon)
+    public IReadOnlyCollection<TestResult> CalcDetailErrors(decimal epsilon)
     {
         var expectedValues = this.Expected.Split();
         var actuaValues = this.Actual.Split();
@@ -24,8 +24,8 @@ public class TestResult
 
         foreach (var item in actuaValues.Zip(expectedValues))
         {
-            double.TryParse(item.First, out double actualValue);
-            double.TryParse(item.Second, out double expectedValue);
+            decimal.TryParse(item.First, out decimal actualValue);
+            decimal.TryParse(item.Second, out decimal expectedValue);
 
             var sub = Math.Abs(expectedValue - actualValue);
             if (sub > epsilon)

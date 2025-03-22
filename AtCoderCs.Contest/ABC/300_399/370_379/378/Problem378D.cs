@@ -27,12 +27,47 @@ public class ProblemD
 
     public void Solve()
     {
-        var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
+        var H = _reader.Int();
+        var W = _reader.Int();
+        var K = _reader.Int();
+
+        var S = _reader.Grid(H, W);
+
+        var dh = new int[] { 0, 1, 0, -1 };
+        var dw = new int[] { 1, 0, -1, 0 };
+
+        for (int h = 0; h < H; h++)
+        {
+            for (int w = 0; w < W; w++)
+            {
+                var stack = new Stack<(int H, int W)>();
+                stack.Push((h, w));
+                while (stack.Any())
+                {
+                    var current = stack.Pop();
+
+
+                    for (int i = 0; i < 4; i++)
+                    {
+                        var nextH = current.H + dh[i];
+                        var nextW = current.W + dw[i];
+
+                        stack.Push((nextH, nextW));
+                    }
+                }
+            }
+        }
 
         var ans = 0;
         _writer.WriteLine(ans);
+    }
+
+    public bool IsInside(char[,] grid, int h, int w)
+    {
+        var maxH = grid.GetLength(0);
+        var maxW = grid.GetLength(1);
+
+        return h >= 0 && h <= maxH && w >= 0 && w <= maxW;
     }
 }
 
@@ -98,6 +133,20 @@ class Reader
     public long[] LongArray()
     {
         return this.StrArray().Select(long.Parse).ToArray();
+    }
+
+    public char[,] Grid(int H, int W)
+    {
+        var grid = new char[H, W];
+        for (int h = 0; h < H; h++)
+        {
+            var line = Str();
+            for (int w = 0; w < W; w++)
+            {
+                grid[h, w] = line[w];
+            }
+        }
+        return grid;
     }
 }
 

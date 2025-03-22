@@ -871,6 +871,7 @@
   <ItemGroup>
     <Folder Include="ABC\300_399\300_309\" />
     <Folder Include="ARC\" />
+    <Folder Include="IroncladRule\ProblemA\" />
   </ItemGroup>
 
   <ItemGroup>

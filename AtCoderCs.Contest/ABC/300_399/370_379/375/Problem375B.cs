@@ -27,11 +27,25 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var X = new List<int>() { 0 };
+        var Y = new List<int>() { 0 };
+        for (int i = 0; i < N; i++)
+        {
+            X.Add(_reader.Int());
+            Y.Add(_reader.Int());
+        }
 
-        var ans = 0;
+        var cost = 0.0;
+        for (int i = 0; i < N + 1; i++)
+        {
+            var nextI = (i + 1) % (N + 1);
+            long subX = X[nextI] - X[i];
+            long subY = Y[nextI] - Y[i];
+            cost += Math.Sqrt(subX * subX + subY * subY);
+        }
+
+        var ans = cost;
         _writer.WriteLine(ans);
     }
 }

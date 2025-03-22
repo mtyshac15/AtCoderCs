@@ -27,11 +27,12 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
+        var N = _reader.Str();
+        var a = N[0];
+        var b = N[1];
+        var c = N[2];
 
-        var ans = 0;
+        var ans = $"{b}{c}{a} {c}{a}{b}";
         _writer.WriteLine(ans);
     }
 }

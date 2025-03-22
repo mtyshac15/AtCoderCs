@@ -145,11 +145,12 @@ class Writer
 
         var list = new List<string>();
         var line = new T[col];
-        for (int i = 0; i < grid.GetLength(0); i++)
+
+        for (int h = 0; h < row; h++)
         {
-            for (int j = 0; j < grid.GetLength(1); j++)
+            for (int w = 0; w < col; w++)
             {
-                line[j] = grid[i, j];
+                line[w] = grid[h, w];
             }
 
             list.Add(string.Concat(line));

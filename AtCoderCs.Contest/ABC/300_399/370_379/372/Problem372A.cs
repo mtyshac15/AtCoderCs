@@ -28,10 +28,8 @@ public class ProblemA
     public void Solve()
     {
         var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
 
-        var ans = 0;
+        var ans = S.Replace(".", string.Empty);
         _writer.WriteLine(ans);
     }
 }

@@ -27,11 +27,24 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
         var A = _reader.IntArray();
 
-        var ans = 0;
+        var B = Enumerable.Repeat(-1, N).ToArray();
+
+        var dic = new Dictionary<int, int>();
+        for (int i = 0; i < N; i++)
+        {
+            if (dic.ContainsKey(A[i]))
+            {
+                B[i] = dic[A[i]];
+            }
+
+            dic[A[i]] = i + 1;
+        }
+
+
+        var ans = string.Join(" ", B);
         _writer.WriteLine(ans);
     }
 }

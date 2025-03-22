@@ -27,11 +27,13 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
+        var S = new List<string>();
+        for (int i = 0; i < 12; i++)
+        {
+            S.Add(_reader.Str());
+        }
 
-        var ans = 0;
+        var ans = S.Select((s, i) => (s, i)).Count(x => x.s.Length == x.i + 1);
         _writer.WriteLine(ans);
     }
 }

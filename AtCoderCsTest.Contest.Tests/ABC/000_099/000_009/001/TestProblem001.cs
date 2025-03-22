@@ -34,11 +34,11 @@ public class TestProblem : IClassFixture<TestFixture>
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
     [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
     [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
-    public void Solve(string level, Type problemType, string methodName, double epcilon = 0)
+    public void Solve(string level, Type problemType, string methodName, int radix = 10, int exp = 0)
     {
         var sample = _sampleRepository.Find(_contestAttribute.Number, level);
         var results = _judgeService.Solve(sample, problemType, methodName);
-        _judgeService.Judge(results, epcilon);
+        _judgeService.Judge(results, radix, exp);
     }
 #endif
 }

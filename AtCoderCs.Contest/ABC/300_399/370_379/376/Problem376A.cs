@@ -27,11 +27,23 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var C = _reader.Int();
+        var T = _reader.IntArray();
 
-        var ans = 0;
+        var count = 0;
+
+        var before = -C;
+        for (int i = 0; i < N; i++)
+        {
+            if (T[i] - before >= C)
+            {
+                count++;
+                before = T[i];
+            }
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 }

@@ -27,11 +27,10 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Str();
-        var N = _reader.Int();
         var A = _reader.IntArray();
 
-        var ans = 0;
+        var count = A.GroupBy(a => a).Sum(a => a.Count() / 2);
+        var ans = count;
         _writer.WriteLine(ans);
     }
 }

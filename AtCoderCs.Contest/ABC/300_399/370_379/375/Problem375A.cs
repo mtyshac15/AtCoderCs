@@ -27,11 +27,19 @@ public class ProblemA
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var S = _reader.Str();
 
-        var ans = 0;
+        var count = 0;
+        for (int i = 0; i < N - 2; i++)
+        {
+            if (S.AsSpan(i, 3).ToString() == "#.#")
+            {
+                count++;
+            }
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 }

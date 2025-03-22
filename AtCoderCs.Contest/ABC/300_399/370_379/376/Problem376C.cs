@@ -27,11 +27,42 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
         var A = _reader.IntArray();
+        var B = _reader.IntArray();
 
-        var ans = 0;
+        Array.Sort(A);
+        Array.Sort(B);
+
+        // 大きいおもちゃから割り当てる
+        var box = 0;
+        var bIndex = B.Length - 1;
+        var hasBought = false;
+
+        for (int i = N - 1; i >= 0; i--)
+        {
+            if (bIndex >= 0
+                && A[i] <= B[bIndex])
+            {
+                bIndex--;
+            }
+            else
+            {
+                if (hasBought)
+                {
+                    box = -1;
+                    break;
+                }
+                else
+                {
+                    // 割り当てる箱がなかった場合その箱を買う
+                    box = A[i];
+                    hasBought = true;
+                }
+            }
+        }
+
+        var ans = box;
         _writer.WriteLine(ans);
     }
 }

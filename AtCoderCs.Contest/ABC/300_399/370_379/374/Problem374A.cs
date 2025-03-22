@@ -28,11 +28,9 @@ public class ProblemA
     public void Solve()
     {
         var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var ans = S.AsSpan(S.Length - 3, 3).ToString() == "san";
+        _writer.WriteYesOrNo(ans);
     }
 }
 
