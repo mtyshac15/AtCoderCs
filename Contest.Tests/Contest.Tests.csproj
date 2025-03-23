@@ -36,8 +36,4 @@
     <ProjectReference Include="..\Tests.Contents\Tests.Contents.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ARC\" />
-  </ItemGroup>
-
 </Project>

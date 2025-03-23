@@ -1,11 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <StartupObject>AtCoderCs.Contest.Program</StartupObject>
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
@@ -16,7 +15,6 @@
     <Folder Include="ABC\200_299\240_249\" />
     <Folder Include="ABC\200_299\270_279\" />
     <Folder Include="ABC\200_299\280_289\" />
-    <Folder Include="ARCLike\" />
   </ItemGroup>
 
   <ItemGroup>
