@@ -10,4 +10,8 @@
     <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <EditorConfigFiles Remove="C:\Users\mtysh\source\repos\ProgrammingContest\AtCoder\Csharp\AtCoder.Beginner.Contest\.editorconfig" />
+  </ItemGroup>
+
 </Project>

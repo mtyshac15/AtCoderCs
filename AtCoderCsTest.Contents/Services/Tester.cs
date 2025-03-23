@@ -30,13 +30,13 @@ public class Tester : IDisposable
         var expectedDic = new Dictionary<int, string>();
         while (_outputSampleReader.Peek() > -1)
         {
-            //ƒTƒ“ƒvƒ‹”Ô†
+            //ã‚µãƒ³ãƒ—ãƒ«ç•ªå·
             var sampleNumber = int.Parse(_outputSampleReader.ReadLine()!);
 
             var strBuilder = new StringBuilder();
             while (true)
             {
-                //‹ó—“s‚Ü‚Å“Ç‚İ‚Ş
+                //ç©ºæ¬„è¡Œã¾ã§èª­ã¿è¾¼ã‚€
                 var line = _outputSampleReader.ReadLine();
                 if (!string.IsNullOrWhiteSpace(line))
                 {
@@ -44,7 +44,7 @@ public class Tester : IDisposable
                 }
                 else
                 {
-                    //‹ó—“‚ğ“Ç‚İ‚ñ‚¾ê‡‚ÍA‚»‚±‚Ü‚Å‚ª1ƒTƒ“ƒvƒ‹‚Ìo—Í—á
+                    //ç©ºæ¬„ã‚’èª­ã¿è¾¼ã‚“ã å ´åˆã¯ã€ãã“ã¾ã§ãŒ1ã‚µãƒ³ãƒ—ãƒ«ã®å‡ºåŠ›ä¾‹
                     expectedDic.Add(sampleNumber, strBuilder.ToString().Trim());
                     break;
                 }
@@ -63,21 +63,21 @@ public class Tester : IDisposable
             int.TryParse(this.Reader.ReadLine(), out int testCase);
 
             var secondTime = Timer(method);
-            _logger.LogInformation($"ƒeƒXƒgƒP[ƒX{testCase}, ˆ—ŠÔ: {secondTime} ms");
+            _logger.LogInformation($"ãƒ†ã‚¹ãƒˆã‚±ãƒ¼ã‚¹{testCase}, å‡¦ç†æ™‚é–“: {secondTime} ms");
 
             actualDic.Add(testCase, this.Writer.ToString().Trim());
 
-            //“à—e‚ğƒNƒŠƒA
+            //å†…å®¹ã‚’ã‚¯ãƒªã‚¢
             var tmpBuilder = this.Writer.GetStringBuilder();
             tmpBuilder.Clear();
 
-            //‹ó—“s‚Å‚È‚©‚Á‚½ê‡A‹ó—“s‚Ü‚Å“Ç‚İ‚Ş
+            //ç©ºæ¬„è¡Œã§ãªã‹ã£ãŸå ´åˆã€ç©ºæ¬„è¡Œã¾ã§èª­ã¿è¾¼ã‚€
             var extraLine = this.Reader.ReadLine();
             if (!string.IsNullOrWhiteSpace(extraLine))
             {
                 while (true)
                 {
-                    //‹ó—“s‚ğ“Ç‚İ‚ñ‚¾‚çˆ—‚ğI—¹‚·‚é
+                    //ç©ºæ¬„è¡Œã‚’èª­ã¿è¾¼ã‚“ã ã‚‰å‡¦ç†ã‚’çµ‚äº†ã™ã‚‹
                     extraLine = this.Reader.ReadLine();
                     if (string.IsNullOrWhiteSpace(extraLine))
                     {

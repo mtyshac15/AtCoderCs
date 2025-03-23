@@ -1,4 +1,4 @@
-﻿namespace AtCoderCsTest.Contents.Services;
+namespace AtCoderCsTest.Contents.Services;
 
 public class SampleRepository : ISampleRepository
 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,7 +42,7 @@ public class ProblemD
             {
                 var stack = new Stack<(int H, int W)>();
                 stack.Push((h, w));
-                while (stack.Any())
+                //while (stack.Any())
                 {
                     var current = stack.Pop();
 

@@ -1,4 +1,4 @@
-﻿namespace AtCoderCsTest.Contents.Services;
+namespace AtCoderCsTest.Contents.Services;
 
 [AttributeUsage(AttributeTargets.Class)]
 public class ContestAttribute : Attribute
