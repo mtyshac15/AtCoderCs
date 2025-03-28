@@ -1,8 +1,0 @@
-1
-atcoder|beginner|contest
-
-2
-|spoiler|
-
-3
-||xyz

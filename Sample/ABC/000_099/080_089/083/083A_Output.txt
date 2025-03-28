@@ -1,8 +1,0 @@
-1
-Left
-
-2
-Balanced
-
-3
-Right

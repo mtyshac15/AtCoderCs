@@ -1,8 +1,0 @@
-1
-abcdef
-
-2
-aaaa
-
-3
-atcoderbeginnercontest

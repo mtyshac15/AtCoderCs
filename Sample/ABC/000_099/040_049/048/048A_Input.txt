@@ -1,8 +1,0 @@
-1
-AtCoder Beginner Contest
-
-2
-AtCoder Snuke Contest
-
-3
-AtCoder X Contest

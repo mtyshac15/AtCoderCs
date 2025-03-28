@@ -1,8 +1,0 @@
-{
-  "profiles": {
-    "Typical.Problem": {
-      "commandName": "Project",
-      "nativeDebugging": true
-    }
-  }
-}

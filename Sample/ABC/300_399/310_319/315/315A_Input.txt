@@ -1,8 +1,0 @@
-1
-atcoder
-
-2
-xyz
-
-3
-aaaabbbbcccc

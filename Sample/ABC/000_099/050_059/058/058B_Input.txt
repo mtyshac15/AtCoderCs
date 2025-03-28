@@ -1,7 +1,0 @@
-1
-xyz
-abc
-
-2
-atcoderbeginnercontest
-atcoderregularcontest

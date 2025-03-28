@@ -1,7 +1,0 @@
-1
-atcodercontest
-
-2
-
-3
-xyz
