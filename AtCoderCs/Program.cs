@@ -1,25 +1,29 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs
+namespace AtCoderCs;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var strBuilder = new StringBuilder();
-            strBuilder.AppendLine($"{1000} {2000}");
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        Console.Out.Flush();
+    }
 
-            var reader = new StringReader(strBuilder.ToString());
-            var writer = new StringWriter();
+    public static void Timer(string text, Action method)
+    {
+        var sw = System.Diagnostics.Stopwatch.StartNew();
 
-            var problem = new AtCoderCs.Traing.MathematicsAlgorithm.Problem008.Problem(reader, writer);
-            problem.Solve();
-            Console.WriteLine(writer.ToString());
-        }
+        method?.Invoke();
+
+        sw.Stop();
+        var secondTime = (int)(sw.Elapsed.TotalMilliseconds);
+
+        Console.WriteLine();
+        Console.WriteLine($"{text}: {secondTime} ms");
     }
 }

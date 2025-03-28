@@ -1,6 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+
+namespace AtCoderCs.Common.Library;
 
 public static class LinqEx
 {

@@ -33,7 +33,6 @@
     <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
     <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
     <ProjectReference Include="..\Contest\Contest.csproj" />
-    <ProjectReference Include="..\Tests.Contents\Tests.Contents.csproj" />
   </ItemGroup>
 
 </Project>

@@ -23,7 +23,6 @@
     <ProjectReference Include="..\AtCoder.Common\AtCoder.Common.csproj" />
     <ProjectReference Include="..\AtCoder.Regular.Contest\ARC.csproj" />
     <ProjectReference Include="..\AtCoderCs.Common\AtCoderCs.Common.csproj" />
-    <ProjectReference Include="..\Typical.Problem\Typical.Problem.csproj" />
   </ItemGroup>
 
 </Project>
