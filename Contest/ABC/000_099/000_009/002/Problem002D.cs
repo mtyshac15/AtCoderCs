@@ -54,8 +54,7 @@ public class ProblemD
 
         for (int i = 0; i < 1 << N; i++)
         {
-            // ƒOƒ‹[ƒv‚ğì¬
-
+            // ã‚°ãƒ«ãƒ¼ãƒ—ã‚’ä½œæˆ
             var group = new List<int>();
             for (int bit = 0; bit < N; bit++)
             {
@@ -65,14 +64,14 @@ public class ProblemD
                 }
             }
 
-            //Š®‘SƒOƒ‰ƒt‚©‚Ç‚¤‚©
+            //å®Œå…¨ã‚°ãƒ©ãƒ•ã‹ã©ã†ã‹
             var isComplete = true;
             foreach (var person in group)
             {
                 var others = group.Except(new int[] { person });
                 if (!others.All(x => graph[person].Contains(x)))
                 {
-                    //•Ó‚ª‘¶İ‚µ‚È‚¢2“_‚ª‘¶İ‚µ‚½ê‡
+                    //è¾ºãŒå­˜åœ¨ã—ãªã„2ç‚¹ãŒå­˜åœ¨ã—ãŸå ´åˆ
                     isComplete = false;
                     break;
                 }

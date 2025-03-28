@@ -1,10 +1,10 @@
-﻿using AtCoderCs.Common.Models;
+using AtCoderCs.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AtCoderCs.Contest.ABC0000;
+namespace AtCoderCs.Contest.ABC000;
 
 public class MySolution
 {

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemC
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemC(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -27,16 +19,45 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
         var A = _reader.IntArray();
 
-        var ans = 0;
+        var min = int.MaxValue;
+
+        var dic = new Dictionary<int, int>();
+        foreach (var item in A.Select((a, i) => (a, i)))
+        {
+            if (!dic.ContainsKey(item.a))
+            {
+                dic.Add(item.a, item.i);
+            }
+            else
+            {
+                var sub = item.i - dic[item.a] + 1;
+                min = Math.Min(sub, min);
+
+                // 位置を更新
+                dic[item.a] = item.i;
+            }
+        }
+
+        var ans = min == int.MaxValue ? -1 : min;
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramC
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemC(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;

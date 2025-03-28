@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemB
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemB(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -27,16 +19,47 @@ public class ProblemB
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var D = _reader.Int();
 
-        var ans = 0;
+        var T = new List<int>();
+        var L = new List<int>();
+        for (int i = 0; i < N; i++)
+        {
+            T.Add(_reader.Int());
+            L.Add(_reader.Int());
+        }
+
+        var ansList = new List<int>();
+        for (int k = 1; k <= D; k++)
+        {
+            var max = 0;
+            for (int i = 0; i < N; i++)
+            {
+                var w = T[i] * (L[i] + k);
+                max = Math.Max(w, max);
+            }
+
+            ansList.Add(max);
+        }
+
+        var ans = string.Join(Environment.NewLine, ansList);
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramB
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemB(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;

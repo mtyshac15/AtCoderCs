@@ -1,5 +1,25 @@
 Input
 1
+WACWA
+
+2
+WWA
+
+3
+WWWWW
+
+4
+WCAWCA
 
 Output
 1
+ACCAC
+
+2
+ACC
+
+3
+WWWWW
+
+4
+WCAWCA

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemD
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemD(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemD(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -27,16 +19,76 @@ public class ProblemD
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var Q = _reader.Int();
 
-        var ans = 0;
+        var op = new List<int[]>();
+        for (int i = 0; i < Q; i++)
+        {
+            op.Add(_reader.IntArray());
+        }
+
+        // 各鳩がいる巣
+        var pigeonToBox = Enumerable.Range(1, N)
+             .ToDictionary(x => x, x => x);
+        // 各巣に入っているラベル鳩
+        var boxToLabel = Enumerable.Range(1, N)
+             .ToDictionary(x => x, x => x);
+        // 各ラベル鳩が入っている巣
+        var labelToBox = Enumerable.Range(1, N)
+             .ToDictionary(x => x, x => x);
+
+        var ansList = new List<int>();
+        for (int i = 0; i < Q; i++)
+        {
+            var num = op[i][0];
+            var a = op[i][1];
+
+            if (num == 1)
+            {
+                var b = op[i][2];
+                pigeonToBox[a] = labelToBox[b];
+            }
+            else if (num == 2)
+            {
+                var b = op[i][2];
+                {
+                    // ラベルを貼っている箱を入れ替える
+                    var tmp = labelToBox[a];
+                    labelToBox[a] = labelToBox[b];
+                    labelToBox[b] = tmp;
+                }
+
+                {
+                    // 箱のラベルを更新
+                    var tmp = boxToLabel[labelToBox[a]];
+                    boxToLabel[labelToBox[a]] = boxToLabel[labelToBox[b]];
+                    boxToLabel[labelToBox[b]] = tmp;
+                }
+            }
+            else
+            {
+                ansList.Add(boxToLabel[pigeonToBox[a]]);
+            }
+        }
+
+        var ans = string.Join(Environment.NewLine, ansList);
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramD
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemD(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;

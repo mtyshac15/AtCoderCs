@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemD
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemD(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemD(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -29,14 +21,69 @@ public class ProblemD
     {
         var N = _reader.Int();
         var A = _reader.IntArray();
-        var D = A.Select(a => a % 200).ToArray();
 
-        var ans = 0;
-        _writer.WriteLine(ans);
+        var BDic = new Dictionary<int, IList<IList<int>>>();
+        var d = Math.Min(N, 8);
+        for (int i = 0; i < 1 << d; i++)
+        {
+            var sum = 0;
+            var list = new List<int>();
+            for (int bit = 0; bit < d; bit++)
+            {
+                if (((i >> bit) & 1) == 1)
+                {
+                    sum += A[bit];
+                    sum %= 200;
+
+                    list.Add(bit + 1);
+                }
+            }
+
+            if (list.Any())
+            {
+                if (!BDic.ContainsKey(sum))
+                {
+                    BDic.Add(sum, new List<IList<int>>() { list });
+                }
+                else
+                {
+                    BDic[sum].Add(list);
+                }
+            }
+        }
+
+        if (BDic.Values.Any(x => x.Count >= 2))
+        {
+            var lists = BDic.Values.First(x => x.Count >= 2);
+            var B = lists[0];
+            var x = B.Count;
+
+            var C = lists[1];
+            var y = C.Count;
+
+            _writer.WriteYesOrNo(true);
+            _writer.WriteLine($"{x} {string.Join(" ", B)}");
+            _writer.WriteLine($"{y} {string.Join(" ", C)}");
+        }
+        else
+        {
+            _writer.WriteYesOrNo(false);
+        }
     }
 }
 
 #region
+class ProgramD
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemD(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;

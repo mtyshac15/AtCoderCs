@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemC
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemC(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -28,15 +20,52 @@ public class ProblemC
     public void Solve()
     {
         var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
+        var newS = string.Concat(S.Append('_'));
 
-        var ans = 0;
+        var ansList = new List<char>();
+
+        var count = 0;
+        for (int i = 0; i < newS.Length; i++)
+        {
+            if (newS[i] == '_')
+            {
+                ansList.AddRange(Enumerable.Repeat('W', count));
+            }
+            else if (newS[i] == 'W')
+            {
+                count++;
+            }
+            else if (newS[i] == 'A')
+            {
+                ansList.Add(newS[i]);
+                ansList.AddRange(Enumerable.Repeat('C', count));
+                count = 0;
+            }
+            else
+            {
+                ansList.AddRange(Enumerable.Repeat('W', count));
+                ansList.Add(newS[i]);
+                count = 0;
+            }
+        }
+
+        var ans = string.Concat(ansList);
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramC
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemC(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;

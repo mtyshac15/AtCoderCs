@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,14 +10,6 @@ public class ProblemF
 {
     private Reader _reader;
     private Writer _writer;
-
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemF(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
 
     public ProblemF(TextReader textReader, TextWriter textWriter)
     {
@@ -37,6 +29,17 @@ public class ProblemF
 }
 
 #region
+class ProgramF
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemF(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;

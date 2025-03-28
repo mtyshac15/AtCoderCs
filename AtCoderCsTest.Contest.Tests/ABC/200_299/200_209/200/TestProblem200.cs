@@ -36,8 +36,8 @@ public class TestProblem : IClassFixture<TestFixture>
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve))]
     [InlineData($"C", typeof(ProblemC), nameof(ProblemC.Solve))]
     [InlineData($"D", typeof(ProblemD), nameof(ProblemD.Solve))]
-    [InlineData($"D", typeof(ProblemE), nameof(ProblemE.Solve))]
-    [InlineData($"D", typeof(ProblemF), nameof(ProblemF.Solve))]
+    [InlineData($"E", typeof(ProblemE), nameof(ProblemE.Solve))]
+    [InlineData($"F", typeof(ProblemF), nameof(ProblemF.Solve))]
     public void Solve(string level, Type problemType, string methodName, int radix = 10, int exp = 0)
     {
         var sample = _sampleRepository.Find(_contestAttribute.Number, level);

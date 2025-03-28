@@ -1,4 +1,4 @@
-﻿namespace AtCoderCs.Common.Library;
+namespace AtCoderCs.Common.Library;
 
 public struct UnionFind
 {
@@ -7,8 +7,8 @@ public struct UnionFind
 
     public UnionFind(int n)
     {
-        _par = Enumerable.Repeat(-1, n).ToList();
-        _size = Enumerable.Repeat(1, n).ToList();
+        _par = Enumerable.Repeat(-1, n + 1).ToList();
+        _size = Enumerable.Repeat(1, n + 1).ToList();
     }
 
     /// <summary>

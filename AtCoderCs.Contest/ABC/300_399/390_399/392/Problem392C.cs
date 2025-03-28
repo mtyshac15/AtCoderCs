@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemC
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemC(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -27,16 +19,33 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var P = _reader.IntArray();
+        var Q = _reader.IntArray();
 
-        var ans = 0;
+        var S = new int[N];
+        for (int i = 0; i < N; i++)
+        {
+            S[Q[i] - 1] = Q[P[i] - 1];
+        }
+
+        var ans = string.Join(" ", S);
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramC
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemC(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;
