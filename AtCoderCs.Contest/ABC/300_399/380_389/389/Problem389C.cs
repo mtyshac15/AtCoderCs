@@ -19,11 +19,42 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
+        var Q = _reader.Int();
 
-        var ans = 0;
+        var queries = new int[Q][];
+        for (int i = 0; i < Q; i++)
+        {
+            queries[i] = _reader.IntArray();
+        }
+
+        // 累積和
+        var S = new List<long>() { 0 };
+        var head = 0;
+
+        var ansList = new List<long>();
+        foreach (var query in queries)
+        {
+            var num = query[0];
+            switch (num)
+            {
+                case 1:
+                    var l = query[1];
+                    var last = S[S.Count - 1];
+                    S.Add(last + l);
+                    break;
+
+                case 2:
+                    head++;
+                    break;
+
+                case 3:
+                    var k = query[1];
+                    ansList.Add(S[head + k - 1] - S[head]);
+                    break;
+            }
+        }
+
+        var ans = string.Join(Environment.NewLine, ansList);
         _writer.WriteLine(ans);
     }
 }
