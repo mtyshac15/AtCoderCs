@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemB
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemB(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemB(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -28,15 +20,27 @@ public class ProblemB
     public void Solve()
     {
         var S = _reader.Str();
-        var N = _reader.Int();
-        var A = _reader.IntArray();
 
-        var ans = 0;
+        // 00 を 0 に置き換えた長さがボタンを押す回数
+        var newS = S.Replace("00", "0");
+
+        var ans = newS.Length;
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramB
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemB(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;
