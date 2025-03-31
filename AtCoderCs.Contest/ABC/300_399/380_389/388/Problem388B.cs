@@ -22,12 +22,12 @@ public class ProblemB
         var N = _reader.Int();
         var D = _reader.Int();
 
-        var T = new List<int>();
-        var L = new List<int>();
+        var T = new int[N];
+        var L = new int[N];
         for (int i = 0; i < N; i++)
         {
-            T.Add(_reader.Int());
-            L.Add(_reader.Int());
+            T[i] = _reader.Int();
+            L[i] = _reader.Int();
         }
 
         var ansList = new List<int>();

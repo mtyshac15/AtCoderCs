@@ -19,11 +19,37 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
         var A = _reader.IntArray();
 
-        var ans = 0;
+        var count = 0L;
+        for (int a = 0; a < N; a++)
+        {
+            var ng = -1;
+            var ok = N;
+
+            Func<int, bool> judge = (b) =>
+            {
+                return A[a] * 2 <= A[b];
+            };
+
+            while (Math.Abs(ok - ng) > 1)
+            {
+                var middle = ng + (ok - ng) / 2;
+                if (judge(middle))
+                {
+                    ok = middle;
+                }
+                else
+                {
+                    ng = middle;
+                }
+            }
+
+            count += N - ok;
+        }
+
+        var ans = count;
         _writer.WriteLine(ans);
     }
 }
