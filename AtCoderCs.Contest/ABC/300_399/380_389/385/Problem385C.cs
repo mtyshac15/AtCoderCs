@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -11,14 +11,6 @@ public class ProblemC
     private Reader _reader;
     private Writer _writer;
 
-    public static void Main(string[] args)
-    {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemC(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
     public ProblemC(TextReader textReader, TextWriter textWriter)
     {
         _reader = new Reader(textReader);
@@ -27,16 +19,62 @@ public class ProblemC
 
     public void Solve()
     {
-        var S = _reader.Str();
         var N = _reader.Int();
-        var A = _reader.IntArray();
+        var H = _reader.IntArray();
 
-        var ans = 0;
+        var maxCount = 1;
+
+        for (int interval = 1; interval < N; interval++)
+        {
+            for (int startIndex = 0; startIndex < interval; startIndex++)
+            {
+                var count = 1;
+
+                var index = startIndex;
+                var nextIndex = index + interval;
+
+                var prevH = H[index];
+
+                // intervalの間隔で 同じ差分が連続しているかを調べる
+                while (nextIndex < N)
+                {
+                    var nextH = H[nextIndex];
+                    if (nextH == prevH)
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        maxCount = Math.Max(count, maxCount);
+                        count = 1;
+                    }
+
+                    prevH = nextH;
+                    index = nextIndex;
+                    nextIndex += interval;
+                }
+
+                maxCount = Math.Max(count, maxCount);
+            }
+        }
+
+        var ans = maxCount;
         _writer.WriteLine(ans);
     }
 }
 
 #region
+class ProgramC
+{
+    public static void Main(string[] args)
+    {
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+        var problem = new ProblemC(Console.In, Console.Out);
+        problem.Solve();
+        Console.Out.Flush();
+    }
+}
+
 class Reader
 {
     private TextReader _reader;
