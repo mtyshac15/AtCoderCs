@@ -102,6 +102,20 @@ class Reader
     {
         return this.StrArray().Select(long.Parse).ToArray();
     }
+
+    public char[,] Grid(int H, int W)
+    {
+        var grid = new char[H, W];
+        for (int h = 0; h < H; h++)
+        {
+            var line = Str();
+            for (int w = 0; w < W; w++)
+            {
+                grid[h, w] = line[w];
+            }
+        }
+        return grid;
+    }
 }
 
 class Writer
