@@ -23,42 +23,33 @@ public class ProblemA
         var K = _reader.Int();
         var A = _reader.IntArray();
 
-        var count = 0L;
-
+        // しゃくとり法
+        var R = new int[N];
         for (int i = 0; i < N; i++)
         {
-            Func<int, bool> judge = (mIndex) =>
+            if (i == 0)
             {
-                return Math.Abs(A[mIndex] - A[i]) <= K;
-            };
+                R[i] = 0;
+            }
+            else
+            {
+                R[i] = R[i - 1];
+            }
 
-            var index = BinarySerch(i, A.Length, judge);
-            count += index - i;
+            while (R[i] < N && A[R[i]] - A[i] <= K)
+            {
+                R[i]++;
+            }
+        }
+
+        var count = 0L;
+        for (int i = 0; i < N; i++)
+        {
+            count += R[i] - (i + 1);
         }
 
         var ans = count;
         _writer.WriteLine(ans);
-    }
-
-    private int BinarySerch(int ok, int ng, Func<int, bool> judge)
-    {
-        while (Math.Abs(ok - ng) > 1)
-        {
-            var min = Math.Min(ok, ng);
-            var max = Math.Max(ok, ng);
-
-            var middle = min + (max - min) / 2;
-            if (judge(middle))
-            {
-                ok = middle;
-            }
-            else
-            {
-                ng = middle;
-            }
-        }
-
-        return ok;
     }
 }
 
@@ -163,4 +154,3 @@ class Writer
     }
 }
 #endregion
-

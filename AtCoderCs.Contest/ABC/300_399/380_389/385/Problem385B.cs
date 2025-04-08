@@ -90,7 +90,7 @@ public class ProblemB
                     break;
             }
 
-            Visit(x, y);
+            visit(x, y);
         }
 
         var ans = $"{x + 1} {y + 1} {c}";
