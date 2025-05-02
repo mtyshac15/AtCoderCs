@@ -30,7 +30,7 @@ public class TestProblem : IClassFixture<TestFixture>
         _judgeService = new TestJudgeService(_logger);
     }
 
-#if true
+#if DEBUG
     [Theory(DisplayName = $"ABCLike ZONE2021")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
     [InlineData($"B", typeof(ProblemB), nameof(ProblemB.Solve), 10, -3)]
