@@ -7,6 +7,11 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
+    <Configurations>Debug;Release;Contest</Configurations>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Contest|AnyCPU'">
+    <DefineConstants>$(DefineConstants);Contest</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
