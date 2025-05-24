@@ -26,32 +26,16 @@ public class ProblemC
 
         for (int interval = 1; interval < N; interval++)
         {
-            for (int startIndex = 0; startIndex < interval; startIndex++)
+            for (int left = 0; left < N; left++)
             {
+                var right = left + interval;
                 var count = 1;
 
-                var index = startIndex;
-                var nextIndex = index + interval;
-
-                var prevH = H[index];
-
-                // intervalの間隔で 同じ差分が連続しているかを調べる
-                while (nextIndex < N)
+                // 条件を満たす限り、rightを進める
+                while (right < N && H[right] == H[left])
                 {
-                    var nextH = H[nextIndex];
-                    if (nextH == prevH)
-                    {
-                        count++;
-                    }
-                    else
-                    {
-                        maxCount = Math.Max(count, maxCount);
-                        count = 1;
-                    }
-
-                    prevH = nextH;
-                    index = nextIndex;
-                    nextIndex += interval;
+                    count++;
+                    right += interval;
                 }
 
                 maxCount = Math.Max(count, maxCount);
