@@ -12,19 +12,19 @@ namespace AtCoderCs.Training.Tests.A13;
 [Sample($"IroncladRule", $"ProblemA", $"13")]
 public class TestProblem
 {
-    private static readonly ContestAttribute _contestAttribute = typeof(TestProblem).GetCustomAttribute<ContestAttribute>()!;
-    private static readonly SampleAttribute _sampleAttribute = typeof(TestProblem).GetCustomAttribute<SampleAttribute>()!;
+  private static readonly ContestAttribute _contestAttribute = typeof(TestProblem).GetCustomAttribute<ContestAttribute>()!;
+  private static readonly SampleAttribute _sampleAttribute = typeof(TestProblem).GetCustomAttribute<SampleAttribute>()!;
 
-    private ILogger _logger;
-    private ISampleRepository _sampleRepository;
-    private TestJudgeService _judgeService;
+  private ILogger _logger;
+  private ISampleRepository _sampleRepository;
+  private TestJudgeService _judgeService;
 
-    public TestProblem(ITestOutputHelper output, TrainingTestFixture fixture)
-    {
-        _logger = new XunitLogger(output);
-        _sampleRepository = fixture.GetSampleRepository(_sampleAttribute.Directory);
-        _judgeService = new TestJudgeService(_logger);
-    }
+  public TestProblem(ITestOutputHelper output, TrainingTestFixture fixture)
+  {
+    _logger = new XunitLogger(output);
+    _sampleRepository = fixture.GetSampleRepository(_sampleAttribute.Directory);
+    _judgeService = new TestJudgeService(_logger);
+  }
 
 #if DEBUG
     [Theory(DisplayName = $"IroncladRule 13")]

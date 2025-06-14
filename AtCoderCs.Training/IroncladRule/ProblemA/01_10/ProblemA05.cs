@@ -8,133 +8,133 @@ namespace AtCoderCs.Training.A05;
 
 public class ProblemA
 {
-    private Reader _reader;
-    private Writer _writer;
+  private Reader _reader;
+  private Writer _writer;
 
-    public static void Main(string[] args)
+  public static void Main(string[] args)
+  {
+    Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
+    var problem = new ProblemA(Console.In, Console.Out);
+    problem.Solve();
+    Console.Out.Flush();
+  }
+
+  public ProblemA(TextReader textReader, TextWriter textWriter)
+  {
+    _reader = new Reader(textReader);
+    _writer = new Writer(textWriter);
+  }
+
+  public void Solve()
+  {
+    var N = _reader.Int();
+    var K = _reader.Int();
+
+    var count = 0;
+    for (int red = 1; red <= N; red++)
     {
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()) { AutoFlush = false });
-        var problem = new ProblemA(Console.In, Console.Out);
-        problem.Solve();
-        Console.Out.Flush();
-    }
-
-    public ProblemA(TextReader textReader, TextWriter textWriter)
-    {
-        _reader = new Reader(textReader);
-        _writer = new Writer(textWriter);
-    }
-
-    public void Solve()
-    {
-        var N = _reader.Int();
-        var K = _reader.Int();
-
-        var count = 0;
-        for (int red = 1; red <= N; red++)
+      for (int blue = 1; blue <= N; blue++)
+      {
+        var white = K - red - blue;
+        if (white >= 1 && white <= N)
         {
-            for (int blue = 1; blue <= N; blue++)
-            {
-                var white = K - red - blue;
-                if (white >= 1 && white <= N)
-                {
-                    count++;
-                }
-            }
+          count++;
         }
-
-        var ans = count;
-        _writer.WriteLine(ans);
+      }
     }
+
+    var ans = count;
+    _writer.WriteLine(ans);
+  }
 }
 
 #region
 class Reader
 {
-    private TextReader _reader;
-    private int _index;
-    private string[] _line;
+  private TextReader _reader;
+  private int _index;
+  private string[] _line;
 
-    private char[] _cs = new char[] { ' ' };
+  private char[] _cs = new char[] { ' ' };
 
-    public Reader(TextReader reader)
+  public Reader(TextReader reader)
+  {
+    _reader = reader;
+    _index = 0;
+    _line = Array.Empty<string>();
+  }
+
+  private string NextLine()
+  {
+    var line = _reader.ReadLine() ?? string.Empty;
+    return line.Trim();
+  }
+
+  public string Str()
+  {
+    if (_index < _line.Length)
     {
-        _reader = reader;
-        _index = 0;
-        _line = Array.Empty<string>();
+      return _line[_index++];
     }
 
-    private string NextLine()
+    _line = this.StrArray();
+    if (!_line.Any())
     {
-        var line = _reader.ReadLine() ?? string.Empty;
-        return line.Trim();
+      return this.Str();
     }
 
-    public string Str()
-    {
-        if (_index < _line.Length)
-        {
-            return _line[_index++];
-        }
+    _index = 0;
+    return _line[_index++];
+  }
 
-        _line = this.StrArray();
-        if (!_line.Any())
-        {
-            return this.Str();
-        }
+  public int Int()
+  {
+    return int.Parse(this.Str());
+  }
 
-        _index = 0;
-        return _line[_index++];
-    }
+  public long Long()
+  {
+    return long.Parse(this.Str());
+  }
 
-    public int Int()
-    {
-        return int.Parse(this.Str());
-    }
+  public string[] StrArray()
+  {
+    return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
+  }
 
-    public long Long()
-    {
-        return long.Parse(this.Str());
-    }
+  public int[] IntArray()
+  {
+    return this.StrArray().Select(int.Parse).ToArray();
+  }
 
-    public string[] StrArray()
-    {
-        return this.NextLine().Split(_cs, StringSplitOptions.RemoveEmptyEntries);
-    }
-
-    public int[] IntArray()
-    {
-        return this.StrArray().Select(int.Parse).ToArray();
-    }
-
-    public long[] LongArray()
-    {
-        return this.StrArray().Select(long.Parse).ToArray();
-    }
+  public long[] LongArray()
+  {
+    return this.StrArray().Select(long.Parse).ToArray();
+  }
 }
 
 class Writer
 {
-    private TextWriter _writer;
+  private TextWriter _writer;
 
-    public Writer(TextWriter writer)
-    {
-        _writer = writer;
-    }
+  public Writer(TextWriter writer)
+  {
+    _writer = writer;
+  }
 
-    public void WriteLine(object? value = null)
-    {
-        _writer.WriteLine(value);
-    }
+  public void WriteLine(object? value = null)
+  {
+    _writer.WriteLine(value);
+  }
 
-    public void WriteYesOrNo(bool value)
-    {
-        this.WriteLine(Writer.ToYesOrNo(value));
-    }
+  public void WriteYesOrNo(bool value)
+  {
+    this.WriteLine(Writer.ToYesOrNo(value));
+  }
 
-    public static string ToYesOrNo(bool value)
-    {
-        return value ? $"Yes" : $"No";
-    }
+  public static string ToYesOrNo(bool value)
+  {
+    return value ? $"Yes" : $"No";
+  }
 }
 #endregion
