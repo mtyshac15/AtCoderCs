@@ -30,7 +30,7 @@ public class TestProblem : IClassFixture<TestFixture>
         _judgeService = new TestJudgeService(_logger);
     }
 
-#if Contest
+#if DEBUG
     [Theory(DisplayName = $"ABC 402")]
     [Trait("Contest", "ABC")]
     [InlineData($"A", typeof(ProblemA), nameof(ProblemA.Solve))]
