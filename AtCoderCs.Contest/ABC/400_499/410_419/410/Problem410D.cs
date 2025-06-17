@@ -26,6 +26,13 @@ public class ProblemD
     var B = new int[M];
     var W = new int[M];
 
+    for (int i = 0; i < M; i++)
+    {
+      A[i] = _reader.Int();
+      B[i] = _reader.Int();
+      W[i] = _reader.Int();
+    }
+
     //隣接リストを作成
     var graph = new List<IList<(int To, int W)>>();
     for (int i = 0; i < N + 1; i++)
@@ -38,7 +45,41 @@ public class ProblemD
       graph[A[i]].Add((B[i], W[i]));
     }
 
-    var min = int.MaxValue;
+    var maxW = 0b1111111111;
+
+    var linked = new bool[maxW + 1, maxW + 1];
+
+    // BFS
+
+    var queue = new Queue<(int node, int w)>();
+    queue.Enqueue((1, 0));
+
+    while (queue.Any())
+    {
+      var (current, currentW) = queue.Dequeue();
+
+      var edges = graph[current];
+      foreach (var (to, w) in edges)
+      {
+        var toW = currentW ^ w;
+
+        if (!linked[to, toW])
+        {
+          linked[to, toW] = true;
+          queue.Enqueue((to, toW));
+        }
+      }
+    }
+
+    var min = -1;
+    for (int i = 0; i < maxW + 1; i++)
+    {
+      if (linked[N, i])
+      {
+        min = i;
+        break;
+      }
+    }
 
     var ans = min;
     _writer.WriteLine(ans);
