@@ -1,15 +1,15 @@
-using AtCoderCs.Training.A17;
+using AtCoderCs.Training.A12;
 using AtCoderCsTest.Contents.Services;
 using AtCoderCsTest.Training.Tests.Services;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Xunit.Abstractions;
 
-namespace AtCoderCs.Training.Tests.A17;
+namespace AtCoderCs.Training.Tests.A12;
 
 [Collection(nameof(TrainingTestCollection))]
-[Contest($"IroncladRule", $"17")]
-[Sample($"IroncladRule", $"ProblemA", $"17")]
+[Contest($"IroncladRule", $"12")]
+[Sample($"IroncladRule", $"ProblemA", $"11_19", $"12")]
 public class TestProblem
 {
   private static readonly ContestAttribute _contestAttribute = typeof(TestProblem).GetCustomAttribute<ContestAttribute>()!;
@@ -27,7 +27,7 @@ public class TestProblem
   }
 
 #if DEBUG
-  [Theory(DisplayName = $"IroncladRule 17")]
+  [Theory(DisplayName = $"IroncladRule 12")]
   [InlineData($"", typeof(ProblemA), nameof(ProblemA.Solve))]
   public void Solve(string level, Type problemType, string methodName, int radix = 10, int exp = 0)
   {

@@ -9,7 +9,7 @@ namespace AtCoderCs.Training.Tests.A18;
 
 [Collection(nameof(TrainingTestCollection))]
 [Contest($"IroncladRule", $"18")]
-[Sample($"IroncladRule", $"ProblemA", $"18")]
+[Sample($"IroncladRule", $"ProblemA", $"11_19", $"18")]
 public class TestProblem
 {
   private static readonly ContestAttribute _contestAttribute = typeof(TestProblem).GetCustomAttribute<ContestAttribute>()!;

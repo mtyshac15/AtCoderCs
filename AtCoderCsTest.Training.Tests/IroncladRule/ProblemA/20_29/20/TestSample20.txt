@@ -1,0 +1,15 @@
+Input
+1
+mynavi
+monday
+
+2
+tokyo
+kyoto
+
+Output
+1
+3
+
+2
+3

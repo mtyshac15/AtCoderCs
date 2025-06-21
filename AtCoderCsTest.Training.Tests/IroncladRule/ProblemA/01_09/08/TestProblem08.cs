@@ -1,15 +1,15 @@
-using AtCoderCs.Training.A14;
+using AtCoderCs.Training.A08;
 using AtCoderCsTest.Contents.Services;
 using AtCoderCsTest.Training.Tests.Services;
 using Microsoft.Extensions.Logging;
 using System.Reflection;
 using Xunit.Abstractions;
 
-namespace AtCoderCs.Training.Tests.A14;
+namespace AtCoderCs.Training.Tests.A08;
 
 [Collection(nameof(TrainingTestCollection))]
-[Contest($"IroncladRule", $"14")]
-[Sample($"IroncladRule", $"ProblemA", $"14")]
+[Contest($"IroncladRule", $"08")]
+[Sample($"IroncladRule", $"ProblemA", $"01_09", $"08")]
 public class TestProblem
 {
   private static readonly ContestAttribute _contestAttribute = typeof(TestProblem).GetCustomAttribute<ContestAttribute>()!;
@@ -27,13 +27,13 @@ public class TestProblem
   }
 
 #if DEBUG
-    [Theory(DisplayName = $"IroncladRule 14")]
-    [InlineData($"", typeof(ProblemA), nameof(ProblemA.Solve))]
-    public void Solve(string level, Type problemType, string methodName, int radix = 10, int exp = 0)
-    {
-        var sample = _sampleRepository.Find(_contestAttribute.Number, level);
-        var results = _judgeService.Solve(sample, problemType, methodName);
-        _judgeService.Judge(results, radix, exp);
-    }
+  [Theory(DisplayName = $"IroncladRule 08")]
+  [InlineData($"", typeof(ProblemA), nameof(ProblemA.Solve))]
+  public void Solve(string level, Type problemType, string methodName, int radix = 10, int exp = 0)
+  {
+    var sample = _sampleRepository.Find(_contestAttribute.Number, level);
+    var results = _judgeService.Solve(sample, problemType, methodName);
+    _judgeService.Judge(results, radix, exp);
+  }
 #endif
 }
