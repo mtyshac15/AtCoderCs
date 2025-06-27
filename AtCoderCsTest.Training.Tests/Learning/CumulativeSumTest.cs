@@ -1,3 +1,4 @@
+using AtCoderCs.Common.Library;
 using Xunit.Abstractions;
 
 namespace AtCoderCsTest.Training.Tests.Learning;
@@ -24,21 +25,10 @@ public class CumulativeSumTest
     var array = new int[] { 2, 5, -4, 10, 3 };
 
     _output.WriteLine("Act");
-    var sum = CumulativeSum(array);
+    var sum = MathLibrary.CumulativeSum(array);
 
     _output.WriteLine("Assert");
     var ans = sum[right] - sum[left];
     Assert.Equal(expected, ans);
-  }
-
-  public int[] CumulativeSum(IReadOnlyList<int> list)
-  {
-    var sum = new int[list.Count + 1];
-    for (int i = 0; i < list.Count; i++)
-    {
-      sum[i + 1] = sum[i] + list[i];
-    }
-
-    return sum;
   }
 }
