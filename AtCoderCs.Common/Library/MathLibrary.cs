@@ -226,14 +226,14 @@ public static class MathLibrary
   /// 最大公約数
   /// </summary>
   /// <returns></returns>
-  public static long GCD(long a, long b)
+  public static int Gcd(int a, int b)
   {
-    if (a % b == 0)
+    if (b == 0)
     {
-      return b;
+      return a;
     }
 
-    return MathLibrary.GCD(b, a % b);
+    return Gcd(b, a % b);
   }
 
   #endregion
